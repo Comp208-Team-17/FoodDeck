@@ -15,6 +15,7 @@ Quick Access Links
 ### Swift 
 - App dev module notes - [Here](https://cgi.csc.liv.ac.uk/~phil/Teaching/COMP228/)
 - XCode tutorials (and this guys site in general) - [Here](https://www.ralfebert.de/ios/beginner-tutorials/iphone-app-xcode/)
+- What core data is - [Here](https://www.youtube.com/watch?v=8t6i94M0IXo) (Video)
 
 ### Github
 - Some Markdown - [Here](https://www.markdownguide.org/basic-syntax/) 
