@@ -11,6 +11,7 @@ Quick Access Links
 
 ### Module
 - Comp208 Lecture Notes - [Here](https://cgi.csc.liv.ac.uk/~comp208/)
+- Design Doc Example - [Here](https://cgi.csc.liv.ac.uk/~comp208/2020/1.pdf)
 
 ### Swift 
 - App dev module notes - [Here](https://cgi.csc.liv.ac.uk/~phil/Teaching/COMP228/)
