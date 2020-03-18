@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="KAr-g4-uIf">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Shopping List-->
+        <scene sceneID="Wyh-AQ-DsA">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="f5A-BU-2ET" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <viewController id="Za8-KU-4RW" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="MtS-7h-Gmr">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="jYn-i3-ugc"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Shopping List" id="MNa-4k-at9">
+                        <barButtonItem key="rightBarButtonItem" title="Settings" style="plain" id="UtU-YC-yDG">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="nKt-m9-lqz">
+                                <rect key="frame" x="302" y="7" width="92" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Settings"/>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="2228.985507246377" y="-225"/>
+        </scene>
+        <!--Shopping List-->
+        <scene sceneID="gCC-hI-fvQ">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6Ue-9Y-8JN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <navigationController title="Shopping List" automaticallyAdjustsScrollViewInsets="NO" id="KAr-g4-uIf" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Cart" id="d9K-yU-h6d"/>
+                    <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="PUy-99-dvQ">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Za8-KU-4RW" kind="relationship" relationship="rootViewController" id="1x0-2m-oPq"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="1318.840579710145" y="-225"/>
+        </scene>
+    </scenes>
+</document>
