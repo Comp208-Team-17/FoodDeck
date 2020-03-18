@@ -19,10 +19,10 @@
 		9AC0B18B240D2F8100234251 /* FoodDeckUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC0B18A240D2F8100234251 /* FoodDeckUITests.swift */; };
 		9AD9FF6D24225FD70065970A /* RegistrationQuiz.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9AD9FF6C24225FD70065970A /* RegistrationQuiz.storyboard */; };
 		9AD9FF6F242260710065970A /* Ingredients.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9AD9FF6E242260710065970A /* Ingredients.storyboard */; };
-		9AD9FF752422630E0065970A /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9AD9FF742422630E0065970A /* Settings.storyboard */; };
 		9AD9FF77242263CF0065970A /* ShoppingList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9AD9FF76242263CF0065970A /* ShoppingList.storyboard */; };
 		9AD9FF79242263E80065970A /* Cards.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9AD9FF78242263E80065970A /* Cards.storyboard */; };
 		9AD9FF7B242264AC0065970A /* Pantry.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9AD9FF7A242264AC0065970A /* Pantry.storyboard */; };
+		D63A7EA72422A34400E65E65 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D63A7EA62422A34400E65E65 /* Settings.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,10 +61,10 @@
 		9AC0B18C240D2F8100234251 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9AD9FF6C24225FD70065970A /* RegistrationQuiz.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RegistrationQuiz.storyboard; sourceTree = "<group>"; };
 		9AD9FF6E242260710065970A /* Ingredients.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Ingredients.storyboard; sourceTree = "<group>"; };
-		9AD9FF742422630E0065970A /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		9AD9FF76242263CF0065970A /* ShoppingList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ShoppingList.storyboard; sourceTree = "<group>"; };
 		9AD9FF78242263E80065970A /* Cards.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Cards.storyboard; sourceTree = "<group>"; };
 		9AD9FF7A242264AC0065970A /* Pantry.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Pantry.storyboard; sourceTree = "<group>"; };
+		D63A7EA62422A34400E65E65 /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,10 +98,10 @@
 				9A509192242256A2001BE676 /* Recipes.storyboard */,
 				9AD9FF6C24225FD70065970A /* RegistrationQuiz.storyboard */,
 				9AD9FF6E242260710065970A /* Ingredients.storyboard */,
-				9AD9FF742422630E0065970A /* Settings.storyboard */,
 				9AD9FF76242263CF0065970A /* ShoppingList.storyboard */,
 				9AD9FF78242263E80065970A /* Cards.storyboard */,
 				9AD9FF7A242264AC0065970A /* Pantry.storyboard */,
+				D63A7EA62422A34400E65E65 /* Settings.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -273,7 +273,7 @@
 				9AC0B172240D2F8100234251 /* Assets.xcassets in Resources */,
 				9AC0B16D240D2F8000234251 /* Main.storyboard in Resources */,
 				9AD9FF6F242260710065970A /* Ingredients.storyboard in Resources */,
-				9AD9FF752422630E0065970A /* Settings.storyboard in Resources */,
+				D63A7EA72422A34400E65E65 /* Settings.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
