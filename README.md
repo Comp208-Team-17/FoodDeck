@@ -13,6 +13,9 @@ Quick Access Links
 - Comp208 Lecture Notes - [Here](https://cgi.csc.liv.ac.uk/~comp208/)
 - Design Doc Example - [Here](https://cgi.csc.liv.ac.uk/~comp208/2020/1.pdf)
 
+### Storyboards
+- Tab bar (& some nav bar) video tutorials - [Here](https://www.youtube.com/watch?v=n7NNAdaIDKQ) and [Here](https://www.youtube.com/watch?v=htQATVxlLng)
+
 ### Swift 
 - App dev module notes - [Here](https://cgi.csc.liv.ac.uk/~phil/Teaching/COMP228/)
 - XCode tutorials (and this guys site in general) - [Here](https://www.ralfebert.de/ios/beginner-tutorials/iphone-app-xcode/)
