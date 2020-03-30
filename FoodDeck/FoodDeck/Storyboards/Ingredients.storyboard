@@ -10,8 +10,7 @@
         <!--Ingredients-->
         <scene sceneID="79s-dS-BcD">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Uin-2d-Cun" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <viewController title="Ingredients" id="PmA-PE-8xJ" sceneMemberID="viewController">
+                <viewController title="Ingredients" modalPresentationStyle="fullScreen" id="PmA-PE-8xJ" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="96M-5A-5Yd">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -28,13 +27,13 @@
                         </barButtonItem>
                     </navigationItem>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Uin-2d-Cun" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2128" y="-900"/>
         </scene>
         <!--Ingredients-->
         <scene sceneID="kIY-JX-fia">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="xWj-Qu-X1Z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController title="Ingredients" automaticallyAdjustsScrollViewInsets="NO" id="qmG-pC-LPx" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Ingredients" id="MCZ-xN-P3Q"/>
                     <toolbarItems/>
@@ -48,6 +47,7 @@
                         <segue destination="PmA-PE-8xJ" kind="relationship" relationship="rootViewController" id="XMI-5t-uIA"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xWj-Qu-X1Z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1320" y="-900"/>
         </scene>

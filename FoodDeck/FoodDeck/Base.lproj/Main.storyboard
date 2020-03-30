@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="whB-P5-rC4">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="whB-P5-rC4">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Tab Bar Controller-->
+        <!--Tab bar Controller-->
         <scene sceneID="kFv-iH-pSh">
             <objects>
-                <tabBarController id="hIF-JF-jdw" sceneMemberID="viewController">
+                <tabBarController title="Tab bar Controller" modalPresentationStyle="fullScreen" id="hIF-JF-jdw" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="8hB-Q1-wvm"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="4q8-jJ-Twj">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
@@ -48,16 +48,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DOT-xe-IQS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="667" y="173"/>
-        </scene>
-        <!--RegistrationQuiz-->
-        <scene sceneID="tEt-ok-Q8J">
-            <objects>
-                <viewControllerPlaceholder storyboardName="RegistrationQuiz" id="nUr-Sx-eKZ" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="GBC-GZ-xAn"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="zoF-O9-jAv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="619" y="-242"/>
         </scene>
         <!--Pantry-->
         <scene sceneID="rQV-DF-M1C">

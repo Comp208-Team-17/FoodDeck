@@ -10,7 +10,7 @@
         <!--toSettingsController-->
         <scene sceneID="7P3-KQ-NUu">
             <objects>
-                <viewController title="toSettingsController" id="x4U-pU-bHL" sceneMemberID="viewController">
+                <viewController title="toSettingsController" modalPresentationStyle="fullScreen" id="x4U-pU-bHL" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xw5-OL-YxC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

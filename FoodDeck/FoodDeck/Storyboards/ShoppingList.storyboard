@@ -10,8 +10,7 @@
         <!--Shopping List-->
         <scene sceneID="Wyh-AQ-DsA">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="f5A-BU-2ET" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <viewController id="Za8-KU-4RW" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="Za8-KU-4RW" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="MtS-7h-Gmr">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -28,13 +27,13 @@
                         </barButtonItem>
                     </navigationItem>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="f5A-BU-2ET" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2228.985507246377" y="-225"/>
         </scene>
         <!--Shopping List-->
         <scene sceneID="gCC-hI-fvQ">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="6Ue-9Y-8JN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController title="Shopping List" automaticallyAdjustsScrollViewInsets="NO" id="KAr-g4-uIf" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Cart" id="d9K-yU-h6d"/>
                     <toolbarItems/>
@@ -48,6 +47,7 @@
                         <segue destination="Za8-KU-4RW" kind="relationship" relationship="rootViewController" id="1x0-2m-oPq"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6Ue-9Y-8JN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1318.840579710145" y="-225"/>
         </scene>
