@@ -23,6 +23,7 @@
 		9AD9FF79242263E80065970A /* Cards.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9AD9FF78242263E80065970A /* Cards.storyboard */; };
 		9AD9FF7B242264AC0065970A /* Pantry.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9AD9FF7A242264AC0065970A /* Pantry.storyboard */; };
 		D63A7EA92423CC9100E65E65 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D63A7EA82423CC9100E65E65 /* Settings.storyboard */; };
+		D63EC8CE24323699004A3936 /* RegistrationQuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63EC8CD24323699004A3936 /* RegistrationQuizViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		9AD9FF78242263E80065970A /* Cards.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Cards.storyboard; sourceTree = "<group>"; };
 		9AD9FF7A242264AC0065970A /* Pantry.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Pantry.storyboard; sourceTree = "<group>"; };
 		D63A7EA82423CC9100E65E65 /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
+		D63EC8CD24323699004A3936 /* RegistrationQuizViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationQuizViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +140,7 @@
 				9AC0B173240D2F8100234251 /* LaunchScreen.storyboard */,
 				9AC0B176240D2F8100234251 /* Info.plist */,
 				9AC0B16E240D2F8000234251 /* FoodDeck.xcdatamodeld */,
+				D63EC8CD24323699004A3936 /* RegistrationQuizViewController.swift */,
 			);
 			path = FoodDeck;
 			sourceTree = "<group>";
@@ -302,6 +305,7 @@
 				9AC0B16A240D2F8000234251 /* ViewController.swift in Sources */,
 				9AC0B166240D2F8000234251 /* AppDelegate.swift in Sources */,
 				9AC0B168240D2F8000234251 /* SceneDelegate.swift in Sources */,
+				D63EC8CE24323699004A3936 /* RegistrationQuizViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
