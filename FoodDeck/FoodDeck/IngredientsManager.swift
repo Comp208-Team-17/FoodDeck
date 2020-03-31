@@ -31,14 +31,30 @@ class IngredientsManager: NSManagedObject {
             for data in result as! [NSManagedObject] {
                 ingredients.append(Ingredient(theName: data.value(forKey:"name") as! String, theUnit: data.value(forKey:"unit") as! String, isEnabled: data.value(forKey:"enabled") as! Bool) )
             }
-           
         }
         catch{
             print("updating ingredients array failed")
         }
     }
     func deleteIngredient(theName : String){
-        
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "ingreident")
+        request.predicate = NSPredicate(format: "name = %@", theName)
+        do{
+            let deletion = try managedContext.fetch(request)
+            let toDelete = deletion[0] as! NSManagedObject
+            managedContext.delete(toDelete)
+            do{
+                try managedContext.save()
+            }
+            catch{
+                print("error deleting ingredient - issue saving context")
+            }
+        }
+        catch{
+            print("error deleting ingredient")
+        }
     }
     func addIngredient(theName : String, theUnit : String, isEnabled: Bool){
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
