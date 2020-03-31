@@ -72,6 +72,9 @@ class IngredientManager: NSManagedObject {
         updateIngredients()
     }
 }
+func exists(theName: String){
+    
+}
 
     
     
