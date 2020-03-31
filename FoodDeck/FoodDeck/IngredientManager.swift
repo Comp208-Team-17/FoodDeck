@@ -36,8 +36,8 @@ class IngredientManager: NSManagedObject {
             print("updating ingredients array failed")
         }
     }
-    func deleteIngredient(theName : String){
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
+    func deleteIngredient(theName : String) -> Bool {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return false}
         let managedContext = appDelegate.persistentContainer.viewContext
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "ingreident")
         request.predicate = NSPredicate(format: "name = %@", theName)
@@ -50,31 +50,52 @@ class IngredientManager: NSManagedObject {
             }
             catch{
                 print("error deleting ingredient - issue saving context")
+                return false
             }
         }
         catch{
             print("error deleting ingredient")
+            return false
         }
+        return true
     }
-    func addIngredient(theName : String, theUnit : String, isEnabled: Bool){
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
-        let managedContext = appDelegate.persistentContainer.viewContext
-        let ingredientEntity = NSEntityDescription.entity(forEntityName: "Ingredent", in: managedContext)!
-        let anIngredient = NSManagedObject(entity: ingredientEntity, insertInto: managedContext)
-        anIngredient.setValue(theName, forKey: "name")
-        anIngredient.setValue(theUnit, forKey: "unit")
-        anIngredient.setValue(isEnabled, forKey: "enabled")
-        do {
-            try managedContext.save()
-           } catch {
-            print("Failed saving")
-         }
-        updateIngredients()
-    }
-}
-func exists(theName: String){
     
+    func addIngredient(theName : String, theUnit : String, isEnabled: Bool) -> Bool{
+        if exists(theName: theName){
+            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return false}
+                  let managedContext = appDelegate.persistentContainer.viewContext
+                  let ingredientEntity = NSEntityDescription.entity(forEntityName: "Ingredent", in: managedContext)!
+                  let anIngredient = NSManagedObject(entity: ingredientEntity, insertInto: managedContext)
+                  anIngredient.setValue(theName, forKey: "name")
+                  anIngredient.setValue(theUnit, forKey: "unit")
+                  anIngredient.setValue(isEnabled, forKey: "enabled")
+                  do {
+                      try managedContext.save()
+                     } catch {
+                      print("Failed saving")
+                        return false;
+                   }
+                  updateIngredients()
+            return true;
+        }
+        else{
+            print("Ingredient already exists")
+            return false
+        }
+      
+    }
+    
+    func exists(theName: String) -> Bool {
+        for item in ingredients {
+            if item.name == theName {
+                return false
+            }
+        }
+        return true
+        
+    }
 }
+
 
     
     
