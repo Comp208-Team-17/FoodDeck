@@ -10,7 +10,8 @@ import UIKit
 import CoreData
 
 class IngredientManager: NSManagedObject {
-    var tempIngredientRtn : [IngredientStr] = [IngredientStr()] // Stores the ingredient that will be returned if a calling function requests an ingredient
+    static var tempIngredientRtn : [IngredientStr] = [IngredientStr()] // Stores the ingredient that will be returned if a calling function requests an ingredient
+    
     struct IngredientStr{
     var name : String
     var unit : String
@@ -26,7 +27,7 @@ class IngredientManager: NSManagedObject {
         enabled = false
     }
     }
-    func addIngredient(isEnabled : Bool, theName : String, theUnit : String) -> Bool {
+    static func addIngredient(isEnabled : Bool, theName : String, theUnit : String) -> Bool {
         if checkExists(theName : theName, delete: false, get: false){
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             let context = appDelegate.persistentContainer.viewContext
@@ -45,10 +46,10 @@ class IngredientManager: NSManagedObject {
         return false
         
     }
-    func deleteIngredient(theName : String) -> Bool{
+    static func deleteIngredient(theName : String) -> Bool{
         return checkExists(theName: theName, delete : true, get: false)
     }
-    func updateIngredient(originalName : String, isEnabled: Bool, theName : String, theUnit : String) -> Bool{
+    static func updateIngredient(originalName : String, isEnabled: Bool, theName : String, theUnit : String) -> Bool{
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
         let request : NSFetchRequest<Ingredient> = Ingredient.fetchRequest()
@@ -75,7 +76,7 @@ class IngredientManager: NSManagedObject {
         }
         return false
     }
-    func getIngredient(theName : String, enabled : Bool, all : Bool) -> [IngredientStr] {
+    static func getIngredient(theName : String, enabled : Bool, all : Bool) -> [IngredientStr] {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
         let request : NSFetchRequest<Ingredient> = Ingredient.fetchRequest()
@@ -110,7 +111,23 @@ class IngredientManager: NSManagedObject {
         }
         
     }
-    func checkExists(theName : String, delete : Bool, get: Bool) -> Bool{
+     static func getIngredientObject(theName : String) -> [NSManagedObject]{
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        let request : NSFetchRequest<Ingredient> = Ingredient.fetchRequest()
+        request.returnsObjectsAsFaults = false
+        do{
+            let allIngredients = try context.fetch(request)
+            for ingredient in allIngredients{
+                if ingredient.name == theName {
+                    return [ingredient]
+                }
+            }
+        }
+            catch{}
+            return []
+    }
+    static func checkExists(theName : String, delete : Bool, get: Bool) -> Bool{
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
         let request : NSFetchRequest<Ingredient> = Ingredient.fetchRequest()

@@ -51,7 +51,6 @@ class RegistrationQuizViewController: UIViewController {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         // Code for meal pack table
         if (tableView == self.mealPackTable) {
             return mealRows
@@ -61,6 +60,7 @@ class RegistrationQuizViewController: UIViewController {
         else {
             return allergyRows
         }
+     
     }
     
     // Make cell
