@@ -1,104 +1,145 @@
 //
-//  IngredientsManager.swift
+//  IngredientManager.swift
 //  FoodDeck
 //
-//  Created by Luke Wood on 31/03/2020.
+//  Created by Luke Wood on 02/04/2020.
 //  Copyright © 2020 computer science. All rights reserved.
 //
-import CoreData
+
 import UIKit
+import CoreData
+
 class IngredientManager: NSManagedObject {
-    struct Ingredient{
-        var name : String
-        var unit : String
-        var enabled : Bool
-        init(theName : String, theUnit : String, isEnabled : Bool){
-            name = theName
-            unit = theUnit
-            enabled = isEnabled
-        }
+    var tempIngredientRtn : [IngredientStr] = [IngredientStr()] // Stores the ingredient that will be returned if a calling function requests an ingredient
+    struct IngredientStr{
+    var name : String
+    var unit : String
+    var enabled : Bool
+    init(theName : String, theUnit : String, isEnabled : Bool){
+        name = theName
+        unit = theUnit
+        enabled = isEnabled
     }
-    var ingredients : [Ingredient] = []
-    
-    func updateIngredients(){
-        ingredients.removeAll()
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
-        let managedContext = appDelegate.persistentContainer.viewContext
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "ingreident")
-        request.returnsObjectsAsFaults = false
-        do{
-            let result = try managedContext.fetch(request)
-            for data in result as! [NSManagedObject] {
-                ingredients.append(Ingredient(theName: data.value(forKey:"name") as! String, theUnit: data.value(forKey:"unit") as! String, isEnabled: data.value(forKey:"enabled") as! Bool) )
-            }
-        }
-        catch{
-            print("updating ingredients array failed")
-        }
+    init(){
+        name = ""
+        unit = ""
+        enabled = false
     }
-    func deleteIngredient(theName : String) -> Bool {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return false}
-        let managedContext = appDelegate.persistentContainer.viewContext
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "ingreident")
-        request.predicate = NSPredicate(format: "name = %@", theName)
-        do{
-            let deletion = try managedContext.fetch(request)
-            let toDelete = deletion[0] as! NSManagedObject
-            managedContext.delete(toDelete)
+    }
+    func addIngredient(isEnabled : Bool, theName : String, theUnit : String) -> Bool {
+        if checkExists(theName : theName, delete: false, get: false){
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            let context = appDelegate.persistentContainer.viewContext
+            let newIngredient = Ingredient(context : context)
+            newIngredient.enabled = isEnabled
+            newIngredient.name = theName
+            newIngredient.unit = theUnit
             do{
-                try managedContext.save()
+                try context.save()
+                return true
             }
             catch{
-                print("error deleting ingredient - issue saving context")
                 return false
             }
         }
-        catch{
-            print("error deleting ingredient")
-            return false
-        }
-        return true
-    }
-    
-    func addIngredient(theName : String, theUnit : String, isEnabled: Bool) -> Bool{
-        if exists(theName: theName){
-            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return false}
-                  let managedContext = appDelegate.persistentContainer.viewContext
-                  let ingredientEntity = NSEntityDescription.entity(forEntityName: "Ingredent", in: managedContext)!
-                  let anIngredient = NSManagedObject(entity: ingredientEntity, insertInto: managedContext)
-                  anIngredient.setValue(theName, forKey: "name")
-                  anIngredient.setValue(theUnit, forKey: "unit")
-                  anIngredient.setValue(isEnabled, forKey: "enabled")
-                  do {
-                      try managedContext.save()
-                     } catch {
-                      print("Failed saving")
-                        return false;
-                   }
-                  updateIngredients()
-            return true;
-        }
-        else{
-            print("Ingredient already exists")
-            return false
-        }
-      
-    }
-    
-    func exists(theName: String) -> Bool {
-        for item in ingredients {
-            if item.name == theName {
-                return false
-            }
-        }
-        return true
+        return false
         
     }
+    func deleteIngredient(theName : String) -> Bool{
+        return checkExists(theName: theName, delete : true, get: false)
+    }
+    func updateIngredient(originalName : String, isEnabled: Bool, theName : String, theUnit : String) -> Bool{
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        let request : NSFetchRequest<Ingredient> = Ingredient.fetchRequest()
+        request.returnsObjectsAsFaults = false
+        do{
+            let fetchedIngredients = try context.fetch(request)
+            for theIngredient in fetchedIngredients{
+                if theIngredient.name == originalName && checkExists(theName : theName, delete: false, get: false){
+                    theIngredient.enabled = isEnabled
+                    theIngredient.name = theName
+                    theIngredient.unit = theUnit
+                    do{
+                        try context.save()
+                        return true
+                    }
+                    catch{
+                        return false
+                    }
+                }
+            }
+        }
+        catch {
+            return false
+        }
+        return false
+    }
+    func getIngredient(theName : String, enabled : Bool, all : Bool) -> [IngredientStr] {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        let request : NSFetchRequest<Ingredient> = Ingredient.fetchRequest()
+        request.returnsObjectsAsFaults = false
+            do {
+                tempIngredientRtn.removeAll()
+                let allIngredients = try context.fetch(request)
+                if enabled == true {
+                    for theIngredient in allIngredients{
+                        if theIngredient.enabled{
+                            tempIngredientRtn.append(IngredientStr(theName : theIngredient.name!, theUnit: theIngredient.unit!, isEnabled : theIngredient.enabled))
+                        }
+                    }
+                    return tempIngredientRtn
+                }
+                else if all == true{
+                    for theIngredient in allIngredients{
+                        tempIngredientRtn.append(IngredientStr(theName : theIngredient.name!, theUnit: theIngredient.unit!, isEnabled : theIngredient.enabled))
+                    }
+                    return tempIngredientRtn
+                }
+            }
+            catch{
+                return []
+            }
+        
+        if checkExists(theName: theName, delete: false, get: true) == true {
+            return tempIngredientRtn
+        }
+        else{
+            return []
+        }
+        
+    }
+    func checkExists(theName : String, delete : Bool, get: Bool) -> Bool{
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        let request : NSFetchRequest<Ingredient> = Ingredient.fetchRequest()
+        request.returnsObjectsAsFaults = false
+        do{
+            let fetchedIngredients = try context.fetch(request)
+            for theIngredient in fetchedIngredients{
+                if theIngredient.name == theName{
+                    if delete == true{
+                        context.delete(theIngredient)
+                        do{
+                            try context.save()
+                            return true
+                        }
+                        catch{}
+                    }
+                    else if get == true {
+                        tempIngredientRtn[0].enabled = theIngredient.enabled
+                        tempIngredientRtn[0].name = theIngredient.name!
+                        tempIngredientRtn[0].unit = theIngredient.unit!
+                        return true
+                    }
+                    return false
+                }
+            }
+        }
+        catch {
+            return false
+        }
+        return true
+    }
 }
-
-
-    
-    
-
-
-

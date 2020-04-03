@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15400" systemVersion="18G103" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="Ingredient" representedClassName="Ingredient" syncable="YES">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15702" systemVersion="19D76" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Ingredient" representedClassName=".Ingredient" syncable="YES" codeGenerationType="category">
         <attribute name="enabled" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="unit" optional="YES" attributeType="String"/>
@@ -8,16 +8,16 @@
         <relationship name="inRecipe" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RecipeIngredient" inverseName="ingredient" inverseEntity="RecipeIngredient"/>
         <relationship name="inShoppingList" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ShoppingList" inverseName="contains" inverseEntity="ShoppingList"/>
     </entity>
-    <entity name="MealPack" representedClassName="MealPack" syncable="YES">
+    <entity name="MealPack" representedClassName=".MealPack" syncable="YES" codeGenerationType="category">
         <attribute name="enabled" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <relationship name="contains" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Recipe" inverseName="belongsTo" inverseEntity="Recipe"/>
     </entity>
-    <entity name="Pantry" representedClassName="Pantry" syncable="YES">
+    <entity name="Pantry" representedClassName=".Pantry" syncable="YES" codeGenerationType="category">
         <attribute name="amount" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <relationship name="contains" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Ingredient" inverseName="inPantry" inverseEntity="Ingredient"/>
     </entity>
-    <entity name="Recipe" representedClassName="Recipe" syncable="YES">
+    <entity name="Recipe" representedClassName=".Recipe" syncable="YES" codeGenerationType="category">
         <attribute name="allergen" optional="YES" attributeType="String"/>
         <attribute name="available" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="cookTime" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
@@ -36,13 +36,13 @@
         <relationship name="belongsTo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MealPack" inverseName="contains" inverseEntity="MealPack"/>
         <relationship name="contains" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RecipeIngredient" inverseName="belongsTo" inverseEntity="RecipeIngredient"/>
     </entity>
-    <entity name="RecipeIngredient" representedClassName="RecipeIngredient" syncable="YES">
+    <entity name="RecipeIngredient" representedClassName=".RecipeIngredient" syncable="YES" codeGenerationType="category">
         <attribute name="amount" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="optional" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <relationship name="belongsTo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Recipe" inverseName="contains" inverseEntity="Recipe"/>
         <relationship name="ingredient" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Ingredient" inverseName="inRecipe" inverseEntity="Ingredient"/>
     </entity>
-    <entity name="ShoppingList" representedClassName="ShoppingList" syncable="YES">
+    <entity name="ShoppingList" representedClassName=".ShoppingList" syncable="YES" codeGenerationType="category">
         <attribute name="amount" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <relationship name="contains" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Ingredient" inverseName="inShoppingList" inverseEntity="Ingredient"/>
     </entity>
