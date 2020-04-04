@@ -11,59 +11,7 @@ import Foundation
 import CoreData
 class RecipeManager: NSManagedObject {
    static var tempRecipeRtn : [RecipeStr] = [] // Stores the recipe that will be returned if a calling function requests a recipe
-    struct RecipeStr{
-        var allergen : String
-        var available : Bool
-        var cookTime : Int16
-        var dateCreated : String
-        var dietaryRequirements : String
-        var favourite : Bool
-        var instructions : String
-        var name : String
-        var prepTime : Int16
-        var rating : Int16
-        var recipeDescription : String
-        var score : Int16
-        var servings : Int16
-        var thumbnail : UIImage?
-        var timeOfDay : String
-        var ingredients : [String]
-        init(theAllergens : String, isAvailable : Bool, theCookTime : Int16, theDateCreated : String, theDietaryRequirements : String, isFavourite : Bool, theInstructions : String, theName : String, thePrepTime : Int16, theRating : Int16, theRecipeDescription : String, theScore : Int16, theServings :  Int16, theThumbnail : UIImage, theTimeOfDay : String, theIngredients : [String]){
-            allergen = theAllergens
-            available = isAvailable
-            cookTime = theCookTime
-            dateCreated = theDateCreated
-            dietaryRequirements = theDietaryRequirements
-            favourite = isFavourite
-            instructions = theInstructions
-            name = theName
-            prepTime = thePrepTime
-            rating = theRating
-            recipeDescription = theRecipeDescription
-            score = theScore
-            servings = theServings
-            thumbnail = theThumbnail
-            timeOfDay = theTimeOfDay
-            ingredients = theIngredients
-        }
-        init() {
-            allergen = ""
-            available = false
-            cookTime = 0
-            dateCreated = ""
-            dietaryRequirements = ""
-            favourite = false
-            instructions = ""
-            name = ""
-            prepTime = 0
-            rating = 0
-            recipeDescription = ""
-            score = 0
-            servings = 0
-            timeOfDay = ""
-            ingredients = []
-        }
-    }
+ 
     static func addRecipe(theAllergens : String, isAvailable : Bool, theCookTime : Int16, theDateCreated : String, theDietaryRequirements : String, isFavourite : Bool, theInstructions : String, theName : String, thePrepTime : Int16, theRating : Int16, theRecipeDescription : String, theScore : Int16, theServings :  Int16, theThumbnail : UIImage, theTimeOfDay : String, theIngredients : [String]) -> Bool{
         if checkExists(theName: theName, delete: false, get : false){
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
