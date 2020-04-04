@@ -75,3 +75,18 @@ public struct IngredientStr{
         enabled = false
     }
 }
+
+public struct MealPackStr {
+    var name: String
+    var enabled: Bool
+    
+    init(theName: String, isEnabled: Bool){
+        name = theName
+        enabled = isEnabled
+    }
+    
+    init(){
+        name = ""
+        enabled = false
+    }
+}
