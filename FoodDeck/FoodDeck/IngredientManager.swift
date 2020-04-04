@@ -78,17 +78,18 @@ class IngredientManager: NSManagedObject {
                 }
                 return tempIngredientRtn
             }
+                
+            else if all == true{
+                for theIngredient in allIngredients{
+                    tempIngredientRtn.append(IngredientStr(theName : theIngredient.name!, theUnit: theIngredient.unit!, isEnabled : theIngredient.enabled))
+                }
+                return tempIngredientRtn
+            }
             else if enabled == false{
                 for theIngredient in allIngredients{
                     if theIngredient.enabled == false{
                         tempIngredientRtn.append(IngredientStr(theName : theIngredient.name!, theUnit: theIngredient.unit!, isEnabled : theIngredient.enabled))
                     }
-                }
-                return tempIngredientRtn
-            }
-            else if all == true{
-                for theIngredient in allIngredients{
-                    tempIngredientRtn.append(IngredientStr(theName : theIngredient.name!, theUnit: theIngredient.unit!, isEnabled : theIngredient.enabled))
                 }
                 return tempIngredientRtn
             }
