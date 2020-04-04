@@ -35,6 +35,7 @@
 		A384555E2436BB40004A65F3 /* ShoppingList.swift in Sources */ = {isa = PBXBuildFile; fileRef = A384555D2436BB40004A65F3 /* ShoppingList.swift */; };
 		A39EF0622437545200764AE1 /* RecipeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39EF0612437545200764AE1 /* RecipeManager.swift */; };
 		A3FD93732438E040000C6549 /* Structures.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3FD93722438E040000C6549 /* Structures.swift */; };
+		D62F803F2439042900894040 /* MealPackManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D62F803E2439042900894040 /* MealPackManager.swift */; };
 		D63A7EA92423CC9100E65E65 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D63A7EA82423CC9100E65E65 /* Settings.storyboard */; };
 		D63EC8CE24323699004A3936 /* RegistrationQuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63EC8CD24323699004A3936 /* RegistrationQuizViewController.swift */; };
 /* End PBXBuildFile section */
@@ -91,6 +92,7 @@
 		A384555D2436BB40004A65F3 /* ShoppingList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingList.swift; sourceTree = "<group>"; };
 		A39EF0612437545200764AE1 /* RecipeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeManager.swift; sourceTree = "<group>"; };
 		A3FD93722438E040000C6549 /* Structures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Structures.swift; sourceTree = "<group>"; };
+		D62F803E2439042900894040 /* MealPackManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealPackManager.swift; sourceTree = "<group>"; };
 		D63A7EA82423CC9100E65E65 /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		D63EC8CD24323699004A3936 /* RegistrationQuizViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationQuizViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -172,6 +174,7 @@
 				A38455572436BAED004A65F3 /* Pantry.swift */,
 				A38455592436BB03004A65F3 /* Recipe.swift */,
 				A38455532436B6E1004A65F3 /* IngredientManager.swift */,
+				D62F803E2439042900894040 /* MealPackManager.swift */,
 				A3FD93722438E040000C6549 /* Structures.swift */,
 				A39EF0612437545200764AE1 /* RecipeManager.swift */,
 				A384555B2436BB20004A65F3 /* RecipeIngredient.swift */,
@@ -346,6 +349,7 @@
 			files = (
 				9AC0B170240D2F8000234251 /* FoodDeck.xcdatamodeld in Sources */,
 				A384555E2436BB40004A65F3 /* ShoppingList.swift in Sources */,
+				D62F803F2439042900894040 /* MealPackManager.swift in Sources */,
 				A39EF0622437545200764AE1 /* RecipeManager.swift in Sources */,
 				A3FD93732438E040000C6549 /* Structures.swift in Sources */,
 				A38455462436B49C004A65F3 /* Ingredient.swift in Sources */,

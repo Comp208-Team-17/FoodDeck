@@ -25,21 +25,9 @@ class RegistrationQuizViewController: UIViewController, UITableViewDelegate, UIT
     
     // User submits quiz, save results, continues to main app
     @IBAction func submitButton(_ sender: Any) {
-        updateMealPacks()
+        MealPackManager.updateMealPack(newMealPacks: mealPacksList)
         updateAllergy()
         performSegue(withIdentifier: "toMainView", sender: nil)
-    }
-    
-    
-    // Get meal pack core data
-    func getMealPacks(){
-        
-    }
-    
-    
-    // Update meal pack availabilty on submit
-    func updateMealPacks(){
-        
     }
     
     // Update user allergies
@@ -69,7 +57,7 @@ class RegistrationQuizViewController: UIViewController, UITableViewDelegate, UIT
             let mealPack = mealPacksList[indexPath.row]
             mealCell.mealPackLabel?.text = mealPack.name
             
-            // Code for enabling/disabling meal packs
+            // Code for enabling/disabling meal packs via switches
             mealCell.mealPackEnabled.setOn(mealPack.enabled, animated: true)
             mealCell.mealPackEnabled.tag = indexPath.row //Store current position of switch
             mealCell.mealPackEnabled.addTarget(self, action: #selector(self.switchChanged(_:)), for: .valueChanged)
@@ -105,7 +93,7 @@ class RegistrationQuizViewController: UIViewController, UITableViewDelegate, UIT
     // Load core data then enter data into tables
     override func viewDidLoad() {
         super.viewDidLoad()
-        getMealPacks()
+        mealPacksList = MealPackManager.getMealPacks()
         ingredientsList = IngredientManager.getIngredient(theName: "", enabled: false, all: true)
     }
     
