@@ -8,13 +8,14 @@
 
 import UIKit
 
-class RegistrationQuizViewController: UIViewController {
-
+class RegistrationQuizViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    var mealPacksList: [MealPackStr] = [MealPackStr()]
+    var ingredientsList : [IngredientStr] = [IngredientStr()]
+    var allergyList: [IngredientStr] = [IngredientStr()]
+    
     @IBOutlet weak var mealPackTable: UITableView!
     @IBOutlet weak var allergyTable: UITableView!
-    
-    var mealRows = 0
-    var allergyRows = 0
     
     
     // User skips quiz, continues to main app
@@ -35,10 +36,6 @@ class RegistrationQuizViewController: UIViewController {
         
     }
     
-    // Get ingredients core data
-    func getIngredients(){
-        
-    }
     
     // Update meal pack availabilty on submit
     func updateMealPacks(){
@@ -53,40 +50,63 @@ class RegistrationQuizViewController: UIViewController {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // Code for meal pack table
         if (tableView == self.mealPackTable) {
-            return mealRows
+            return mealPacksList.count
         }
             
         // Code for allergy table
         else {
-            return allergyRows
+            return allergyList.count
         }
      
     }
     
     // Make cell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell: UITableViewCell
         
         // Code for meal pack table
         if (tableView == self.mealPackTable) {
-            cell = tableView.dequeueReusableCell(withIdentifier: "mealPackCell") as! MealPackCell
+             let mealCell = tableView.dequeueReusableCell(withIdentifier: "mealPackCell") as! MealPackCell
+            let mealPack = mealPacksList[indexPath.row]
+            mealCell.mealPackLabel?.text = mealPack.name
             
+            // Code for enabling/disabling meal packs
+            mealCell.mealPackEnabled.setOn(mealPack.enabled, animated: true)
+            mealCell.mealPackEnabled.tag = indexPath.row //Store current position of switch
+            mealCell.mealPackEnabled.addTarget(self, action: #selector(self.switchChanged(_:)), for: .valueChanged)
+            
+            return mealCell
         }
             
         // Code for allergy table
         else {
-            cell = tableView.dequeueReusableCell(withIdentifier: "allergyCell") as! AllergyCell
+            let allergyCell = tableView.dequeueReusableCell(withIdentifier: "allergyCell") as! AllergyCell
+            let allergy = allergyList[indexPath.row]
+            allergyCell.allergyLabel?.text = allergy.name
+            
+            return allergyCell
         }
-        
-        return cell
-        
+    
     }
     
+    // Update meal pack when it is enabled/disabled
+    @objc func switchChanged(_ sender : UISwitch!){
+        mealPacksList[sender.tag].enabled = sender.isOn
+    }
+    
+    // Delete allergy from allergy table
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        // Only run if the table view is the allergy table
+        if (editingStyle == UITableViewCell.EditingStyle.delete && tableView == self.allergyTable) {
+            allergyList.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
+        }
+    }
+        
     // Load core data then enter data into tables
     override func viewDidLoad() {
         super.viewDidLoad()
         getMealPacks()
-        getIngredients()
+        ingredientsList = IngredientManager.getIngredient(theName: "", enabled: false, all: true)
     }
     
     //Skip straight to main app - better to do on splash page
@@ -102,6 +122,7 @@ class RegistrationQuizViewController: UIViewController {
 // Custom cell classes for quiz
 class MealPackCell: UITableViewCell {
     @IBOutlet weak var mealPackLabel: UILabel!
+    @IBOutlet weak var mealPackEnabled: UISwitch!
     
 }
 

@@ -48,10 +48,10 @@
                                     <constraint firstAttribute="width" secondItem="Wun-BL-LGZ" secondAttribute="height" multiplier="375:169" id="jti-mN-DV4"/>
                                 </constraints>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="63" id="iCP-YD-DuT">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="63" id="iCP-YD-DuT" customClass="MealPackCell" customModule="FoodDeck" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="63"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="mealPackCell" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="iCP-YD-DuT" id="S4U-J2-f6n" customClass="MealPackCell" customModule="FoodDeck" customModuleProvider="target">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="mealPackCell" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="iCP-YD-DuT" id="S4U-J2-f6n">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="63"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
@@ -72,8 +72,16 @@
                                                 <constraint firstItem="MA8-RG-XhQ" firstAttribute="leading" secondItem="S4U-J2-f6n" secondAttribute="leadingMargin" id="lw0-jP-3Yi"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="mealPackEnabled" destination="jGa-P9-p5D" id="KHT-1N-kNW"/>
+                                            <outlet property="mealPackLabel" destination="MA8-RG-XhQ" id="PZq-9U-zdU"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="ALI-fQ-J4B" id="TUP-a0-MnN"/>
+                                    <outlet property="delegate" destination="ALI-fQ-J4B" id="v9a-Tv-Cc8"/>
+                                </connections>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Allergens" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lVB-wr-KmB">
                                 <rect key="frame" x="16" y="314.5" width="112.5" height="33.5"/>
@@ -94,10 +102,10 @@
                                     <constraint firstAttribute="width" secondItem="r3o-Rv-YIL" secondAttribute="height" multiplier="375:128" id="H1t-Z8-SQO"/>
                                 </constraints>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="jjd-qm-Qac">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="jjd-qm-Qac" customClass="AllergyCell" customModule="FoodDeck" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="allergyCell" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jjd-qm-Qac" id="BAZ-61-UhV" customClass="AllergyCell" customModule="FoodDeck" customModuleProvider="target">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="allergyCell" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jjd-qm-Qac" id="BAZ-61-UhV">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
@@ -113,8 +121,15 @@
                                                 <constraint firstItem="YaR-aZ-TkP" firstAttribute="leading" secondItem="BAZ-61-UhV" secondAttribute="leadingMargin" id="mh8-UW-AkO"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="allergyLabel" destination="YaR-aZ-TkP" id="Bq6-ky-JK5"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="ALI-fQ-J4B" id="Wbl-XW-5Gc"/>
+                                    <outlet property="delegate" destination="ALI-fQ-J4B" id="jwA-zJ-1av"/>
+                                </connections>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dietary Requirements" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9iF-VT-e6e">
                                 <rect key="frame" x="58" y="492" width="259" height="33.5"/>
