@@ -12,21 +12,7 @@ import CoreData
 class IngredientManager: NSManagedObject {
     static var tempIngredientRtn : [IngredientStr] = [IngredientStr()] // Stores the ingredient that will be returned if a calling function requests an ingredient
     
-    struct IngredientStr{
-    var name : String
-    var unit : String
-    var enabled : Bool
-    init(theName : String, theUnit : String, isEnabled : Bool){
-        name = theName
-        unit = theUnit
-        enabled = isEnabled
-    }
-    init(){
-        name = ""
-        unit = ""
-        enabled = false
-    }
-    }
+    
     static func addIngredient(isEnabled : Bool, theName : String, theUnit : String) -> Bool {
         if checkExists(theName : theName, delete: false, get: false){
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -81,27 +67,35 @@ class IngredientManager: NSManagedObject {
         let context = appDelegate.persistentContainer.viewContext
         let request : NSFetchRequest<Ingredient> = Ingredient.fetchRequest()
         request.returnsObjectsAsFaults = false
-            do {
-                tempIngredientRtn.removeAll()
-                let allIngredients = try context.fetch(request)
-                if enabled == true {
-                    for theIngredient in allIngredients{
-                        if theIngredient.enabled{
-                            tempIngredientRtn.append(IngredientStr(theName : theIngredient.name!, theUnit: theIngredient.unit!, isEnabled : theIngredient.enabled))
-                        }
-                    }
-                    return tempIngredientRtn
-                }
-                else if all == true{
-                    for theIngredient in allIngredients{
+        do {
+            tempIngredientRtn.removeAll()
+            let allIngredients = try context.fetch(request)
+            if enabled == true {
+                for theIngredient in allIngredients{
+                    if theIngredient.enabled{
                         tempIngredientRtn.append(IngredientStr(theName : theIngredient.name!, theUnit: theIngredient.unit!, isEnabled : theIngredient.enabled))
                     }
-                    return tempIngredientRtn
                 }
+                return tempIngredientRtn
             }
-            catch{
-                return []
+            else if enabled == false{
+                for theIngredient in allIngredients{
+                    if theIngredient.enabled == false{
+                        tempIngredientRtn.append(IngredientStr(theName : theIngredient.name!, theUnit: theIngredient.unit!, isEnabled : theIngredient.enabled))
+                    }
+                }
+                return tempIngredientRtn
             }
+            else if all == true{
+                for theIngredient in allIngredients{
+                    tempIngredientRtn.append(IngredientStr(theName : theIngredient.name!, theUnit: theIngredient.unit!, isEnabled : theIngredient.enabled))
+                }
+                return tempIngredientRtn
+            }
+        }
+        catch{
+            return []
+        }
         
         if checkExists(theName: theName, delete: false, get: true) == true {
             return tempIngredientRtn
@@ -111,7 +105,7 @@ class IngredientManager: NSManagedObject {
         }
         
     }
-     static func getIngredientObject(theName : String) -> [NSManagedObject]{
+    static func getIngredientObject(theName : String) -> [NSManagedObject]{
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
         let request : NSFetchRequest<Ingredient> = Ingredient.fetchRequest()
@@ -124,8 +118,8 @@ class IngredientManager: NSManagedObject {
                 }
             }
         }
-            catch{}
-            return []
+        catch{}
+        return []
     }
     static func checkExists(theName : String, delete : Bool, get: Bool) -> Bool{
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
