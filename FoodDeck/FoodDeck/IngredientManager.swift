@@ -85,7 +85,7 @@ class IngredientManager: NSManagedObject {
                 }
                 return tempIngredientRtn
             }
-            else if enabled == false{
+            else if enabled == false && theName == "" {
                 for theIngredient in allIngredients{
                     if theIngredient.enabled == false{
                         tempIngredientRtn.append(IngredientStr(theName : theIngredient.name!, theUnit: theIngredient.unit!, isEnabled : theIngredient.enabled))
