@@ -61,9 +61,14 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jGa-P9-p5D">
+                                                    <rect key="frame" x="309" y="16" width="51" height="31"/>
+                                                </switch>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="MA8-RG-XhQ" firstAttribute="top" secondItem="S4U-J2-f6n" secondAttribute="topMargin" constant="10" id="5cO-VL-hQR"/>
+                                                <constraint firstItem="jGa-P9-p5D" firstAttribute="top" secondItem="S4U-J2-f6n" secondAttribute="topMargin" constant="5" id="EzM-DB-0Tp"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="jGa-P9-p5D" secondAttribute="trailing" constant="2" id="Z58-PO-yW1"/>
                                                 <constraint firstItem="MA8-RG-XhQ" firstAttribute="leading" secondItem="S4U-J2-f6n" secondAttribute="leadingMargin" id="lw0-jP-3Yi"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -96,10 +101,6 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ae9-1W-mwV">
-                                                    <rect key="frame" x="314" y="7" width="46" height="30"/>
-                                                    <state key="normal" title="Button"/>
-                                                </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Allergy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YaR-aZ-TkP">
                                                     <rect key="frame" x="15" y="11" width="53" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -108,9 +109,7 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="ae9-1W-mwV" firstAttribute="top" secondItem="BAZ-61-UhV" secondAttribute="top" constant="7" id="DUm-SS-Nv1"/>
                                                 <constraint firstItem="YaR-aZ-TkP" firstAttribute="top" secondItem="BAZ-61-UhV" secondAttribute="topMargin" id="Dxd-mX-DMc"/>
-                                                <constraint firstAttribute="trailing" secondItem="ae9-1W-mwV" secondAttribute="trailing" constant="15" id="NXS-Wc-8Ju"/>
                                                 <constraint firstItem="YaR-aZ-TkP" firstAttribute="leading" secondItem="BAZ-61-UhV" secondAttribute="leadingMargin" id="mh8-UW-AkO"/>
                                             </constraints>
                                         </tableViewCellContentView>
