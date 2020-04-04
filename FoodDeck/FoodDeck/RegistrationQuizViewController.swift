@@ -119,6 +119,9 @@ class RegistrationQuizViewController: UIViewController, UITableViewDelegate, UIT
 
 }
 
+
+
+
 // Custom cell classes for quiz
 class MealPackCell: UITableViewCell {
     @IBOutlet weak var mealPackLabel: UILabel!

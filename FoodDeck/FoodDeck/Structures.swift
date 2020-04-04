@@ -76,6 +76,9 @@ public struct IngredientStr{
     }
 }
 
+
+
+
 public struct MealPackStr {
     var name: String
     var enabled: Bool
