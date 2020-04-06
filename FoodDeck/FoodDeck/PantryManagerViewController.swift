@@ -45,11 +45,11 @@ class PantryManagerViewController: UIViewController, UITableViewDelegate, UITabl
         }
         return cell
     }
-    
+
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         
         // remove from pantry
-      if editingStyle == .delete {
+        if editingStyle == .delete {
         guard let ingredient = pantryList?.ingredients?[indexPath.row], let context = ingredient.managedObjectContext else { return }
         context.delete(ingredient)
         table.deleteRows(at: [indexPath], with: .none)

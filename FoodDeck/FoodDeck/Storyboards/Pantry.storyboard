@@ -44,7 +44,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                 <state key="normal" title="+"/>
                                 <connections>
-                                    <segue destination="GFu-ru-Wtm" kind="show" identifier="toPantry" id="zke-zI-ImR"/>
+                                    <segue destination="GFu-ru-Wtm" kind="show" identifier="toAddToPantry" id="zke-zI-ImR"/>
                                 </connections>
                             </button>
                         </subviews>

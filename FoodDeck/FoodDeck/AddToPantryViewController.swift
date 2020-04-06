@@ -130,7 +130,6 @@ class AddToPantryViewController: UIViewController, UITableViewDelegate, UITableV
     func updateSearchResults(for searchController: UISearchController) {
         filteredList = possibleIngredients.filter{ ($0.name?.lowercased().contains(searchController.searchBar.text!) ?? false) }
            self.table.reloadData()
-           
        }
 
 }
