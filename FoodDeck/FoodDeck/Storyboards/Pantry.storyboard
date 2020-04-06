@@ -86,7 +86,7 @@
         <!--Add Ingredient-->
         <scene sceneID="yaX-Ol-0KL">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="GFu-ru-Wtm" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="GFu-ru-Wtm" customClass="AddToPantryViewController" customModule="FoodDeck" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gb2-VF-gve">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -104,6 +104,10 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="GFu-ru-Wtm" id="8G3-pU-9VP"/>
+                                    <outlet property="delegate" destination="GFu-ru-Wtm" id="Ove-qK-5Tw"/>
+                                </connections>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Search:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bt1-GG-0H1">
                                 <rect key="frame" x="20" y="64" width="335" height="41"/>
@@ -114,21 +118,20 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="Ge9-dV-U0c" firstAttribute="bottom" secondItem="lMZ-RB-8zC" secondAttribute="bottom" id="27W-DT-Hoe"/>
-                            <constraint firstItem="Ge9-dV-U0c" firstAttribute="trailing" secondItem="lMZ-RB-8zC" secondAttribute="trailing" id="2Ea-TT-rfk"/>
-                            <constraint firstItem="Ge9-dV-U0c" firstAttribute="trailing" secondItem="lMZ-RB-8zC" secondAttribute="trailing" id="77x-X4-PXl"/>
+                            <constraint firstItem="Ge9-dV-U0c" firstAttribute="top" secondItem="Bt1-GG-0H1" secondAttribute="bottom" constant="21" id="0QP-3y-61g"/>
+                            <constraint firstItem="Ge9-dV-U0c" firstAttribute="leading" secondItem="lMZ-RB-8zC" secondAttribute="leading" id="5lI-AK-4gh"/>
                             <constraint firstItem="Bt1-GG-0H1" firstAttribute="top" secondItem="lMZ-RB-8zC" secondAttribute="top" constant="20" id="7iW-xl-216"/>
-                            <constraint firstItem="Ge9-dV-U0c" firstAttribute="leading" secondItem="lMZ-RB-8zC" secondAttribute="leading" id="NQh-nD-0Id"/>
-                            <constraint firstItem="Ge9-dV-U0c" firstAttribute="leading" secondItem="lMZ-RB-8zC" secondAttribute="leading" id="Y5S-qr-8Gj"/>
-                            <constraint firstItem="Ge9-dV-U0c" firstAttribute="leading" secondItem="lMZ-RB-8zC" secondAttribute="leading" id="a24-ow-0YG"/>
-                            <constraint firstItem="Ge9-dV-U0c" firstAttribute="trailing" secondItem="lMZ-RB-8zC" secondAttribute="trailing" id="cMA-VZ-h1V"/>
+                            <constraint firstItem="Ge9-dV-U0c" firstAttribute="trailing" secondItem="lMZ-RB-8zC" secondAttribute="trailing" id="a02-Wg-Pby"/>
+                            <constraint firstItem="Ge9-dV-U0c" firstAttribute="bottom" secondItem="lMZ-RB-8zC" secondAttribute="bottom" id="ekS-Q8-ZEx"/>
                             <constraint firstItem="Bt1-GG-0H1" firstAttribute="leading" secondItem="lMZ-RB-8zC" secondAttribute="leading" constant="20" id="g4q-dH-6MM"/>
-                            <constraint firstItem="Ge9-dV-U0c" firstAttribute="top" secondItem="Bt1-GG-0H1" secondAttribute="bottom" constant="21" id="i3x-AJ-6uk"/>
                             <constraint firstItem="lMZ-RB-8zC" firstAttribute="trailing" secondItem="Bt1-GG-0H1" secondAttribute="trailing" constant="20" id="z1Y-BM-GQs"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="lMZ-RB-8zC"/>
                     </view>
                     <navigationItem key="navigationItem" title="Add Ingredient" id="lbR-Nd-e5W"/>
+                    <connections>
+                        <outlet property="table" destination="Ge9-dV-U0c" id="qmh-D5-doV"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kXO-bq-Z4c" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

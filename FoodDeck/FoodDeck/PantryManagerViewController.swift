@@ -25,9 +25,14 @@ class PantryManagerViewController: UIViewController, UITableViewDelegate, UITabl
         // Do any additional setup after loading the view.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.table.reloadData()
+    }
+    
     
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // count all pantry ingredients
         return pantryList?.ingredients?.count ?? 0
     }
     
