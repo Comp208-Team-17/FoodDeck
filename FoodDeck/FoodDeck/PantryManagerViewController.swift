@@ -60,6 +60,7 @@ class PantryManagerViewController: UIViewController, UITableViewDelegate, UITabl
             } catch {
                 print("Ingredient could not be removed from the pantry")
             }
+                
 //                guard let ingredient = pantryList?.ingredients?[indexPath.row], let context = ingredient.managedObjectContext else { return }
     //        context.delete(ingredient)
     //        table.deleteRows(at: [indexPath], with: .none)
