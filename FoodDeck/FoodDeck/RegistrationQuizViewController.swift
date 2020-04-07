@@ -10,9 +10,9 @@ import UIKit
 
 class RegistrationQuizViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    var mealPacksList: [MealPackStr] = [MealPackStr()]
-    var ingredientsList : [IngredientStr] = [IngredientStr()]
-    var allergyList: [IngredientStr] = [IngredientStr()]
+    var mealPacksList: [MealPackStr] = []
+    var ingredientsList : [IngredientStr] = []
+    var allergyList: [IngredientStr] = []
     
     @IBOutlet weak var mealPackTable: UITableView!
     @IBOutlet weak var allergyTable: UITableView!

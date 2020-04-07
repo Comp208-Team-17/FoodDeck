@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 
 class MealPackManager: NSManagedObject {
- static var tempMealPacksRtn: [MealPackStr] = [MealPackStr()]
+ static var tempMealPacksRtn: [MealPackStr] = []
  
  // Fetch all meal packs from core data
  static func getMealPacks() -> [MealPackStr] {
