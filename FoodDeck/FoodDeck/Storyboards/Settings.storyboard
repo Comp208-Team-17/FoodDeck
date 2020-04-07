@@ -204,6 +204,7 @@
                         <viewLayoutGuide key="safeArea" id="eOs-Dh-Aih"/>
                     </view>
                     <navigationItem key="navigationItem" title="Allergens" id="iSX-ki-lyV"/>
+                    <nil key="simulatedTopBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xaJ-as-TiR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
