@@ -17,7 +17,6 @@
 		9AC0B175240D2F8100234251 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9AC0B173240D2F8100234251 /* LaunchScreen.storyboard */; };
 		9AC0B180240D2F8100234251 /* FoodDeckTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC0B17F240D2F8100234251 /* FoodDeckTests.swift */; };
 		9AC0B18B240D2F8100234251 /* FoodDeckUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC0B18A240D2F8100234251 /* FoodDeckUITests.swift */; };
-		9AD9FF6D24225FD70065970A /* RegistrationQuiz.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9AD9FF6C24225FD70065970A /* RegistrationQuiz.storyboard */; };
 		9AD9FF6F242260710065970A /* Ingredients.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9AD9FF6E242260710065970A /* Ingredients.storyboard */; };
 		9AD9FF77242263CF0065970A /* ShoppingList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9AD9FF76242263CF0065970A /* ShoppingList.storyboard */; };
 		9AD9FF79242263E80065970A /* Cards.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9AD9FF78242263E80065970A /* Cards.storyboard */; };
@@ -76,7 +75,6 @@
 		9AC0B186240D2F8100234251 /* FoodDeckUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FoodDeckUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AC0B18A240D2F8100234251 /* FoodDeckUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodDeckUITests.swift; sourceTree = "<group>"; };
 		9AC0B18C240D2F8100234251 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9AD9FF6C24225FD70065970A /* RegistrationQuiz.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RegistrationQuiz.storyboard; sourceTree = "<group>"; };
 		9AD9FF6E242260710065970A /* Ingredients.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Ingredients.storyboard; sourceTree = "<group>"; };
 		9AD9FF76242263CF0065970A /* ShoppingList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ShoppingList.storyboard; sourceTree = "<group>"; };
 		9AD9FF78242263E80065970A /* Cards.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Cards.storyboard; sourceTree = "<group>"; };
@@ -130,7 +128,6 @@
 			isa = PBXGroup;
 			children = (
 				9A509192242256A2001BE676 /* Recipes.storyboard */,
-				9AD9FF6C24225FD70065970A /* RegistrationQuiz.storyboard */,
 				9AD9FF6E242260710065970A /* Ingredients.storyboard */,
 				9AD9FF76242263CF0065970A /* ShoppingList.storyboard */,
 				9AD9FF78242263E80065970A /* Cards.storyboard */,
@@ -320,7 +317,6 @@
 				9AC0B175240D2F8100234251 /* LaunchScreen.storyboard in Resources */,
 				9AD9FF77242263CF0065970A /* ShoppingList.storyboard in Resources */,
 				A31B903F2437A2040029E947 /* GF.png in Resources */,
-				9AD9FF6D24225FD70065970A /* RegistrationQuiz.storyboard in Resources */,
 				9AD9FF7B242264AC0065970A /* Pantry.storyboard in Resources */,
 				A31B90402437A2040029E947 /* V.png in Resources */,
 				9AD9FF79242263E80065970A /* Cards.storyboard in Resources */,

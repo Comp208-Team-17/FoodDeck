@@ -30,6 +30,23 @@ class RegistrationQuizViewController: UIViewController, UITableViewDelegate, UIT
         performSegue(withIdentifier: "toMainView", sender: nil)
     }
     
+    @IBAction func addButton(_ sender: Any) {
+        // Make alert
+        let alert = UIAlertController(title: "Enter Allergy:", message: "Search for your allergy here", preferredStyle: .alert)
+        alert.addTextField { (textField) in
+            textField.text = "Some default text"
+        }
+        
+        // Add text field
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
+            let textField = alert?.textFields![0]
+            print("Text field: \(textField?.text ?? "")")
+        }))
+        
+        // Show alert
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     // Update user allergies
     func updateAllergy(){
         
@@ -53,7 +70,7 @@ class RegistrationQuizViewController: UIViewController, UITableViewDelegate, UIT
         
         // Code for meal pack table
         if (tableView == self.mealPackTable) {
-             let mealCell = tableView.dequeueReusableCell(withIdentifier: "mealPackCell") as! MealPackCell
+            let mealCell = tableView.dequeueReusableCell(withIdentifier: "mealPackCell") as! MealPackCell
             let mealPack = mealPacksList[indexPath.row]
             mealCell.mealPackLabel?.text = mealPack.name
             
@@ -67,9 +84,9 @@ class RegistrationQuizViewController: UIViewController, UITableViewDelegate, UIT
             
         // Code for allergy table
         else {
-            let allergyCell = tableView.dequeueReusableCell(withIdentifier: "allergyCell") as! AllergyCell
+            let allergyCell = tableView.dequeueReusableCell(withIdentifier: "allergyCell", for: indexPath)
             let allergy = allergyList[indexPath.row]
-            allergyCell.allergyLabel?.text = allergy.name
+            allergyCell.textLabel?.text = allergy.name
             
             return allergyCell
         }
