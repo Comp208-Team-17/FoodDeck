@@ -47,23 +47,33 @@ class PantryManagerViewController: UIViewController, UITableViewDelegate, UITabl
     }
 
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        
-        // remove from pantry
-        if editingStyle == .delete {
-        guard let ingredient = pantryList?.ingredients?[indexPath.row], let context = ingredient.managedObjectContext else { return }
-        context.delete(ingredient)
-        table.deleteRows(at: [indexPath], with: .none)
-        
-        do {
-            try context.save()
-            print("Saved to pantry")
             
-        } catch {
-            print("could not delete from pantry")
-            table.reloadRows(at: [indexPath], with: .none)
+            // remove from pantry
+            if editingStyle == .delete {
+            guard let ingredient = pantryList?.ingredients?[indexPath.row] else { return }
+            // remove relationship
+            self.pantryList?.removeFromContains(ingredient)
+                // remove from table
+            table.deleteRows(at: [indexPath], with: .none)
+            do {
+                try managedContext?.save()
+            } catch {
+                print("Ingredient could not be removed from the pantry")
+            }
+//                guard let ingredient = pantryList?.ingredients?[indexPath.row], let context = ingredient.managedObjectContext else { return }
+    //        context.delete(ingredient)
+    //        table.deleteRows(at: [indexPath], with: .none)
+    //
+    //        do {
+    //            try context.save()
+    //            print("Saved to pantry")
+    //
+    //        } catch {
+    //            print("could not delete from pantry")
+    //            table.reloadRows(at: [indexPath], with: .none)
+    //        }
+          }
         }
-      }
-    }
   
 
 }
