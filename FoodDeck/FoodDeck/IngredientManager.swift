@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 
 class IngredientManager: NSManagedObject {
-    static var tempIngredientRtn : [IngredientStr] = [IngredientStr()] // Stores the ingredient that will be returned if a calling function requests an ingredient
+    static var tempIngredientRtn : [IngredientStr] = [] // Stores the ingredient that will be returned if a calling function requests an ingredient
     
     
     static func addIngredient(isEnabled : Bool, theName : String, theUnit : String) -> Bool {
@@ -43,7 +43,7 @@ class IngredientManager: NSManagedObject {
         do{
             let fetchedIngredients = try context.fetch(request)
             for theIngredient in fetchedIngredients{
-                if theIngredient.name == originalName && checkExists(theName : theName, delete: false, get: false){
+                if theIngredient.name == originalName && originalName == theName ? true : checkExists(theName : theName, delete: false, get: false){
                     theIngredient.enabled = isEnabled
                     theIngredient.name = theName
                     theIngredient.unit = theUnit
@@ -140,9 +140,7 @@ class IngredientManager: NSManagedObject {
                         catch{}
                     }
                     else if get == true {
-                        tempIngredientRtn[0].enabled = theIngredient.enabled
-                        tempIngredientRtn[0].name = theIngredient.name!
-                        tempIngredientRtn[0].unit = theIngredient.unit!
+                        tempIngredientRtn.append(IngredientStr(theName: theIngredient.name!, theUnit: theIngredient.unit!, isEnabled: theIngredient.enabled))
                         return true
                     }
                     return false

@@ -35,6 +35,8 @@
 		A384555C2436BB20004A65F3 /* RecipeIngredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A384555B2436BB20004A65F3 /* RecipeIngredient.swift */; };
 		A384555E2436BB40004A65F3 /* ShoppingList.swift in Sources */ = {isa = PBXBuildFile; fileRef = A384555D2436BB40004A65F3 /* ShoppingList.swift */; };
 		A39EF0622437545200764AE1 /* RecipeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39EF0612437545200764AE1 /* RecipeManager.swift */; };
+		A3D39492243E37E0000B535C /* IngredientTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D39491243E37E0000B535C /* IngredientTable.swift */; };
+		A3EF14B9243E221200CCA071 /* AddToIngredientsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EF14B8243E221200CCA071 /* AddToIngredientsViewController.swift */; };
 		A3FD93732438E040000C6549 /* Structures.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3FD93722438E040000C6549 /* Structures.swift */; };
 		D62F803F2439042900894040 /* MealPackManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D62F803E2439042900894040 /* MealPackManager.swift */; };
 		D63A7EA92423CC9100E65E65 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D63A7EA82423CC9100E65E65 /* Settings.storyboard */; };
@@ -93,6 +95,8 @@
 		A384555B2436BB20004A65F3 /* RecipeIngredient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeIngredient.swift; sourceTree = "<group>"; };
 		A384555D2436BB40004A65F3 /* ShoppingList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingList.swift; sourceTree = "<group>"; };
 		A39EF0612437545200764AE1 /* RecipeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeManager.swift; sourceTree = "<group>"; };
+		A3D39491243E37E0000B535C /* IngredientTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientTable.swift; sourceTree = "<group>"; };
+		A3EF14B8243E221200CCA071 /* AddToIngredientsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToIngredientsViewController.swift; sourceTree = "<group>"; };
 		A3FD93722438E040000C6549 /* Structures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Structures.swift; sourceTree = "<group>"; };
 		D62F803E2439042900894040 /* MealPackManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealPackManager.swift; sourceTree = "<group>"; };
 		D63A7EA82423CC9100E65E65 /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
@@ -162,6 +166,8 @@
 			children = (
 				9A50919124225650001BE676 /* Storyboards */,
 				9AC0B165240D2F8000234251 /* AppDelegate.swift */,
+				A3EF14B8243E221200CCA071 /* AddToIngredientsViewController.swift */,
+				A3D39491243E37E0000B535C /* IngredientTable.swift */,
 				9AC0B167240D2F8000234251 /* SceneDelegate.swift */,
 				9AC0B169240D2F8000234251 /* ViewController.swift */,
 				9AC0B16B240D2F8000234251 /* Main.storyboard */,
@@ -365,7 +371,9 @@
 				A38455542436B6E1004A65F3 /* IngredientManager.swift in Sources */,
 				9AFB4834243B77350002F7A3 /* AddToPantryViewController.swift in Sources */,
 				A38455562436BACA004A65F3 /* MealPack.swift in Sources */,
+				A3EF14B9243E221200CCA071 /* AddToIngredientsViewController.swift in Sources */,
 				A384555A2436BB03004A65F3 /* Recipe.swift in Sources */,
+				A3D39492243E37E0000B535C /* IngredientTable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
