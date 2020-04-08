@@ -11,7 +11,6 @@ import UIKit
 class RegistrationQuizViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var mealPacksList: [MealPackStr] = []
-    var ingredientsList : [IngredientStr] = []
     var allergyList: [IngredientStr] = []
     
     @IBOutlet weak var mealPackTable: UITableView!
@@ -32,16 +31,59 @@ class RegistrationQuizViewController: UIViewController, UITableViewDelegate, UIT
     
     @IBAction func addButton(_ sender: Any) {
         // Make alert
-        let alert = UIAlertController(title: "Enter Allergy:", message: "Search for your allergy here", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Enter Allergy", message: "Search for your allergy here", preferredStyle: .alert)
+        
+        // Create alert properites
+        // Error label - replaces normal message
+        let errorLabel = UILabel(frame: CGRect(x: 0, y: 43, width: 270, height:18))
+        errorLabel.textAlignment = .center
+        errorLabel.textColor = .red
+        errorLabel.font = errorLabel.font.withSize(13)
+        alert.view.addSubview(errorLabel)
+        errorLabel.isHidden = false
+        
+        // Text field
         alert.addTextField { (textField) in
-            textField.text = "Some default text"
+            textField.text = ""
         }
         
-        // Add text field
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
-            let textField = alert?.textFields![0]
-            print("Text field: \(textField?.text ?? "")")
-        }))
+        // Cancel button
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        
+        // Submit button
+        let submit = UIAlertAction(title: "Submit", style: .default) { [unowned self] _ in
+            guard let input = alert.textFields?[0].text else { return }
+            
+            // Check if allergy exists in ingredients list
+            if (IngredientManager.checkExists(theName: input, delete: false, get: true)){
+                let allergy = IngredientManager.tempIngredientRtn[0]
+                
+                // Filter allergy list to see if allergy currently exists in the list
+                if (self.allergyList.filter{$0.name == allergy.name}.count > 0){
+                    self.allergyList.append(IngredientManager.tempIngredientRtn[0])
+                    self.allergyTable.reloadData()
+                }
+                
+                // Otherwise display error message
+                else {
+                    alert.message = ""
+                    errorLabel.text = "Allergy is already in the allergy list"
+                    self.present(alert, animated: true, completion: nil)
+                    print("Error: Ingredient already exists in allergyList")
+                }
+            }
+                
+            // Otherwise display error message
+            else {
+                alert.message = ""
+                errorLabel.text = "Allergy does not exist"
+                self.present(alert, animated: true, completion: nil)
+                print("Error: Ingredient does not exist")
+            }
+        }
+        
+        //submit.isEnabled = false
+        alert.addAction(submit)
         
         // Show alert
         self.present(alert, animated: true, completion: nil)
@@ -98,6 +140,7 @@ class RegistrationQuizViewController: UIViewController, UITableViewDelegate, UIT
         mealPacksList[sender.tag].enabled = sender.isOn
     }
     
+    
     // Delete allergy from allergy table
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         // Only run if the table view is the allergy table
@@ -111,7 +154,6 @@ class RegistrationQuizViewController: UIViewController, UITableViewDelegate, UIT
     override func viewDidLoad() {
         super.viewDidLoad()
         mealPacksList = MealPackManager.getMealPacks()
-        ingredientsList = IngredientManager.getIngredient(theName: "", enabled: false, all: true)
     }
     
     //Skip straight to main app - better to do on splash page
