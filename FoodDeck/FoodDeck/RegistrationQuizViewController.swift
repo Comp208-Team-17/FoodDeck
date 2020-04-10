@@ -16,6 +16,9 @@ class RegistrationQuizViewController: UIViewController, UITableViewDelegate, UIT
     
     @IBOutlet weak var mealPackTable: UITableView!
     @IBOutlet weak var allergyTable: UITableView!
+    @IBOutlet weak var veganSwitch: UISwitch!
+    @IBOutlet weak var vegetarianSwitch: UISwitch!
+    @IBOutlet weak var glutenSwitch: UISwitch!
     
     
     // User skips quiz, continues to main app
@@ -25,8 +28,23 @@ class RegistrationQuizViewController: UIViewController, UITableViewDelegate, UIT
     
     // User submits quiz, save results, continues to main app
     @IBAction func submitButton(_ sender: Any) {
+        // Update meal packs and allergies
         MealPackManager.updateMealPack(newMealPacks: mealPacksList)
         updateAllergy()
+        
+        //Update dietary requirements
+        if (veganSwitch.isOn){
+            print("User is vegan")
+        }
+        
+        if (vegetarianSwitch.isOn){
+            print("User is vegetarian")
+        }
+        
+        if (glutenSwitch.isOn){
+            print("User is gluten free")
+        }
+        
         performSegue(withIdentifier: "toMainView", sender: nil)
     }
     
@@ -41,7 +59,7 @@ class RegistrationQuizViewController: UIViewController, UITableViewDelegate, UIT
         errorLabel.textColor = .red
         errorLabel.font = errorLabel.font.withSize(13)
         alert.view.addSubview(errorLabel)
-        errorLabel.isHidden = false
+        errorLabel.isHidden = true
         
         // Text field
         alert.addTextField { (textField) in
@@ -69,7 +87,8 @@ class RegistrationQuizViewController: UIViewController, UITableViewDelegate, UIT
                 
                 // Otherwise display error message
                 else {
-                    alert.message = ""
+                    alert.message = " "
+                    errorLabel.isHidden = false
                     errorLabel.text = "Allergy is already in the allergy list"
                     self.present(alert, animated: true, completion: nil)
                     print("Error: Ingredient already exists in allergyList")
@@ -78,7 +97,8 @@ class RegistrationQuizViewController: UIViewController, UITableViewDelegate, UIT
                 
             // Otherwise display error message
             else {
-                alert.message = ""
+                alert.message = " "
+                errorLabel.isHidden = false
                 errorLabel.text = "Allergy does not exist"
                 self.present(alert, animated: true, completion: nil)
                 print("Error: Ingredient does not exist")
