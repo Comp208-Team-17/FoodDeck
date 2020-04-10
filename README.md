@@ -1,9 +1,12 @@
-# FoodDeck
+# FoodDeck - (Friday 8th May 2020)
 Save time, effort and waste with our decision-making meal app. Stop spending time searching through your cupboards and let our app do that for you. 
 
-## Notes
-- Included Core Data, Unit Tests and UI tests in initial project
-  - Are the last 2 necessary for the project?
+## TODO
+- Front-end
+  - Add constraints on ingredients, cards, recipes and settings storyboards
+- Back-end
+  - Finish ingredients, pantry and recipe controllers
+  - Populate core data 
 
 
 ## Resources
