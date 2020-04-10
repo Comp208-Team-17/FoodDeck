@@ -278,7 +278,10 @@
                     </view>
                     <connections>
                         <outlet property="allergyTable" destination="4KL-h1-HhZ" id="ZQs-5j-UoS"/>
+                        <outlet property="glutenSwitch" destination="ApJ-c0-yEL" id="fds-4r-9AJ"/>
                         <outlet property="mealPackTable" destination="Z3j-Oj-x7C" id="c94-Fe-mu8"/>
+                        <outlet property="veganSwitch" destination="hvO-az-ngo" id="e78-Mm-yeG"/>
+                        <outlet property="vegetarianSwitch" destination="RSe-5m-eWJ" id="io6-yM-i60"/>
                         <segue destination="hIF-JF-jdw" kind="show" identifier="toMainView" id="2b8-4Y-L2Z"/>
                     </connections>
                 </viewController>
