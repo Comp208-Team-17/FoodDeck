@@ -12,6 +12,7 @@ class RegistrationQuizViewController: UIViewController, UITableViewDelegate, UIT
     
     var mealPacksList: [MealPackStr] = []
     var allergyList: [IngredientStr] = []
+    var ingredientList: [IngredientStr] = []
     
     @IBOutlet weak var mealPackTable: UITableView!
     @IBOutlet weak var allergyTable: UITableView!
@@ -55,12 +56,14 @@ class RegistrationQuizViewController: UIViewController, UITableViewDelegate, UIT
             guard let input = alert.textFields?[0].text else { return }
             
             // Check if allergy exists in ingredients list
-            if (IngredientManager.checkExists(theName: input, delete: false, get: true)){
-                let allergy = IngredientManager.tempIngredientRtn[0]
+            let ingredients = self.ingredientList.filter{$0.name == input}
+            
+            if (!ingredients.isEmpty){
+                let allergy = ingredients[0] // Should only be 1 value returned
                 
                 // Filter allergy list to see if allergy currently exists in the list
-                if (self.allergyList.filter{$0.name == allergy.name}.count > 0){
-                    self.allergyList.append(IngredientManager.tempIngredientRtn[0])
+                if (self.allergyList.filter{$0.name == allergy.name}.count == 0){
+                    self.allergyList.append(allergy)
                     self.allergyTable.reloadData()
                 }
                 
@@ -89,9 +92,17 @@ class RegistrationQuizViewController: UIViewController, UITableViewDelegate, UIT
         self.present(alert, animated: true, completion: nil)
     }
     
-    // Update user allergies
+    // Update user allergies so that they are all disabled
     func updateAllergy(){
-        
+        var saved = false
+        for allergy in allergyList {
+            saved = IngredientManager.updateIngredient(originalName: allergy.name, isEnabled: false, theName: allergy.name, theUnit: allergy.unit)
+            
+            //Print error message if something fails
+            if (!saved){
+                print("\(allergy.name) has not been saved")
+            }
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -154,6 +165,7 @@ class RegistrationQuizViewController: UIViewController, UITableViewDelegate, UIT
     override func viewDidLoad() {
         super.viewDidLoad()
         mealPacksList = MealPackManager.getMealPacks()
+        ingredientList = IngredientManager.getIngredient(theName: "", enabled: false, all: true)
     }
     
     //Skip straight to main app - better to do on splash page
