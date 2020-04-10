@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="eUK-jS-den">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="eUK-jS-den">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -68,12 +68,10 @@
                         <viewLayoutGuide key="safeArea" id="r0I-F2-ZLv"/>
                     </view>
                     <navigationItem key="navigationItem" title="Cards" id="6cV-bj-sjT">
-                        <barButtonItem key="rightBarButtonItem" title="Settings" style="plain" id="LQL-Nn-lLT">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="QtO-JQ-6OQ">
-                                <rect key="frame" x="267" y="7" width="92" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Settings"/>
-                            </button>
+                        <barButtonItem key="rightBarButtonItem" title="Settings" id="pql-Fc-fFT">
+                            <connections>
+                                <segue destination="dvO-Ca-kcL" kind="show" id="BO6-cB-jtA"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                 </viewController>
@@ -81,10 +79,20 @@
             </objects>
             <point key="canvasLocation" x="2179.7101449275365" y="1208.7053571428571"/>
         </scene>
-        <!--Recipie Detail-->
+        <!--settingsSegue-->
+        <scene sceneID="6BT-C1-r6I">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Settings" referencedIdentifier="settingsSegue" id="dvO-Ca-kcL" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="fnZ-Sy-n9x"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vU9-9J-bW4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2947" y="927"/>
+        </scene>
+        <!--Recipe Detail-->
         <scene sceneID="TR6-Pd-Dgi">
             <objects>
-                <viewController id="nt8-sU-tTT" sceneMemberID="viewController">
+                <viewController title="Recipe Detail" id="nt8-sU-tTT" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2pY-fB-AGL">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -96,7 +104,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Y4x-Ox-c7m">
                                 <rect key="frame" x="54" y="341" width="313" height="150.5"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recipie Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tkd-9w-iTb">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recipe Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tkd-9w-iTb">
                                         <rect key="frame" x="0.0" y="0.0" width="313" height="27.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                         <nil key="textColor"/>
@@ -120,7 +128,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recipie Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="irM-X1-Vbb">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recipe Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="irM-X1-Vbb">
                                         <rect key="frame" x="0.0" y="89" width="313" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
@@ -165,7 +173,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B4B-lH-QFI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3069.5652173913045" y="1208.7053571428571"/>
+            <point key="canvasLocation" x="3108" y="1442"/>
         </scene>
         <!--Cards-->
         <scene sceneID="loi-je-QfJ">

@@ -67,12 +67,10 @@
                         <viewLayoutGuide key="safeArea" id="NrO-NO-2xH"/>
                     </view>
                     <navigationItem key="navigationItem" title="Pantry" id="oq1-dl-wCb">
-                        <barButtonItem key="rightBarButtonItem" title="Settings" style="plain" id="SdQ-r0-glX">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="5JJ-Fg-NgW">
-                                <rect key="frame" x="267" y="7" width="92" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Settings"/>
-                            </button>
+                        <barButtonItem key="rightBarButtonItem" title="Settings" id="2eK-jP-zVl">
+                            <connections>
+                                <segue destination="qDo-gJ-gGA" kind="show" id="WLO-KG-5Kr"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -135,7 +133,17 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kXO-bq-Z4c" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3015.1999999999998" y="1982.1589205397304"/>
+            <point key="canvasLocation" x="3057" y="2121"/>
+        </scene>
+        <!--settingsSegue-->
+        <scene sceneID="7a0-1Y-abH">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Settings" referencedIdentifier="settingsSegue" id="qDo-gJ-gGA" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="z0V-9O-azn"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gg1-90-pF9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3073" y="1695"/>
         </scene>
         <!--Pantry-->
         <scene sceneID="UNI-s1-4zo">

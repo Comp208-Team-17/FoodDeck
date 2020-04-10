@@ -21,11 +21,13 @@ class PantryManagerViewController: UIViewController, UITableViewDelegate, UITabl
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         managedContext = appDelegate.persistentContainer.viewContext
         // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.popToRootViewController(animated: true)
         self.table.reloadData()
     }
     

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="XpY-m2-ohE">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="XpY-m2-ohE">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -28,12 +28,10 @@
                         <viewLayoutGuide key="safeArea" id="Cs9-yz-vrp"/>
                     </view>
                     <navigationItem key="navigationItem" title="Recipes" id="vCt-pl-CRt">
-                        <barButtonItem key="rightBarButtonItem" title="Settings" style="plain" id="tgD-GD-zp6">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="5Zn-4g-pCo">
-                                <rect key="frame" x="267" y="7" width="92" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Settings"/>
-                            </button>
+                        <barButtonItem key="rightBarButtonItem" title="Settings" id="ez1-Ju-OmR">
+                            <connections>
+                                <segue destination="umt-BV-U1K" kind="show" id="X7j-Ed-srr"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                 </viewController>
@@ -62,9 +60,9 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3FD-1i-UZR">
-                                <rect key="frame" x="299" y="88" width="76" height="30"/>
+                                <rect key="frame" x="290" y="88" width="94" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Take Photo"/>
+                                <state key="normal" title="Upload Photo"/>
                             </button>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Yih-hG-los">
                                 <rect key="frame" x="90" y="353" width="51" height="31"/>
@@ -134,18 +132,26 @@
                         <viewLayoutGuide key="safeArea" id="owH-f7-hLJ"/>
                     </view>
                     <navigationItem key="navigationItem" title="Recipe Detail" id="dAO-Ef-gH7">
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="Wcd-73-kGo">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="gpQ-Zy-lc3">
-                                <rect key="frame" x="267" y="7" width="92" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Settings"/>
-                            </button>
+                        <barButtonItem key="rightBarButtonItem" title="Settings" id="aT9-Wd-2JW">
+                            <connections>
+                                <segue destination="umt-BV-U1K" kind="show" id="33Q-WH-ppK"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PW4-SS-ehh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3008.6956521739135" y="491.51785714285711"/>
+            <point key="canvasLocation" x="3006" y="593"/>
+        </scene>
+        <!--settingsSegue-->
+        <scene sceneID="fMA-uj-r1b">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Settings" referencedIdentifier="settingsSegue" id="umt-BV-U1K" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="XEq-gI-CnN"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ftt-UL-mhL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4342" y="290"/>
         </scene>
         <!--Edit Recipe-->
         <scene sceneID="XxE-qz-hbj">
@@ -158,18 +164,16 @@
                         <viewLayoutGuide key="safeArea" id="Ru6-Rk-rby"/>
                     </view>
                     <navigationItem key="navigationItem" title="Edit Recipe" id="HoM-d2-vEw">
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="ZTV-Yb-L26">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="hDs-DS-j3x">
-                                <rect key="frame" x="267" y="7" width="92" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Settings"/>
-                            </button>
+                        <barButtonItem key="rightBarButtonItem" title="Settings" id="8N6-RL-cAf">
+                            <connections>
+                                <segue destination="umt-BV-U1K" kind="show" id="64Y-yM-fc1"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zA2-1H-Prk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3781" y="230"/>
+            <point key="canvasLocation" x="3874" y="885"/>
         </scene>
         <!--Recipes-->
         <scene sceneID="2fE-et-MUF">
@@ -192,4 +196,7 @@
             <point key="canvasLocation" x="1269.5652173913045" y="484.82142857142856"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="X7j-Ed-srr"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="qmG-pC-LPx">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="qmG-pC-LPx">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -115,12 +115,10 @@
                         <viewLayoutGuide key="safeArea" id="SdL-mS-p1x"/>
                     </view>
                     <navigationItem key="navigationItem" title="Ingredients" id="ioD-3l-nPP">
-                        <barButtonItem key="rightBarButtonItem" title="Settings" style="plain" id="s89-Jn-UZN">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="NBD-df-pNd">
-                                <rect key="frame" x="267" y="7" width="92" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Settings"/>
-                            </button>
+                        <barButtonItem key="rightBarButtonItem" title="Settings" id="fJf-fq-zQz">
+                            <connections>
+                                <segue destination="ZNE-Dc-Cx8" kind="show" id="8rq-CS-QL3"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -130,6 +128,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Uin-2d-Cun" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2127.1999999999998" y="-900.00000000000011"/>
+        </scene>
+        <!--settingsSegue-->
+        <scene sceneID="JeX-OX-XPB">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Settings" referencedIdentifier="settingsSegue" id="ZNE-Dc-Cx8" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="JAZ-zI-oci"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NVH-zI-K97" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3474" y="-1135"/>
         </scene>
         <!--Add/Edit Ingredient-->
         <scene sceneID="9UC-or-q7f">
@@ -192,12 +200,10 @@
                         <viewLayoutGuide key="safeArea" id="Oy3-Hj-J6V"/>
                     </view>
                     <navigationItem key="navigationItem" title="Add/Edit Ingredient" id="cVr-cM-bde">
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="o9d-sp-6RN">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="g2m-VQ-sjZ">
-                                <rect key="frame" x="267" y="7" width="92" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Settings"/>
-                            </button>
+                        <barButtonItem key="rightBarButtonItem" title="Settings" id="IcB-Go-Dds">
+                            <connections>
+                                <segue destination="ZNE-Dc-Cx8" kind="show" id="96P-Tq-olW"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -207,7 +213,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mow-aQ-UBF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2824.8000000000002" y="-903.59820089955031"/>
+            <point key="canvasLocation" x="2918" y="-482"/>
         </scene>
         <!--Ingredients-->
         <scene sceneID="kIY-JX-fia">
@@ -230,4 +236,7 @@
             <point key="canvasLocation" x="1320" y="-900"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="96P-Tq-olW"/>
+    </inferredMetricsTieBreakers>
 </document>

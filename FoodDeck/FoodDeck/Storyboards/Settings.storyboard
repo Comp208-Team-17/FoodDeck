@@ -10,7 +10,7 @@
         <!--SettingsController-->
         <scene sceneID="daX-kv-laZ">
             <objects>
-                <viewController title="SettingsController" modalPresentationStyle="fullScreen" id="oAs-8U-H55" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="settingsSegue" title="SettingsController" modalPresentationStyle="fullScreen" id="oAs-8U-H55" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="UMD-GH-xOv">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -38,7 +38,7 @@
             <objects>
                 <viewController title="UserPrefsController" id="Nco-7G-GY2" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1pf-Dy-fDb">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uby-Kv-byr">
@@ -84,7 +84,7 @@
             <objects>
                 <viewController id="3lt-5L-fmo" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0oN-hc-bDa">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Allergens" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="77S-bx-3gV">
@@ -215,7 +215,7 @@
             <objects>
                 <viewController id="PEd-fW-QX6" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Eu6-lA-k0h">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Ym-tN-Fch">
@@ -252,7 +252,7 @@
             <objects>
                 <viewController id="KqO-mq-Gdk" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xtq-3W-76x">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Preferences" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="509-Fm-mpY">
@@ -442,7 +442,8 @@
         <!--Navigation Controller-->
         <scene sceneID="DHz-td-aK8">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="UgV-wo-F9z" sceneMemberID="viewController">
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DYE-P6-OSb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="UgV-wo-F9z" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="gJW-Ey-Hdd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -453,13 +454,12 @@
                         <segue destination="oAs-8U-H55" kind="relationship" relationship="rootViewController" id="BPG-4T-lcH"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="DYE-P6-OSb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="18.399999999999999" y="-15.742128935532236"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="MeT-Zy-rZq"/>
-        <segue reference="oEj-N0-MKE"/>
+        <segue reference="vsH-bW-O1j"/>
     </inferredMetricsTieBreakers>
 </document>
