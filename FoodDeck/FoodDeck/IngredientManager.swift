@@ -122,7 +122,7 @@ class IngredientManager: NSManagedObject {
         catch{}
         return []
     }
-    static func checkExists(theName : String, delete : Bool, get: Bool) -> Bool{
+   private static func checkExists(theName : String, delete : Bool, get: Bool) -> Bool{
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
         let request : NSFetchRequest<Ingredient> = Ingredient.fetchRequest()

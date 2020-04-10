@@ -23,8 +23,8 @@ public struct RecipeStr{
      var servings : Int16
      var thumbnail : UIImage?
      var timeOfDay : String
-     var ingredients : [String]
-     init(theAllergens : String, isAvailable : Bool, theCookTime : Int16, theDateCreated : String, theDietaryRequirements : String, isFavourite : Bool, theInstructions : String, theName : String, thePrepTime : Int16, theRating : Int16, theRecipeDescription : String, theScore : Int16, theServings :  Int16, theThumbnail : UIImage, theTimeOfDay : String, theIngredients : [String]){
+    var ingredients : [(String, Int16, Bool)]
+     init(theAllergens : String, isAvailable : Bool, theCookTime : Int16, theDateCreated : String, theDietaryRequirements : String, isFavourite : Bool, theInstructions : String, theName : String, thePrepTime : Int16, theRating : Int16, theRecipeDescription : String, theScore : Int16, theServings :  Int16, theThumbnail : UIImage, theTimeOfDay : String, theIngredients : [(String, Int16, Bool)]){
          allergen = theAllergens
          available = isAvailable
          cookTime = theCookTime
