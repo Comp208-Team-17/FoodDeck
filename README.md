@@ -7,6 +7,8 @@ Save time, effort and waste with our decision-making meal app. Stop spending tim
 - Back-end
   - Finish ingredients, pantry and recipe controllers
   - Populate core data 
+- Test Tables
+- Portfolio
 
 
 ## Resources
