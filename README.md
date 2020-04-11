@@ -1,4 +1,4 @@
-# FoodDeck - (Friday 8th May 2020)
+# FoodDeck - (Friday 24th April 2020)
 Save time, effort and waste with our decision-making meal app. Stop spending time searching through your cupboards and let our app do that for you. 
 
 ## TODO
