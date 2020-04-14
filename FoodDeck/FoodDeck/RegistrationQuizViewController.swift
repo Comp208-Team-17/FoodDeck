@@ -46,10 +46,16 @@ class RegistrationQuizViewController: UIViewController, UITableViewDelegate, UIT
         UserDefaults.standard.set(vegetarianSwitch.isOn, forKey: "vegetarian")
         UserDefaults.standard.set(glutenSwitch.isOn, forKey: "gluten")
         
-        // Update skip quiz variable so that they won't have to interact with this view again
-        UserDefaults.standard.set(true, forKey: "skipQuiz")
-        
-        performSegue(withIdentifier: "toMainView", sender: nil)
+        // If storyboard is the quiz, go to main vew
+        if (self.restorationIdentifier == "Quiz"){
+            // Update skip quiz variable so that they won't have to interact with this view again
+            UserDefaults.standard.set(true, forKey: "skipQuiz")
+            performSegue(withIdentifier: "toMainView", sender: nil)
+        }
+        // Otherwise go back to root of main app
+        else {
+            navigationController?.popToRootViewController(animated: true)
+        }
     }
     
     @IBAction func addButton(_ sender: Any) {

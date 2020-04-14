@@ -42,6 +42,7 @@
 		D62F803F2439042900894040 /* MealPackManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D62F803E2439042900894040 /* MealPackManager.swift */; };
 		D63A7EA92423CC9100E65E65 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D63A7EA82423CC9100E65E65 /* Settings.storyboard */; };
 		D63EC8CE24323699004A3936 /* RegistrationQuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63EC8CD24323699004A3936 /* RegistrationQuizViewController.swift */; };
+		D6D950AC244622FB00AF32B8 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D950AB244622FB00AF32B8 /* SettingsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -103,6 +104,7 @@
 		D62F803E2439042900894040 /* MealPackManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealPackManager.swift; sourceTree = "<group>"; };
 		D63A7EA82423CC9100E65E65 /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		D63EC8CD24323699004A3936 /* RegistrationQuizViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationQuizViewController.swift; sourceTree = "<group>"; };
+		D6D950AB244622FB00AF32B8 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -195,6 +197,7 @@
 				A31B903E2437A2040029E947 /* VG.png */,
 				9AFB482F243B59BD0002F7A3 /* PantryManagerViewController.swift */,
 				9AFB4833243B77350002F7A3 /* AddToPantryViewController.swift */,
+				D6D950AB244622FB00AF32B8 /* SettingsViewController.swift */,
 			);
 			path = FoodDeck;
 			sourceTree = "<group>";
@@ -360,6 +363,7 @@
 			files = (
 				A318687B2440D6CB00B3FD92 /* RecipeIngredientManager.swift in Sources */,
 				9AC0B170240D2F8000234251 /* FoodDeck.xcdatamodeld in Sources */,
+				D6D950AC244622FB00AF32B8 /* SettingsViewController.swift in Sources */,
 				A384555E2436BB40004A65F3 /* ShoppingList.swift in Sources */,
 				D62F803F2439042900894040 /* MealPackManager.swift in Sources */,
 				A39EF0622437545200764AE1 /* RecipeManager.swift in Sources */,
