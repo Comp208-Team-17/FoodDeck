@@ -79,10 +79,10 @@
             </objects>
             <point key="canvasLocation" x="668" y="14"/>
         </scene>
-        <!--Registration Quiz View Controller-->
+        <!--Quiz-->
         <scene sceneID="bO6-RF-x9T">
             <objects>
-                <viewController id="eqt-wg-NGM" customClass="RegistrationQuizViewController" customModule="FoodDeck" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController restorationIdentifier="Quiz" title="Quiz" id="eqt-wg-NGM" customClass="RegistrationQuizViewController" customModule="FoodDeck" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2TY-BP-jpv">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -23,6 +23,15 @@ class RegistrationQuizViewController: UIViewController, UITableViewDelegate, UIT
     
     // User skips quiz, continues to main app
     @IBAction func skipButton(_ sender: Any) {
+        // Set all dietary requirements to false
+        // Update dietary requirements
+        UserDefaults.standard.set(false, forKey: "vegan")
+        UserDefaults.standard.set(false, forKey: "vegetarian")
+        UserDefaults.standard.set(false, forKey: "gluten")
+        
+        // Update skip quiz variable so that they won't have to interact with this view again
+        UserDefaults.standard.set(true, forKey: "skipQuiz")
+        
         performSegue(withIdentifier: "toMainView", sender: nil)
     }
     
@@ -32,18 +41,13 @@ class RegistrationQuizViewController: UIViewController, UITableViewDelegate, UIT
         MealPackManager.updateMealPack(newMealPacks: mealPacksList)
         updateAllergy()
         
-        //Update dietary requirements
-        if (veganSwitch.isOn){
-            print("User is vegan")
-        }
+        // Update dietary requirements
+        UserDefaults.standard.set(veganSwitch.isOn, forKey: "vegan")
+        UserDefaults.standard.set(vegetarianSwitch.isOn, forKey: "vegetarian")
+        UserDefaults.standard.set(glutenSwitch.isOn, forKey: "gluten")
         
-        if (vegetarianSwitch.isOn){
-            print("User is vegetarian")
-        }
-        
-        if (glutenSwitch.isOn){
-            print("User is gluten free")
-        }
+        // Update skip quiz variable so that they won't have to interact with this view again
+        UserDefaults.standard.set(true, forKey: "skipQuiz")
         
         performSegue(withIdentifier: "toMainView", sender: nil)
     }
@@ -186,12 +190,24 @@ class RegistrationQuizViewController: UIViewController, UITableViewDelegate, UIT
         super.viewDidLoad()
         mealPacksList = MealPackManager.getMealPacks()
         ingredientList = IngredientManager.getIngredient(theName: "", enabled: false, all: true)
+        
+        // Fetch allergies and dietary requirements if in the user preferences page
+        if (self.restorationIdentifier == "UserPref"){
+            let vegan = UserDefaults.standard.object(forKey: "vegan") as? Bool
+            let vegetarian = UserDefaults.standard.object(forKey: "vegetarian") as? Bool
+            let gluten = UserDefaults.standard.object(forKey: "gluten") as? Bool
+            
+            veganSwitch.isOn = vegan ?? false
+            vegetarianSwitch.isOn = vegetarian ?? false
+            glutenSwitch.isOn = gluten ?? false
+            allergyList = IngredientManager.getIngredient(theName: "", enabled: false, all: false)
+        }
     }
     
-    //Skip straight to main app - better to do on splash page
+    // Skip straight to main app
     override func viewDidAppear(_ animated: Bool) {
-        var skipQuiz = false
-        if (skipQuiz == true){
+        let skipQuiz = UserDefaults.standard.object(forKey: "skipQuiz") as? Bool
+        if (skipQuiz == true && self.restorationIdentifier == "Quiz"){
             performSegue(withIdentifier: "toMainView", sender: nil)
         }
     }
