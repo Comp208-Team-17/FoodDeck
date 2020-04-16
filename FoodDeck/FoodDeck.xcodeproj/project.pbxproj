@@ -17,6 +17,7 @@
 		9AC0B175240D2F8100234251 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9AC0B173240D2F8100234251 /* LaunchScreen.storyboard */; };
 		9AC0B180240D2F8100234251 /* FoodDeckTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC0B17F240D2F8100234251 /* FoodDeckTests.swift */; };
 		9AC0B18B240D2F8100234251 /* FoodDeckUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC0B18A240D2F8100234251 /* FoodDeckUITests.swift */; };
+		9AC532FA2448769400DD8C6C /* PantryIngredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC532F92448769400DD8C6C /* PantryIngredient.swift */; };
 		9AD9FF6F242260710065970A /* Ingredients.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9AD9FF6E242260710065970A /* Ingredients.storyboard */; };
 		9AD9FF77242263CF0065970A /* ShoppingList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9AD9FF76242263CF0065970A /* ShoppingList.storyboard */; };
 		9AD9FF79242263E80065970A /* Cards.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9AD9FF78242263E80065970A /* Cards.storyboard */; };
@@ -80,6 +81,7 @@
 		9AC0B186240D2F8100234251 /* FoodDeckUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FoodDeckUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AC0B18A240D2F8100234251 /* FoodDeckUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodDeckUITests.swift; sourceTree = "<group>"; };
 		9AC0B18C240D2F8100234251 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9AC532F92448769400DD8C6C /* PantryIngredient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PantryIngredient.swift; sourceTree = "<group>"; };
 		9AD9FF6E242260710065970A /* Ingredients.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Ingredients.storyboard; sourceTree = "<group>"; };
 		9AD9FF76242263CF0065970A /* ShoppingList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ShoppingList.storyboard; sourceTree = "<group>"; };
 		9AD9FF78242263E80065970A /* Cards.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Cards.storyboard; sourceTree = "<group>"; };
@@ -201,6 +203,7 @@
 				9AFB4833243B77350002F7A3 /* AddToPantryViewController.swift */,
 				D6D950AB244622FB00AF32B8 /* SettingsViewController.swift */,
 				D6D950AD24483D4A00AF32B8 /* SuggestionGenerator.swift */,
+				9AC532F92448769400DD8C6C /* PantryIngredient.swift */,
 			);
 			path = FoodDeck;
 			sourceTree = "<group>";
@@ -365,6 +368,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A318687B2440D6CB00B3FD92 /* RecipeIngredientManager.swift in Sources */,
+				9AC532FA2448769400DD8C6C /* PantryIngredient.swift in Sources */,
 				9AC0B170240D2F8000234251 /* FoodDeck.xcdatamodeld in Sources */,
 				D6D950AC244622FB00AF32B8 /* SettingsViewController.swift in Sources */,
 				A384555E2436BB40004A65F3 /* ShoppingList.swift in Sources */,

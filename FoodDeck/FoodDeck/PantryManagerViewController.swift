@@ -18,33 +18,43 @@ class PantryManagerViewController: UIViewController, UITableViewDelegate, UITabl
     @IBOutlet weak var table: UITableView!
     
     var pantryList: Pantry?
+    var inPantry: [PantryIngredient] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         managedContext = appDelegate.persistentContainer.viewContext
+        
         // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.popToRootViewController(animated: true)
-        self.table.reloadData()
+        managedContext = appDelegate.persistentContainer.viewContext
+        
+        let fetchPantry: NSFetchRequest<PantryIngredient>  = PantryIngredient.fetchRequest()
+        do {
+            inPantry = try managedContext!.fetch(fetchPantry)
+            table.reloadData()
+        } catch {
+            print("could not retrieve ingredients")
+        }
     }
     
     
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // count all pantry ingredients
-        return pantryList?.ingredients?.count ?? 0
+        return inPantry.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = table.dequeueReusableCell(withIdentifier: "myCell", for: indexPath)
-        if let ingredient = pantryList?.ingredients?[indexPath.row] {
-            cell.textLabel?.text = ingredient.name
-            cell.detailTextLabel?.text = "\(pantryList?.amount ?? 0) \(String(describing: ingredient.unit))"
+        let ingredient = inPantry[indexPath.row]
+        cell.textLabel?.text = ingredient.belongsTo?.name
+        cell.detailTextLabel?.textColor = .systemGreen
+        cell.detailTextLabel?.text = "\(ingredient.amount) \(ingredient.belongsTo?.unit! ?? "")"
             
-        }
+        
         return cell
     }
 
@@ -52,9 +62,10 @@ class PantryManagerViewController: UIViewController, UITableViewDelegate, UITabl
             
             // remove from pantry
             if editingStyle == .delete {
-            guard let ingredient = pantryList?.ingredients?[indexPath.row] else { return }
+            let ingredient = inPantry[indexPath.row]
             // remove relationship
-            self.pantryList?.removeFromContains(ingredient)
+                managedContext?.delete(ingredient)
+                inPantry.remove(at: indexPath.row)
                 // remove from table
             table.deleteRows(at: [indexPath], with: .none)
             do {
@@ -62,21 +73,86 @@ class PantryManagerViewController: UIViewController, UITableViewDelegate, UITabl
             } catch {
                 print("Ingredient could not be removed from the pantry")
             }
-                
-//                guard let ingredient = pantryList?.ingredients?[indexPath.row], let context = ingredient.managedObjectContext else { return }
-    //        context.delete(ingredient)
-    //        table.deleteRows(at: [indexPath], with: .none)
-    //
-    //        do {
-    //            try context.save()
-    //            print("Saved to pantry")
-    //
-    //        } catch {
-    //            print("could not delete from pantry")
-    //            table.reloadRows(at: [indexPath], with: .none)
-    //        }
           }
         }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let theIngredient = inPantry[indexPath.row].belongsTo!
+        let pantryIngredient = inPantry[indexPath.row]
+        
+        // create the alert
+        let alert = UIAlertController(title: theIngredient.name, message: "Quantity in \(String(describing: theIngredient.unit))", preferredStyle: UIAlertController.Style.alert)
+        
+        // Create alert properites
+        // Error label - replaces normal message
+        let errorLabel = UILabel(frame: CGRect(x: 0, y: 43, width: 270, height:18))
+        errorLabel.textAlignment = .center
+        errorLabel.textColor = .red
+        errorLabel.font = errorLabel.font.withSize(13)
+        alert.view.addSubview(errorLabel)
+        errorLabel.isHidden = true
+        
+        // allow user to enter numeric input into alert
+        alert.addTextField { (textField) in
+            textField.text = "\(pantryIngredient.amount)"
+            textField.keyboardType = .numberPad
+        }
+
+        // add an action (button)
+        alert.addAction(UIAlertAction(title: "Save", style: UIAlertAction.Style.default, handler: { (_) in
+            guard let input = alert.textFields?[0].text else { return }
+            
+            if input == "" {
+                // display error message
+                    alert.message = " "
+                    errorLabel.isHidden = false
+                    errorLabel.text = "Quantity field is empty"
+                    self.present(alert, animated: true, completion: nil)
+                
+            }
+                else if let value = Int16(input) {
+                    // add igredient to pantry list
+                pantryIngredient.setValue(value, forKey: "amount")
+                                   
+                    do {
+                        try self.managedContext!.save()
+                        self.table.reloadRows(at: [indexPath], with: .none)
+                        self.navigationController?.popViewController(animated: true)
+                    } catch {
+                        print("Ingredient could not be added to the pantry")
+                    }
+                }
+                
+            else {
+                // display error message
+                alert.message = " "
+                errorLabel.isHidden = false
+                errorLabel.text = "Incorrect quantity format"
+                self.present(alert, animated: true, completion: nil)
+            }
+           
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: nil))
+
+        // show the alert
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func createAlert(theIngredient: Ingredient) {
+            
+            
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toAddToPantry" {
+            let detailViewController = segue.destination as! AddToPantryViewController
+            // pass details to detail view
+            detailViewController.inPantry = self.inPantry
+            detailViewController.modalPresentationStyle = .fullScreen
+        }
+    }
   
 
 }

@@ -20,8 +20,10 @@ class AddToPantryViewController: UIViewController, UITableViewDelegate, UITableV
     
     // all ingredients in ingredient list
     var allIngredients: [Ingredient] = []
-    // all ingredients in pantry
-    var pantryList: Pantry?
+    // all existing PantryIngredient instances -- each instance stores the relationship 'belongsTo' and the amount
+    var inPantry: [PantryIngredient] = []
+    // actual ingredients related to inPantry
+    var inPantryIngredient: [Ingredient] = []
     // list of ingredients that are in the ingredient list but not in the pantry
     // stops the user from trying to add an existing ingredient twice
     var possibleIngredients: [Ingredient] = []
@@ -34,13 +36,27 @@ class AddToPantryViewController: UIViewController, UITableViewDelegate, UITableV
         managedContext = appDelegate.persistentContainer.viewContext
         
         let fetchIngredientList: NSFetchRequest<Ingredient>  = Ingredient.fetchRequest()
+        // fetchIngredientList.predicate = NSPredicate(format: "enabled == %@", NSNumber(value: true))
         do {
             allIngredients = try managedContext!.fetch(fetchIngredientList)
-            possibleIngredients = (pantryList?.ingredients?.difference(from: allIngredients) ?? [])
+            getAvailableIngredients()
             table.reloadData()
         } catch {
             print("could not retrieve ingredients")
         }
+    }
+    
+    func getAvailableIngredients() {
+        // get list of all ingredients in the pantry using the relationship 'belongsTo'
+        for index in 0..<inPantry.count {
+            inPantryIngredient.append(inPantry[index].belongsTo!)
+        }
+        
+        // convert arrays to sets and get the symmetric difference between them
+        let setPantry = Set(inPantryIngredient)
+        let setIngredientList = Set(allIngredients)
+        possibleIngredients = Array(setPantry.symmetricDifference(setIngredientList))
+        
     }
     
     
@@ -55,6 +71,7 @@ class AddToPantryViewController: UIViewController, UITableViewDelegate, UITableV
             controller.searchResultsUpdater = self
             controller.searchBar.sizeToFit()
             controller.searchBar.placeholder = "Search ingredients here.."
+            controller.obscuresBackgroundDuringPresentation = false
             controller.hidesNavigationBarDuringPresentation = false
             table.tableHeaderView = controller.searchBar
 
@@ -94,9 +111,17 @@ class AddToPantryViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func createAlert(theIngredient: Ingredient) {
-        if presentingViewController == nil {
             // create the alert
             let alert = UIAlertController(title: theIngredient.name, message: "Quantity in \(String(describing: theIngredient.unit))", preferredStyle: UIAlertController.Style.alert)
+            
+            // Create alert properites
+            // Error label - replaces normal message
+            let errorLabel = UILabel(frame: CGRect(x: 0, y: 43, width: 270, height:18))
+            errorLabel.textAlignment = .center
+            errorLabel.textColor = .red
+            errorLabel.font = errorLabel.font.withSize(13)
+            alert.view.addSubview(errorLabel)
+            errorLabel.isHidden = true
             
             // allow user to enter numeric input into alert
             alert.addTextField { (textField) in
@@ -106,14 +131,43 @@ class AddToPantryViewController: UIViewController, UITableViewDelegate, UITableV
 
             // add an action (button)
             alert.addAction(UIAlertAction(title: "Save", style: UIAlertAction.Style.default, handler: { (_) in
-                // add igredient to pantry list
-                self.pantryList?.addToContains(theIngredient)
-                do {
-                    try self.managedContext?.save()
-                    self.navigationController?.popViewController(animated: true)
-                } catch {
-                    print("Ingredient could not be added to the pantry")
+                guard let input = alert.textFields?[0].text else { return }
+                
+                if input == "" {
+                    // display error message
+                        alert.message = " "
+                        errorLabel.isHidden = false
+                        errorLabel.text = "Quantity field is empty"
+                        self.present(alert, animated: true, completion: nil)
+                    
                 }
+                    else if let value = Int16(input) {
+                        // add igredient to pantry list
+                        let pantryIngredientEntity = NSEntityDescription.entity(forEntityName: "PantryIngredient", in: self.managedContext!)!
+                        let newPantryIngredient = NSManagedObject(entity: pantryIngredientEntity, insertInto: self.managedContext!)
+                        newPantryIngredient.setValue(value, forKey: "amount")
+                        newPantryIngredient.setValue(theIngredient, forKey: "belongsTo")
+                    
+                    if self.resultSearchController.isActive {
+                        self.resultSearchController.isActive = false
+                    }
+                                       
+                        do {
+                            try self.managedContext!.save()
+                            self.navigationController?.popViewController(animated: true)
+                        } catch {
+                            print("Ingredient could not be added to the pantry")
+                        }
+                    }
+                    
+                else {
+                    // display error message
+                    alert.message = " "
+                    errorLabel.isHidden = false
+                    errorLabel.text = "Incorrect quantity format"
+                    self.present(alert, animated: true, completion: nil)
+                }
+               
             }))
             
             alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: nil))
@@ -121,16 +175,23 @@ class AddToPantryViewController: UIViewController, UITableViewDelegate, UITableV
             // show the alert
             self.present(alert, animated: true, completion: nil)
             
-        }
+        
     }
     
     
     
     // reload data after applying filter
     func updateSearchResults(for searchController: UISearchController) {
-        filteredList = possibleIngredients.filter{ ($0.name?.lowercased().contains(searchController.searchBar.text!) ?? false) }
-           self.table.reloadData()
-       }
+        let text = searchController.searchBar.text!
+        if text == "" {
+            filteredList = possibleIngredients
+            self.table.reloadData()
+        }
+        else {
+            filteredList = possibleIngredients.filter{ ( ($0.name?.lowercased().contains(text.lowercased()))! ) }
+            self.table.reloadData()
+        }
+    }
 
 }
 
