@@ -4,7 +4,6 @@
         <attribute name="enabled" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="unit" optional="YES" attributeType="String"/>
-        <relationship name="inPantry" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Pantry" inverseName="contains" inverseEntity="Pantry"/>
         <relationship name="inRecipe" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="RecipeIngredient" inverseName="ingredient" inverseEntity="RecipeIngredient"/>
         <relationship name="inShoppingList" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ShoppingList" inverseName="contains" inverseEntity="ShoppingList"/>
         <relationship name="pantryIngredient" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="PantryIngredient" inverseName="belongsTo" inverseEntity="PantryIngredient"/>
@@ -13,10 +12,6 @@
         <attribute name="enabled" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <relationship name="contains" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Recipe" inverseName="belongsTo" inverseEntity="Recipe"/>
-    </entity>
-    <entity name="Pantry" representedClassName=".Pantry" syncable="YES" codeGenerationType="category">
-        <attribute name="amount" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
-        <relationship name="contains" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Ingredient" inverseName="inPantry" inverseEntity="Ingredient"/>
     </entity>
     <entity name="PantryIngredient" representedClassName="PantryIngredient" syncable="YES" codeGenerationType="category">
         <attribute name="amount" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
@@ -52,12 +47,11 @@
         <relationship name="contains" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Ingredient" inverseName="inShoppingList" inverseEntity="Ingredient"/>
     </entity>
     <elements>
-        <element name="Ingredient" positionX="-54" positionY="-9" width="128" height="148"/>
+        <element name="Ingredient" positionX="-54" positionY="-9" width="128" height="133"/>
         <element name="MealPack" positionX="500" positionY="-124" width="128" height="88"/>
-        <element name="Pantry" positionX="-14" positionY="-172" width="128" height="73"/>
+        <element name="PantryIngredient" positionX="171" positionY="0" width="128" height="73"/>
         <element name="Recipe" positionX="507" positionY="25" width="128" height="298"/>
         <element name="RecipeIngredient" positionX="251" positionY="44" width="128" height="103"/>
         <element name="ShoppingList" positionX="-21" positionY="205" width="128" height="73"/>
-        <element name="PantryIngredient" positionX="171" positionY="0" width="128" height="73"/>
     </elements>
 </model>

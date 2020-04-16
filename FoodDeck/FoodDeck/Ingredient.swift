@@ -11,13 +11,4 @@ import CoreData
 
 @objc(Ingredient)
 class Ingredient: NSManagedObject {
-    convenience init?(enabled: Bool, name: String, unit: String) {
-            let appDelegate = UIApplication.shared.delegate as? AppDelegate
-            guard let managedContext = appDelegate?.persistentContainer.viewContext else { return nil }
-            
-            self.init(entity: Pantry.entity(), insertInto: managedContext)
-            self.enabled = enabled
-            self.name = name
-            self.unit = unit
-        }
 }

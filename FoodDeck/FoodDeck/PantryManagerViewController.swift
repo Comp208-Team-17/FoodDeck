@@ -17,7 +17,6 @@ class PantryManagerViewController: UIViewController, UITableViewDelegate, UITabl
     
     @IBOutlet weak var table: UITableView!
     
-    var pantryList: Pantry?
     var inPantry: [PantryIngredient] = []
 
     override func viewDidLoad() {
