@@ -43,6 +43,7 @@
 		D63A7EA92423CC9100E65E65 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D63A7EA82423CC9100E65E65 /* Settings.storyboard */; };
 		D63EC8CE24323699004A3936 /* RegistrationQuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63EC8CD24323699004A3936 /* RegistrationQuizViewController.swift */; };
 		D6D950AC244622FB00AF32B8 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D950AB244622FB00AF32B8 /* SettingsViewController.swift */; };
+		D6D950AE24483D4A00AF32B8 /* SuggestionGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D950AD24483D4A00AF32B8 /* SuggestionGenerator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,6 +106,7 @@
 		D63A7EA82423CC9100E65E65 /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		D63EC8CD24323699004A3936 /* RegistrationQuizViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationQuizViewController.swift; sourceTree = "<group>"; };
 		D6D950AB244622FB00AF32B8 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		D6D950AD24483D4A00AF32B8 /* SuggestionGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionGenerator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -198,6 +200,7 @@
 				9AFB482F243B59BD0002F7A3 /* PantryManagerViewController.swift */,
 				9AFB4833243B77350002F7A3 /* AddToPantryViewController.swift */,
 				D6D950AB244622FB00AF32B8 /* SettingsViewController.swift */,
+				D6D950AD24483D4A00AF32B8 /* SuggestionGenerator.swift */,
 			);
 			path = FoodDeck;
 			sourceTree = "<group>";
@@ -378,6 +381,7 @@
 				9AFB4830243B59BD0002F7A3 /* PantryManagerViewController.swift in Sources */,
 				A38455542436B6E1004A65F3 /* IngredientManager.swift in Sources */,
 				9AFB4834243B77350002F7A3 /* AddToPantryViewController.swift in Sources */,
+				D6D950AE24483D4A00AF32B8 /* SuggestionGenerator.swift in Sources */,
 				A38455562436BACA004A65F3 /* MealPack.swift in Sources */,
 				A3EF14B9243E221200CCA071 /* AddToIngredientsViewController.swift in Sources */,
 				A384555A2436BB03004A65F3 /* Recipe.swift in Sources */,
