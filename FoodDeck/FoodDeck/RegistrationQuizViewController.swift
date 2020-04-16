@@ -186,6 +186,16 @@ class RegistrationQuizViewController: UIViewController, UITableViewDelegate, UIT
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         // Only run if the table view is the allergy table
         if (editingStyle == UITableViewCell.EditingStyle.delete && tableView == self.allergyTable) {
+            
+            // Update allergy
+            let allergy = allergyList[indexPath.row]
+            let saved = IngredientManager.updateIngredient(originalName: allergy.name, isEnabled: true, theName: allergy.name, theUnit: allergy.unit)
+            
+            // Print error message if something fails
+            if (!saved){
+                print("\(allergy.name) has not been saved")
+            }
+            
             allergyList.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
         }
