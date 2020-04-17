@@ -29,6 +29,10 @@ class AddToShoppingListViewController: UIViewController, UITableViewDelegate, UI
     var resultSearchController = UISearchController()
     var filteredList: [Ingredient] = []
     
+   override func viewDidDisappear(_ animated: Bool) {
+          self.resultSearchController.isActive = false
+      }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -150,9 +154,7 @@ class AddToShoppingListViewController: UIViewController, UITableViewDelegate, UI
                         newShoppingListIngredient.setValue(value, forKey: "amount")
                         newShoppingListIngredient.setValue(theIngredient, forKey: "belongsTo")
                     
-                    if self.resultSearchController.isActive {
-                        self.resultSearchController.isActive = false
-                    }
+                    
                                        
                         do {
                             try self.managedContext!.save()
