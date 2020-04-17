@@ -29,7 +29,7 @@ class AddToShoppingListViewController: UIViewController, UITableViewDelegate, UI
     var resultSearchController = UISearchController()
     var filteredList: [Ingredient] = []
     
-   override func viewDidDisappear(_ animated: Bool) {
+   override func viewWillDisappear(_ animated: Bool) {
           self.resultSearchController.isActive = false
       }
     

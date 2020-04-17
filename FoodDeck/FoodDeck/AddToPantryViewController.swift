@@ -46,6 +46,10 @@ class AddToPantryViewController: UIViewController, UITableViewDelegate, UITableV
         }
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        self.resultSearchController.isActive = false
+    }
+    
     func getAvailableIngredients() {
         // get list of all ingredients in the pantry using the relationship 'belongsTo'
         for index in 0..<inPantry.count {
