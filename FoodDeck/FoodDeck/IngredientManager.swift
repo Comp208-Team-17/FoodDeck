@@ -106,7 +106,7 @@ class IngredientManager: NSManagedObject {
         }
         
     }
-    static func getIngredientObject(theName : String) -> [NSManagedObject]{
+    static func getIngredientObject(theName : String) -> [Ingredient]{
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
         let request : NSFetchRequest<Ingredient> = Ingredient.fetchRequest()
