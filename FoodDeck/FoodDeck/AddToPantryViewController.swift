@@ -134,7 +134,7 @@ class AddToPantryViewController: UIViewController, UITableViewDelegate, UITableV
                 guard let input = alert.textFields?[0].text else { return }
                 
                 if input == "" {
-                    // display error message
+                        // display error message
                         alert.message = " "
                         errorLabel.isHidden = false
                         errorLabel.text = "Quantity field is empty"

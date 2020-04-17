@@ -195,7 +195,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KkB-Kt-t2k" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3186" y="-2"/>
+            <point key="canvasLocation" x="3204" y="46"/>
         </scene>
         <!--Shopping List-->
         <scene sceneID="gCC-hI-fvQ">

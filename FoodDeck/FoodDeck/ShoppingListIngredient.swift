@@ -9,6 +9,7 @@
 import Foundation
 import CoreData
 
+
 @objc(ShoppingListIngredient)
 
 class ShoppingListIngredient: NSManagedObject {

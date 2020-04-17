@@ -87,7 +87,6 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
        }
        
        
-
        func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
            // count all shopping list ingredients
            return inShoppingList.count

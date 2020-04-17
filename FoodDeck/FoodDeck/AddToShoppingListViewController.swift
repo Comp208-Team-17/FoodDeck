@@ -142,6 +142,7 @@ class AddToShoppingListViewController: UIViewController, UITableViewDelegate, UI
                         self.present(alert, animated: true, completion: nil)
                     
                 }
+                    // make sure value is correct format
                     else if let value = Int16(input), value > 0 {
                         // add igredient to pantry list
                         let ShoppingListIngredientEntity = NSEntityDescription.entity(forEntityName: "ShoppingListIngredient", in: self.managedContext!)!

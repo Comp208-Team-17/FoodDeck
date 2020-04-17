@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 
+
 @objc(Ingredient)
 class Ingredient: NSManagedObject {
 }
