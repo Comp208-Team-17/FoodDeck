@@ -152,10 +152,6 @@ class AddToPantryViewController: UIViewController, UITableViewDelegate, UITableV
                         newPantryIngredient.setValue(value, forKey: "amount")
                         newPantryIngredient.setValue(theIngredient, forKey: "belongsTo")
                     
-                    if self.resultSearchController.isActive {
-                        self.resultSearchController.isActive = false
-                    }
-                                       
                         do {
                             try self.managedContext!.save()
                             self.navigationController?.popViewController(animated: true)
@@ -199,11 +195,3 @@ class AddToPantryViewController: UIViewController, UITableViewDelegate, UITableV
 
 }
 
-extension Array where Element: Hashable {
-    func difference(from other: [Element]) -> [Element] {
-        let thisSet = Set(self)
-        let otherSet = Set(other)
-        return Array(thisSet.symmetricDifference(otherSet))
-    }
-    
-}

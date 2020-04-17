@@ -26,8 +26,10 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
     
     @IBOutlet weak var saveButton: UIButton!
     
+    // action when button pressed
     @IBAction func save(_ sender: Any) {
         managedContext = appDelegate.persistentContainer.viewContext
+        // if ingredients have been selected
         if boughtIngredients.count > 0 {
             for index in 0..<boughtIngredients.count {
                 
@@ -36,9 +38,22 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
                     // if ingredient already exists in pantry
                     if boughtIngredients[index].belongsTo?.pantryIngredient != nil {
                         let originalValue = (boughtIngredients[index].belongsTo?.pantryIngredient?.amount)!
-                        let newValue = Int16(originalValue + boughtIngredients[index].amount)
-                        // update its new amount
-                        boughtIngredients[index].belongsTo?.pantryIngredient?.setValue(newValue, forKey: "amount")
+                        let newValue = Int(originalValue) + Int(boughtIngredients[index].amount)
+                        // check if within upper limit -> 32767
+                        if newValue <= Int16.max {
+                            // update its new amount
+                            boughtIngredients[index].belongsTo?.pantryIngredient?.setValue(newValue, forKey: "amount")
+                            deleteFromShoppingList(ingredient: boughtIngredients[index])
+                        }
+                        else {
+                            // present error to user
+                            let alert = UIAlertController(title: "Exceeds maximum quantity", message: "One or more of the ingredients selected could not be added to the pantry", preferredStyle: UIAlertController.Style.alert)
+                            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+
+                            // show the alert
+                            self.present(alert, animated: true, completion: nil)
+                        }
+                        
                     }
                     // ingredient does not exist in pantry
                     else {
@@ -47,17 +62,18 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
                         let newPantryIngredient = NSManagedObject(entity: pantryIngredientEntity, insertInto: self.managedContext!)
                         newPantryIngredient.setValue(boughtIngredients[index].amount, forKey: "amount")
                         newPantryIngredient.setValue(boughtIngredients[index].belongsTo, forKey: "belongsTo")
+                        deleteFromShoppingList(ingredient: boughtIngredients[index])
                     }
-                    
+                    // save changes
                     try managedContext!.save()
-                    deleteFromShoppingList(ingredient: boughtIngredients[index])
                     
                 } catch {
-                    print("Pantry could not be updated")
+                    print("Pantry and shopping list could not be updated")
                 }
                 
                 
             }
+            // return to default state
             saveButton.isEnabled = false
             boughtIngredients.removeAll()
             table.reloadData()
@@ -66,14 +82,12 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
     
 
        override func viewDidLoad() {
-       
            super.viewDidLoad()
-           
-           
        }
        
+       // set default values and fetch all shopping list ingrediens
        override func viewWillAppear(_ animated: Bool) {
-           managedContext = appDelegate.persistentContainer.viewContext
+        managedContext = appDelegate.persistentContainer.viewContext
         boughtIngredients.removeAll()
         saveButton.isEnabled = false
            
@@ -112,21 +126,21 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
     @objc func switchChanged(_ sender: UISwitch!){
         // switch is green
         if sender.isOn {
+            // store in array
             boughtIngredients.append(inShoppingList[sender.tag])
         }
         else {
             boughtIngredients.remove(at: boughtIngredients.firstIndex(of: inShoppingList[sender.tag])!)
         }
+        // disable button if no items selected
         if boughtIngredients.isEmpty { saveButton.isEnabled = false } else { saveButton.isEnabled = true }
-        
-        print("end")
     }
     
     func deleteFromShoppingList(ingredient: ShoppingListIngredient) {
-        // remove relationship
-            managedContext?.delete(ingredient)
-            inShoppingList.remove(at: inShoppingList.firstIndex(of: ingredient)!)
-        
+        // remove instance
+        managedContext?.delete(ingredient)
+        // remove from list
+        inShoppingList.remove(at: inShoppingList.firstIndex(of: ingredient)!)
             
         do {
             try managedContext?.save()
@@ -136,7 +150,6 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
     }
 
        func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-               
                // remove from shopping list
                if editingStyle == .delete {
                let ingredient = inShoppingList[indexPath.row]
@@ -177,16 +190,14 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
                
                if input == "" {
                    // display error message
-                       alert.message = " "
-                       errorLabel.isHidden = false
-                       errorLabel.text = "Quantity field is empty"
-                       self.present(alert, animated: true, completion: nil)
-                   
+                    alert.message = " "
+                    errorLabel.isHidden = false
+                    errorLabel.text = "Quantity field is empty"
+                    self.present(alert, animated: true, completion: nil)
                }
-                   else if let value = Int16(input) {
-                       // add igredient to shopping list
+              else if let value = Int16(input) {
+                   // add igredient to shopping list
                    ShoppingListIngredient.setValue(value, forKey: "amount")
-                                      
                        do {
                            try self.managedContext!.save()
                            self.table.reloadRows(at: [indexPath], with: .none)
@@ -212,13 +223,8 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
            self.present(alert, animated: true, completion: nil)
        }
        
-       func createAlert(theIngredient: Ingredient) {
-               
-               
-           
-       }
-       
        override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+            // when '+' is clicked
            if segue.identifier == "toAddToShoppingList" {
                let detailViewController = segue.destination as! AddToShoppingListViewController
                // pass details to detail view

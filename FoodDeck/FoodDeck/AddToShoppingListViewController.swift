@@ -80,10 +80,7 @@ class AddToShoppingListViewController: UIViewController, UITableViewDelegate, UI
     }
     
     
-    
-
-    
-    
+    // display a filtered list when the search bar is active
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if(resultSearchController.isActive) {
             return  filteredList.count
@@ -196,8 +193,5 @@ class AddToShoppingListViewController: UIViewController, UITableViewDelegate, UI
             self.table.reloadData()
         }
     }
-    
-
-    
 
 }
