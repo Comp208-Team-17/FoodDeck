@@ -1,29 +1,26 @@
 //
-//  AddToPantryViewController.swift
+//  AddToShoppingListViewController.swift
 //  FoodDeck
 //
-//  Created by Elkehya, Sara Mruan M on 06/04/2020.
+//  Created by Elkehya, Sara Mruan M on 16/04/2020.
 //  Copyright © 2020 computer science. All rights reserved.
 //
 
 import UIKit
 import CoreData
 
-class AddToPantryViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchResultsUpdating {
-   
-    
-    
+class AddToShoppingListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchResultsUpdating {
+
     @IBOutlet weak var table: UITableView!
-    
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     var managedContext: NSManagedObjectContext?
     
     // all ingredients in ingredient list
     var allIngredients: [Ingredient] = []
-    // all existing PantryIngredient instances -- each instance stores the relationship 'belongsTo' and the amount
-    var inPantry: [PantryIngredient] = []
-    // actual ingredients related to inPantry
-    var inPantryIngredient: [Ingredient] = []
+    // all existing ShoppingListIngredient instances 
+    var inShoppingList: [ShoppingListIngredient] = []
+    // actual ingredients related to inShoppingList
+    var inShoppingListIngredient: [Ingredient] = []
     // list of ingredients that are in the ingredient list but not in the pantry
     // stops the user from trying to add an existing ingredient twice
     var possibleIngredients: [Ingredient] = []
@@ -31,6 +28,25 @@ class AddToPantryViewController: UIViewController, UITableViewDelegate, UITableV
     
     var resultSearchController = UISearchController()
     var filteredList: [Ingredient] = []
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        
+
+       // initial search bar setup
+        resultSearchController = ({
+            let controller = UISearchController(searchResultsController: nil)
+            controller.searchResultsUpdater = self
+            controller.searchBar.sizeToFit()
+            controller.searchBar.placeholder = "Search ingredients here.."
+            controller.obscuresBackgroundDuringPresentation = false
+            controller.hidesNavigationBarDuringPresentation = false
+            table.tableHeaderView = controller.searchBar
+
+            return controller
+        })()
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         managedContext = appDelegate.persistentContainer.viewContext
@@ -48,12 +64,12 @@ class AddToPantryViewController: UIViewController, UITableViewDelegate, UITableV
     
     func getAvailableIngredients() {
         // get list of all ingredients in the pantry using the relationship 'belongsTo'
-        for index in 0..<inPantry.count {
-            inPantryIngredient.append(inPantry[index].belongsTo!)
+        for index in 0..<inShoppingList.count {
+            inShoppingListIngredient.append(inShoppingList[index].belongsTo!)
         }
         
         // convert arrays to sets and get the symmetric difference between them
-        let setPantry = Set(inPantryIngredient)
+        let setPantry = Set(inShoppingListIngredient)
         let setIngredientList = Set(allIngredients)
         possibleIngredients = Array(setPantry.symmetricDifference(setIngredientList))
         
@@ -62,22 +78,7 @@ class AddToPantryViewController: UIViewController, UITableViewDelegate, UITableV
     
     
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-       // initial search bar setup
-        resultSearchController = ({
-            let controller = UISearchController(searchResultsController: nil)
-            controller.searchResultsUpdater = self
-            controller.searchBar.sizeToFit()
-            controller.searchBar.placeholder = "Search ingredients here.."
-            controller.obscuresBackgroundDuringPresentation = false
-            controller.hidesNavigationBarDuringPresentation = false
-            table.tableHeaderView = controller.searchBar
-
-            return controller
-        })()
-    }
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if(resultSearchController.isActive) {
@@ -143,10 +144,10 @@ class AddToPantryViewController: UIViewController, UITableViewDelegate, UITableV
                 }
                     else if let value = Int16(input), value > 0 {
                         // add igredient to pantry list
-                        let pantryIngredientEntity = NSEntityDescription.entity(forEntityName: "PantryIngredient", in: self.managedContext!)!
-                        let newPantryIngredient = NSManagedObject(entity: pantryIngredientEntity, insertInto: self.managedContext!)
-                        newPantryIngredient.setValue(value, forKey: "amount")
-                        newPantryIngredient.setValue(theIngredient, forKey: "belongsTo")
+                        let ShoppingListIngredientEntity = NSEntityDescription.entity(forEntityName: "ShoppingListIngredient", in: self.managedContext!)!
+                        let newShoppingListIngredient = NSManagedObject(entity: ShoppingListIngredientEntity, insertInto: self.managedContext!)
+                        newShoppingListIngredient.setValue(value, forKey: "amount")
+                        newShoppingListIngredient.setValue(theIngredient, forKey: "belongsTo")
                     
                     if self.resultSearchController.isActive {
                         self.resultSearchController.isActive = false
@@ -192,14 +193,8 @@ class AddToPantryViewController: UIViewController, UITableViewDelegate, UITableV
             self.table.reloadData()
         }
     }
-
-}
-
-extension Array where Element: Hashable {
-    func difference(from other: [Element]) -> [Element] {
-        let thisSet = Set(self)
-        let otherSet = Set(other)
-        return Array(thisSet.symmetricDifference(otherSet))
-    }
     
+
+    
+
 }
