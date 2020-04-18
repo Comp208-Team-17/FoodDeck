@@ -71,6 +71,38 @@ class RecipeManager: NSManagedObject {
         return []
     }
     static func getRecipe(theName : String, all: Bool) -> [RecipeStr]{
+        if all == true {
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            let context = appDelegate.persistentContainer.viewContext
+            let request : NSFetchRequest<Recipe> = Recipe.fetchRequest()
+            request.returnsObjectsAsFaults = false
+            do{
+                tempRecipeRtn.removeAll()
+                let fetchedRecipes = try context.fetch(request)
+                for theRecipe in fetchedRecipes {
+                    tempRecipeRtn.append(RecipeStr(theAllergens: theRecipe.allergen!,
+                    isAvailable: theRecipe.available,
+                    theCookTime: theRecipe.cookTime,
+                    theDateCreated: theRecipe.dateCreated!,
+                    theDietaryRequirements: theRecipe.dietaryRequirements!,
+                    isFavourite: theRecipe.favourite,
+                    theInstructions: theRecipe.instructions!,
+                    theName: theRecipe.name!,
+                    thePrepTime: theRecipe.prepTime,
+                    theRating: theRecipe.rating,
+                    theRecipeDescription: theRecipe.recipeDescription!,
+                    theScore: theRecipe.score,
+                    theServings: theRecipe.servings,
+                    theThumbnail: UIImage(data: theRecipe.thumbnail!)!,
+                    theTimeOfDay: theRecipe.timeOfDay!,
+                    theIngredients: RecipeIngredientManager.getIngredients(recipe: theRecipe, enabled: false)))
+                }
+                return tempRecipeRtn
+            }
+            catch {
+                return []
+            }
+        }
         if checkExists(theName: theName, delete: false, get: true) {
             return tempRecipeRtn
         }
