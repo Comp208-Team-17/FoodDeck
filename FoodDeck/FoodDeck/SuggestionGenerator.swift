@@ -6,6 +6,8 @@
 //  Copyright © 2020 computer science. All rights reserved.
 //
 
+import UIKit
+
 enum pointSource {
     case swipeLeft
     case swipeRight
@@ -16,8 +18,6 @@ enum pointSource {
 
 class SuggestionGenerator {
     
-    // Should I return recipe or update it in the class?
-    // inpRecipe is a constant
     static func updatePoints(source: pointSource, rating: Int, inpRecipe: RecipeStr) {
         var lowerBound: Int
         var recipe = inpRecipe
@@ -54,7 +54,12 @@ class SuggestionGenerator {
             recipe.score = Int16(lowerBound)
         }
         
-        // Return recipe or update it in recipeManager?
+        // Update recipe
+         let saved = RecipeManager.updateRecipeExceptIngredients(originalName: recipe.name, newName: recipe.name, theAllergens: recipe.allergen, isAvailable: recipe.available, theCookTime: recipe.cookTime, theDateCreated: recipe.dateCreated, theDietaryRequirements: recipe.dietaryRequirements, isFavourite: recipe.favourite, theInstructions: recipe.instructions, thePrepTime: recipe.prepTime, theRating: recipe.rating, theRecipeDescription: recipe.recipeDescription, theScore: recipe.score, theServings: recipe.servings, theThumbnail: recipe.thumbnail ?? UIImage(), theTimeOfDay: recipe.timeOfDay)
+        
+        if (!saved){
+            print("Recipe score not saved")
+        }
     }
     
     static func findLowerBound(inpRecipe: RecipeStr) -> Int {
@@ -68,9 +73,55 @@ class SuggestionGenerator {
     }
     
     // Should this return recipe to be shown on screen?
-    static func gererateSuggestion() {}
+    static func gererateSuggestion() {
+        var suggestedRecipes: [RecipeStr] = []
+        let recipeList = RecipeManager.getRecipe(theName: "", all: true)
+        for item in recipeList {
+            let random = Int.random(in: 1...4)
+            
+            if (item.available){
+                if (random == 1 && item.rating == 0) {
+                    // Display item?
+                }
+                else if (random != 1 && item.rating > 0) {
+                    // Display item?
+                }
+            }
+            suggestedRecipes.append(item)
+        }
+    }
     
     static func setPotentialMeals() {}
     
-    static func degradePoints() {}
+    static func degradePoints() {
+        let recipeList = RecipeManager.getRecipe(theName: "", all: true)
+        var recipe: RecipeStr
+        var scoreUpdated: Bool
+        
+        for item in recipeList {
+            scoreUpdated = false
+            recipe = item
+            
+            // Degrade score if it is getting too high
+            if (recipe.score > 175){
+                recipe.score -= 5
+                scoreUpdated = true
+            }
+                
+            // Increase score if it is getting too low
+            else if (recipe.score < 25 && item.rating > 0){
+                recipe.score += 2
+                scoreUpdated = true
+            }
+            
+            // Update recipe if the score has changed
+            if (scoreUpdated){
+                 let saved = RecipeManager.updateRecipeExceptIngredients(originalName: recipe.name, newName: recipe.name, theAllergens: recipe.allergen, isAvailable: recipe.available, theCookTime: recipe.cookTime, theDateCreated: recipe.dateCreated, theDietaryRequirements: recipe.dietaryRequirements, isFavourite: recipe.favourite, theInstructions: recipe.instructions, thePrepTime: recipe.prepTime, theRating: recipe.rating, theRecipeDescription: recipe.recipeDescription, theScore: recipe.score, theServings: recipe.servings, theThumbnail: recipe.thumbnail ?? UIImage(), theTimeOfDay: recipe.timeOfDay)
+                
+                if (!saved){
+                    print("Recipe score not saved")
+                }
+            }
+        }
+    }
 }
