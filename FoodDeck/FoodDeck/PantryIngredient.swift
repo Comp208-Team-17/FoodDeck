@@ -6,6 +6,7 @@
 //  Copyright © 2020 computer science. All rights reserved.
 //
 
+
 import Foundation
 import CoreData
 import UIKit
@@ -14,7 +15,7 @@ import UIKit
 
 class PantryIngredient: NSManagedObject {
     
-    // return all ingredients in the pantry
+    // return all ingredients in pantry
     static func getAllPanryIngredients() -> [Ingredient] {
         var inPantry : [PantryIngredient] = []
         var pantryList : [Ingredient] = []
