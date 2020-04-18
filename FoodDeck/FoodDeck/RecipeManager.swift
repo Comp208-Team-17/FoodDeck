@@ -71,26 +71,12 @@ class RecipeManager: NSManagedObject {
         return []
     }
     static func getRecipe(theName : String, all: Bool) -> [RecipeStr]{
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let context = appDelegate.persistentContainer.viewContext
-        let request : NSFetchRequest<Ingredient> = Ingredient.fetchRequest()
-        request.returnsObjectsAsFaults = false
-        do{
-            let fetchedRecipes = try context.fetch(request)
-            for theRecipe in fetchedRecipes{
-                if theRecipe.name! == theName {
-                    if checkExists(theName: theName, delete: false, get: true) {
-                        return tempRecipeRtn
-                    }
-                    else {
-                        return []
-                    }
-                }
-            }
+        if checkExists(theName: theName, delete: false, get: true) {
+            return tempRecipeRtn
         }
-        catch{}
-        return []
-        
+        else {
+            return []
+        }
     }
     
     private static func checkExists(theName : String, delete : Bool, get: Bool) -> Bool{
@@ -170,7 +156,7 @@ class RecipeManager: NSManagedObject {
         catch{}
         return false
     }
-    static func updateRecipeRating(theName: String, theStars: Int16) -> Bool {
+    static func updateRecpeRating(theName: String, theStars: Int16) -> Bool {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
           let context = appDelegate.persistentContainer.viewContext
         let theRecipe = getRecipeObject(theName : theName)
