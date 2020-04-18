@@ -170,8 +170,18 @@ class RecipeManager: NSManagedObject {
         catch{}
         return false
     }
-    static func updateRecpeStars(theName: String, theStars: Int) -> Bool {
-        return true
+    static func updateRecipeRating(theName: String, theStars: Int16) -> Bool {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+          let context = appDelegate.persistentContainer.viewContext
+        let theRecipe = getRecipeObject(theName : theName)
+        theRecipe[0].rating = theStars
+        do{
+            try context.save()
+            return true
+        }
+        catch{
+        }
+        return false
     }
     
     
