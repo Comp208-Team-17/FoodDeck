@@ -13,14 +13,12 @@ class EditRecipeViewController: UIViewController {
     @IBOutlet weak var txtServings: UITextField!
     @IBOutlet weak var txtPrepTime: UITextField!
     @IBOutlet weak var txtCookTime: UITextField!
-    @IBOutlet weak var swVegan: UISwitch!
-    @IBOutlet weak var swVegetarian: UISwitch!
-    @IBOutlet weak var swGluten: UISwitch!
     @IBOutlet weak var recipeImage: UIImageView!
     @IBOutlet weak var txtName: UITextField!
     @IBOutlet weak var txtDescription: UITextView!
     @IBOutlet weak var txtInstructions: UITextView!
     @IBAction func btnSave(_ sender: Any) {
+        /*
         if RecipeViewController.addButton == true {
             let dietary = RecipeManager.convertDietaryValue(vegan: swVegan.isOn, veg: swVegetarian.isOn, gluten: swGluten.isOn)
             var cookTimeTmp : Int16?
@@ -35,8 +33,11 @@ class EditRecipeViewController: UIViewController {
             if let servings = Int16(txtServings.text!){
                 
             }
-            if RecipeManager.addRecipe(theAllergens: "", isAvailable: true, theCookTime: cookTimeTmp ?? 0, theDateCreated: "", theDietaryRequirements: dietary, isFavourite: false, theInstructions: txtInstructions.text!, theName: txtName.text!, thePrepTime: prepTimeTmp, theRating: 0, theRecipeDescription: txtDescription.text, theScore: 100, theServings: Int16, theThumbnail: <#T##UIImage#>, theTimeOfDay: <#T##String#>, theIngredients: <#T##[(String, Int16, Bool)]#>)
+            if RecipeManager.addRecipe(theAllergens: "", isAvailable: true, theCookTime: cookTimeTmp ?? 0, theDateCreated: "", theDietaryRequirements: dietary, isFavourite: false, theInstructions: txtInstructions.text!, theName: txtName.text!, thePrepTime: prepTimeTmp, theRating: 0, theRecipeDescription: txtDescription.text, theScore: 100, theServings: Int16, theThumbnail: UIImage(), theTimeOfDay: <#T##String#>, theIngredients: <#T##[(String, Int16, Bool)]#>){
+                
+            }
         }
+ */ 
             
     }
     

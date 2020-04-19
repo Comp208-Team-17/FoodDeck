@@ -123,6 +123,7 @@ class SuggestionGenerator {
             
             // Allow recipe to be generated if it's the correct course
             
+            
             // Allow recipe to be generated if it matches the user's requirements
             let requirements = Array(recipe.dietaryRequirements)
             
