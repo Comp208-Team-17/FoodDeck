@@ -201,6 +201,16 @@ class RecipeManager: NSManagedObject {
         }
         return false
     }
-    
-    
+    /*
+     Converts the boolean values for dietary requirements when editing a recipe, to the corresponding string which will be stored in coredata
+     Params: Booleans for requirements
+     Returns string as "000" where position 1 is vegan, position 2 for vegetarian, or gluten for position 3.
+     
+     */
+    static func convertDietaryValue(vegan : Bool, veg: Bool, gluten : Bool) -> String{
+        let veganTmp : Character = (vegan == true ? "1" : "0")
+        let vegTmp : Character = (veg == true ? "1" : "0")
+        let glutenTmp : Character = (gluten == true ? "1" : "0")
+        return "\(veganTmp)\(vegTmp)\(glutenTmp)"
+    }
 }

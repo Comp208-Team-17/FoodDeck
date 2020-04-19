@@ -147,6 +147,7 @@
 		9A50919124225650001BE676 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
+				9AC0B16B240D2F8000234251 /* Main.storyboard */,
 				9A509192242256A2001BE676 /* Recipes.storyboard */,
 				9AD9FF6E242260710065970A /* Ingredients.storyboard */,
 				9AD9FF76242263CF0065970A /* ShoppingList.storyboard */,
@@ -154,6 +155,7 @@
 				9AD9FF7A242264AC0065970A /* Pantry.storyboard */,
 				D63A7EA82423CC9100E65E65 /* Settings.storyboard */,
 				A34A400F244CAE9700DC162C /* Recipes2.storyboard */,
+				9AC0B173240D2F8100234251 /* LaunchScreen.storyboard */,
 			);
 			name = Storyboards;
 			path = FoodDeck/Storyboards;
@@ -194,9 +196,7 @@
 				9AC0B165240D2F8000234251 /* AppDelegate.swift */,
 				9AC0B167240D2F8000234251 /* SceneDelegate.swift */,
 				9AC0B169240D2F8000234251 /* ViewController.swift */,
-				9AC0B16B240D2F8000234251 /* Main.storyboard */,
 				9AC0B171240D2F8100234251 /* Assets.xcassets */,
-				9AC0B173240D2F8100234251 /* LaunchScreen.storyboard */,
 				9AC0B176240D2F8100234251 /* Info.plist */,
 			);
 			path = FoodDeck;

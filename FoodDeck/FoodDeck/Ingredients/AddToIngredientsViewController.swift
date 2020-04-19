@@ -121,7 +121,5 @@ extension AddToIngredientsViewController : IngredientTableDelegate{
         AddToIngredientsViewController.selectedRowTxt = onCell.txtIngredientName.text!
         AddToIngredientsViewController.selectedEdit = true
         performSegue(withIdentifier: "toAddEditIngredient", sender: nil)
-
-        
     }
 }

@@ -39,6 +39,7 @@ class IngredientTable: UITableViewCell {
     @IBAction func btnDelete(_ sender: Any) {
         IngredientManager.deleteIngredient(theName: txtIngredientName.text!)
         deleteButtonDelegate?.didTapDeleteButton(onCell: self)
+        
     }
     @IBOutlet weak var txtUnit: UILabel!
     @IBOutlet weak var txtEnabled: UILabel!
