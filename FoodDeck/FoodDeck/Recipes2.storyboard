@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="XpY-m2-ohE">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="XpY-m2-ohE">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -453,6 +453,10 @@
                                     <constraint firstAttribute="width" constant="375" id="7iv-Z8-H6F"/>
                                     <constraint firstAttribute="height" constant="88" id="mIT-CG-Y31"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="dataSource" destination="gDq-aF-XX2" id="KZB-LC-zzl"/>
+                                    <outlet property="delegate" destination="gDq-aF-XX2" id="i24-KE-ZUB"/>
+                                </connections>
                             </pickerView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rst-8X-rWL">
                                 <rect key="frame" x="264" y="521" width="97" height="34"/>
@@ -510,6 +514,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="btnChooseIngredients" destination="Thw-Qo-47d" id="tmY-gO-Mpc"/>
                         <outlet property="recipeImage" destination="Ogw-GK-l0K" id="GkJ-N2-mKk"/>
                         <outlet property="txtCookTime" destination="vYV-On-1Jh" id="otc-7H-QXh"/>
                         <outlet property="txtDescription" destination="Cfi-GC-WeE" id="vOq-cz-b9G"/>
@@ -757,10 +762,10 @@
             <point key="canvasLocation" x="1269.5652173913045" y="484.82142857142856"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="sEY-6g-wLa"/>
-    </inferredMetricsTieBreakers>
     <resources>
         <image name="burgerchair" width="364" height="343"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="sEY-6g-wLa"/>
+    </inferredMetricsTieBreakers>
 </document>
