@@ -18,12 +18,12 @@ class EditRecipeViewController: UIViewController {
     @IBOutlet weak var txtDescription: UITextView!
     @IBOutlet weak var txtInstructions: UITextView!
     @IBOutlet weak var btnChooseIngredients: UIButton!
-    static var dietary : String = ""
+    static var dietary : String = "000"
     let pickerOptions : [String] = ["Breakfast", "Lunch", "Dinner"]
     var pickerOptionSet : String = "Breakfast"
     var chooseIngredients = false
     @IBAction func btnSave(_ sender: Any) {
-        var saveComplete : Bool = false
+        var saveComplete : Bool = true
         if RecipeViewController.addButton == true {
             var cookTimeTmp : Int16?
             var prepTimeTmp : Int16?
@@ -48,7 +48,7 @@ class EditRecipeViewController: UIViewController {
             }
             
             if saveComplete == true {
-                if RecipeManager.addRecipe(theAllergens: "", isAvailable: true, theCookTime: cookTimeTmp ?? 0, theDateCreated: "", theDietaryRequirements: EditRecipeViewController.dietary, isFavourite: false, theInstructions: txtInstructions.text!, theName: txtName.text!, thePrepTime: prepTimeTmp!, theRating: 0, theRecipeDescription: txtDescription.text, theScore: 100, theServings: servingsTmp!, theThumbnail: UIImage(), theTimeOfDay: pickerOptionSet, theIngredients: []){
+                if RecipeManager.addRecipe(theAllergens: "", isAvailable: true, theCookTime: cookTimeTmp ?? 0, theDateCreated: "", theDietaryRequirements: EditRecipeViewController.dietary, isFavourite: false, theInstructions: txtInstructions.text!, theName: txtName.text!, thePrepTime: prepTimeTmp ?? 0, theRating: 0, theRecipeDescription: txtDescription.text, theScore: 100, theServings: servingsTmp ?? 0, theThumbnail: UIImage(), theTimeOfDay: pickerOptionSet, theIngredients: []) == true{
                              chooseIngredients = true
                     btnChooseIngredients.isEnabled = true
                          }

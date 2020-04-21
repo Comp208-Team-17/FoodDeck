@@ -7,7 +7,7 @@
 //
 
 import UIKit
-protocol RecipeCollectionViewDelegate : AnyObject {
+protocol RecipeCollectionViewDelegate : class {
     func didTapRecipe(onCell : RecipeCollectionView)
 }
 class RecipeCollectionView: UICollectionViewCell {
@@ -17,6 +17,9 @@ class RecipeCollectionView: UICollectionViewCell {
     weak var recipeButtonDelegate : RecipeCollectionViewDelegate?
     @IBAction func btnMain(_ sender: Any) {
         recipeButtonDelegate?.didTapRecipe(onCell: self)
+    }
+    override func awakeFromNib() {
+        super.awakeFromNib()
     }
     
 }

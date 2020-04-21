@@ -36,7 +36,7 @@ class RecipeManager: NSManagedObject {
             newRecipe.recipeDescription = theRecipeDescription
             newRecipe.score = theScore
             newRecipe.servings = theServings
-            newRecipe.thumbnail = theThumbnail.pngData()!
+            newRecipe.thumbnail = theThumbnail.pngData() ?? UIImage(named: "burgerchair")!.pngData()
             newRecipe.timeOfDay = theTimeOfDay
             do{
                 try context.save()
@@ -45,8 +45,8 @@ class RecipeManager: NSManagedObject {
                 return false
             }
             for index in 0..<theIngredients.count{
-                if RecipeIngredientManager.addRecipeIngredient(ingredient: IngredientManager.getIngredientObject(theName: theIngredients[index].0)[0], recipe: newRecipe, amount: theIngredients[index].1, optional: theIngredients[index].2) == false {
-                    return false
+                if RecipeIngredientManager.addRecipeIngredient(ingredient: IngredientManager.getIngredientObject(theName: theIngredients[index].0)[0], recipe: newRecipe, amount: theIngredients[index].1, optional: theIngredients[index].2) == true {
+                    return true
                 }
             }
             

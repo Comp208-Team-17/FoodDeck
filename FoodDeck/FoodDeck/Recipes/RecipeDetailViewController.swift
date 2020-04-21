@@ -11,22 +11,22 @@ import UIKit
 class RecipeDetailViewController: UIViewController {
 
     @IBAction func btnOneStar(_ sender: Any) {
-     //   setStars(numberOfStars: 1)
+        setStars(numberOfStars: 1)
     }
     @IBAction func btnTwoStars(_ sender: Any) {
-       //  setStars(numberOfStars: 2)
+         setStars(numberOfStars: 2)
     }
     @IBAction func btnThreeStars(_ sender: Any) {
-        // setStars(numberOfStars: 3)
+        setStars(numberOfStars: 3)
     }
     @IBAction func btnFourStars(_ sender: Any) {
-       //  setStars(numberOfStars: 4)
+        setStars(numberOfStars: 4)
     }
     @IBAction func btnFiveStars(_ sender: Any) {
-      //   setStars(numberOfStars: 5)
+        setStars(numberOfStars: 5)
     }
     @IBAction func btnResetRating(_ sender: Any) {
-      //   setStars(numberOfStars: 0)
+        setStars(numberOfStars: 0)
     }
     @IBOutlet var btnStarsOutlet: [UIButton]!
     @IBOutlet weak var recipeImage: UIImageView!
@@ -98,19 +98,19 @@ class RecipeDetailViewController: UIViewController {
             //Return to previous view controller
         }
     }
-    /* func setStars(numberOfStars : Int16){
-        for index in 0..<numberOfStars{
-            btnStarsOutlet[index].imageView!.image = UIImage(named: "FilledStar.png")
+    func setStars(numberOfStars : Int16){
+        for index in 0..<Int(numberOfStars){
+            btnStarsOutlet![index].imageView!.image = UIImage(named: "FilledStar.png")
         }
-        for index in numberOfStars..<5{
-            btnStarsOutlet[index].imageView!.image = UIImage(named: "EmptyStar.png")
+        for index in Int(numberOfStars)..<5{
+            btnStarsOutlet![index].imageView!.image = UIImage(named: "EmptyStar.png")
         }
         if RecipeManager.updateRecipeRating(theName: txtName.text!, theStars: numberOfStars) == false{
             let alertController = UIAlertController(title: "Rating error", message: "Attempted to rate non-existing recipe", preferredStyle: UIAlertController.Style.alert)
                                 alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
                                 self.present(alertController, animated: true, completion: nil)
         }
-    } /*
+    }
 
     /*
     // MARK: - Navigation
@@ -122,5 +122,5 @@ class RecipeDetailViewController: UIViewController {
     }
     */
 
- }*/*/
-}
+ }
+

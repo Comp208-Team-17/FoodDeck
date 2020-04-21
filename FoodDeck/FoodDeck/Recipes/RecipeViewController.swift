@@ -31,19 +31,16 @@ class RecipeViewController: UIViewController {
     static var chosenRecipeName : String = ""
     static var recipes : [RecipeStr] = []
     static var addButton = false
-    override func viewDidLoad() {
+    final override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
     override func viewDidAppear(_ animated: Bool){
         super.viewDidAppear(true)
-        populateRecipeData()
+        tblRecipes.reloadData()
     }
-    func populateRecipeData() {
-        RecipeViewController.recipes = RecipeManager.getRecipe(theName: "", all: true)
-        
-    }
+   
 
     /*
     // MARK: - Navigation
@@ -57,7 +54,13 @@ class RecipeViewController: UIViewController {
 
 }
 extension RecipeViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+         RecipeViewController.recipes = RecipeManager.getRecipe(theName: "", all: true)
+        print (RecipeViewController.recipes.count)
+    
           return RecipeViewController.recipes.count
       }
       
@@ -66,19 +69,24 @@ extension RecipeViewController: UICollectionViewDataSource, UICollectionViewDele
         cell.txtRecipeName.text = RecipeViewController.recipes[indexPath.item].name
         cell.txtRating.text = "\(RecipeViewController.recipes[indexPath.item].rating)"
         cell.recipeImage.image = RecipeViewController.recipes[indexPath.item].thumbnail ?? nil
+        cell.recipeButtonDelegate = self
         return cell
         
         
       }
 }
 extension RecipeViewController: RecipeCollectionViewDelegate{
+
     func didTapRecipe(onCell: RecipeCollectionView) {
         RecipeViewController.chosenRecipeName = onCell.txtRecipeName.text!
         if deleteButton == true{
             RecipeManager.deleteRecipe(theName: RecipeViewController.chosenRecipeName)
             tblRecipes.reloadData()
         }
+        else{
+            performSegue(withIdentifier: "toRecipeDetail", sender: self)
+        }
         
-    }
+   }
 }
 
