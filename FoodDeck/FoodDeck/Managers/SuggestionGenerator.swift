@@ -75,9 +75,10 @@ class SuggestionGenerator {
     static func gererateSuggestion() -> [RecipeStr] {
         var suggestedRecipes: [RecipeStr] = []
         var displayRecipe: [RecipeStr] = []
-        let recipeList = RecipeManager.getRecipe(theName: "", all: true)
+        var recipeList = RecipeManager.getRecipe(theName: "", all: true)
         
-        // Should we sort by score here?
+        // Sort recipe by score - highest score first
+        recipeList.sort {$0.score > $1.score}
         
         // Decide which recipes should be displayed
         for item in recipeList {
@@ -202,15 +203,15 @@ class SuggestionGenerator {
         // Check which category current time falls into
         // Morning = 04:00 - 11:59
         if (hour >= 4 && hour < 12) {
-            return "Morning"
+            return "Breakfast"
         }
         // Afternoon = 12:00 - 16:59
         else if (hour >= 12 && hour < 15){
-            return "Afternoon"
+            return "Lunch"
         }
         // Evening = 17:00 - 03:59
         else if (hour >= 15 || hour < 4){
-            return "Evening"
+            return "Dinner"
         }
         return ""
     }
