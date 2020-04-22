@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="XpY-m2-ohE">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="XpY-m2-ohE">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -125,7 +125,7 @@
                         <viewLayoutGuide key="safeArea" id="Cs9-yz-vrp"/>
                     </view>
                     <navigationItem key="navigationItem" title="Recipes" id="vCt-pl-CRt">
-                        <barButtonItem key="rightBarButtonItem" title="Settings" id="O3c-mV-jCB">
+                        <barButtonItem key="rightBarButtonItem" title="Settings" image="cog-filled" id="O3c-mV-jCB">
                             <connections>
                                 <segue destination="qbV-oK-pXn" kind="show" id="mJz-QV-guw"/>
                             </connections>
@@ -700,7 +700,9 @@
         <scene sceneID="2fE-et-MUF">
             <objects>
                 <navigationController title="Recipes" automaticallyAdjustsScrollViewInsets="NO" id="XpY-m2-ohE" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Recipes" id="gB0-Ph-ia4"/>
+                    <tabBarItem key="tabBarItem" title="Recipes" image="recipe-book" id="gB0-Ph-ia4">
+                        <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="0.0"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="f5r-x5-04L">
@@ -724,11 +726,13 @@
     </scenes>
     <resources>
         <image name="burgerchair" width="364" height="343"/>
+        <image name="cog-filled" width="28" height="28"/>
         <image name="heart-green-outline" width="50" height="50"/>
+        <image name="recipe-book" width="28" height="28"/>
         <image name="star-green-outline" width="50" height="48"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="WtW-FI-clk"/>
+        <segue reference="sEY-6g-wLa"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.29798412320000001" green="0.46127760410000002" blue="0.26276600360000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
 </document>

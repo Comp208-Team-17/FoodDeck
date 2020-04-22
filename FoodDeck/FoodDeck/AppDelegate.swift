@@ -19,7 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // tab bar colours
         UITabBar.appearance().barTintColor = .black
-        UITabBar.appearance().tintColor = .green
+        UITabBar.appearance().tintColor = .systemGreen
+        
         
         // nav bar colours
         UIBarButtonItem.appearance().tintColor = .systemGreen

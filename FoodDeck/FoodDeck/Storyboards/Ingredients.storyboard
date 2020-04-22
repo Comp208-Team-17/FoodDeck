@@ -239,7 +239,9 @@
         <scene sceneID="kIY-JX-fia">
             <objects>
                 <navigationController title="Ingredients" automaticallyAdjustsScrollViewInsets="NO" id="qmG-pC-LPx" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Ingredients" id="MCZ-xN-P3Q"/>
+                    <tabBarItem key="tabBarItem" title="Ingredients" image="ingredients" id="MCZ-xN-P3Q">
+                        <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="0.0"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="cDa-Ve-42P">
@@ -258,6 +260,7 @@
     </scenes>
     <resources>
         <image name="cog-filled" width="28" height="28"/>
+        <image name="ingredients" width="28" height="28"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="96P-Tq-olW"/>

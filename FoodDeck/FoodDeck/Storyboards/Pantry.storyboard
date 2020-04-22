@@ -165,7 +165,9 @@
         <scene sceneID="UNI-s1-4zo">
             <objects>
                 <navigationController title="Pantry" automaticallyAdjustsScrollViewInsets="NO" id="oXq-qK-3XJ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Pantry" id="Mh4-Bn-uSv"/>
+                    <tabBarItem key="tabBarItem" title="Pantry" image="pantry-filled" id="Mh4-Bn-uSv">
+                        <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="0.0"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="eW2-cZ-sr5">
@@ -184,5 +186,6 @@
     </scenes>
     <resources>
         <image name="cog-filled" width="28" height="28"/>
+        <image name="pantry-filled" width="28" height="28"/>
     </resources>
 </document>

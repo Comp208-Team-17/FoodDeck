@@ -179,7 +179,7 @@
         <scene sceneID="loi-je-QfJ">
             <objects>
                 <navigationController title="Cards" automaticallyAdjustsScrollViewInsets="NO" id="eUK-jS-den" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Cards" id="0ZG-sB-X0y"/>
+                    <tabBarItem key="tabBarItem" title="Cards" image="card-stack" id="0ZG-sB-X0y"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="PYD-M3-0pU">
@@ -201,6 +201,7 @@
         <image name="GF.png" width="285.75" height="274.5"/>
         <image name="V.png" width="269.25" height="274.5"/>
         <image name="VG.png" width="297" height="305.25"/>
+        <image name="card-stack" width="28" height="28"/>
         <image name="cog-filled" width="28" height="28"/>
     </resources>
 </document>

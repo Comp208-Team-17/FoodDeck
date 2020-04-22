@@ -201,7 +201,9 @@
         <scene sceneID="gCC-hI-fvQ">
             <objects>
                 <navigationController title="Shopping List" automaticallyAdjustsScrollViewInsets="NO" id="KAr-g4-uIf" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Cart" id="d9K-yU-h6d"/>
+                    <tabBarItem key="tabBarItem" title="Basket" image="basket-filled" id="d9K-yU-h6d">
+                        <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="0.0"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="PUy-99-dvQ">
@@ -219,6 +221,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="basket-filled" width="28" height="28"/>
         <image name="cog-filled" width="28" height="28"/>
     </resources>
 </document>
