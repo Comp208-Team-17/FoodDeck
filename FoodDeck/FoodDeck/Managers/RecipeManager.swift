@@ -163,7 +163,7 @@ class RecipeManager: NSManagedObject {
     static func updateRecipeExceptIngredients(originalName: String, newName: String, theAllergens : String, isAvailable : Bool, theCookTime : Int16, theDateCreated : String, theDietaryRequirements : String, isFavourite : Bool, theInstructions : String,  thePrepTime : Int16, theRating : Int16, theRecipeDescription : String, theScore : Int16, theServings :  Int16, theThumbnail : UIImage, theTimeOfDay : String) -> Bool {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
-        if checkExists(theName: newName, delete: false, get: false) == true{
+        if checkExists(theName: newName, delete: false, get: false) == true || originalName == newName {
             let updatedRecipe =  getRecipeObject(theName: originalName)[0]
             updatedRecipe.allergen = theAllergens
                  updatedRecipe.available = isAvailable

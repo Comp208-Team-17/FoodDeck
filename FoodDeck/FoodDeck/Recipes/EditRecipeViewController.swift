@@ -69,15 +69,18 @@ class EditRecipeViewController: UIViewController {
         else {
             //update recipe
             chooseIngredients = true
-            RecipeManager.updateRecipeExceptIngredients(originalName: RecipeDetailViewController.localRecipe[0].name
+            if RecipeManager.updateRecipeExceptIngredients(originalName: RecipeDetailViewController.localRecipe[0].name
                 ,newName: txtName.text!, theAllergens: "", isAvailable: RecipeDetailViewController.localRecipe[0].available, theCookTime: cookTimeTmp ?? 0 , theDateCreated: RecipeDetailViewController.localRecipe[0].dateCreated, theDietaryRequirements: "ignore", isFavourite: RecipeDetailViewController.localRecipe[0].favourite
                 , theInstructions: txtInstructions.text!, thePrepTime: prepTimeTmp ?? 0, theRating: RecipeDetailViewController.localRecipe[0].rating
-                , theRecipeDescription: txtDescription.text!, theScore: RecipeDetailViewController.localRecipe[0].score, theServings: servingsTmp ?? 0, theThumbnail: recipeImage.image!, theTimeOfDay: pickerOptionSet)
+                , theRecipeDescription: txtDescription.text!, theScore: RecipeDetailViewController.localRecipe[0].score, theServings: servingsTmp ?? 0, theThumbnail: recipeImage.image!, theTimeOfDay: pickerOptionSet) == false {
+                ErrorManager.errorMessageStandard(theTitle: "Recipe Error", theMessage: "Error updating recipe, inputted values not accepted", caller: self)
+            }
             
         }
     }
         else {
             //display error message
+            ErrorManager.errorMessageStandard(theTitle: "Recipe Error", theMessage: "Error updating recipe, please complete all fields", caller: self)
         }
     }
     

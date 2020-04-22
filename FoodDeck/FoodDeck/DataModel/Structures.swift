@@ -91,8 +91,8 @@ public struct MealPackStr {
     }
 }
 public class ErrorManager{
-    static func errorMessageStandard(theMessage : String, caller : UIViewController){
-        let alertController = UIAlertController(title: "Rating error", message: "Attempted to rate non-existing recipe", preferredStyle: UIAlertController.Style.alert)
+    static func errorMessageStandard(theTitle: String, theMessage : String, caller : UIViewController){
+        let alertController = UIAlertController(title: "\(theTitle)", message: "\(theMessage)", preferredStyle: UIAlertController.Style.alert)
         alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
         caller.present(alertController, animated: true, completion: nil)
     }
