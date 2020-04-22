@@ -220,6 +220,17 @@
                                     <action selector="btnThreeStars:" destination="M7v-Xz-fu5" eventType="touchUpInside" id="WWz-xn-JOc"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" placeholderIntrinsicWidth="36" placeholderIntrinsicHeight="30" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rB3-Yf-3C2">
+                                <rect key="frame" x="213.5" y="536" width="36" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="36" id="a3u-Bv-dQR"/>
+                                    <constraint firstAttribute="height" constant="32" id="zuI-N4-KN3"/>
+                                </constraints>
+                                <state key="normal" image="star-green-outline"/>
+                                <connections>
+                                    <action selector="btnFourStars:" destination="M7v-Xz-fu5" eventType="touchUpInside" id="KHc-sI-FuL"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" placeholderIntrinsicWidth="36" placeholderIntrinsicHeight="30" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3k1-mY-QLF">
                                 <rect key="frame" x="257.5" y="536" width="36" height="32"/>
                                 <constraints>
@@ -293,23 +304,12 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="lbl" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="en0-sD-VNv">
-                                <rect key="frame" x="331" y="580" width="17" height="20"/>
+                                <rect key="frame" x="312" y="570" width="17" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" placeholderIntrinsicWidth="36" placeholderIntrinsicHeight="30" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rB3-Yf-3C2">
-                                <rect key="frame" x="213.5" y="536" width="36" height="32"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="36" id="a3u-Bv-dQR"/>
-                                    <constraint firstAttribute="height" constant="32" id="zuI-N4-KN3"/>
-                                </constraints>
-                                <state key="normal" image="star-green-outline"/>
-                                <connections>
-                                    <action selector="btnFourStars:" destination="M7v-Xz-fu5" eventType="touchUpInside" id="KHc-sI-FuL"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
