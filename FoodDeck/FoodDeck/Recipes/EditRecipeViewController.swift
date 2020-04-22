@@ -10,6 +10,7 @@ import UIKit
 
 class EditRecipeViewController: UIViewController {
     
+    @IBOutlet weak var selector: UIPickerView!
     @IBOutlet weak var txtServings: UITextField!
     @IBOutlet weak var txtPrepTime: UITextField!
     @IBOutlet weak var txtCookTime: UITextField!
@@ -101,6 +102,16 @@ class EditRecipeViewController: UIViewController {
             txtCookTime.text = "\(RecipeDetailViewController.localRecipe[0].cookTime)"
             txtPrepTime.text = "\(RecipeDetailViewController.localRecipe[0].prepTime)"
             txtServings.text = "\(RecipeDetailViewController.localRecipe[0].prepTime)"
+            switch(RecipeDetailViewController.localRecipe[0].timeOfDay){
+            case "Breakfast":
+                selector.selectRow(0, inComponent: 0, animated: true)
+                break
+            case "Lunch":
+                selector.selectRow(1, inComponent: 0, animated: true)
+                break
+            default :
+                selector.selectRow(2, inComponent: 0, animated: true)
+            }
             
         }
         if RecipeViewController.addButton == true {

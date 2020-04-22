@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="XpY-m2-ohE">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="XpY-m2-ohE">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -556,6 +556,7 @@
                     <connections>
                         <outlet property="btnChooseIngredients" destination="Thw-Qo-47d" id="tmY-gO-Mpc"/>
                         <outlet property="recipeImage" destination="Ogw-GK-l0K" id="GkJ-N2-mKk"/>
+                        <outlet property="selector" destination="Qbx-zg-YYt" id="Yjb-BE-rcP"/>
                         <outlet property="txtCookTime" destination="vYV-On-1Jh" id="otc-7H-QXh"/>
                         <outlet property="txtDescription" destination="Cfi-GC-WeE" id="vOq-cz-b9G"/>
                         <outlet property="txtInstructions" destination="57c-yx-ObO" id="VPX-Cc-uKf"/>
