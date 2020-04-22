@@ -39,19 +39,19 @@ class EditRecipeViewController: UIViewController {
         var servingsTmp : Int16?
              
         if let cookTime = Int16(txtCookTime.text!){
-                     cookTimeTmp? = cookTime
+                     cookTimeTmp = cookTime
                  }
                  else{
                      saveComplete = false
                  }
                  if let prepTime = Int16(txtPrepTime.text!){
-                     prepTimeTmp? = prepTime
+                     prepTimeTmp = prepTime
                  }
                  else{
                      saveComplete = false
                  }
                  if let servings = Int16(txtServings.text!){
-                     servingsTmp? = servings
+                     servingsTmp = servings
                  }
                  else {
                      saveComplete = false
@@ -98,6 +98,9 @@ class EditRecipeViewController: UIViewController {
             if RecipeDetailViewController.localRecipe[0].thumbnail != nil {
                 recipeImage.image = RecipeDetailViewController.localRecipe[0].thumbnail
             }
+            txtCookTime.text = "\(RecipeDetailViewController.localRecipe[0].cookTime)"
+            txtPrepTime.text = "\(RecipeDetailViewController.localRecipe[0].prepTime)"
+            txtServings.text = "\(RecipeDetailViewController.localRecipe[0].prepTime)"
             
         }
         if RecipeViewController.addButton == true {
