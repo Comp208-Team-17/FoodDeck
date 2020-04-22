@@ -122,7 +122,7 @@
                         <viewLayoutGuide key="safeArea" id="SdL-mS-p1x"/>
                     </view>
                     <navigationItem key="navigationItem" title="Ingredients" id="ioD-3l-nPP">
-                        <barButtonItem key="rightBarButtonItem" title="Settings" id="fJf-fq-zQz">
+                        <barButtonItem key="rightBarButtonItem" title="Settings" image="cog-filled" id="fJf-fq-zQz">
                             <connections>
                                 <segue destination="ZNE-Dc-Cx8" kind="show" id="8rq-CS-QL3"/>
                             </connections>
@@ -256,6 +256,9 @@
             <point key="canvasLocation" x="1320" y="-900"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="cog-filled" width="28" height="28"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="96P-Tq-olW"/>
     </inferredMetricsTieBreakers>

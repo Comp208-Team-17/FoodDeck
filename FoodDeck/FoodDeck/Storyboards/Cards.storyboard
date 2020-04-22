@@ -68,7 +68,7 @@
                         <viewLayoutGuide key="safeArea" id="r0I-F2-ZLv"/>
                     </view>
                     <navigationItem key="navigationItem" title="Cards" id="6cV-bj-sjT">
-                        <barButtonItem key="rightBarButtonItem" title="Settings" id="pql-Fc-fFT">
+                        <barButtonItem key="rightBarButtonItem" title="Settings" image="cog-filled" id="pql-Fc-fFT">
                             <connections>
                                 <segue destination="dvO-Ca-kcL" kind="show" id="BO6-cB-jtA"/>
                             </connections>
@@ -173,7 +173,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B4B-lH-QFI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3108" y="1442"/>
+            <point key="canvasLocation" x="3198" y="1648"/>
         </scene>
         <!--Cards-->
         <scene sceneID="loi-je-QfJ">
@@ -201,5 +201,6 @@
         <image name="GF.png" width="285.75" height="274.5"/>
         <image name="V.png" width="269.25" height="274.5"/>
         <image name="VG.png" width="297" height="305.25"/>
+        <image name="cog-filled" width="28" height="28"/>
     </resources>
 </document>

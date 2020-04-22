@@ -83,7 +83,7 @@
                         <viewLayoutGuide key="safeArea" id="NrO-NO-2xH"/>
                     </view>
                     <navigationItem key="navigationItem" title="Pantry" id="oq1-dl-wCb">
-                        <barButtonItem key="rightBarButtonItem" title="Settings" id="2eK-jP-zVl">
+                        <barButtonItem key="rightBarButtonItem" title="Settings" image="cog-filled" id="2eK-jP-zVl">
                             <connections>
                                 <segue destination="qDo-gJ-gGA" kind="show" id="WLO-KG-5Kr"/>
                             </connections>
@@ -182,4 +182,7 @@
             <point key="canvasLocation" x="1234.7826086956522" y="1982.8125"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="cog-filled" width="28" height="28"/>
+    </resources>
 </document>

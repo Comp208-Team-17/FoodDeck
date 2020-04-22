@@ -118,7 +118,7 @@
                         <viewLayoutGuide key="safeArea" id="jYn-i3-ugc"/>
                     </view>
                     <navigationItem key="navigationItem" title="Shopping List" id="MNa-4k-at9">
-                        <barButtonItem key="rightBarButtonItem" title="Settings" id="Jph-E3-d5d">
+                        <barButtonItem key="rightBarButtonItem" title="Settings" image="cog-filled" id="Jph-E3-d5d">
                             <connections>
                                 <segue destination="YO5-kJ-ufX" kind="show" id="bFh-QU-nCt"/>
                             </connections>
@@ -218,4 +218,7 @@
             <point key="canvasLocation" x="1318.840579710145" y="-225"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="cog-filled" width="28" height="28"/>
+    </resources>
 </document>

@@ -28,7 +28,7 @@
                         <viewLayoutGuide key="safeArea" id="Cs9-yz-vrp"/>
                     </view>
                     <navigationItem key="navigationItem" title="Recipes" id="vCt-pl-CRt">
-                        <barButtonItem key="rightBarButtonItem" title="Settings" id="ez1-Ju-OmR">
+                        <barButtonItem key="rightBarButtonItem" title="Settings" image="cog-filled" id="ez1-Ju-OmR">
                             <connections>
                                 <segue destination="umt-BV-U1K" kind="show" id="X7j-Ed-srr"/>
                             </connections>
@@ -196,6 +196,9 @@
             <point key="canvasLocation" x="1269.5652173913045" y="484.82142857142856"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="cog-filled" width="28" height="28"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="33Q-WH-ppK"/>
     </inferredMetricsTieBreakers>
