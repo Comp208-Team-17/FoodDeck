@@ -22,65 +22,68 @@ class EditRecipeViewController: UIViewController {
     let pickerOptions : [String] = ["Breakfast", "Lunch", "Dinner"]
     var pickerOptionSet : String = "Breakfast"
     var chooseIngredients = false
-
+    
     @IBAction func btnPhoto(_ sender: Any) {
-      let picker = UIImagePickerController()
+        let picker = UIImagePickerController()
         picker.sourceType = .photoLibrary
-       picker.allowsEditing = true
-       picker.delegate = self
-       present(picker, animated: true)
+        picker.allowsEditing = true
+        picker.delegate = self
+        present(picker, animated: true)
         
         
     }
     @IBAction func btnSave(_ sender: Any) {
         var saveComplete : Bool = true
+        var cookTimeTmp : Int16?
+        var prepTimeTmp : Int16?
+        var servingsTmp : Int16?
+             
+        if let cookTime = Int16(txtCookTime.text!){
+                     cookTimeTmp? = cookTime
+                 }
+                 else{
+                     saveComplete = false
+                 }
+                 if let prepTime = Int16(txtPrepTime.text!){
+                     prepTimeTmp? = prepTime
+                 }
+                 else{
+                     saveComplete = false
+                 }
+                 if let servings = Int16(txtServings.text!){
+                     servingsTmp? = servings
+                 }
+                 else {
+                     saveComplete = false
+                 }
+        if saveComplete == true{
         if RecipeViewController.addButton == true {
-            var cookTimeTmp : Int16?
-            var prepTimeTmp : Int16?
-            var servingsTmp : Int16?
-            if let cookTime = Int16(txtCookTime.text!){
-                cookTimeTmp? = cookTime
-            }
-            else{
-                saveComplete = false
-            }
-            if let prepTime = Int16(txtPrepTime.text!){
-                prepTimeTmp? = prepTime
-            }
-            else{
-                saveComplete = false
-            }
-            if let servings = Int16(txtServings.text!){
-                servingsTmp? = servings
-            }
-            else {
-                saveComplete = false
-            }
-            
-            if saveComplete == true {
                 if RecipeManager.addRecipe(theAllergens: "", isAvailable: true, theCookTime: cookTimeTmp ?? 0, theDateCreated: "", theDietaryRequirements: EditRecipeViewController.dietary, isFavourite: false, theInstructions: txtInstructions.text!, theName: txtName.text!, thePrepTime: prepTimeTmp ?? 0, theRating: 0, theRecipeDescription: txtDescription.text, theScore: 100, theServings: servingsTmp ?? 0, theThumbnail: UIImage(), theTimeOfDay: pickerOptionSet, theIngredients: []) == true{
-                             chooseIngredients = true
+                    chooseIngredients = true
                     btnChooseIngredients.isEnabled = true
-                         }
+                }
                 else {
                     //display error message about saving recipe
                 }
-                
-            }
-            else {
-                //display error message
-            }
-         
         }
         else {
-            //load ingredient information
+            //update recipe
             chooseIngredients = true
+            RecipeManager.updateRecipeExceptIngredients(originalName: RecipeDetailViewController.localRecipe[0].name
+                ,newName: txtName.text!, theAllergens: "", isAvailable: RecipeDetailViewController.localRecipe[0].available, theCookTime: cookTimeTmp ?? 0 , theDateCreated: RecipeDetailViewController.localRecipe[0].dateCreated, theDietaryRequirements: "ignore", isFavourite: RecipeDetailViewController.localRecipe[0].favourite
+                , theInstructions: txtInstructions.text!, thePrepTime: prepTimeTmp ?? 0, theRating: RecipeDetailViewController.localRecipe[0].rating
+                , theRecipeDescription: txtDescription.text!, theScore: RecipeDetailViewController.localRecipe[0].score, theServings: servingsTmp ?? 0, theThumbnail: recipeImage.image!, theTimeOfDay: pickerOptionSet)
+            
+        }
+    }
+        else {
+            //display error message
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
     }
     override func viewDidAppear(_ animated: Bool){
@@ -98,17 +101,17 @@ class EditRecipeViewController: UIViewController {
             btnChooseIngredients.isEnabled = false
         }
     }
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
 extension EditRecipeViewController : UIPickerViewDataSource, UIPickerViewDelegate {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -129,12 +132,12 @@ extension EditRecipeViewController : UIPickerViewDataSource, UIPickerViewDelegat
 extension EditRecipeViewController : UINavigationControllerDelegate , UIImagePickerControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         picker.dismiss(animated: true)
-
+        
         guard let image = info[.editedImage] as? UIImage else {
             print("No image found")
             return
         }
-
+        
         // print out the image size as a test
         recipeImage.image = image
     }

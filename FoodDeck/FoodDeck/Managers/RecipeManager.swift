@@ -180,12 +180,27 @@ class RecipeManager: NSManagedObject {
                  updatedRecipe.servings = theServings
                  updatedRecipe.thumbnail = theThumbnail.pngData()!
                  updatedRecipe.timeOfDay = theTimeOfDay
+            do{
+                try context.save()
+                return true
+            }
+            catch{}
         }
-        do{
-            try context.save()
-            return true
+       
+        return false
+    }
+    static func updateRecipeDietary(theName : String, theDietaryRequirements : String)-> Bool {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+             let context = appDelegate.persistentContainer.viewContext
+        if checkExists(theName: theName, delete: false, get: false) == true{
+            let updatedRecipe = getRecipeObject(theName: theName)[0]
+            updatedRecipe.dietaryRequirements = theDietaryRequirements
+            do{
+                try context.save()
+                return true
+            }
+            catch{}
         }
-        catch{}
         return false
     }
     static func updateRecipeRating(theName: String, theStars: Int16) -> Bool {
