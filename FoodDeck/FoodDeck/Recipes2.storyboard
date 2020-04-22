@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="XpY-m2-ohE">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="XpY-m2-ohE">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -125,12 +125,10 @@
                         <viewLayoutGuide key="safeArea" id="Cs9-yz-vrp"/>
                     </view>
                     <navigationItem key="navigationItem" title="Recipes" id="vCt-pl-CRt">
-                        <barButtonItem key="rightBarButtonItem" title="Settings" style="plain" id="tgD-GD-zp6">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="5Zn-4g-pCo">
-                                <rect key="frame" x="267" y="7" width="92" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Settings"/>
-                            </button>
+                        <barButtonItem key="rightBarButtonItem" title="Settings" id="O3c-mV-jCB">
+                            <connections>
+                                <segue destination="qbV-oK-pXn" kind="show" id="mJz-QV-guw"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -141,6 +139,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k59-zl-Wtl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2178.4000000000001" y="484.40779610194909"/>
+        </scene>
+        <!--settingsSegue-->
+        <scene sceneID="fda-ev-tsp">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Settings" referencedIdentifier="settingsSegue" id="qbV-oK-pXn" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="Dr3-lh-Tyq"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BP1-Hq-aYV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2686" y="43"/>
         </scene>
         <!--Recipe Detail-->
         <scene sceneID="LzF-0A-0TB">
@@ -326,15 +334,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="owH-f7-hLJ"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Recipe Detail" id="dAO-Ef-gH7">
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="Wcd-73-kGo">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="gpQ-Zy-lc3">
-                                <rect key="frame" x="267" y="7" width="92" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Settings"/>
-                            </button>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Recipe Detail" id="dAO-Ef-gH7"/>
                     <connections>
                         <outlet property="recipeImage" destination="vie-Iw-BGN" id="saZ-fL-ezI"/>
                         <outlet property="txtDescriptionInstructions" destination="HKe-z1-G8i" id="u16-00-Wfx"/>
@@ -519,15 +519,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Ru6-Rk-rby"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Edit Recipe" id="HoM-d2-vEw">
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="ZTV-Yb-L26">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="hDs-DS-j3x">
-                                <rect key="frame" x="267" y="7" width="92" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Settings"/>
-                            </button>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Edit Recipe" id="HoM-d2-vEw"/>
                     <connections>
                         <outlet property="btnChooseIngredients" destination="Thw-Qo-47d" id="tmY-gO-Mpc"/>
                         <outlet property="recipeImage" destination="Ogw-GK-l0K" id="GkJ-N2-mKk"/>
@@ -781,6 +773,6 @@
         <image name="burgerchair" width="364" height="343"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="WtW-FI-clk"/>
+        <segue reference="sEY-6g-wLa"/>
     </inferredMetricsTieBreakers>
 </document>
