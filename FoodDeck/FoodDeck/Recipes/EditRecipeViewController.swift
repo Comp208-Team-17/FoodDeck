@@ -22,6 +22,16 @@ class EditRecipeViewController: UIViewController {
     let pickerOptions : [String] = ["Breakfast", "Lunch", "Dinner"]
     var pickerOptionSet : String = "Breakfast"
     var chooseIngredients = false
+
+    @IBAction func btnPhoto(_ sender: Any) {
+      let picker = UIImagePickerController()
+        picker.sourceType = .photoLibrary
+       picker.allowsEditing = true
+       picker.delegate = self
+       present(picker, animated: true)
+        
+        
+    }
     @IBAction func btnSave(_ sender: Any) {
         var saveComplete : Bool = true
         if RecipeViewController.addButton == true {
@@ -114,5 +124,18 @@ extension EditRecipeViewController : UIPickerViewDataSource, UIPickerViewDelegat
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         pickerOptionSet = pickerOptions[row]
+    }
+}
+extension EditRecipeViewController : UINavigationControllerDelegate , UIImagePickerControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        picker.dismiss(animated: true)
+
+        guard let image = info[.editedImage] as? UIImage else {
+            print("No image found")
+            return
+        }
+
+        // print out the image size as a test
+        recipeImage.image = image
     }
 }

@@ -10,6 +10,9 @@ import UIKit
 
 class RecipeDetailViewController: UIViewController {
 
+    @IBAction func btnFavourite(_ sender: Any) {
+      setFavourite()
+    }
     @IBAction func btnOneStar(_ sender: Any) {
         setStars(numberOfStars: 1)
     }
@@ -28,10 +31,12 @@ class RecipeDetailViewController: UIViewController {
     @IBAction func btnResetRating(_ sender: Any) {
         setStars(numberOfStars: 0)
     }
+    var favourite : Bool = false
+    @IBOutlet weak var btnFavouriteOutlet: UIButton!
     @IBOutlet var btnStarsOutlet: [UIButton]!
     @IBOutlet weak var recipeImage: UIImageView!
     @IBOutlet weak var txtName: UILabel!
-    @IBOutlet weak var txtDietary: UILabel!
+    @IBOutlet var imgDietary: [UIImageView]!
     @IBOutlet weak var txtIngredients: UITextView!
     @IBOutlet weak var txtDescriptionInstructions: UITextView!
    static var localRecipe : [RecipeStr] = []
@@ -47,30 +52,7 @@ class RecipeDetailViewController: UIViewController {
         RecipeDetailViewController.localRecipe = RecipeManager.getRecipe(theName: RecipeViewController.chosenRecipeName, all: false)
         if RecipeDetailViewController.localRecipe.count == 1 {
             txtName.text = RecipeDetailViewController.localRecipe[0].name
-            if RecipeDetailViewController.localRecipe[0].dietaryRequirements == "000" {
-                txtDietary.text = ""
-            }
-            else if RecipeDetailViewController.localRecipe[0].dietaryRequirements == "001"{
-                txtDietary.text = "GF"
-            }
-            else if RecipeDetailViewController.localRecipe[0].dietaryRequirements == "010"{
-                txtDietary.text = "V"
-            }
-            else if RecipeDetailViewController.localRecipe[0].dietaryRequirements == "011"{
-                txtDietary.text = "V\nGF"
-            }
-            else if RecipeDetailViewController.localRecipe[0].dietaryRequirements == "100"{
-                txtDietary.text = "VG"
-            }
-            else if RecipeDetailViewController.localRecipe[0].dietaryRequirements == "101"{
-                txtDietary.text = "VG\nGF"
-            }
-            else if RecipeDetailViewController.localRecipe[0].dietaryRequirements == "110"{
-                txtDietary.text = "VG\nV"
-            }
-            else if RecipeDetailViewController.localRecipe[0].dietaryRequirements == "111"{
-                txtDietary.text = "VG\nV\nGF"
-            }
+             /*
             for index in 0..<RecipeDetailViewController.localRecipe[0].ingredients.count{
                 tempIngredients += "\(RecipeDetailViewController.localRecipe[0].ingredients[index].1)"
                 if RecipeDetailViewController.localRecipe[0].ingredients[index].3 == "U" {
@@ -81,13 +63,23 @@ class RecipeDetailViewController: UIViewController {
                     tempIngredients += "Grams of"
                 }
                 tempIngredients += "\(RecipeDetailViewController.localRecipe[0].ingredients[index].0) \n"
-            }
+            } */
             txtDescriptionInstructions.text = RecipeDetailViewController.localRecipe[0].recipeDescription + "\n" + RecipeDetailViewController.localRecipe[0].instructions
             if RecipeDetailViewController.localRecipe[0].thumbnail != nil {
                 recipeImage.image = RecipeDetailViewController.localRecipe[0].thumbnail
             }
             setStars(numberOfStars: RecipeDetailViewController.localRecipe[0].rating)
-            
+            favourite = RecipeDetailViewController.localRecipe[0].favourite
+            if favourite == true {
+                btnFavouriteOutlet.setImage(UIImage(named:"heart-green"), for: .normal)
+            }
+            else{
+                btnFavouriteOutlet.setImage(UIImage(named:"heart-green-outline"), for: .normal)
+            }
+            let dietaryOptions = RecipeManager.revertDietaryValue(value: RecipeDetailViewController.localRecipe[0].dietaryRequirements)
+            for index in 0...2 {
+                imgDietary[index].isHidden = dietaryOptions[index]
+            }
             
         }
         else{
@@ -99,12 +91,26 @@ class RecipeDetailViewController: UIViewController {
             //Return to previous view controller
         }
     }
+    func setFavourite(){
+        if favourite == true {
+                  favourite = false
+                  btnFavouriteOutlet.setImage(UIImage(named: "heart-green-outline"), for: .normal)
+                   RecipeManager.updateRecipeFavourite(theName: txtName.text!, isFavourite: false)
+                  //set as not favourite
+              }
+              else{
+                  favourite = true
+                  btnFavouriteOutlet.setImage(UIImage(named:"heart-green"), for: .normal)
+                  RecipeManager.updateRecipeFavourite(theName: txtName.text!, isFavourite: true)
+                  //set as favourite
+              }
+    }
     func setStars(numberOfStars : Int16){
-        for index in 0..<Int(numberOfStars){
-            btnStarsOutlet![index].imageView!.image = UIImage(named: "FilledStar")
+       for index in 0..<Int(numberOfStars){
+            btnStarsOutlet![index].setImage(UIImage(named:"star-green"), for: .normal)
         }
-        for index in Int(numberOfStars)..<5{
-            btnStarsOutlet![index].imageView!.image = UIImage(named: "EmptyStar")
+       for index in Int(numberOfStars)..<5{
+            btnStarsOutlet![index].setImage(UIImage(named: "star-green-outline"), for: .normal)
         }
         if RecipeManager.updateRecipeRating(theName: txtName.text!, theStars: numberOfStars) == false{
             let alertController = UIAlertController(title: "Rating error", message: "Attempted to rate non-existing recipe", preferredStyle: UIAlertController.Style.alert)

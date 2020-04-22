@@ -201,6 +201,20 @@ class RecipeManager: NSManagedObject {
         }
         return false
     }
+    static func updateRecipeFavourite(theName: String, isFavourite : Bool) -> Bool {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        let theRecipe = getRecipeObject(theName : theName)
+        theRecipe[0].favourite = isFavourite
+        
+        do{
+            try context.save()
+            return true
+        }
+        catch{
+        }
+        return false
+    }
     /*
      Converts the boolean values for dietary requirements when editing a recipe, to the corresponding string which will be stored in coredata
      Params: Booleans for requirements
@@ -212,5 +226,21 @@ class RecipeManager: NSManagedObject {
         let vegTmp : Character = (veg == true ? "1" : "0")
         let glutenTmp : Character = (gluten == true ? "1" : "0")
         return "\(veganTmp)\(vegTmp)\(glutenTmp)"
+    }
+    static func revertDietaryValue(value : String) -> [Bool] {
+        var output : [Bool] = []
+        let charOneIndex = value.index(value.startIndex, offsetBy: 1)
+        let charTwoIndex = value.index(value.startIndex, offsetBy: 2)
+        let charThreeIndex = value.index(value.startIndex, offsetBy: 3)
+        let charOne = value[..<charOneIndex]
+        let charTwo = value[charOneIndex..<charTwoIndex]
+        let charThree = value[charTwoIndex..<charThreeIndex]
+        print (charOne)
+        print (charTwo)
+        print (charThree)
+        output.append(charOne == "0" ? false : true)
+        output.append(charTwo == "0" ? false : true)
+        output.append(charThree == "0" ? false : true)
+        return output
     }
 }

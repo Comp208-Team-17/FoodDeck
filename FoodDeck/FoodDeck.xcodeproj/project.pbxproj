@@ -38,7 +38,7 @@
 		A34A400C244B0C5F00DC162C /* RecipeCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34A4002244B0C5F00DC162C /* RecipeCollectionView.swift */; };
 		A34A400D244B0C5F00DC162C /* RecipeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34A4003244B0C5F00DC162C /* RecipeDetailViewController.swift */; };
 		A34A400E244B0C5F00DC162C /* EditRecipeIngredientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34A4004244B0C5F00DC162C /* EditRecipeIngredientViewController.swift */; };
-		A34A4010244CAE9700DC162C /* Recipes2.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A34A400F244CAE9700DC162C /* Recipes2.storyboard */; };
+		A354480924508F2400FD0148 /* Recipes3.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A354480824508F2400FD0148 /* Recipes3.storyboard */; };
 		A38455462436B49C004A65F3 /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38455452436B49C004A65F3 /* Ingredient.swift */; };
 		A38455562436BACA004A65F3 /* MealPack.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38455552436BACA004A65F3 /* MealPack.swift */; };
 		A384555A2436BB03004A65F3 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38455592436BB03004A65F3 /* Recipe.swift */; };
@@ -106,7 +106,7 @@
 		A34A4002244B0C5F00DC162C /* RecipeCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeCollectionView.swift; sourceTree = "<group>"; };
 		A34A4003244B0C5F00DC162C /* RecipeDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeDetailViewController.swift; sourceTree = "<group>"; };
 		A34A4004244B0C5F00DC162C /* EditRecipeIngredientViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditRecipeIngredientViewController.swift; sourceTree = "<group>"; };
-		A34A400F244CAE9700DC162C /* Recipes2.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Recipes2.storyboard; path = FoodDeck/Recipes2.storyboard; sourceTree = SOURCE_ROOT; };
+		A354480824508F2400FD0148 /* Recipes3.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Recipes3.storyboard; sourceTree = "<group>"; };
 		A38455452436B49C004A65F3 /* Ingredient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ingredient.swift; sourceTree = "<group>"; };
 		A38455552436BACA004A65F3 /* MealPack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealPack.swift; sourceTree = "<group>"; };
 		A38455592436BB03004A65F3 /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
@@ -148,14 +148,15 @@
 			isa = PBXGroup;
 			children = (
 				9AC0B16B240D2F8000234251 /* Main.storyboard */,
+				A354480824508F2400FD0148 /* Recipes3.storyboard */,
 				9A509192242256A2001BE676 /* Recipes.storyboard */,
 				9AD9FF6E242260710065970A /* Ingredients.storyboard */,
 				9AD9FF76242263CF0065970A /* ShoppingList.storyboard */,
 				9AD9FF78242263E80065970A /* Cards.storyboard */,
 				9AD9FF7A242264AC0065970A /* Pantry.storyboard */,
 				D63A7EA82423CC9100E65E65 /* Settings.storyboard */,
-				A34A400F244CAE9700DC162C /* Recipes2.storyboard */,
 				9AC0B173240D2F8100234251 /* LaunchScreen.storyboard */,
+				9AC0B171240D2F8100234251 /* Assets.xcassets */,
 			);
 			name = Storyboards;
 			path = FoodDeck/Storyboards;
@@ -196,7 +197,6 @@
 				9AC0B165240D2F8000234251 /* AppDelegate.swift */,
 				9AC0B167240D2F8000234251 /* SceneDelegate.swift */,
 				9AC0B169240D2F8000234251 /* ViewController.swift */,
-				9AC0B171240D2F8100234251 /* Assets.xcassets */,
 				9AC0B176240D2F8100234251 /* Info.plist */,
 			);
 			path = FoodDeck;
@@ -421,9 +421,9 @@
 				9AD9FF79242263E80065970A /* Cards.storyboard in Resources */,
 				9AC0B172240D2F8100234251 /* Assets.xcassets in Resources */,
 				9AC0B16D240D2F8000234251 /* Main.storyboard in Resources */,
+				A354480924508F2400FD0148 /* Recipes3.storyboard in Resources */,
 				9AD9FF6F242260710065970A /* Ingredients.storyboard in Resources */,
 				D63A7EA92423CC9100E65E65 /* Settings.storyboard in Resources */,
-				A34A4010244CAE9700DC162C /* Recipes2.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

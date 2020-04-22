@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="XpY-m2-ohE">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="XpY-m2-ohE">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -125,7 +125,7 @@
                         <viewLayoutGuide key="safeArea" id="Cs9-yz-vrp"/>
                     </view>
                     <navigationItem key="navigationItem" title="Recipes" id="vCt-pl-CRt">
-                        <barButtonItem key="rightBarButtonItem" title="Settings" image="cog-filled" id="O3c-mV-jCB">
+                        <barButtonItem key="rightBarButtonItem" title="Settings" id="O3c-mV-jCB">
                             <connections>
                                 <segue destination="qbV-oK-pXn" kind="show" id="mJz-QV-guw"/>
                             </connections>
@@ -178,13 +178,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Recipe Name " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="en0-sD-VNv">
-                                <rect key="frame" x="14" y="55" width="149" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="Description and instructions" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HKe-z1-G8i">
                                 <rect key="frame" x="16" y="420" width="343" height="152"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -193,13 +186,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Dietary" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cfI-KB-BbL">
-                                <rect key="frame" x="14" y="186" width="55" height="20.5"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="burgerchair" translatesAutoresizingMaskIntoConstraints="NO" id="vie-Iw-BGN">
                                 <rect key="frame" x="216" y="93" width="159" height="150"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -212,57 +198,44 @@
                                     <action selector="btnResetRating:" destination="M7v-Xz-fu5" eventType="touchUpInside" id="J9Y-87-Nc9"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="foF-m2-Xnb">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" placeholderIntrinsicWidth="36" placeholderIntrinsicHeight="30" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="foF-m2-Xnb">
                                 <rect key="frame" x="51" y="143" width="36" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="36" id="Arb-Ot-neP"/>
-                                    <constraint firstAttribute="height" constant="30" id="E0e-P9-9pt"/>
-                                    <constraint firstAttribute="width" secondItem="foF-m2-Xnb" secondAttribute="height" multiplier="6:5" id="Vyu-dI-3LM"/>
-                                </constraints>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="star-green-outline"/>
                                 <connections>
                                     <action selector="btnTwoStars:" destination="M7v-Xz-fu5" eventType="touchUpInside" id="BjY-Pa-Oym"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NCR-Ku-PXp">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" placeholderIntrinsicWidth="36" placeholderIntrinsicHeight="30" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NCR-Ku-PXp">
                                 <rect key="frame" x="85" y="143" width="36" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="36" id="Gbi-fR-r5J"/>
-                                    <constraint firstAttribute="width" secondItem="NCR-Ku-PXp" secondAttribute="height" multiplier="6:5" id="Hg4-Zy-1s7"/>
-                                    <constraint firstAttribute="height" constant="30" id="pgz-O8-wcA"/>
-                                </constraints>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="star-green-outline"/>
                                 <connections>
                                     <action selector="btnThreeStars:" destination="M7v-Xz-fu5" eventType="touchUpInside" id="WWz-xn-JOc"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rB3-Yf-3C2">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" placeholderIntrinsicWidth="36" placeholderIntrinsicHeight="30" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rB3-Yf-3C2">
                                 <rect key="frame" x="121" y="143" width="36" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="rB3-Yf-3C2" secondAttribute="height" multiplier="6:5" id="O5n-ks-Knd"/>
-                                    <constraint firstAttribute="width" constant="36" id="UlZ-EQ-njJ"/>
-                                    <constraint firstAttribute="height" constant="30" id="amm-Q8-dHu"/>
-                                </constraints>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="star-green-outline"/>
                                 <connections>
                                     <action selector="btnFourStars:" destination="M7v-Xz-fu5" eventType="touchUpInside" id="KHc-sI-FuL"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3k1-mY-QLF">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" placeholderIntrinsicWidth="36" placeholderIntrinsicHeight="30" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3k1-mY-QLF">
                                 <rect key="frame" x="157" y="143" width="36" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="G3j-Fo-uGm"/>
-                                    <constraint firstAttribute="width" secondItem="3k1-mY-QLF" secondAttribute="height" multiplier="6:5" id="GMz-yy-TRs"/>
-                                    <constraint firstAttribute="width" constant="36" id="ce6-qp-Bhr"/>
-                                </constraints>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="star-green-outline">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <action selector="btnFiveStars:" destination="M7v-Xz-fu5" eventType="touchUpInside" id="Gcc-eg-sWX"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c4W-KO-iY5">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" placeholderIntrinsicWidth="36" placeholderIntrinsicHeight="30" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c4W-KO-iY5">
                                 <rect key="frame" x="14" y="143" width="36" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="36" id="31f-3Z-QCH"/>
-                                    <constraint firstAttribute="width" secondItem="c4W-KO-iY5" secondAttribute="height" multiplier="6:5" id="355-J0-VoL"/>
-                                    <constraint firstAttribute="height" constant="30" id="vx4-xQ-HQo"/>
-                                </constraints>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="star-green-outline"/>
                                 <connections>
                                     <action selector="btnOneStar:" destination="M7v-Xz-fu5" eventType="touchUpInside" id="YFP-EZ-f2s"/>
                                 </connections>
@@ -277,15 +250,42 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Add to shopping list"/>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" placeholderIntrinsicWidth="36" placeholderIntrinsicHeight="30" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ltF-Qo-6zs">
+                                <rect key="frame" x="157" y="55" width="62" height="53"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="heart-green-outline"/>
+                                <connections>
+                                    <action selector="btnFavourite:" destination="M7v-Xz-fu5" eventType="touchUpInside" id="QYA-UJ-LUJ"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ayK-5Z-0Fs">
+                                <rect key="frame" x="14" y="181" width="50" height="46"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gcr-B4-HkE">
+                                <rect key="frame" x="63" y="181" width="50" height="46"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5vg-AQ-UPK">
+                                <rect key="frame" x="114" y="181" width="50" height="46"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Recipe Name " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="en0-sD-VNv">
+                                <rect key="frame" x="14" y="66" width="149" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="owH-f7-hLJ"/>
                     </view>
                     <navigationItem key="navigationItem" title="Recipe Detail" id="dAO-Ef-gH7"/>
                     <connections>
+                        <outlet property="btnFavouriteOutlet" destination="ltF-Qo-6zs" id="1t3-dv-a5y"/>
                         <outlet property="recipeImage" destination="vie-Iw-BGN" id="saZ-fL-ezI"/>
                         <outlet property="txtDescriptionInstructions" destination="HKe-z1-G8i" id="u16-00-Wfx"/>
-                        <outlet property="txtDietary" destination="cfI-KB-BbL" id="KXE-Dr-L7J"/>
                         <outlet property="txtIngredients" destination="gGF-yL-Xtv" id="Nb9-Ia-dRW"/>
                         <outlet property="txtName" destination="en0-sD-VNv" id="8IS-Qe-bSW"/>
                         <outletCollection property="btnStarsOutlet" destination="c4W-KO-iY5" collectionClass="NSMutableArray" id="47V-84-2H5"/>
@@ -293,6 +293,9 @@
                         <outletCollection property="btnStarsOutlet" destination="NCR-Ku-PXp" collectionClass="NSMutableArray" id="IaU-3F-TvG"/>
                         <outletCollection property="btnStarsOutlet" destination="rB3-Yf-3C2" collectionClass="NSMutableArray" id="92i-Rk-cF4"/>
                         <outletCollection property="btnStarsOutlet" destination="3k1-mY-QLF" collectionClass="NSMutableArray" id="Vpx-Qq-tH9"/>
+                        <outletCollection property="imgDietary" destination="ayK-5Z-0Fs" collectionClass="NSMutableArray" id="sgu-K9-i0S"/>
+                        <outletCollection property="imgDietary" destination="gcr-B4-HkE" collectionClass="NSMutableArray" id="wBr-yA-EWy"/>
+                        <outletCollection property="imgDietary" destination="5vg-AQ-UPK" collectionClass="NSMutableArray" id="D2c-Ld-UcX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PW4-SS-ehh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -317,6 +320,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IrX-uF-NHV">
                                 <rect key="frame" x="22" y="61" width="76" height="30"/>
                                 <state key="normal" title="Take Photo"/>
+                                <connections>
+                                    <action selector="btnPhoto:" destination="gDq-aF-XX2" eventType="touchUpInside" id="d3x-Xu-zYq"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Recipe Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xSN-Qi-ekr">
                                 <rect key="frame" x="16" y="105" width="153" height="34"/>
@@ -718,9 +724,11 @@
     </scenes>
     <resources>
         <image name="burgerchair" width="364" height="343"/>
-        <image name="cog-filled" width="28" height="28"/>
+        <image name="heart-green-outline" width="50" height="50"/>
+        <image name="star-green-outline" width="50" height="48"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="sEY-6g-wLa"/>
+        <segue reference="WtW-FI-clk"/>
     </inferredMetricsTieBreakers>
+    <color key="tintColor" red="0.29798412320000001" green="0.46127760410000002" blue="0.26276600360000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
 </document>
