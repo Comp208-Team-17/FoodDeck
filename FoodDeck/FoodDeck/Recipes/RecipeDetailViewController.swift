@@ -86,6 +86,7 @@ class RecipeDetailViewController: UIViewController {
             if RecipeDetailViewController.localRecipe[0].thumbnail != nil {
                 recipeImage.image = RecipeDetailViewController.localRecipe[0].thumbnail
             }
+            setStars(numberOfStars: RecipeDetailViewController.localRecipe[0].rating)
             
             
         }
@@ -100,15 +101,15 @@ class RecipeDetailViewController: UIViewController {
     }
     func setStars(numberOfStars : Int16){
         for index in 0..<Int(numberOfStars){
-            btnStarsOutlet![index].imageView!.image = UIImage(named: "FilledStar.png")
+            btnStarsOutlet![index].imageView!.image = UIImage(named: "FilledStar")
         }
         for index in Int(numberOfStars)..<5{
-            btnStarsOutlet![index].imageView!.image = UIImage(named: "EmptyStar.png")
+            btnStarsOutlet![index].imageView!.image = UIImage(named: "EmptyStar")
         }
         if RecipeManager.updateRecipeRating(theName: txtName.text!, theStars: numberOfStars) == false{
             let alertController = UIAlertController(title: "Rating error", message: "Attempted to rate non-existing recipe", preferredStyle: UIAlertController.Style.alert)
-                                alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
-                                self.present(alertController, animated: true, completion: nil)
+            alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alertController, animated: true, completion: nil)
         }
     }
 
