@@ -91,13 +91,8 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
         boughtIngredients.removeAll()
         saveButton.isEnabled = false
            
-        let fetchShoppingList: NSFetchRequest<ShoppingListIngredient> = ShoppingListIngredient.fetchRequest()
-           do {
-               inShoppingList = try managedContext!.fetch(fetchShoppingList)
-               table.reloadData()
-           } catch {
-               print("could not retrieve ingredients")
-           }
+        inShoppingList = ShoppingListIngredient.getShoppingList()
+        table.reloadData()
        }
        
        

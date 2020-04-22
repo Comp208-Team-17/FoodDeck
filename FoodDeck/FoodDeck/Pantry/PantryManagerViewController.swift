@@ -13,12 +13,12 @@ import CoreData
 class PantryManagerViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     var managedContext: NSManagedObjectContext?
-           
+    
     
     @IBOutlet weak var table: UITableView!
     
     var inPantry: [PantryIngredient] = []
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -28,19 +28,12 @@ class PantryManagerViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        managedContext = appDelegate.persistentContainer.viewContext
-        
-        let fetchPantry: NSFetchRequest<PantryIngredient>  = PantryIngredient.fetchRequest()
-        do {
-            inPantry = try managedContext!.fetch(fetchPantry)
-            table.reloadData()
-        } catch {
-            print("could not retrieve ingredients")
-        }
+        inPantry = PantryIngredient.getPantry()
+        table.reloadData()
     }
     
     
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // count all pantry ingredients
         return inPantry.count
@@ -52,28 +45,28 @@ class PantryManagerViewController: UIViewController, UITableViewDelegate, UITabl
         cell.textLabel?.text = ingredient.belongsTo?.name
         cell.detailTextLabel?.textColor = .systemGreen
         cell.detailTextLabel?.text = "\(ingredient.amount) \(ingredient.belongsTo?.unit! ?? "")"
-            
+        
         
         return cell
     }
-
+    
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-            
-            // remove from pantry
-            if editingStyle == .delete {
+        
+        // remove from pantry
+        if editingStyle == .delete {
             let ingredient = inPantry[indexPath.row]
             // remove relationship
-                managedContext?.delete(ingredient)
-                inPantry.remove(at: indexPath.row)
-                // remove from table
+            managedContext?.delete(ingredient)
+            inPantry.remove(at: indexPath.row)
+            // remove from table
             table.deleteRows(at: [indexPath], with: .none)
             do {
                 try managedContext?.save()
             } catch {
                 print("Ingredient could not be removed from the pantry")
             }
-          }
         }
+    }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let theIngredient = inPantry[indexPath.row].belongsTo!
@@ -96,31 +89,31 @@ class PantryManagerViewController: UIViewController, UITableViewDelegate, UITabl
             textField.text = "\(pantryIngredient.amount)"
             textField.keyboardType = .numberPad
         }
-
+        
         // add an action (button)
         alert.addAction(UIAlertAction(title: "Save", style: UIAlertAction.Style.default, handler: { (_) in
             guard let input = alert.textFields?[0].text else { return }
             
             if input == "" {
                 // display error message
-                    alert.message = " "
-                    errorLabel.isHidden = false
-                    errorLabel.text = "Quantity field is empty"
-                    self.present(alert, animated: true, completion: nil)
+                alert.message = " "
+                errorLabel.isHidden = false
+                errorLabel.text = "Quantity field is empty"
+                self.present(alert, animated: true, completion: nil)
                 
             }
-                else if let value = Int16(input) {
+            else if let value = Int16(input) {
                 // add igredient to pantry list
                 pantryIngredient.setValue(value, forKey: "amount")
-                                   
-                    do {
-                        try self.managedContext!.save()
-                        self.table.reloadRows(at: [indexPath], with: .none)
-                        self.navigationController?.popViewController(animated: true)
-                    } catch {
-                        print("Ingredient could not be added to the pantry")
-                    }
+                
+                do {
+                    try self.managedContext!.save()
+                    self.table.reloadRows(at: [indexPath], with: .none)
+                    self.navigationController?.popViewController(animated: true)
+                } catch {
+                    print("Ingredient could not be added to the pantry")
                 }
+            }
                 
             else {
                 // display error message
@@ -129,19 +122,13 @@ class PantryManagerViewController: UIViewController, UITableViewDelegate, UITabl
                 errorLabel.text = "Incorrect quantity format"
                 self.present(alert, animated: true, completion: nil)
             }
-           
+            
         }))
         
         alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: nil))
-
+        
         // show the alert
         self.present(alert, animated: true, completion: nil)
-    }
-    
-    func createAlert(theIngredient: Ingredient) {
-            
-            
-        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -152,6 +139,6 @@ class PantryManagerViewController: UIViewController, UITableViewDelegate, UITabl
             detailViewController.modalPresentationStyle = .fullScreen
         }
     }
-  
-
+    
+    
 }

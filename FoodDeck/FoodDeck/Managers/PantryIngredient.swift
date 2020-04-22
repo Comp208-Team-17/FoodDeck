@@ -15,6 +15,20 @@ import UIKit
 
 class PantryIngredient: NSManagedObject {
     
+    // return pantry as type pantryIngredient
+    static func getPantry() -> [PantryIngredient] {
+        var inPantry : [PantryIngredient] = []
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let fetchPantry: NSFetchRequest<PantryIngredient>  = PantryIngredient.fetchRequest()
+        do {
+            inPantry = try managedContext.fetch(fetchPantry)
+        } catch {
+            print("could not retrieve ingredients")
+        }
+        return inPantry
+    }
+    
     // return all ingredients in pantry
     static func getAllPanryIngredients() -> [Ingredient] {
         var inPantry : [PantryIngredient] = []
