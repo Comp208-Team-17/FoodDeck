@@ -10,22 +10,21 @@ import UIKit
 
 class EditRecipeIngredientsViewController: UIViewController {
 
-    @IBAction func swThisMealAction(_ sender: Any) {
-        
-    }
-    @IBOutlet weak var swThisMeal: UISwitch!
+
     @IBOutlet weak var tblIngredients: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
-    var localRecipe : Recipe
+    var localRecipe : Recipe?
     override func viewDidAppear(_ animated: Bool){
         super.viewDidAppear(true)
          localRecipe = RecipeManager.getRecipeObject(theName: RecipeDetailViewController.localRecipe[0].name)[0]
+        tblIngredients.reloadData()
         
     }
+    var recipeIngredients : [(String, Int16, Bool, String, Bool)] = []
     /*
     // MARK: - Navigation
 
@@ -39,17 +38,24 @@ class EditRecipeIngredientsViewController: UIViewController {
 }
 extension EditRecipeIngredientsViewController : UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        recipeIngredients = RecipeIngredientManager.getIngredients(recipe: localRecipe!, enabled: false)
+        return recipeIngredients.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let recipeIngredients : [(String, Int16, Bool, String, Bool)] = RecipeIngredientManager.getIngredients(recipe: localRecipe, enabled: false)
         let cell = tblIngredients.dequeueReusableCell(withIdentifier: "recipeIngredientTable") as! RecipeIngredientsTable
         cell.txtName.text = recipeIngredients[indexPath.row].0
         cell.txtAmount.text = "\(recipeIngredients[indexPath.row].1)"
         cell.txtEnabled.text = "\(recipeIngredients[indexPath.row].2)"
+        cell.txtUnit.text = "\(recipeIngredients[indexPath.row].3)"
+        cell.txtOptional.text = "\(recipeIngredients[indexPath.row].4)"
         return cell
     }
     
     
+}
+extension EditRecipeViewController : RecipeIngredientTableDelegate {
+    func didTapOptional(sender: Any) {
+        
+    }
 }

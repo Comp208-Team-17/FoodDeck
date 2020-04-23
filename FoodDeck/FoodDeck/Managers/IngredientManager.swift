@@ -78,7 +78,6 @@ class IngredientManager: NSManagedObject {
                 }
                 return tempIngredientRtn
             }
-                
             else if all == true{
                 for theIngredient in allIngredients{
                     tempIngredientRtn.append(IngredientStr(theName : theIngredient.name!, theUnit: theIngredient.unit!, isEnabled : theIngredient.enabled))

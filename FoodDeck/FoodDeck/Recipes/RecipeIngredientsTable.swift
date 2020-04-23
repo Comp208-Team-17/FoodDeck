@@ -8,10 +8,11 @@
 
 import UIKit
 protocol RecipeIngredientTableDelegate : AnyObject {
-    func didTapInclude(sender: Any)
     func didTapOptional(sender : Any)
 }
 class RecipeIngredientsTable: UITableViewCell {
+
+    @IBOutlet weak var txtUnit: UILabel!
     @IBOutlet weak var txtAmount: UILabel!
     @IBOutlet weak var txtName: UILabel!
     @IBOutlet weak var txtEnabled: UILabel!
