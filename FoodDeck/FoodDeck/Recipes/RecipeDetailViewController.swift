@@ -38,6 +38,13 @@ class RecipeDetailViewController: UIViewController {
     @IBOutlet var imgDietary: [UIImageView]!
     @IBOutlet weak var txtIngredients: UITextView!
     @IBOutlet weak var txtDescriptionInstructions: UITextView!
+    
+    @IBAction func btnAddToShoppingList(_ sender: Any) {
+    }
+    
+    @IBAction func btnReportCooked(_ sender: Any) {
+    }
+    
    static var localRecipe : [RecipeStr] = []
     override func viewDidLoad() {
         super.viewDidLoad()
