@@ -8,7 +8,7 @@
 
 import UIKit
 protocol RecipeIngredientTableDelegate : AnyObject {
-    func didTapOptional(sender : Any)
+    func didTapOptional(sender : RecipeIngredientsTable, optional: Bool)
 }
 class RecipeIngredientsTable: UITableViewCell {
 
@@ -20,7 +20,7 @@ class RecipeIngredientsTable: UITableViewCell {
     @IBOutlet weak var txtOptional: UILabel!
     @IBOutlet weak var btnOptional: UIButton!
     @IBAction func btnOptionAction(_ sender: Any) {
-        buttonDelegate?.didTapOptional(sender: self)
+        buttonDelegate?.didTapOptional(sender: self, optional: true)
     }
     weak var buttonDelegate : RecipeIngredientTableDelegate?
     override func awakeFromNib() {

@@ -49,7 +49,8 @@ class RecipeIngredientManager: NSManagedObject {
      
      Returns an array of a single element [RecipeIngredient] of the requested recipe ingredient, OR Returns an empty array [] if no such ingredient exists in that recipe.
      */
-    static func getRecipeIngredientObject(ingredient: Ingredient, recipe: Recipe) -> [RecipeIngredient]{
+    static func getRecipeIngredientObject(theIngredientName: String, recipe: Recipe) -> [RecipeIngredient]{
+        let ingredient = IngredientManager.getIngredientObject(theName: theIngredientName)[0]
         checkExists(recipe: recipe, ingredient: ingredient, delete: false, get: true)
         return tempRtn
     }

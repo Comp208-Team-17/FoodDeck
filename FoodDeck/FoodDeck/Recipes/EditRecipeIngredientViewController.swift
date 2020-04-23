@@ -20,7 +20,7 @@ class EditRecipeIngredientsViewController: UIViewController {
     static var localRecipe : Recipe?
     override func viewDidAppear(_ animated: Bool){
         super.viewDidAppear(true)
-        EditRecipeIngredientsViewController.localRecipe = RecipeManager.getRecipeObject(theName: RecipeDetailViewController.localRecipe[0].name)[0]
+       
         tblIngredients.reloadData()
         
     }
@@ -38,6 +38,7 @@ class EditRecipeIngredientsViewController: UIViewController {
 }
 extension EditRecipeIngredientsViewController : UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+         EditRecipeIngredientsViewController.localRecipe = RecipeManager.getRecipeObject(theName: RecipeDetailViewController.localRecipe[0].name)[0]
         recipeIngredients = RecipeIngredientManager.getIngredients(recipe: EditRecipeIngredientsViewController.localRecipe!, enabled: false)
         return recipeIngredients.count
     }
@@ -55,7 +56,8 @@ extension EditRecipeIngredientsViewController : UITableViewDataSource, UITableVi
     
 }
 extension EditRecipeViewController : RecipeIngredientTableDelegate {
-    func didTapOptional(sender: Any) {
-        
+
+    func didTapOptional(sender: RecipeIngredientsTable, optional : Bool) {
+        RecipeIngredientManager.updateRecipeIngredient(recipeIngredient: RecipeIngredientManager.getRecipeIngredientObject(theIngredientName: sender.txtName.text!, recipe: EditRecipeIngredientsViewController.localRecipe!)[0], updatedAmount: 0, updatedOptional: true)
     }
 }
