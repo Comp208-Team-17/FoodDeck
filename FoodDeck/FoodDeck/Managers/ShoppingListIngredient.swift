@@ -76,7 +76,7 @@ class ShoppingListIngredient: NSManagedObject {
             
             if error == true {
                 // present error to user
-                let alert = UIAlertController(title: "Invaid quantity", message: "One or more of the ingredients selected could not be added to the shopping list", preferredStyle: UIAlertController.Style.alert)
+                let alert = UIAlertController(title: "Invalid quantity", message: "One or more of the recipe ingredients could not be added to the shopping list", preferredStyle: UIAlertController.Style.alert)
                 alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
                 
                 // show the alert
