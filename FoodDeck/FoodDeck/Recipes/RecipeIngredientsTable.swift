@@ -20,16 +20,27 @@ class RecipeIngredientsTable: UITableViewCell {
     @IBOutlet weak var txtOptional: UILabel!
     @IBOutlet weak var btnOptional: UIButton!
     @IBAction func btnOptionAction(_ sender: Any) {
-        buttonDelegate?.didTapOptional(sender: self, optional: true)
+        if optional == true {
+            optional = false
+            btnOptional.titleLabel?.text = "Make Mandatory"
+        }
+        else{
+            optional = true
+            btnOptional.titleLabel?.text = "Make Optional"
+        }
+        buttonDelegate?.didTapOptional(sender: self, optional: optional)
     }
     weak var buttonDelegate : RecipeIngredientTableDelegate?
+    var optional : Bool = false
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        
+        if txtOptional.isHidden == false {
+            optional = true
+            btnOptional.titleLabel?.text = "Make Mandatory"
+        }
         //check if amount should be visible and make optional button should be visible.
     }
-    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 

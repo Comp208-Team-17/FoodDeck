@@ -55,9 +55,10 @@ extension EditRecipeIngredientsViewController : UITableViewDataSource, UITableVi
     
     
 }
-extension EditRecipeViewController : RecipeIngredientTableDelegate {
+extension EditRecipeIngredientsViewController : RecipeIngredientTableDelegate {
 
     func didTapOptional(sender: RecipeIngredientsTable, optional : Bool) {
-        RecipeIngredientManager.updateRecipeIngredient(recipeIngredient: RecipeIngredientManager.getRecipeIngredientObject(theIngredientName: sender.txtName.text!, recipe: EditRecipeIngredientsViewController.localRecipe!)[0], updatedAmount: 0, updatedOptional: true)
+        RecipeIngredientManager.updateRecipeIngredient(recipeIngredient: RecipeIngredientManager.getRecipeIngredientObject(theIngredientName: sender.txtName.text!, recipe: EditRecipeIngredientsViewController.localRecipe!)[0], updatedAmount: Int16(sender.txtAmount.text!)!, updatedOptional: optional)
+        
     }
 }
