@@ -40,15 +40,20 @@ class RecipeDetailViewController: UIViewController {
     @IBOutlet weak var txtDescriptionInstructions: UITextView!
     
     @IBAction func btnAddToShoppingList(_ sender: Any) {
+        ShoppingListIngredient.addFromRecipe(recipeIngredients: allRecipeIngredients, on: self)
     }
     
     @IBAction func btnReportCooked(_ sender: Any) {
+        PantryIngredient.subtractRecipeIngredient(recipeIngredients: allRecipeIngredients, on: self)
+        
     }
     
    static var localRecipe : [RecipeStr] = []
+    var allRecipeIngredients: [RecipeIngredient] = []
     override func viewDidLoad() {
         super.viewDidLoad()
             RecipeDetailViewController.localRecipe = RecipeManager.getRecipe(theName: RecipeViewController.chosenRecipeName, all: false)
+         allRecipeIngredients = RecipeManager.getRecipeObject(theName: RecipeViewController.chosenRecipeName)[0].contains?.array as! [RecipeIngredient]
         // Do any additional setup after loading the view.
     }
     override func viewDidAppear(_ animated: Bool){

@@ -58,8 +58,8 @@ class ShoppingListIngredient: NSManagedObject {
                 if  theIngredient?.shoppingList != nil {
                     let value = Int(recipeIngredients[index].amount) + Int((theIngredient?.shoppingList!.amount)!)
                     // check if within limit -> 32767
-                    if value <= Int16.max{
-                        theIngredient?.shoppingList!.setValue(value, forKey: "amount")
+                    if value <= Int16.max {
+                        theIngredient?.shoppingList!.setValue(Int16(value), forKey: "amount")
                     }
                     else {
                         error = true
@@ -76,7 +76,7 @@ class ShoppingListIngredient: NSManagedObject {
             
             if error == true {
                 // present error to user
-                let alert = UIAlertController(title: "Invaid quantity", message: "One or more of the ingredients selected could not be added to the pantry", preferredStyle: UIAlertController.Style.alert)
+                let alert = UIAlertController(title: "Invaid quantity", message: "One or more of the ingredients selected could not be added to the shopping list", preferredStyle: UIAlertController.Style.alert)
                 alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
                 
                 // show the alert

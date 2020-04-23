@@ -58,7 +58,7 @@ class PantryIngredient: NSManagedObject {
                 let theIngredient = recipeIngredients[index].ingredient
                 // if ingredient exists in pantry
                 if  theIngredient?.pantryIngredient != nil {
-                    let value = Int((theIngredient?.shoppingList!.amount)!) - Int(recipeIngredients[index].amount)
+                    let value = Int((theIngredient?.pantryIngredient!.amount)!) - Int(recipeIngredients[index].amount)
                     // check if within limit -> 0
                     if value >= 0 {
                         theIngredient?.pantryIngredient!.setValue(value, forKey: "amount")
@@ -71,7 +71,7 @@ class PantryIngredient: NSManagedObject {
             
             if error == true {
                 // present error to user
-                let alert = UIAlertController(title: "Invaid quantity", message: "One or more of the ingredients selected could not be added to the pantry", preferredStyle: UIAlertController.Style.alert)
+                let alert = UIAlertController(title: "Invaid quantity", message: "One or more of the ingredients selected could not be updated in the pantry", preferredStyle: UIAlertController.Style.alert)
                 alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
                 
                 // show the alert
