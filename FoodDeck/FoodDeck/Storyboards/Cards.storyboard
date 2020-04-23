@@ -17,6 +17,7 @@
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" image="CardView.png" translatesAutoresizingMaskIntoConstraints="NO" id="TYG-9P-N0P">
                                 <rect key="frame" x="20" y="64" width="374" height="615"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="TYG-9P-N0P" secondAttribute="height" multiplier="374:615" id="KIT-Lf-2Sx"/>
                                 </constraints>
@@ -131,7 +132,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="65Q-XX-f0G" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2143" y="1487"/>
+            <point key="canvasLocation" x="2235" y="1500"/>
         </scene>
         <!--settingsSegue-->
         <scene sceneID="6BT-C1-r6I">
@@ -227,7 +228,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B4B-lH-QFI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2968" y="1709"/>
+            <point key="canvasLocation" x="3149" y="1715"/>
         </scene>
         <!--Cards-->
         <scene sceneID="loi-je-QfJ">
