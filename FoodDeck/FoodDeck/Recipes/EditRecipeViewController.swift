@@ -9,7 +9,7 @@
 import UIKit
 
 class EditRecipeViewController: UIViewController {
-    
+
     @IBOutlet weak var selector: UIPickerView!
     @IBOutlet weak var txtServings: UITextField!
     @IBOutlet weak var txtPrepTime: UITextField!
@@ -23,15 +23,13 @@ class EditRecipeViewController: UIViewController {
     let pickerOptions : [String] = ["Breakfast", "Lunch", "Dinner"]
     var pickerOptionSet : String = "Breakfast"
     var chooseIngredients = false
-    
+
     @IBAction func btnPhoto(_ sender: Any) {
         let picker = UIImagePickerController()
         picker.sourceType = .photoLibrary
         picker.allowsEditing = true
         picker.delegate = self
         present(picker, animated: true)
-        
-        
     }
     @IBAction func btnSave(_ sender: Any) {
         var saveComplete : Bool = true
@@ -59,24 +57,26 @@ class EditRecipeViewController: UIViewController {
                  }
         if saveComplete == true{
         if RecipeViewController.addButton == true {
-                if RecipeManager.addRecipe(theAllergens: "", isAvailable: true, theCookTime: cookTimeTmp ?? 0, theDateCreated: "", theDietaryRequirements: EditRecipeViewController.dietary, isFavourite: false, theInstructions: txtInstructions.text!, theName: txtName.text!, thePrepTime: prepTimeTmp ?? 0, theRating: 0, theRecipeDescription: txtDescription.text, theScore: 100, theServings: servingsTmp ?? 0, theThumbnail: UIImage(), theTimeOfDay: pickerOptionSet, theIngredients: []) == true{
-                    chooseIngredients = true
-                    btnChooseIngredients.isEnabled = true
+                if RecipeManager.addRecipe(theAllergens: "", isAvailable: true, theCookTime: cookTimeTmp ?? 0, theDateCreated: "", theDietaryRequirements: EditRecipeViewController.dietary, isFavourite: false, theInstructions: txtInstructions.text!, theName: txtName.text!, thePrepTime: prepTimeTmp ?? 0, theRating: 0, theRecipeDescription: txtDescription.text, theScore: 100, theServings: servingsTmp ?? 0, theThumbnail: UIImage(), theTimeOfDay: pickerOptionSet, theIngredients: []) == false{
+                     ErrorManager.errorMessageStandard(theTitle: "Recipe Error", theMessage: "Could not add new recipe - ensure you have not duplicated a recipe name.", caller: self)
                 }
                 else {
-                    //display error message about saving recipe
-                }
+                    btnChooseIngredients.isEnabled = true
+                    RecipeDetailViewController.localRecipe = RecipeManager.getRecipe(theName: txtName.text!, all: false)
+            }
         }
         else {
             //update recipe
-            chooseIngredients = true
+           
             if RecipeManager.updateRecipeExceptIngredients(originalName: RecipeDetailViewController.localRecipe[0].name
                 ,newName: txtName.text!, theAllergens: "", isAvailable: RecipeDetailViewController.localRecipe[0].available, theCookTime: cookTimeTmp ?? 0 , theDateCreated: RecipeDetailViewController.localRecipe[0].dateCreated, theDietaryRequirements: "ignore", isFavourite: RecipeDetailViewController.localRecipe[0].favourite
                 , theInstructions: txtInstructions.text!, thePrepTime: prepTimeTmp ?? 0, theRating: RecipeDetailViewController.localRecipe[0].rating
                 , theRecipeDescription: txtDescription.text!, theScore: RecipeDetailViewController.localRecipe[0].score, theServings: servingsTmp ?? 0, theThumbnail: recipeImage.image!, theTimeOfDay: pickerOptionSet) == false {
-                ErrorManager.errorMessageStandard(theTitle: "Recipe Error", theMessage: "Error updating recipe, inputted values not accepted", caller: self)
+                ErrorManager.errorMessageStandard(theTitle: "Recipe Error", theMessage: "Error updating recipe, ensure you have not duplicated a recipe name", caller: self)
             }
-            
+            else{
+                RecipeDetailViewController.localRecipe = RecipeManager.getRecipe(theName: txtName.text!, all: false)
+            }
         }
     }
         else {
@@ -151,11 +151,9 @@ extension EditRecipeViewController : UINavigationControllerDelegate , UIImagePic
         picker.dismiss(animated: true)
         
         guard let image = info[.editedImage] as? UIImage else {
-            print("No image found")
+            ErrorManager.errorMessageStandard(theTitle: "Image Import Error", theMessage: "Could not import selected image, please try again or select another image", caller: self)
             return
         }
-        
-        // print out the image size as a test
         recipeImage.image = image
     }
 }

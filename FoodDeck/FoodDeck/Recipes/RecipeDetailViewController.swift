@@ -42,16 +42,16 @@ class RecipeDetailViewController: UIViewController {
    static var localRecipe : [RecipeStr] = []
     override func viewDidLoad() {
         super.viewDidLoad()
-
+            RecipeDetailViewController.localRecipe = RecipeManager.getRecipe(theName: RecipeViewController.chosenRecipeName, all: false)
         // Do any additional setup after loading the view.
     }
     override func viewDidAppear(_ animated: Bool){
         super.viewDidAppear(true)
         var tempIngredients : String = ""
         
-        RecipeDetailViewController.localRecipe = RecipeManager.getRecipe(theName: RecipeViewController.chosenRecipeName, all: false)
+    
         if RecipeDetailViewController.localRecipe.count == 1 {
-            txtName.text = RecipeDetailViewController.localRecipe[0].name
+            self.navigationItem.title = RecipeDetailViewController.localRecipe[0].name
              /*
             for index in 0..<RecipeDetailViewController.localRecipe[0].ingredients.count{
                 tempIngredients += "\(RecipeDetailViewController.localRecipe[0].ingredients[index].1)"
@@ -112,7 +112,7 @@ class RecipeDetailViewController: UIViewController {
        for index in Int(numberOfStars)..<5{
             btnStarsOutlet![index].setImage(UIImage(named: "star-green-outline"), for: .normal)
         }
-        if RecipeManager.updateRecipeRating(theName: txtName.text!, theStars: numberOfStars) == false{
+        if RecipeManager.updateRecipeRating(theName: RecipeDetailViewController.localRecipe[0].name, theStars: numberOfStars) == false{
             let alertController = UIAlertController(title: "Rating error", message: "Attempted to rate non-existing recipe", preferredStyle: UIAlertController.Style.alert)
             alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
             self.present(alertController, animated: true, completion: nil)
