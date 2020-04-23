@@ -44,5 +44,43 @@ class ShoppingListIngredient: NSManagedObject {
         }
         return shoppingListIngredients
     }
-
+    
+    // add ingredient to shopping list
+    static func addFromRecipe(recipeIngredient: RecipeIngredient, on: UIViewController)  {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let theIngredient = recipeIngredient.ingredient
+        do {
+            // if ingredient already exists in shopping list
+            if  theIngredient?.shoppingList != nil {
+                let value = Int(recipeIngredient.amount) + Int((theIngredient?.shoppingList!.amount)!)
+                // check if within limit -> 32767
+                if value <= Int16.max{
+                    theIngredient?.shoppingList!.setValue(value, forKey: "amount")
+                }
+                else {
+                    // present error to user
+                    let alert = UIAlertController(title: "Invaid quantity", message: "One or more of the ingredients selected could not be added to the pantry", preferredStyle: UIAlertController.Style.alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+                    
+                    // show the alert
+                    on.present(alert, animated: true, completion: nil)
+                }
+            }
+            else {
+                // add igredient to list
+                let ShoppingListIngredientEntity = NSEntityDescription.entity(forEntityName: "ShoppingListIngredient", in: managedContext)!
+                let newShoppingListIngredient = NSManagedObject(entity: ShoppingListIngredientEntity, insertInto: managedContext)
+                newShoppingListIngredient.setValue(recipeIngredient.amount, forKey: "amount")
+                newShoppingListIngredient.setValue(theIngredient, forKey: "belongsTo")
+            }
+            // save changes
+            try managedContext.save()
+            
+        } catch {
+            print("Pantry and shopping list could not be updated")
+        }
+        
+    }
+    
 }
