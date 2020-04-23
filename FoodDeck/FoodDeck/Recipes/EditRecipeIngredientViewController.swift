@@ -11,7 +11,17 @@ import UIKit
 class EditRecipeIngredientsViewController: UIViewController {
 
 
+
+    @IBAction func swVegan(_ sender: Any) {
+    }
+    @IBAction func swVeg(_ sender: Any) {
+    }
+    @IBAction func swGlutenFree(_ sender: Any) {
+    }
+    
     @IBOutlet weak var tblIngredients: UITableView!
+    
+    @IBOutlet var swDietary: [UISwitch]!
     override func viewDidLoad() {
         super.viewDidLoad()
 
