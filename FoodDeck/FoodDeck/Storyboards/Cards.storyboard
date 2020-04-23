@@ -10,7 +10,7 @@
         <!--toSettingsController-->
         <scene sceneID="7P3-KQ-NUu">
             <objects>
-                <viewController title="toSettingsController" modalPresentationStyle="fullScreen" id="x4U-pU-bHL" sceneMemberID="viewController">
+                <viewController title="toSettingsController" modalPresentationStyle="fullScreen" id="x4U-pU-bHL" customClass="CardsViewController" customModule="FoodDeck" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xw5-OL-YxC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -121,6 +121,13 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="cookTimeLabel" destination="qAL-bI-68w" id="HvX-Bb-A6e"/>
+                        <outlet property="descriptionLabel" destination="KKG-5r-aHh" id="BoF-AF-e2m"/>
+                        <outlet property="image" destination="034-hY-86x" id="LxW-b7-2im"/>
+                        <outlet property="mealNameLabel" destination="U5Y-HA-aYm" id="grY-qY-S2Y"/>
+                        <outlet property="prepTimeLabel" destination="fVw-ZS-hzh" id="r1s-nn-z05"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="65Q-XX-f0G" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
