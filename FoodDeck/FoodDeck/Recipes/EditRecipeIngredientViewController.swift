@@ -53,7 +53,9 @@ extension EditRecipeIngredientsViewController : UITableViewDataSource, UITableVi
         cell.buttonDelegate = self
         return cell
     }
-    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
+    }
     
 }
 extension EditRecipeIngredientsViewController : RecipeIngredientTableDelegate {
