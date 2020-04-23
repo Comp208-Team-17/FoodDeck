@@ -9,6 +9,7 @@
 import UIKit
 protocol RecipeIngredientTableDelegate : AnyObject {
     func didTapOptional(sender : RecipeIngredientsTable, optional: Bool)
+    func didTapDeleteButton(sender : RecipeIngredientsTable)
 }
 class RecipeIngredientsTable: UITableViewCell {
 
@@ -22,15 +23,18 @@ class RecipeIngredientsTable: UITableViewCell {
     @IBAction func btnOptionAction(_ sender: Any) {
         if optional == true {
             optional = false
-            btnOptional.titleLabel?.text = "Make Optional"
+            btnOptional.setTitle("Make Optional", for: .normal)
             txtOptional.isHidden = true
         }
         else{
             optional = true
-            btnOptional.titleLabel?.text = "Make Mandatory"
+            btnOptional.setTitle("Make Mandatory", for: .normal)
             txtOptional.isHidden = false
         }
         buttonDelegate?.didTapOptional(sender: self, optional: optional)
+    }
+    @IBAction func btnDelete(_ sender: Any) {
+        buttonDelegate?.didTapDeleteButton(sender: self)
     }
     weak var buttonDelegate : RecipeIngredientTableDelegate?
     var optional : Bool = false
@@ -39,7 +43,7 @@ class RecipeIngredientsTable: UITableViewCell {
         // Initialization code
         if txtOptional.isHidden == false {
             optional = true
-            btnOptional.titleLabel?.text = "Make Mandatory"
+            btnOptional.setTitle("Make Mandatory", for: .normal)
         }
         //check if amount should be visible and make optional button should be visible.
     }

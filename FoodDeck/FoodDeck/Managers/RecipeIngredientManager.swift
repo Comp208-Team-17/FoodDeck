@@ -81,9 +81,9 @@ class RecipeIngredientManager: NSManagedObject {
             ingredientsRtn.append(
                 ((theIngredient as! RecipeIngredient).ingredient!.name!,
                  (theIngredient as! RecipeIngredient).amount,
-                 (theIngredient as! RecipeIngredient).optional,
+                 (theIngredient as! RecipeIngredient).ingredient!.enabled,
                  (theIngredient as! RecipeIngredient).ingredient!.unit!,
-                (theIngredient as! RecipeIngredient).ingredient!.enabled
+                (theIngredient as! RecipeIngredient).optional
             ))
         }
         return ingredientsRtn

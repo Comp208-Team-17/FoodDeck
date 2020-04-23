@@ -68,4 +68,8 @@ extension EditRecipeIngredientsViewController : RecipeIngredientTableDelegate {
         RecipeIngredientManager.updateRecipeIngredient(recipeIngredient: RecipeIngredientManager.getRecipeIngredientObject(theIngredientName: sender.txtName.text!, recipe: EditRecipeIngredientsViewController.localRecipe!)[0], updatedAmount: Int16(sender.txtAmount.text!)!, updatedOptional: optional)
         
     }
+    func didTapDeleteButton(sender: RecipeIngredientsTable) {
+        RecipeIngredientManager.removeIngredient(ingredient: IngredientManager.getIngredientObject(theName: sender.txtName.text!)[0], recipe: EditRecipeIngredientsViewController.localRecipe!)
+        tblIngredients.reloadData()
+    }
 }
