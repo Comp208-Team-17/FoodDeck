@@ -44,6 +44,7 @@
 		A384555A2436BB03004A65F3 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38455592436BB03004A65F3 /* Recipe.swift */; };
 		A384555C2436BB20004A65F3 /* RecipeIngredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A384555B2436BB20004A65F3 /* RecipeIngredient.swift */; };
 		A3EF14B9243E221200CCA071 /* AddToIngredientsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EF14B8243E221200CCA071 /* AddToIngredientsViewController.swift */; };
+		D61152672451EF180063B691 /* CardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61152662451EF180063B691 /* CardsViewController.swift */; };
 		D62F803F2439042900894040 /* MealPackManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D62F803E2439042900894040 /* MealPackManager.swift */; };
 		D63A7EA92423CC9100E65E65 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D63A7EA82423CC9100E65E65 /* Settings.storyboard */; };
 		D63EC8CE24323699004A3936 /* RegistrationQuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63EC8CD24323699004A3936 /* RegistrationQuizViewController.swift */; };
@@ -112,6 +113,7 @@
 		A38455592436BB03004A65F3 /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
 		A384555B2436BB20004A65F3 /* RecipeIngredient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeIngredient.swift; sourceTree = "<group>"; };
 		A3EF14B8243E221200CCA071 /* AddToIngredientsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToIngredientsViewController.swift; sourceTree = "<group>"; };
+		D61152662451EF180063B691 /* CardsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsViewController.swift; sourceTree = "<group>"; };
 		D62F803E2439042900894040 /* MealPackManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealPackManager.swift; sourceTree = "<group>"; };
 		D63A7EA82423CC9100E65E65 /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		D63EC8CD24323699004A3936 /* RegistrationQuizViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationQuizViewController.swift; sourceTree = "<group>"; };
@@ -257,6 +259,7 @@
 		A34A4018244CB05C00DC162C /* Cards */ = {
 			isa = PBXGroup;
 			children = (
+				D61152662451EF180063B691 /* CardsViewController.swift */,
 			);
 			name = Cards;
 			path = FoodDeck/Cards;
@@ -470,6 +473,7 @@
 				9AFB4834243B77350002F7A3 /* AddToPantryViewController.swift in Sources */,
 				A34A3FFA244A709000DC162C /* RecipeManager.swift in Sources */,
 				A34A400B244B0C5F00DC162C /* EditRecipeViewController.swift in Sources */,
+				D61152672451EF180063B691 /* CardsViewController.swift in Sources */,
 				D6D950AE24483D4A00AF32B8 /* SuggestionGenerator.swift in Sources */,
 				A34A4007244B0C5F00DC162C /* RecipeViewController.swift in Sources */,
 				A38455562436BACA004A65F3 /* MealPack.swift in Sources */,
