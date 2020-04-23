@@ -35,7 +35,6 @@ class RecipeDetailViewController: UIViewController {
     @IBOutlet weak var btnFavouriteOutlet: UIButton!
     @IBOutlet var btnStarsOutlet: [UIButton]!
     @IBOutlet weak var recipeImage: UIImageView!
-    @IBOutlet weak var txtName: UILabel!
     @IBOutlet var imgDietary: [UIImageView]!
     @IBOutlet weak var txtIngredients: UITextView!
     @IBOutlet weak var txtDescriptionInstructions: UITextView!
@@ -95,13 +94,13 @@ class RecipeDetailViewController: UIViewController {
         if favourite == true {
                   favourite = false
                   btnFavouriteOutlet.setImage(UIImage(named: "heart-green-outline"), for: .normal)
-                   RecipeManager.updateRecipeFavourite(theName: txtName.text!, isFavourite: false)
+                   RecipeManager.updateRecipeFavourite(theName: RecipeDetailViewController.localRecipe[0].name, isFavourite: false)
                   //set as not favourite
               }
               else{
                   favourite = true
                   btnFavouriteOutlet.setImage(UIImage(named:"heart-green"), for: .normal)
-                  RecipeManager.updateRecipeFavourite(theName: txtName.text!, isFavourite: true)
+            RecipeManager.updateRecipeFavourite(theName: RecipeDetailViewController.localRecipe[0].name, isFavourite: true)
                   //set as favourite
               }
     }

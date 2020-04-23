@@ -74,18 +74,16 @@ class RecipeIngredientManager: NSManagedObject {
      Returns an array of tuples [(ingredient name, amount, optional, unit)]
      
      */
-    static func getIngredients(recipe : Recipe, enabled: Bool) -> [(String, Int16, Bool, String)]{
-        var ingredientsRtn : [(String, Int16, Bool, String)] = []
+    static func getIngredients(recipe : Recipe, enabled: Bool) -> [(String, Int16, Bool, String, Bool)]{
+        var ingredientsRtn : [(String, Int16, Bool, String, Bool)] = []
         for theIngredient in recipe.contains!{
-            if !(((theIngredient as! RecipeIngredient).ingredient!.enabled == true) && enabled == true){
-                ingredientsRtn.append(
-                    ((theIngredient as! RecipeIngredient).ingredient!.name!,
-                     (theIngredient as! RecipeIngredient).amount,
-                     (theIngredient as! RecipeIngredient).optional,
-                     (theIngredient as! RecipeIngredient).ingredient!.unit!)
-                )
-            }
-            
+            ingredientsRtn.append(
+                ((theIngredient as! RecipeIngredient).ingredient!.name!,
+                 (theIngredient as! RecipeIngredient).amount,
+                 (theIngredient as! RecipeIngredient).optional,
+                 (theIngredient as! RecipeIngredient).ingredient!.unit!,
+                (theIngredient as! RecipeIngredient).ingredient!.enabled
+            ))
         }
         return ingredientsRtn
     }

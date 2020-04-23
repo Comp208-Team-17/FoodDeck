@@ -12,21 +12,12 @@ protocol RecipeIngredientTableDelegate : AnyObject {
     func didTapOptional(sender : Any)
 }
 class RecipeIngredientsTable: UITableViewCell {
+    @IBOutlet weak var txtAmount: UILabel!
     @IBOutlet weak var txtName: UILabel!
     @IBOutlet weak var txtEnabled: UILabel!
     @IBOutlet weak var txtIncluded: UILabel!
     @IBOutlet weak var txtOptional: UILabel!
-    @IBOutlet weak var btnInclude: UIButton!
     @IBOutlet weak var btnOptional: UIButton!
-    @IBAction func btnIncludeAction(_ sender: Any) {
-        if btnInclude.titleLabel!.text == "Include"{
-            btnInclude.setTitle("Exclude", for: .normal)
-        }
-        else{
-            btnInclude.setTitle("Include", for: .normal)
-        }
-        buttonDelegate?.didTapInclude(sender: self)
-    }
     @IBAction func btnOptionAction(_ sender: Any) {
         buttonDelegate?.didTapOptional(sender: self)
     }

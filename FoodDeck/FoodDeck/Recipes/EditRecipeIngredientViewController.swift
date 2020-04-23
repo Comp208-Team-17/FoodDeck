@@ -20,8 +20,10 @@ class EditRecipeIngredientsViewController: UIViewController {
 
         // Do any additional setup after loading the view.
     }
+    var localRecipe : Recipe
     override func viewDidAppear(_ animated: Bool){
         super.viewDidAppear(true)
+         localRecipe = RecipeManager.getRecipeObject(theName: RecipeDetailViewController.localRecipe[0].name)[0]
         
     }
     /*
@@ -41,7 +43,11 @@ extension EditRecipeIngredientsViewController : UITableViewDataSource, UITableVi
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let recipeIngredients : [(String, Int16, Bool, String, Bool)] = RecipeIngredientManager.getIngredients(recipe: localRecipe, enabled: false)
         let cell = tblIngredients.dequeueReusableCell(withIdentifier: "recipeIngredientTable") as! RecipeIngredientsTable
+        cell.txtName.text = recipeIngredients[indexPath.row].0
+        cell.txtAmount.text = "\(recipeIngredients[indexPath.row].1)"
+        cell.txtEnabled.text = "\(recipeIngredients[indexPath.row].2)"
         return cell
     }
     
