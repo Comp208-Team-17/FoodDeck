@@ -47,34 +47,42 @@ class PantryIngredient: NSManagedObject {
         return pantryList
     }
     
-    static func subtractRecipeIngredient(recipeIngredient: RecipeIngredient, on: UIViewController ) {
+    // subtracts an array of recipe ingredients from the pantry
+    static func subtractRecipeIngredient(recipeIngredients: [RecipeIngredient], on: UIViewController ) {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let managedContext = appDelegate.persistentContainer.viewContext
-        
+        var error = false
         
         do {
-            let theIngredient = recipeIngredient.ingredient
-            // if ingredient exists in pantry
-            if  theIngredient?.pantryIngredient != nil {
-                let value = Int((theIngredient?.shoppingList!.amount)!) - Int(recipeIngredient.amount)
-                // check if within limit -> 0
-                if value >= 0 {
-                    theIngredient?.pantryIngredient!.setValue(value, forKey: "amount")
-                }
-                else {
-                    // present error to user
-                    let alert = UIAlertController(title: "Invaid quantity", message: "One or more of the ingredients selected could not be added to the pantry", preferredStyle: UIAlertController.Style.alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-                    
-                    // show the alert
-                    on.present(alert, animated: true, completion: nil)
+            for index in 0..<recipeIngredients.count {
+                let theIngredient = recipeIngredients[index].ingredient
+                // if ingredient exists in pantry
+                if  theIngredient?.pantryIngredient != nil {
+                    let value = Int((theIngredient?.shoppingList!.amount)!) - Int(recipeIngredients[index].amount)
+                    // check if within limit -> 0
+                    if value >= 0 {
+                        theIngredient?.pantryIngredient!.setValue(value, forKey: "amount")
+                    }
+                    else {
+                        error = true
+                    }
                 }
             }
+            
+            if error == true {
+                // present error to user
+                let alert = UIAlertController(title: "Invaid quantity", message: "One or more of the ingredients selected could not be added to the pantry", preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+                
+                // show the alert
+                on.present(alert, animated: true, completion: nil)
+            }
+            
             // save changes
             try managedContext.save()
             
         } catch {
-            print("Pantry and shopping list could not be updated")
+            print("Pantry could not be updated")
         }
     }
 }
