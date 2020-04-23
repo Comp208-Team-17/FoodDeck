@@ -21,6 +21,7 @@
 		9AC533052448F7CA00DD8C6C /* ShoppingListIngredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC533042448F7CA00DD8C6C /* ShoppingListIngredient.swift */; };
 		9AC533072448F8B500DD8C6C /* ShoppingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC533062448F8B500DD8C6C /* ShoppingListViewController.swift */; };
 		9AC533092448F92A00DD8C6C /* AddToShoppingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC533082448F92A00DD8C6C /* AddToShoppingListViewController.swift */; };
+		9AC5330B2451DAE500DD8C6C /* AddIngredientToRecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC5330A2451DAE500DD8C6C /* AddIngredientToRecipeViewController.swift */; };
 		9AD9FF6F242260710065970A /* Ingredients.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9AD9FF6E242260710065970A /* Ingredients.storyboard */; };
 		9AD9FF77242263CF0065970A /* ShoppingList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9AD9FF76242263CF0065970A /* ShoppingList.storyboard */; };
 		9AD9FF79242263E80065970A /* Cards.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9AD9FF78242263E80065970A /* Cards.storyboard */; };
@@ -90,6 +91,7 @@
 		9AC533042448F7CA00DD8C6C /* ShoppingListIngredient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListIngredient.swift; sourceTree = "<group>"; };
 		9AC533062448F8B500DD8C6C /* ShoppingListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListViewController.swift; sourceTree = "<group>"; };
 		9AC533082448F92A00DD8C6C /* AddToShoppingListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToShoppingListViewController.swift; sourceTree = "<group>"; };
+		9AC5330A2451DAE500DD8C6C /* AddIngredientToRecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddIngredientToRecipeViewController.swift; sourceTree = "<group>"; };
 		9AD9FF6E242260710065970A /* Ingredients.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Ingredients.storyboard; sourceTree = "<group>"; };
 		9AD9FF76242263CF0065970A /* ShoppingList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ShoppingList.storyboard; sourceTree = "<group>"; };
 		9AD9FF78242263E80065970A /* Cards.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Cards.storyboard; sourceTree = "<group>"; };
@@ -231,6 +233,7 @@
 				A34A4003244B0C5F00DC162C /* RecipeDetailViewController.swift */,
 				A34A4000244B0C5F00DC162C /* RecipeIngredientsTable.swift */,
 				A34A3FFD244B0C5F00DC162C /* RecipeViewController.swift */,
+				9AC5330A2451DAE500DD8C6C /* AddIngredientToRecipeViewController.swift */,
 			);
 			name = Recipes;
 			path = FoodDeck/Recipes;
@@ -460,6 +463,7 @@
 				D62F803F2439042900894040 /* MealPackManager.swift in Sources */,
 				A34A400E244B0C5F00DC162C /* EditRecipeIngredientViewController.swift in Sources */,
 				9AC533052448F7CA00DD8C6C /* ShoppingListIngredient.swift in Sources */,
+				9AC5330B2451DAE500DD8C6C /* AddIngredientToRecipeViewController.swift in Sources */,
 				9AC533092448F92A00DD8C6C /* AddToShoppingListViewController.swift in Sources */,
 				A38455462436B49C004A65F3 /* Ingredient.swift in Sources */,
 				A34A4006244B0C5F00DC162C /* Structures.swift in Sources */,
