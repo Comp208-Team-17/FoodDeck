@@ -39,6 +39,7 @@ class RecipeViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool){
         super.viewDidAppear(true)
         tblRecipes.reloadData()
+        RecipeViewController.addButton = false
     }
    
 

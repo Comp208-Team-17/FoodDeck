@@ -50,14 +50,18 @@ extension EditRecipeIngredientsViewController : UITableViewDataSource, UITableVi
         cell.txtEnabled.text = "\(recipeIngredients[indexPath.row].2)"
         cell.txtUnit.text = "\(recipeIngredients[indexPath.row].3)"
         cell.txtOptional.text = "\(recipeIngredients[indexPath.row].4)"
+        cell.buttonDelegate = self
         return cell
     }
-    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
+    }
     
 }
-extension EditRecipeViewController : RecipeIngredientTableDelegate {
+extension EditRecipeIngredientsViewController : RecipeIngredientTableDelegate {
 
     func didTapOptional(sender: RecipeIngredientsTable, optional : Bool) {
-        RecipeIngredientManager.updateRecipeIngredient(recipeIngredient: RecipeIngredientManager.getRecipeIngredientObject(theIngredientName: sender.txtName.text!, recipe: EditRecipeIngredientsViewController.localRecipe!)[0], updatedAmount: 0, updatedOptional: true)
+        RecipeIngredientManager.updateRecipeIngredient(recipeIngredient: RecipeIngredientManager.getRecipeIngredientObject(theIngredientName: sender.txtName.text!, recipe: EditRecipeIngredientsViewController.localRecipe!)[0], updatedAmount: Int16(sender.txtAmount.text!)!, updatedOptional: optional)
+        
     }
 }

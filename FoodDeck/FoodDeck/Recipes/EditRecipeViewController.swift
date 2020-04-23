@@ -115,6 +115,7 @@ class EditRecipeViewController: UIViewController {
             
         }
         if RecipeViewController.addButton == true {
+           
             btnChooseIngredients.isEnabled = false
         }
     }
