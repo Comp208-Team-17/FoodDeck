@@ -40,6 +40,7 @@ class RecipeManager: NSManagedObject {
             newRecipe.timeOfDay = theTimeOfDay
             do{
                 try context.save()
+                return true
             }
             catch{
                 return false
