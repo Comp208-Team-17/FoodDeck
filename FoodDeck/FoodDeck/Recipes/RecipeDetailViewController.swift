@@ -58,11 +58,12 @@ class RecipeDetailViewController: UIViewController {
 
         // Do any additional setup after loading the view.
     }
+    func reloadLocalCopy(){
+        RecipeDetailViewController.localRecipe = RecipeManager.getRecipe(theName: self.navigationItem.title!, all: false)
+    }
     override func viewDidAppear(_ animated: Bool){
         super.viewDidAppear(true)
-        var tempIngredients : String = ""
-        
-    
+  
         if RecipeDetailViewController.localRecipe.count == 1 {
             self.navigationItem.title = RecipeDetailViewController.localRecipe[0].name
              /*
