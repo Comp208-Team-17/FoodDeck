@@ -17,10 +17,10 @@ class EditRecipeIngredientsViewController: UIViewController {
 
         // Do any additional setup after loading the view.
     }
-    var localRecipe : Recipe?
+    static var localRecipe : Recipe?
     override func viewDidAppear(_ animated: Bool){
         super.viewDidAppear(true)
-         localRecipe = RecipeManager.getRecipeObject(theName: RecipeDetailViewController.localRecipe[0].name)[0]
+        EditRecipeIngredientsViewController.localRecipe = RecipeManager.getRecipeObject(theName: RecipeDetailViewController.localRecipe[0].name)[0]
         tblIngredients.reloadData()
         
     }
