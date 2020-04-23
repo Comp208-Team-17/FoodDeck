@@ -18,6 +18,7 @@ class CardsViewController : UIViewController {
     var recipes : [RecipeStr] = []
     var currentRecipe = 0
     
+    // Create of list of potential recipes for user
     func generateNewSuggestions(){
         recipes = SuggestionGenerator.gererateSuggestion()
         if (recipes.count == 0){
@@ -30,6 +31,7 @@ class CardsViewController : UIViewController {
     }
     
     override func viewDidLoad() {
+        // Add gesture recognizers
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(self.handleGesture(gesture:)))
         swipeLeft.direction = .left
         self.view.addGestureRecognizer(swipeLeft)
