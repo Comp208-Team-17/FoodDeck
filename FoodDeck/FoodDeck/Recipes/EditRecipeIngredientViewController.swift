@@ -50,6 +50,7 @@ extension EditRecipeIngredientsViewController : UITableViewDataSource, UITableVi
         cell.txtEnabled.text = "\(recipeIngredients[indexPath.row].2)"
         cell.txtUnit.text = "\(recipeIngredients[indexPath.row].3)"
         cell.txtOptional.text = "\(recipeIngredients[indexPath.row].4)"
+        cell.buttonDelegate = self
         return cell
     }
     
