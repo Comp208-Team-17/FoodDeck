@@ -170,7 +170,9 @@ class RecipeManager: NSManagedObject {
                  updatedRecipe.available = isAvailable
                  updatedRecipe.cookTime = theCookTime
                  updatedRecipe.dateCreated = theDateCreated
-                 updatedRecipe.dietaryRequirements = theDietaryRequirements
+            if theDietaryRequirements != "ignore"{
+                updatedRecipe.dietaryRequirements = theDietaryRequirements
+            }
                  updatedRecipe.favourite = isFavourite
                  updatedRecipe.instructions = theInstructions
                  updatedRecipe.name = newName

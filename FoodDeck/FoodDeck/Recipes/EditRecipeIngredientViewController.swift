@@ -17,6 +17,7 @@ class EditRecipeIngredientsViewController: UIViewController {
     @IBAction func swVeg(_ sender: Any) {
     }
     @IBAction func swGlutenFree(_ sender: Any) {
+        
     }
     
     @IBOutlet weak var tblIngredients: UITableView!
@@ -30,9 +31,19 @@ class EditRecipeIngredientsViewController: UIViewController {
     static var localRecipe : Recipe?
     override func viewDidAppear(_ animated: Bool){
         super.viewDidAppear(true)
-       
+        let dietaryRequirements = RecipeManager.revertDietaryValue(value: RecipeDetailViewController.localRecipe[0].dietaryRequirements)
         tblIngredients.reloadData()
+        for index in 0...2{
+            swDietary[index].isOn = dietaryRequirements[index]
+        }
         
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        if self.isMovingFromParent{
+            let dietaryRequirements = RecipeManager.convertDietaryValue(vegan: swDietary[0].isOn, veg: swDietary[1].isOn, gluten: swDietary[2].isOn)
+            RecipeManager.updateRecipeDietary(theName: RecipeDetailViewController.localRecipe[0].name, theDietaryRequirements: dietaryRequirements)
+        }
     }
     var recipeIngredients : [(String, Int16, Bool, String, Bool)] = []
     /*
@@ -46,6 +57,7 @@ class EditRecipeIngredientsViewController: UIViewController {
     */
 
 }
+
 extension EditRecipeIngredientsViewController : UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
          EditRecipeIngredientsViewController.localRecipe = RecipeManager.getRecipeObject(theName: RecipeDetailViewController.localRecipe[0].name)[0]
@@ -75,7 +87,7 @@ extension EditRecipeIngredientsViewController : UITableViewDataSource, UITableVi
 extension EditRecipeIngredientsViewController : RecipeIngredientTableDelegate {
 
     func didTapOptional(sender: RecipeIngredientsTable, optional : Bool) {
-        RecipeIngredientManager.updateRecipeIngredient(recipeIngredient: RecipeIngredientManager.getRecipeIngredientObject(theIngredientName: sender.txtName.text!, recipe: EditRecipeIngredientsViewController.localRecipe!)[0], updatedAmount: Int16(sender.txtAmount.text!)!, updatedOptional: optional)
+    RecipeIngredientManager.updateRecipeIngredient(recipeIngredient: RecipeIngredientManager.getRecipeIngredientObject(theIngredientName: sender.txtName.text!, recipe: EditRecipeIngredientsViewController.localRecipe!)[0], updatedAmount: Int16(sender.txtAmount.text!)!, updatedOptional: optional)
         
     }
     func didTapDeleteButton(sender: RecipeIngredientsTable) {

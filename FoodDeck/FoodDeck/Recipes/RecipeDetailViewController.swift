@@ -52,8 +52,10 @@ class RecipeDetailViewController: UIViewController {
     var allRecipeIngredients: [RecipeIngredient] = []
     override func viewDidLoad() {
         super.viewDidLoad()
-            RecipeDetailViewController.localRecipe = RecipeManager.getRecipe(theName: RecipeViewController.chosenRecipeName, all: false)
-         allRecipeIngredients = RecipeManager.getRecipeObject(theName: RecipeViewController.chosenRecipeName)[0].contains?.array as! [RecipeIngredient]
+        RecipeDetailViewController.localRecipe = RecipeManager.getRecipe(theName: RecipeViewController.chosenRecipeName, all: false)
+        allRecipeIngredients = RecipeManager.getRecipeObject(theName: RecipeViewController.chosenRecipeName)[0].contains?.array as! [RecipeIngredient]
+        RecipeDetailViewController.localRecipe = RecipeManager.getRecipe(theName: RecipeViewController.chosenRecipeName, all: false)
+
         // Do any additional setup after loading the view.
     }
     override func viewDidAppear(_ animated: Bool){
