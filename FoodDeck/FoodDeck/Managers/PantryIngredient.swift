@@ -60,26 +60,38 @@ class PantryIngredient: NSManagedObject {
                 if  theIngredient?.pantryIngredient != nil {
                     let value = Int((theIngredient?.pantryIngredient!.amount)!) - Int(recipeIngredients[index].amount)
                     // check if within limit -> 0
-                    if value >= 0 {
+                    if value == 0 {
+                        managedContext.delete((theIngredient?.pantryIngredient!)!)
+                    }
+                    else if value > 0 {
                         theIngredient?.pantryIngredient!.setValue(value, forKey: "amount")
                     }
                     else {
                         error = true
+                        break
                     }
+                }
+                else {
+                    error = true
+                    break
                 }
             }
             
             if error == true {
+                managedContext.rollback()
                 // present error to user
-                let alert = UIAlertController(title: "Invalid quantity", message: "One or more of the recipe ingredients could not be updated in the pantry", preferredStyle: UIAlertController.Style.alert)
+                let alert = UIAlertController(title: "Not enough ingredients", message: "Lack of ingredients in your pantry to cook this meal", preferredStyle: UIAlertController.Style.alert)
                 alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
                 
                 // show the alert
                 on.present(alert, animated: true, completion: nil)
             }
+            else if error == false {
+                // save changes
+                try managedContext.save()
+            }
             
-            // save changes
-            try managedContext.save()
+           
             
         } catch {
             print("Pantry could not be updated")
