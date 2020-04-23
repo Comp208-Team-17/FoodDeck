@@ -47,9 +47,13 @@ extension EditRecipeIngredientsViewController : UITableViewDataSource, UITableVi
         let cell = tblIngredients.dequeueReusableCell(withIdentifier: "recipeIngredientTable") as! RecipeIngredientsTable
         cell.txtName.text = recipeIngredients[indexPath.row].0
         cell.txtAmount.text = "\(recipeIngredients[indexPath.row].1)"
-        cell.txtEnabled.text = "\(recipeIngredients[indexPath.row].2)"
+        if (recipeIngredients[indexPath.row].2) == false {
+            cell.txtEnabled.text = "Disabled"
+        }
         cell.txtUnit.text = "\(recipeIngredients[indexPath.row].3)"
-        cell.txtOptional.text = "\(recipeIngredients[indexPath.row].4)"
+        if (recipeIngredients[indexPath.row].4) == false {
+            cell.txtOptional.isHidden = true
+        }
         cell.buttonDelegate = self
         return cell
     }
