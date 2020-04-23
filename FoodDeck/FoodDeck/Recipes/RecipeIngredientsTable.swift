@@ -22,11 +22,13 @@ class RecipeIngredientsTable: UITableViewCell {
     @IBAction func btnOptionAction(_ sender: Any) {
         if optional == true {
             optional = false
-            btnOptional.titleLabel?.text = "Make Mandatory"
+            btnOptional.titleLabel?.text = "Make Optional"
+            txtOptional.isHidden = true
         }
         else{
             optional = true
-            btnOptional.titleLabel?.text = "Make Optional"
+            btnOptional.titleLabel?.text = "Make Mandatory"
+            txtOptional.isHidden = false
         }
         buttonDelegate?.didTapOptional(sender: self, optional: optional)
     }
