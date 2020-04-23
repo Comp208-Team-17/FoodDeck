@@ -16,18 +16,38 @@ class CardsViewController : UIViewController {
     @IBOutlet weak var descriptionLabel: UILabel!
     
     var recipes : [RecipeStr] = []
-    var currentRecipe = 0
+    var currentIndex = 0
     
     // Create of list of potential recipes for user
     func generateNewSuggestions(){
         recipes = SuggestionGenerator.gererateSuggestion()
         if (recipes.count == 0){
-            ErrorManager.errorMessageStandard(theTitle: "Error", theMessage: "Not enough data to make suggestions. Please add more ingredients or add more recipes", caller: self)
+            ErrorManager.errorMessageStandard(theTitle: "Error", theMessage: "Not enough data to make suggestions. Please add more ingredients or add more recipes.", caller: self)
         }
+    }
+    
+    func showCurrentRecipe() {
+        var currentRecipe: RecipeStr
+        
+        if (recipes.count == 0) {
+            return
+        }
+        else {
+            currentRecipe = recipes[currentIndex]
+        }
+        
+        // Show recipe properties
+        image.image = currentRecipe.thumbnail
+        mealNameLabel.text? = currentRecipe.name
+        prepTimeLabel.text? = "\(currentRecipe.prepTime) mins"
+        cookTimeLabel.text? = "\(currentRecipe.cookTime) mins"
+        descriptionLabel.text? = currentRecipe.recipeDescription
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         generateNewSuggestions()
+        showCurrentRecipe()
     }
     
     override func viewDidLoad() {
@@ -50,17 +70,33 @@ class CardsViewController : UIViewController {
     }
     
     @objc func handleGesture(gesture: UISwipeGestureRecognizer) {
+        var currentRecipe: RecipeStr
+        
+        if (recipes.count == 0) {
+            return
+        }
+        else {
+            currentRecipe = recipes[currentIndex]
+        }
+        
+        // Swipe right - add points and show recipe detail
         if (gesture.direction == UISwipeGestureRecognizer.Direction.right) {
+            SuggestionGenerator.updatePoints(source: pointSource.swipeRight, rating: Int(currentRecipe.rating), inpRecipe: currentRecipe)
             print("Right")
         }
         
+        // Swipe left - subtract points and show next recipe
         else if (gesture.direction == UISwipeGestureRecognizer.Direction.left) {
+            SuggestionGenerator.updatePoints(source: pointSource.swipeLeft, rating: Int(currentRecipe.rating), inpRecipe: currentRecipe)
+            
+            currentIndex += 1
+            
+            // Regenerate recipes if all the suggestions have been used
+            if (currentIndex + 1 > recipes.count) {
+                generateNewSuggestions()
+                currentIndex = 0
+            }
             print("Left")
         }
     }
-    
-    
-    
-    
-    
 }
