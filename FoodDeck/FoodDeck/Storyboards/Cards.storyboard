@@ -17,6 +17,7 @@
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" image="CardView.png" translatesAutoresizingMaskIntoConstraints="NO" id="TYG-9P-N0P">
                                 <rect key="frame" x="20" y="64" width="374" height="615"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="TYG-9P-N0P" secondAttribute="height" multiplier="374:615" id="KIT-Lf-2Sx"/>
                                 </constraints>

@@ -15,4 +15,50 @@ class CardsViewController : UIViewController {
     @IBOutlet weak var cookTimeLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     
+    var recipes : [RecipeStr] = []
+    var currentRecipe = 0
+    
+    func generateNewSuggestions(){
+        recipes = SuggestionGenerator.gererateSuggestion()
+        if (recipes.count == 0){
+            ErrorManager.errorMessageStandard(theTitle: "Error", theMessage: "Not enough data to make suggestions. Please add more ingredients or add more recipes", caller: self)
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        generateNewSuggestions()
+    }
+    
+    override func viewDidLoad() {
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(self.handleGesture(gesture:)))
+        swipeLeft.direction = .left
+        self.view.addGestureRecognizer(swipeLeft)
+
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(self.handleGesture(gesture:)))
+        swipeRight.direction = .right
+        self.view.addGestureRecognizer(swipeRight)
+
+        let swipeUp = UISwipeGestureRecognizer(target: self, action: #selector(self.handleGesture(gesture:)))
+        swipeUp.direction = .up
+        self.view.addGestureRecognizer(swipeUp)
+
+        let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(self.handleGesture(gesture:)))
+        swipeDown.direction = .down
+        self.view.addGestureRecognizer(swipeDown)
+    }
+    
+    @objc func handleGesture(gesture: UISwipeGestureRecognizer) {
+        if (gesture.direction == UISwipeGestureRecognizer.Direction.right) {
+            print("Right")
+        }
+        
+        else if (gesture.direction == UISwipeGestureRecognizer.Direction.left) {
+            print("Left")
+        }
+    }
+    
+    
+    
+    
+    
 }
