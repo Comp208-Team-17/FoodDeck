@@ -28,5 +28,4 @@ class CardDetailViewController: UIViewController {
         instructionsLabel.text = recipe?.instructions
         // Ingredients label?
     }
-    
 }

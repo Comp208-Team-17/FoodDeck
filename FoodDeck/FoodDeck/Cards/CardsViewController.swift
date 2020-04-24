@@ -110,5 +110,4 @@ class CardsViewController : UIViewController {
             print("Left")
         }
     }
-    
 }
