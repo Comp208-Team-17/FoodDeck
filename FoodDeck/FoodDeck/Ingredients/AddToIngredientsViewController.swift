@@ -56,9 +56,9 @@ class AddToIngredientsViewController: UIViewController{
             AddToIngredientsViewController.selectedEdit = false
             tempIngredient = IngredientManager.getIngredient(theName: AddToIngredientsViewController.selectedRowTxt, enabled: false, all: false)
             txtIngredient.text = tempIngredient[0].name
-            unitSelect.selectRow(tempIngredient[0].unit == "G" ? 0 : 1, inComponent: 0, animated: true)
+            selectedUnitType = tempIngredient[0].unit == "G" ? 0 : 1
+            unitSelect.selectRow(selectedUnitType, inComponent: 0, animated: true)
             AddToIngredientsViewController.selectedEditPage = true
-            
         }
     }
     
