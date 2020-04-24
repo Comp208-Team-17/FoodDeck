@@ -38,6 +38,7 @@ class RecipeDetailViewController: UIViewController {
     @IBOutlet var imgDietary: [UIImageView]!
     @IBOutlet weak var txtIngredients: UITextView!
     @IBOutlet weak var txtDescriptionInstructions: UITextView!
+    @IBOutlet weak var tblIngredients: UITableView!
     
     @IBAction func btnAddToShoppingList(_ sender: Any) {
         let alert = UIAlertController(title: "Add to shopping list?", message: "This action will add all ingredients in this recipe to your shopping list", preferredStyle: UIAlertController.Style.actionSheet)
@@ -66,7 +67,7 @@ class RecipeDetailViewController: UIViewController {
     var allRecipeIngredients: [RecipeIngredient] = []
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+             RecipeDetailViewController.localRecipe = RecipeManager.getRecipe(theName: RecipeViewController.chosenRecipeName, all: false)
 
         // Do any additional setup after loading the view.
     }
@@ -75,24 +76,12 @@ class RecipeDetailViewController: UIViewController {
     }
     override func viewDidAppear(_ animated: Bool){
         super.viewDidAppear(true)
-        RecipeDetailViewController.localRecipe = RecipeManager.getRecipe(theName: RecipeViewController.chosenRecipeName, all: false)
-        allRecipeIngredients = RecipeManager.getRecipeObject(theName: RecipeViewController.chosenRecipeName)[0].contains?.array as! [RecipeIngredient]
-        RecipeDetailViewController.localRecipe = RecipeManager.getRecipe(theName: RecipeViewController.chosenRecipeName, all: false)
+   
         
         if RecipeDetailViewController.localRecipe.count == 1 {
             self.navigationItem.title = RecipeDetailViewController.localRecipe[0].name
-             /*
-            for index in 0..<RecipeDetailViewController.localRecipe[0].ingredients.count{
-                tempIngredients += "\(RecipeDetailViewController.localRecipe[0].ingredients[index].1)"
-                if RecipeDetailViewController.localRecipe[0].ingredients[index].3 == "U" {
-                    tempIngredients += "Units of"
-                    
-                }
-                else{
-                    tempIngredients += "Grams of"
-                }
-                tempIngredients += "\(RecipeDetailViewController.localRecipe[0].ingredients[index].0) \n"
-            } */
+          //load table
+            tblIngredients.reloadData()
             txtDescriptionInstructions.text = RecipeDetailViewController.localRecipe[0].recipeDescription + "\n" + RecipeDetailViewController.localRecipe[0].instructions
             if RecipeDetailViewController.localRecipe[0].thumbnail != nil {
                 recipeImage.image = RecipeDetailViewController.localRecipe[0].thumbnail
@@ -107,7 +96,7 @@ class RecipeDetailViewController: UIViewController {
             }
             let dietaryOptions = RecipeManager.revertDietaryValue(value: RecipeDetailViewController.localRecipe[0].dietaryRequirements)
             for index in 0...2 {
-                imgDietary[index].isHidden = dietaryOptions[index]
+                imgDietary[index].isHidden = !dietaryOptions[index]
             }
             
         }
@@ -119,6 +108,7 @@ class RecipeDetailViewController: UIViewController {
             //Error message,
             //Return to previous view controller
         }
+         allRecipeIngredients = RecipeManager.getRecipeObject(theName: RecipeViewController.chosenRecipeName)[0].contains?.array as! [RecipeIngredient]
     }
     func setFavourite(){
         if favourite == true {
@@ -159,4 +149,33 @@ class RecipeDetailViewController: UIViewController {
     */
 
  }
+extension RecipeDetailViewController : UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if RecipeDetailViewController.localRecipe.count > 0 {
+            return RecipeDetailViewController.localRecipe[0].ingredients.count
+        }
+        else{
+            return 0
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tblIngredients.dequeueReusableCell(withIdentifier: "tblCell") as! RecipeDetailIngredientsTable
+        cell.txtName.text =  "\(RecipeDetailViewController.localRecipe[0].ingredients[indexPath.row].0)"
+        if RecipeDetailViewController.localRecipe[0].ingredients[indexPath.row].3 == "U" {
+            cell.txtAmount.text = "x\(RecipeDetailViewController.localRecipe[0].ingredients[indexPath.row].1)"
+        }
+        else{
+                cell.txtAmount.text = "\(RecipeDetailViewController.localRecipe[0].ingredients[indexPath.row].1)g"
+        }
+    
+        
+        return cell
+    }
+     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 65
+    }
+    
+    
+}
 

@@ -195,7 +195,7 @@ class RecipeManager: NSManagedObject {
     static func updateRecipeDietary(theName : String, theDietaryRequirements : String)-> Bool {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
              let context = appDelegate.persistentContainer.viewContext
-        if checkExists(theName: theName, delete: false, get: false) == true{
+        if checkExists(theName: theName, delete: false, get: false) == false{
             let updatedRecipe = getRecipeObject(theName: theName)[0]
             updatedRecipe.dietaryRequirements = theDietaryRequirements
             do{
@@ -253,9 +253,6 @@ class RecipeManager: NSManagedObject {
         let charOne = value[..<charOneIndex]
         let charTwo = value[charOneIndex..<charTwoIndex]
         let charThree = value[charTwoIndex..<charThreeIndex]
-        print (charOne)
-        print (charTwo)
-        print (charThree)
         output.append(charOne == "0" ? false : true)
         output.append(charTwo == "0" ? false : true)
         output.append(charThree == "0" ? false : true)

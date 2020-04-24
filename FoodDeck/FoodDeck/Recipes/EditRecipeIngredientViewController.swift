@@ -42,7 +42,8 @@ class EditRecipeIngredientsViewController: UIViewController {
         super.viewWillDisappear(animated)
         if self.isMovingFromParent{
             let dietaryRequirements = RecipeManager.convertDietaryValue(vegan: swDietary[0].isOn, veg: swDietary[1].isOn, gluten: swDietary[2].isOn)
-            RecipeManager.updateRecipeDietary(theName: RecipeDetailViewController.localRecipe[0].name, theDietaryRequirements: dietaryRequirements)
+            if RecipeManager.updateRecipeDietary(theName: RecipeDetailViewController.localRecipe[0].name, theDietaryRequirements: dietaryRequirements) ==  false {
+            }
         }
     }
     var recipeIngredients : [(String, Int16, Bool, String, Bool)] = []

@@ -100,7 +100,6 @@ extension AddToIngredientsViewController : UITableViewDataSource, UITableViewDel
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tblIngredients.dequeueReusableCell(withIdentifier: "IngredientsTblCell") as! IngredientTable
-        
         cell.txtIngredientName.text = "\(ingredientsList[indexPath.row].name)"
         cell.txtEnabled.text = ingredientsList[indexPath.row].enabled == true ? "Enabled" : "Disabled"
         cell.txtUnit.text = ingredientsList[indexPath.row].unit == "G" ? "Grams" : "#items"

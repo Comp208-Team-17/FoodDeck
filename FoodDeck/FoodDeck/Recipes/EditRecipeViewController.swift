@@ -63,6 +63,7 @@ class EditRecipeViewController: UIViewController {
                 else {
                     btnChooseIngredients.isEnabled = true
                     RecipeDetailViewController.localRecipe = RecipeManager.getRecipe(theName: txtName.text!, all: false)
+                   // RecipeViewController.chosenRecipeName = txtName.text!
             }
         }
         else {
@@ -76,6 +77,7 @@ class EditRecipeViewController: UIViewController {
             }
             else{
                 RecipeDetailViewController.localRecipe = RecipeManager.getRecipe(theName: txtName.text!, all: false)
+               // RecipeViewController.chosenRecipeName = txtName.text!
             }
         }
     }

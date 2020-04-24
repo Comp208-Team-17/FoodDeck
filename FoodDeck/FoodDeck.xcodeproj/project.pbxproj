@@ -28,6 +28,7 @@
 		9AD9FF7B242264AC0065970A /* Pantry.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9AD9FF7A242264AC0065970A /* Pantry.storyboard */; };
 		9AFB4830243B59BD0002F7A3 /* PantryManagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AFB482F243B59BD0002F7A3 /* PantryManagerViewController.swift */; };
 		9AFB4834243B77350002F7A3 /* AddToPantryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AFB4833243B77350002F7A3 /* AddToPantryViewController.swift */; };
+		A3199BC024531E630048DC45 /* RecipeDetailIngredientsTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3199BBF24531E630048DC45 /* RecipeDetailIngredientsTable.swift */; };
 		A34A3FFA244A709000DC162C /* RecipeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34A3FF9244A709000DC162C /* RecipeManager.swift */; };
 		A34A4005244B0C5F00DC162C /* IngredientManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34A3FFB244B0C5E00DC162C /* IngredientManager.swift */; };
 		A34A4006244B0C5F00DC162C /* Structures.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34A3FFC244B0C5E00DC162C /* Structures.swift */; };
@@ -99,6 +100,7 @@
 		9AD9FF7A242264AC0065970A /* Pantry.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Pantry.storyboard; sourceTree = "<group>"; };
 		9AFB482F243B59BD0002F7A3 /* PantryManagerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PantryManagerViewController.swift; sourceTree = "<group>"; };
 		9AFB4833243B77350002F7A3 /* AddToPantryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToPantryViewController.swift; sourceTree = "<group>"; };
+		A3199BBF24531E630048DC45 /* RecipeDetailIngredientsTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailIngredientsTable.swift; sourceTree = "<group>"; };
 		A34A3FF9244A709000DC162C /* RecipeManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeManager.swift; sourceTree = "<group>"; };
 		A34A3FFB244B0C5E00DC162C /* IngredientManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IngredientManager.swift; sourceTree = "<group>"; };
 		A34A3FFC244B0C5E00DC162C /* Structures.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Structures.swift; sourceTree = "<group>"; };
@@ -236,6 +238,7 @@
 				A34A4000244B0C5F00DC162C /* RecipeIngredientsTable.swift */,
 				A34A3FFD244B0C5F00DC162C /* RecipeViewController.swift */,
 				9AC5330A2451DAE500DD8C6C /* AddIngredientToRecipeViewController.swift */,
+				A3199BBF24531E630048DC45 /* RecipeDetailIngredientsTable.swift */,
 			);
 			name = Recipes;
 			path = FoodDeck/Recipes;
@@ -473,6 +476,7 @@
 				D6115269245314D90063B691 /* CardDetailViewController.swift in Sources */,
 				9AC0B16A240D2F8000234251 /* ViewController.swift in Sources */,
 				A384555C2436BB20004A65F3 /* RecipeIngredient.swift in Sources */,
+				A3199BC024531E630048DC45 /* RecipeDetailIngredientsTable.swift in Sources */,
 				9AC0B166240D2F8000234251 /* AppDelegate.swift in Sources */,
 				9AC0B168240D2F8000234251 /* SceneDelegate.swift in Sources */,
 				D63EC8CE24323699004A3936 /* RegistrationQuizViewController.swift in Sources */,
