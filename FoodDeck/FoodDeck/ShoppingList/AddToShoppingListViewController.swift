@@ -155,7 +155,7 @@ class AddToShoppingListViewController: UIViewController, UITableViewDelegate, UI
                                        
                         do {
                             try self.managedContext!.save()
-                            self.navigationController?.popViewController(animated: true)
+                            self.navigationController?.popViewController(animated: false)
                         } catch {
                             print("Ingredient could not be added to the pantry")
                         }
