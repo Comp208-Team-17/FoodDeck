@@ -28,6 +28,7 @@ class EditRecipeViewController: UIViewController {
         let picker = UIImagePickerController()
         picker.sourceType = .photoLibrary
         picker.allowsEditing = true
+        
         picker.delegate = self
         present(picker, animated: true)
     }
@@ -63,7 +64,7 @@ class EditRecipeViewController: UIViewController {
                 else {
                     btnChooseIngredients.isEnabled = true
                     RecipeDetailViewController.localRecipe = RecipeManager.getRecipe(theName: txtName.text!, all: false)
-                   // RecipeViewController.chosenRecipeName = txtName.text!
+                   RecipeViewController.chosenRecipeName = txtName.text!
             }
         }
         else {
@@ -77,7 +78,7 @@ class EditRecipeViewController: UIViewController {
             }
             else{
                 RecipeDetailViewController.localRecipe = RecipeManager.getRecipe(theName: txtName.text!, all: false)
-               // RecipeViewController.chosenRecipeName = txtName.text!
+                RecipeViewController.chosenRecipeName = txtName.text!
             }
         }
     }

@@ -67,18 +67,15 @@ class RecipeDetailViewController: UIViewController {
     var allRecipeIngredients: [RecipeIngredient] = []
     override func viewDidLoad() {
         super.viewDidLoad()
-             RecipeDetailViewController.localRecipe = RecipeManager.getRecipe(theName: RecipeViewController.chosenRecipeName, all: false)
+            
 
         // Do any additional setup after loading the view.
     }
-    func reloadLocalCopy(){
-        RecipeDetailViewController.localRecipe = RecipeManager.getRecipe(theName: self.navigationItem.title!, all: false)
-    }
     override func viewDidAppear(_ animated: Bool){
         super.viewDidAppear(true)
-   
-        
+         RecipeDetailViewController.localRecipe = RecipeManager.getRecipe(theName: RecipeViewController.chosenRecipeName, all: false)
         if RecipeDetailViewController.localRecipe.count == 1 {
+           
             self.navigationItem.title = RecipeDetailViewController.localRecipe[0].name
           //load table
             tblIngredients.reloadData()
@@ -152,6 +149,7 @@ class RecipeDetailViewController: UIViewController {
 extension RecipeDetailViewController : UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if RecipeDetailViewController.localRecipe.count > 0 {
+             
             return RecipeDetailViewController.localRecipe[0].ingredients.count
         }
         else{
