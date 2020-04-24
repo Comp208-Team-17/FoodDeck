@@ -258,4 +258,19 @@ class RecipeManager: NSManagedObject {
         output.append(charThree == "0" ? false : true)
         return output
     }
+    static func filter(theRecipes : [RecipeStr], theTimeOfDayFilter : String, theVeganFilter : Bool, theVegFilter : Bool, theGlutenFilter: Bool) -> [RecipeStr]{
+        var localRecipeFilt : [RecipeStr] = []
+        for index in 0..<theRecipes.count {
+            var dietaryReq : [Bool] = [false, false, false]
+            if theVeganFilter == true || theVegFilter == true || theGlutenFilter == true {
+                dietaryReq = revertDietaryValue(value: theRecipes[index].dietaryRequirements)
+            }
+            if theRecipes[index].timeOfDay == (theTimeOfDayFilter == "All" ? theRecipes[index].timeOfDay : theTimeOfDayFilter) && dietaryReq[0] == theVeganFilter && dietaryReq[1] == theVegFilter && dietaryReq[2] == theGlutenFilter {
+                localRecipeFilt.append(theRecipes[index])
+            }
+        }
+        return localRecipeFilt
+        
+    }
+    
 }

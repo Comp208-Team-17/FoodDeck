@@ -26,11 +26,32 @@ class RecipeViewController: UIViewController {
         
         
     }
+    @IBAction func sgTimeOfDay(_ sender: Any) {
+        tblRecipes.reloadData()
+    }
+    @IBAction func swVegan(_ sender: Any) {
+        tblRecipes.reloadData()
+    }
+    @IBAction func swVeg(_ sender: Any) {
+        tblRecipes.reloadData()
+  
+    }
+    @IBAction func swGluten(_ sender: Any) {
+        tblRecipes.reloadData()
+        
+    }
+    func updateFilter(){
+        RecipeViewController.recipes = RecipeManager.filter(theRecipes: RecipeManager.getRecipe(theName: "", all: true) , theTimeOfDayFilter: sgTimeOfDayOut.titleForSegment(at: sgTimeOfDayOut.selectedSegmentIndex)!, theVeganFilter: swDietary[0].isOn, theVegFilter: swDietary[1].isOn, theGlutenFilter: swDietary[2].isOn)
+    }
+    var tempReverse : [RecipeStr] = []
+    @IBOutlet var swDietary: [UISwitch]!
+    @IBOutlet weak var sgTimeOfDayOut: UISegmentedControl!
     @IBOutlet weak var tblRecipes: UICollectionView!
     var deleteButton : Bool = false
     static var chosenRecipeName : String = ""
     static var recipes : [RecipeStr] = []
     static var addButton = false
+    var filter : Bool = false
     final override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -59,9 +80,7 @@ extension RecipeViewController: UICollectionViewDataSource, UICollectionViewDele
         return 1
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-         RecipeViewController.recipes = RecipeManager.getRecipe(theName: "", all: true)
-        print (RecipeViewController.recipes.count)
-    
+        updateFilter()
           return RecipeViewController.recipes.count
       }
       
@@ -71,6 +90,15 @@ extension RecipeViewController: UICollectionViewDataSource, UICollectionViewDele
         cell.txtRating.text = "\(RecipeViewController.recipes[indexPath.item].rating)"
         cell.recipeImage.image = RecipeViewController.recipes[indexPath.item].thumbnail ?? nil
         cell.recipeButtonDelegate = self
+        if RecipeViewController.recipes[indexPath.row].favourite == true {
+            cell.btnFavouriteOut.setImage(UIImage(named: "heart-green"), for: .normal)
+            cell.favourite = true
+        }
+        else{
+            cell.btnFavouriteOut.setImage(UIImage(named: "heart-green-outline"), for: .normal)
+            cell.favourite = false
+        }
+        
         return cell
         
         
@@ -90,4 +118,5 @@ extension RecipeViewController: RecipeCollectionViewDelegate{
         
    }
 }
+
 

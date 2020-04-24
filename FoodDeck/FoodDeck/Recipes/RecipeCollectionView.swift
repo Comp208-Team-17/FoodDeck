@@ -11,6 +11,21 @@ protocol RecipeCollectionViewDelegate : class {
     func didTapRecipe(onCell : RecipeCollectionView)
 }
 class RecipeCollectionView: UICollectionViewCell {
+    @IBAction func btnFavourite(_ sender: Any) {
+        favourite = !favourite!
+        if RecipeManager.updateRecipeFavourite(theName: txtRecipeName.text!, isFavourite: favourite!) == false{
+            print("here")
+        }
+        if favourite! == true {
+            btnFavouriteOut.setImage(UIImage(named:"heart-green"), for: .normal)
+        }
+        else{
+            btnFavouriteOut.setImage(UIImage(named:"heart-green-outline"), for: .normal)
+        }
+    }
+    
+    var favourite : Bool?
+    @IBOutlet weak var btnFavouriteOut: UIButton!
     @IBOutlet weak var recipeImage: UIImageView!
     @IBOutlet weak var txtRating: UILabel!
     @IBOutlet weak var txtRecipeName: UILabel!
