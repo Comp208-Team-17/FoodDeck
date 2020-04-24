@@ -34,7 +34,20 @@ class AddToPantryViewController: UIViewController, UITableViewDelegate, UITableV
     
     override func viewWillAppear(_ animated: Bool) {
         managedContext = appDelegate.persistentContainer.viewContext
-        
+        resultSearchController = ({
+                   let controller = UISearchController(searchResultsController: nil)
+                   controller.searchResultsUpdater = self
+                   controller.searchBar.sizeToFit()
+                   controller.searchBar.placeholder = "Search ingredients here.."
+                   controller.obscuresBackgroundDuringPresentation = false
+                   controller.hidesNavigationBarDuringPresentation = false
+                   controller.definesPresentationContext = true
+                   table.tableHeaderView = controller.searchBar
+
+                   return controller
+               })()
+               self.definesPresentationContext = true
+               self.resultSearchController.isActive = false
         let fetchIngredientList: NSFetchRequest<Ingredient>  = Ingredient.fetchRequest()
         // fetchIngredientList.predicate = NSPredicate(format: "enabled == %@", NSNumber(value: true))
         do {
@@ -47,8 +60,10 @@ class AddToPantryViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        self.resultSearchController.isActive = false
-    }
+         self.resultSearchController.isActive = false
+         self.resultSearchController.definesPresentationContext = false
+     }
+    
     
     func getAvailableIngredients() {
         // get list of all ingredients in the pantry using the relationship 'belongsTo'
@@ -68,19 +83,6 @@ class AddToPantryViewController: UIViewController, UITableViewDelegate, UITableV
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-       // initial search bar setup
-        resultSearchController = ({
-            let controller = UISearchController(searchResultsController: nil)
-            controller.searchResultsUpdater = self
-            controller.searchBar.sizeToFit()
-            controller.searchBar.placeholder = "Search ingredients here.."
-            controller.obscuresBackgroundDuringPresentation = false
-            controller.hidesNavigationBarDuringPresentation = false
-            table.tableHeaderView = controller.searchBar
-
-            return controller
-        })()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

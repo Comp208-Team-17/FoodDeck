@@ -32,15 +32,17 @@ class AddIngredientToRecipeViewController: UIViewController, UITableViewDelegate
     var filteredList: [Ingredient] = []
     
     override func viewWillDisappear(_ animated: Bool) {
-        self.resultSearchController.isActive = false
-    }
+         self.resultSearchController.isActive = false
+         self.resultSearchController.definesPresentationContext = false
+     }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        
-        // initial search bar setup
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        managedContext = appDelegate.persistentContainer.viewContext
         resultSearchController = ({
             let controller = UISearchController(searchResultsController: nil)
             controller.searchResultsUpdater = self
@@ -48,15 +50,13 @@ class AddIngredientToRecipeViewController: UIViewController, UITableViewDelegate
             controller.searchBar.placeholder = "Search ingredients here.."
             controller.obscuresBackgroundDuringPresentation = false
             controller.hidesNavigationBarDuringPresentation = false
+            controller.definesPresentationContext = true
             table.tableHeaderView = controller.searchBar
             
             return controller
         })()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        managedContext = appDelegate.persistentContainer.viewContext
-        
+        self.definesPresentationContext = true
+        self.resultSearchController.isActive = false
         let fetchIngredientList: NSFetchRequest<Ingredient>  = Ingredient.fetchRequest()
         do {
             allIngredients = try managedContext!.fetch(fetchIngredientList)

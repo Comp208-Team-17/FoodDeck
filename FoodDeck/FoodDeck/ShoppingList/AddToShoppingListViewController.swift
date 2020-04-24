@@ -29,18 +29,16 @@ class AddToShoppingListViewController: UIViewController, UITableViewDelegate, UI
     var resultSearchController = UISearchController()
     var filteredList: [Ingredient] = []
     
-   override func viewWillDisappear(_ animated: Bool) {
-          self.resultSearchController.isActive = false
-    self.resultSearchController.definesPresentationContext = false
-      }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        
-
-       
+       override func viewDidLoad() {
+           super.viewDidLoad()
+       }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.resultSearchController.isActive = false
+        self.resultSearchController.definesPresentationContext = false
     }
+   
     
     override func viewWillAppear(_ animated: Bool) {
         managedContext = appDelegate.persistentContainer.viewContext
