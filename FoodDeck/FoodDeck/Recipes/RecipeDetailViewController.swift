@@ -10,6 +10,9 @@ import UIKit
 
 class RecipeDetailViewController: UIViewController {
 
+    @IBOutlet weak var lblPrep: UILabel!
+    @IBOutlet weak var lblCook: UILabel!
+    @IBOutlet weak var lblServings: UILabel!
     @IBAction func btnFavourite(_ sender: Any) {
       setFavourite()
     }
@@ -95,6 +98,9 @@ class RecipeDetailViewController: UIViewController {
             for index in 0...2 {
                 imgDietary[index].isHidden = !dietaryOptions[index]
             }
+            lblPrep.text = "\(RecipeDetailViewController.localRecipe[0].prepTime)"
+            lblCook.text = "\(RecipeDetailViewController.localRecipe[0].cookTime)"
+            lblServings.text = "\(RecipeDetailViewController.localRecipe[0].servings)"
             
         }
         else{
