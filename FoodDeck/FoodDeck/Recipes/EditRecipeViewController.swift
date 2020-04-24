@@ -58,7 +58,7 @@ class EditRecipeViewController: UIViewController {
                  }
         if saveComplete == true{
         if RecipeViewController.addButton == true {
-                if RecipeManager.addRecipe(theAllergens: "", isAvailable: true, theCookTime: cookTimeTmp ?? 0, theDateCreated: "", theDietaryRequirements: EditRecipeViewController.dietary, isFavourite: false, theInstructions: txtInstructions.text!, theName: txtName.text!, thePrepTime: prepTimeTmp ?? 0, theRating: 0, theRecipeDescription: txtDescription.text, theScore: 100, theServings: servingsTmp ?? 0, theThumbnail: UIImage(), theTimeOfDay: pickerOptionSet, theIngredients: []) == false{
+            if RecipeManager.addRecipe(theAllergens: "", isAvailable: true, theCookTime: cookTimeTmp ?? 0, theDateCreated: "", theDietaryRequirements: EditRecipeViewController.dietary, isFavourite: false, theInstructions: txtInstructions.text!, theName: txtName.text!, thePrepTime: prepTimeTmp ?? 0, theRating: 0, theRecipeDescription: txtDescription.text, theScore: 100, theServings: servingsTmp ?? 0, theThumbnail: recipeImage.image!, theTimeOfDay: pickerOptionSet, theIngredients: []) == false{
                      ErrorManager.errorMessageStandard(theTitle: "Recipe Error", theMessage: "Could not add new recipe - ensure you have not duplicated a recipe name.", caller: self)
                 }
                 else {
