@@ -259,18 +259,20 @@ class RecipeManager: NSManagedObject {
         return output
     }
     static func filter(theRecipes : [RecipeStr], theTimeOfDayFilter : String, theVeganFilter : Bool, theVegFilter : Bool, theGlutenFilter: Bool) -> [RecipeStr]{
-        var localRecipeFilt : [RecipeStr] = []
-        for index in 0..<theRecipes.count {
-            var dietaryReq : [Bool] = [false, false, false]
-            if theVeganFilter == true || theVegFilter == true || theGlutenFilter == true {
-                dietaryReq = revertDietaryValue(value: theRecipes[index].dietaryRequirements)
-            }
-            if theRecipes[index].timeOfDay == (theTimeOfDayFilter == "All" ? theRecipes[index].timeOfDay : theTimeOfDayFilter) && dietaryReq[0] == theVeganFilter && dietaryReq[1] == theVegFilter && dietaryReq[2] == theGlutenFilter {
-                localRecipeFilt.append(theRecipes[index])
-            }
+        var localRecipeFilt : [RecipeStr] = theRecipes
+        if theTimeOfDayFilter != "All"{
+          localRecipeFilt = localRecipeFilt.filter {$0.timeOfDay == theTimeOfDayFilter}
+        }
+        if theVeganFilter == true {
+            localRecipeFilt = localRecipeFilt.filter {revertDietaryValue(value: $0.dietaryRequirements)[0] == true}
+        }
+        if theVegFilter == true{
+            localRecipeFilt = localRecipeFilt.filter {revertDietaryValue(value: $0.dietaryRequirements)[1] == true}
+        }
+        if theGlutenFilter == true{
+           localRecipeFilt = localRecipeFilt.filter {revertDietaryValue(value: $0.dietaryRequirements)[2] == true}
         }
         return localRecipeFilt
-        
     }
-    
+
 }

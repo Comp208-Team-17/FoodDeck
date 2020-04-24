@@ -196,6 +196,7 @@
 		9AC0B164240D2F8000234251 /* FoodDeck */ = {
 			isa = PBXGroup;
 			children = (
+				A34A401A244CB08100DC162C /* Settings */,
 				A34A401C244CB16400DC162C /* DataModel */,
 				A34A401B244CB09000DC162C /* Managers */,
 				A34A4019244CB06B00DC162C /* Pantry */,
@@ -234,7 +235,6 @@
 			isa = PBXGroup;
 			children = (
 				A34A4004244B0C5F00DC162C /* EditRecipeIngredientViewController.swift */,
-				A34A401A244CB08100DC162C /* Settings */,
 				A34A4001244B0C5F00DC162C /* EditRecipeViewController.swift */,
 				A34A4002244B0C5F00DC162C /* RecipeCollectionView.swift */,
 				A34A4003244B0C5F00DC162C /* RecipeDetailViewController.swift */,
@@ -294,7 +294,7 @@
 				D6D950AB244622FB00AF32B8 /* SettingsViewController.swift */,
 			);
 			name = Settings;
-			path = FoodDeck/Recipes/Settings;
+			path = FoodDeck/Settings;
 			sourceTree = SOURCE_ROOT;
 		};
 		A34A401B244CB09000DC162C /* Managers */ = {

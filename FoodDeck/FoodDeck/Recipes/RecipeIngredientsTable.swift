@@ -28,7 +28,7 @@ class RecipeIngredientsTable: UITableViewCell {
         }
         else{
             optional = true
-            btnOptional.setTitle("Make Mandatory", for: .normal)
+            btnOptional.setTitle("Required", for: .normal)
             txtOptional.isHidden = false
         }
         buttonDelegate?.didTapOptional(sender: self, optional: optional)
@@ -37,14 +37,11 @@ class RecipeIngredientsTable: UITableViewCell {
         buttonDelegate?.didTapDeleteButton(sender: self)
     }
     weak var buttonDelegate : RecipeIngredientTableDelegate?
-    var optional : Bool = false
+    var optional : Bool = true
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        if txtOptional.isHidden == false {
-            optional = true
-            btnOptional.setTitle("Make Mandatory", for: .normal)
-        }
+       
         //check if amount should be visible and make optional button should be visible.
     }
     override func setSelected(_ selected: Bool, animated: Bool) {

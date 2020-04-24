@@ -14,7 +14,6 @@ class RecipeCollectionView: UICollectionViewCell {
     @IBAction func btnFavourite(_ sender: Any) {
         favourite = !favourite!
         if RecipeManager.updateRecipeFavourite(theName: txtRecipeName.text!, isFavourite: favourite!) == false{
-            print("here")
         }
         if favourite! == true {
             btnFavouriteOut.setImage(UIImage(named:"heart-green"), for: .normal)
@@ -25,6 +24,7 @@ class RecipeCollectionView: UICollectionViewCell {
     }
     
     var favourite : Bool?
+    @IBOutlet weak var txtTime: UILabel!
     @IBOutlet weak var btnFavouriteOut: UIButton!
     @IBOutlet weak var recipeImage: UIImageView!
     @IBOutlet weak var txtRating: UILabel!

@@ -76,7 +76,10 @@ extension EditRecipeIngredientsViewController : UITableViewDataSource, UITableVi
         cell.txtUnit.text = "\(recipeIngredients[indexPath.row].3)"
         if (recipeIngredients[indexPath.row].4) == false {
             cell.txtOptional.isHidden = true
+            cell.optional = false
+            cell.btnOptional.setTitle("Make Optional", for: .normal)
         }
+        
         cell.buttonDelegate = self
         return cell
     }

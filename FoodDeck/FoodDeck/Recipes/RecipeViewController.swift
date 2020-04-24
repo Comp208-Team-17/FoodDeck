@@ -16,11 +16,11 @@ class RecipeViewController: UIViewController {
     @IBOutlet weak var btnDeleteOut: UIButton!
     @IBAction func btnDelete(_ sender: Any) {
         if deleteButton == false{
-            btnDeleteOut.setTitle("Cancel", for: .normal)
+            btnDeleteOut.setBackgroundImage(UIImage(systemName: "delete.right.fill"), for: .normal)
             deleteButton = true
         }
         else{
-            btnDeleteOut.setTitle("Delete", for: .normal)
+            btnDeleteOut.setBackgroundImage(UIImage(systemName: "delete.right"), for: .normal)
             deleteButton = false
         }
         
@@ -90,7 +90,7 @@ extension RecipeViewController: UICollectionViewDataSource, UICollectionViewDele
         cell.txtRating.text = "\(RecipeViewController.recipes[indexPath.item].rating)"
         cell.recipeImage.image = RecipeViewController.recipes[indexPath.item].thumbnail ?? nil
         cell.recipeButtonDelegate = self
-        if RecipeViewController.recipes[indexPath.row].favourite == true {
+        if RecipeViewController.recipes[indexPath.item].favourite == true {
             cell.btnFavouriteOut.setImage(UIImage(named: "heart-green"), for: .normal)
             cell.favourite = true
         }
@@ -98,7 +98,7 @@ extension RecipeViewController: UICollectionViewDataSource, UICollectionViewDele
             cell.btnFavouriteOut.setImage(UIImage(named: "heart-green-outline"), for: .normal)
             cell.favourite = false
         }
-        
+        cell.txtTime.text = "\(RecipeViewController.recipes[indexPath.item].cookTime + RecipeViewController.recipes[indexPath.item].prepTime)"
         return cell
         
         

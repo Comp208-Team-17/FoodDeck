@@ -9,7 +9,7 @@
 import UIKit
 
 class EditRecipeViewController: UIViewController {
-
+    
     @IBOutlet weak var selector: UIPickerView!
     @IBOutlet weak var txtServings: UITextField!
     @IBOutlet weak var txtPrepTime: UITextField!
@@ -23,65 +23,65 @@ class EditRecipeViewController: UIViewController {
     let pickerOptions : [String] = ["Breakfast", "Lunch", "Dinner"]
     var pickerOptionSet : String = "Breakfast"
     var chooseIngredients = false
-
+    
     @IBAction func btnPhoto(_ sender: Any) {
         let picker = UIImagePickerController()
         picker.sourceType = .photoLibrary
         picker.allowsEditing = true
-        
         picker.delegate = self
         present(picker, animated: true)
     }
-    @IBAction func btnSave(_ sender: Any) {
+    @IBAction func btnSave(_ sender: Any){
         var saveComplete : Bool = true
         var cookTimeTmp : Int16?
         var prepTimeTmp : Int16?
         var servingsTmp : Int16?
-             
         if let cookTime = Int16(txtCookTime.text!){
-                     cookTimeTmp = cookTime
-                 }
-                 else{
-                     saveComplete = false
-                 }
-                 if let prepTime = Int16(txtPrepTime.text!){
-                     prepTimeTmp = prepTime
-                 }
-                 else{
-                     saveComplete = false
-                 }
-                 if let servings = Int16(txtServings.text!){
-                     servingsTmp = servings
-                 }
-                 else {
-                     saveComplete = false
-                 }
-        if saveComplete == true{
-        if RecipeViewController.addButton == true {
-            if RecipeManager.addRecipe(theAllergens: "", isAvailable: true, theCookTime: cookTimeTmp ?? 0, theDateCreated: "", theDietaryRequirements: EditRecipeViewController.dietary, isFavourite: false, theInstructions: txtInstructions.text!, theName: txtName.text!, thePrepTime: prepTimeTmp ?? 0, theRating: 0, theRecipeDescription: txtDescription.text, theScore: 100, theServings: servingsTmp ?? 0, theThumbnail: recipeImage.image!, theTimeOfDay: pickerOptionSet, theIngredients: []) == false{
-                     ErrorManager.errorMessageStandard(theTitle: "Recipe Error", theMessage: "Could not add new recipe - ensure you have not duplicated a recipe name.", caller: self)
-                }
-                else {
-                    btnChooseIngredients.isEnabled = true
-                    RecipeDetailViewController.localRecipe = RecipeManager.getRecipe(theName: txtName.text!, all: false)
-                   RecipeViewController.chosenRecipeName = txtName.text!
-            }
+            cookTimeTmp = cookTime
+        }
+        else{
+            saveComplete = false
+        }
+        if let prepTime = Int16(txtPrepTime.text!){
+            prepTimeTmp = prepTime
+        }
+        else{
+            saveComplete = false
+        }
+        if let servings = Int16(txtServings.text!){
+            servingsTmp = servings
         }
         else {
-            //update recipe
-           
-            if RecipeManager.updateRecipeExceptIngredients(originalName: RecipeDetailViewController.localRecipe[0].name
-                ,newName: txtName.text!, theAllergens: "", isAvailable: RecipeDetailViewController.localRecipe[0].available, theCookTime: cookTimeTmp ?? 0 , theDateCreated: RecipeDetailViewController.localRecipe[0].dateCreated, theDietaryRequirements: "ignore", isFavourite: RecipeDetailViewController.localRecipe[0].favourite
-                , theInstructions: txtInstructions.text!, thePrepTime: prepTimeTmp ?? 0, theRating: RecipeDetailViewController.localRecipe[0].rating
-                , theRecipeDescription: txtDescription.text!, theScore: RecipeDetailViewController.localRecipe[0].score, theServings: servingsTmp ?? 0, theThumbnail: recipeImage.image!, theTimeOfDay: pickerOptionSet) == false {
-                ErrorManager.errorMessageStandard(theTitle: "Recipe Error", theMessage: "Error updating recipe, ensure you have not duplicated a recipe name", caller: self)
+            saveComplete = false
+        }
+        if saveComplete == true{
+            if RecipeViewController.addButton == true {
+                if RecipeManager.addRecipe(theAllergens: "", isAvailable: true, theCookTime: cookTimeTmp ?? 0, theDateCreated: "", theDietaryRequirements: EditRecipeViewController.dietary, isFavourite: false, theInstructions: txtInstructions.text!, theName: txtName.text!, thePrepTime: prepTimeTmp ?? 0, theRating: 0, theRecipeDescription: txtDescription.text!, theScore: 100, theServings: servingsTmp ?? 0, theThumbnail: recipeImage.image!, theTimeOfDay: pickerOptionSet, theIngredients: []) == false{
+                    ErrorManager.errorMessageStandard(theTitle: "Recipe Error", theMessage: "Could not add new recipe - ensure you have not duplicated a recipe name.", caller: self)
+                    
+                }
+                else {
+                    RecipeViewController.addButton = false
+                    btnChooseIngredients.isEnabled = true
+                    RecipeDetailViewController.localRecipe = RecipeManager.getRecipe(theName: txtName.text!, all: false)
+                    RecipeViewController.chosenRecipeName = txtName.text!
+                }
             }
-            else{
-                RecipeDetailViewController.localRecipe = RecipeManager.getRecipe(theName: txtName.text!, all: false)
-                RecipeViewController.chosenRecipeName = txtName.text!
+            else {
+                //update recipe
+                
+                if RecipeManager.updateRecipeExceptIngredients(originalName: RecipeDetailViewController.localRecipe[0].name
+                    ,newName: txtName.text!, theAllergens: "", isAvailable: RecipeDetailViewController.localRecipe[0].available, theCookTime: cookTimeTmp ?? 0 , theDateCreated: RecipeDetailViewController.localRecipe[0].dateCreated, theDietaryRequirements: "ignore", isFavourite: RecipeDetailViewController.localRecipe[0].favourite
+                    , theInstructions: txtInstructions.text!, thePrepTime: prepTimeTmp ?? 0, theRating: RecipeDetailViewController.localRecipe[0].rating
+                    , theRecipeDescription: txtDescription.text!, theScore: RecipeDetailViewController.localRecipe[0].score, theServings: servingsTmp ?? 0, theThumbnail: recipeImage.image!, theTimeOfDay: pickerOptionSet) == false {
+                    ErrorManager.errorMessageStandard(theTitle: "Recipe Error", theMessage: "Error updating recipe, ensure you have not duplicated a recipe name", caller: self)
+                }
+                else{
+                    RecipeDetailViewController.localRecipe = RecipeManager.getRecipe(theName: txtName.text!, all: false)
+                    RecipeViewController.chosenRecipeName = txtName.text!
+                }
             }
         }
-    }
         else {
             //display error message
             ErrorManager.errorMessageStandard(theTitle: "Recipe Error", theMessage: "Error updating recipe, please complete all fields", caller: self)
@@ -118,7 +118,7 @@ class EditRecipeViewController: UIViewController {
             
         }
         if RecipeViewController.addButton == true {
-           
+            
             btnChooseIngredients.isEnabled = false
         }
     }
