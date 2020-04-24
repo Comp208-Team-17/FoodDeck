@@ -40,11 +40,25 @@ class RecipeDetailViewController: UIViewController {
     @IBOutlet weak var txtDescriptionInstructions: UITextView!
     
     @IBAction func btnAddToShoppingList(_ sender: Any) {
-        ShoppingListIngredient.addFromRecipe(recipeIngredients: allRecipeIngredients, on: self)
+        let alert = UIAlertController(title: "Add to shopping list?", message: "This action will add all ingredients in this recipe to your shopping list", preferredStyle: UIAlertController.Style.actionSheet)
+        alert.addAction(UIAlertAction(title: "Add Items", style: UIAlertAction.Style.default, handler: {(_) in
+            ShoppingListIngredient.addFromRecipe(recipeIngredients: self.allRecipeIngredients, on: self)
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: nil))
+        
+        // show the alert
+        self.present(alert, animated: true, completion: nil)
     }
     
     @IBAction func btnReportCooked(_ sender: Any) {
-        PantryIngredient.subtractRecipeIngredient(recipeIngredients: allRecipeIngredients, on: self)
+        let alert = UIAlertController(title: "Confirm meal as cooked?", message: "This action will subtract the recipe ingregients from your pantry", preferredStyle: UIAlertController.Style.actionSheet)
+        alert.addAction(UIAlertAction(title: "Confirm Cooked", style: UIAlertAction.Style.default, handler: {(_) in
+            PantryIngredient.subtractRecipeIngredient(recipeIngredients: self.allRecipeIngredients, on: self)
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: nil))
+        
+        // show the alert
+        self.present(alert, animated: true, completion: nil)
         
     }
     
@@ -52,9 +66,7 @@ class RecipeDetailViewController: UIViewController {
     var allRecipeIngredients: [RecipeIngredient] = []
     override func viewDidLoad() {
         super.viewDidLoad()
-        RecipeDetailViewController.localRecipe = RecipeManager.getRecipe(theName: RecipeViewController.chosenRecipeName, all: false)
-        allRecipeIngredients = RecipeManager.getRecipeObject(theName: RecipeViewController.chosenRecipeName)[0].contains?.array as! [RecipeIngredient]
-        RecipeDetailViewController.localRecipe = RecipeManager.getRecipe(theName: RecipeViewController.chosenRecipeName, all: false)
+        
 
         // Do any additional setup after loading the view.
     }
@@ -63,7 +75,10 @@ class RecipeDetailViewController: UIViewController {
     }
     override func viewDidAppear(_ animated: Bool){
         super.viewDidAppear(true)
-  
+        RecipeDetailViewController.localRecipe = RecipeManager.getRecipe(theName: RecipeViewController.chosenRecipeName, all: false)
+        allRecipeIngredients = RecipeManager.getRecipeObject(theName: RecipeViewController.chosenRecipeName)[0].contains?.array as! [RecipeIngredient]
+        RecipeDetailViewController.localRecipe = RecipeManager.getRecipe(theName: RecipeViewController.chosenRecipeName, all: false)
+        
         if RecipeDetailViewController.localRecipe.count == 1 {
             self.navigationItem.title = RecipeDetailViewController.localRecipe[0].name
              /*
