@@ -30,7 +30,7 @@ class CardsViewController : UIViewController {
         var currentRecipe: RecipeStr
         
         if (recipes.count == 0) {
-            return
+            currentRecipe = RecipeStr()
         }
         else {
             currentRecipe = recipes[currentIndex]
@@ -43,6 +43,15 @@ class CardsViewController : UIViewController {
         cookTimeLabel.text? = "\(currentRecipe.cookTime) mins"
         descriptionLabel.text? = currentRecipe.recipeDescription
         
+    }
+    
+    // Set up segue and send selected recipe to the next view controller
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let selectedRecipe = recipes[currentIndex]
+        if segue.identifier == "toCardDetailView" {
+            let secondViewController = segue.destination as! CardDetailViewController
+            secondViewController.recipe = selectedRecipe
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -82,6 +91,7 @@ class CardsViewController : UIViewController {
         // Swipe right - add points and show recipe detail
         if (gesture.direction == UISwipeGestureRecognizer.Direction.right) {
             SuggestionGenerator.updatePoints(source: pointSource.swipeRight, rating: Int(currentRecipe.rating), inpRecipe: currentRecipe)
+            performSegue(withIdentifier: "toCardDetailView", sender: nil)
             print("Right")
         }
         
@@ -96,6 +106,7 @@ class CardsViewController : UIViewController {
                 generateNewSuggestions()
                 currentIndex = 0
             }
+            showCurrentRecipe()
             print("Left")
         }
     }
