@@ -43,7 +43,7 @@ class IngredientManager: NSManagedObject {
         do{
             let fetchedIngredients = try context.fetch(request)
             for theIngredient in fetchedIngredients{
-                if theIngredient.name == originalName && originalName == theName ? true : checkExists(theName : theName, delete: false, get: false){
+                if theIngredient.name == originalName && (originalName == theName ? true : checkExists(theName : theName, delete: false, get: false)){
                     theIngredient.enabled = isEnabled
                     theIngredient.name = theName
                     theIngredient.unit = theUnit
