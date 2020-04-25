@@ -15,6 +15,7 @@ class CardsViewController : UIViewController {
     @IBOutlet weak var cookTimeLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     
+    @IBOutlet weak var card: UIView!
     var recipes : [RecipeStr] = []
     var currentIndex = 0
     
@@ -31,9 +32,12 @@ class CardsViewController : UIViewController {
         
         if (recipes.count == 0) {
             currentRecipe = RecipeStr()
+            
         }
         else {
             currentRecipe = recipes[currentIndex]
+            // animation
+            UIView.transition(with: card, duration: 0.75, animations: {self.card.frame.origin.x = -400}, completion: nil)
         }
         
         // Show recipe properties
@@ -76,6 +80,11 @@ class CardsViewController : UIViewController {
         let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(self.handleGesture(gesture:)))
         swipeDown.direction = .down
         self.view.addGestureRecognizer(swipeDown)
+        
+        // optional border colour
+        card.layer.masksToBounds = true
+        card.layer.borderColor = UIColor(red: 0.7, green: 0.3, blue: 0.1, alpha: 1.0).cgColor
+        card.layer.borderWidth = 1.0
     }
     
     @objc func handleGesture(gesture: UISwipeGestureRecognizer) {

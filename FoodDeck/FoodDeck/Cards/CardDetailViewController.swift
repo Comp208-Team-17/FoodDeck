@@ -12,16 +12,15 @@ class CardDetailViewController: UIViewController {
     var recipe: RecipeStr?
     
     @IBOutlet weak var image: UIImageView!
-    @IBOutlet weak var recipeNameLabel: UILabel!
-    @IBOutlet weak var prepTimeLabel: UILabel!
     @IBOutlet weak var cookTimeLabel: UILabel!
+    @IBOutlet weak var prepTimeLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
-    @IBOutlet weak var ingredientsLabel: UILabel!
     @IBOutlet weak var instructionsLabel: UILabel!
     
+   
     override func viewDidLoad() {
         image.image = recipe?.thumbnail
-        recipeNameLabel.text = recipe?.name
+        self.title = recipe?.name
         prepTimeLabel.text = "Prep Time:\(recipe?.prepTime ?? 0) mins"
         cookTimeLabel.text = "\(recipe?.cookTime ?? 0) mins"
         descriptionLabel.text = recipe?.recipeDescription
