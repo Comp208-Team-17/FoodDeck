@@ -140,6 +140,7 @@
                         <outlet property="image" destination="034-hY-86x" id="LxW-b7-2im"/>
                         <outlet property="mealNameLabel" destination="U5Y-HA-aYm" id="grY-qY-S2Y"/>
                         <outlet property="prepTimeLabel" destination="fVw-ZS-hzh" id="r1s-nn-z05"/>
+                        <outlet property="txtServings" destination="pbQ-0g-qSq" id="ntg-1j-kBZ"/>
                         <segue destination="nt8-sU-tTT" kind="show" identifier="toCardDetailView" id="vpP-s6-DQc"/>
                     </connections>
                 </viewController>

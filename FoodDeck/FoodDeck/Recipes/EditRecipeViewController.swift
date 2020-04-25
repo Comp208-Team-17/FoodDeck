@@ -108,12 +108,15 @@ class EditRecipeViewController: UIViewController {
             switch(RecipeDetailViewController.localRecipe[0].timeOfDay){
             case "Breakfast":
                 selector.selectRow(0, inComponent: 0, animated: true)
+                pickerOptionSet = "Breakfast"
                 break
             case "Lunch":
                 selector.selectRow(1, inComponent: 0, animated: true)
+                pickerOptionSet = "Lunch"
                 break
             default :
                 selector.selectRow(2, inComponent: 0, animated: true)
+                pickerOptionSet = "Dinner"
             }
             
         }

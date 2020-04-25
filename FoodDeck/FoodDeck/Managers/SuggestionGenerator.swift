@@ -75,7 +75,6 @@ class SuggestionGenerator {
     static func gererateSuggestion() -> [RecipeStr] {
         var suggestedRecipes: [RecipeStr] = []
         var displayRecipe: [RecipeStr] = []
-        setPotentialMeals()
         var recipeList = RecipeManager.getRecipe(theName: "", all: true)
         var generate = true
         
@@ -87,6 +86,7 @@ class SuggestionGenerator {
         
         // Sort recipe by score - highest score first
         recipeList.sort {$0.score > $1.score}
+        print (recipeList)
         
         // Regenerate recipes if it would return an empty list
         while (generate){
@@ -94,19 +94,18 @@ class SuggestionGenerator {
             // Decide which recipes should be displayed
             for item in recipeList {
                 let random = Int.random(in: 1...4)
-                if (item.available) {
+                //if (item.available) {
                     // 25% chance to show an unrated recipe
                     if (random == 1 && item.rating == 0) {
                         displayRecipe.append(item)
                         generate = false
                     }
-                        
                     // 75% chance to show a rated recipe
                     else if (random != 1 && item.rating > 0) {
                         displayRecipe.append(item)
                         generate = false
                     }
-                }
+                //}
                 suggestedRecipes.append(item)
             }
         }
@@ -136,9 +135,6 @@ class SuggestionGenerator {
                 acceptedRequirement = false
             }
             
-            // Allow recipe to be generated if it's the correct course
-            
-            
             // Allow recipe to be generated if it matches the user's requirements
             let requirements = Array(recipe.dietaryRequirements)
             
@@ -155,11 +151,23 @@ class SuggestionGenerator {
             }
             
             // Allow recipe to be generated if all it's ingredients are in the pantry
+    
             for ingredient in recipe.ingredients {
-                for item in pantryList {
-                    // Only allow recipes with correct ingredients and amounts
-                    if (ingredient.0 == item.name && ingredient.1 == item.pantryIngredient?.amount){
+                if ingredient.4 == false { //if ingredient
+                    if ingredient.2 == false {
                         acceptedRequirement = false
+                    }
+                    else{
+                        let tempPantry = pantryList.filter{ $0.name == ingredient.0 }
+                        
+                        if (tempPantry.count == 0) {
+                            acceptedRequirement = false
+                        }
+                        else if (ingredient.1 > tempPantry[0].pantryIngredient!.amount){
+                            acceptedRequirement = false
+                    }
+                    // is optional then it can be suggested.
+                    
                     }
                 }
             }

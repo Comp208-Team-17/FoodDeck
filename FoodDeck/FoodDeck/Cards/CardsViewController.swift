@@ -14,6 +14,7 @@ class CardsViewController : UIViewController {
     @IBOutlet weak var prepTimeLabel: UILabel!
     @IBOutlet weak var cookTimeLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UITextView!
+    @IBOutlet weak var txtServings: UILabel!
     
     @IBOutlet weak var card: UIView!
     var recipes : [RecipeStr] = []
@@ -37,7 +38,7 @@ class CardsViewController : UIViewController {
         else {
             currentRecipe = recipes[currentIndex]
             // animation
-            UIView.transition(with: card, duration: 0.75, animations: {self.card.frame.origin.x = -400}, completion: nil)
+            //UIView.transition(with: card, duration: 0.75, animations: {self.card.frame.origin.x = -400}, completion: nil)
         }
         
         // Show recipe properties
@@ -46,13 +47,14 @@ class CardsViewController : UIViewController {
         prepTimeLabel.text? = "\(currentRecipe.prepTime) mins"
         cookTimeLabel.text? = "\(currentRecipe.cookTime) mins"
         descriptionLabel.text? = currentRecipe.recipeDescription
+        txtServings.text = "\(currentRecipe.servings)"
         
     }
     
     // Set up segue and send selected recipe to the next view controller
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let selectedRecipe = recipes[currentIndex]
         if segue.identifier == "toCardDetailView" {
+            let selectedRecipe = recipes[currentIndex]
             let secondViewController = segue.destination as! CardDetailViewController
             secondViewController.recipe = selectedRecipe
         }
@@ -60,6 +62,7 @@ class CardsViewController : UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         currentIndex = 0
+        SuggestionGenerator.setPotentialMeals()
         generateNewSuggestions()
         showCurrentRecipe()
     }
