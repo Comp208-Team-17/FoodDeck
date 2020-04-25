@@ -57,63 +57,32 @@
         <!--Import/Export-->
         <scene sceneID="eiE-pj-Mje">
             <objects>
-                <viewController title="Import/Export" id="nJH-gd-Kau" sceneMemberID="viewController">
+                <viewController title="Import/Export" id="nJH-gd-Kau" customClass="ImportExportViewController" customModule="FoodDeck" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1V2-sk-uVS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Import Recipes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vv3-Xt-ZWX">
-                                <rect key="frame" x="32" y="78" width="116" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="Vv3-Xt-ZWX" secondAttribute="height" multiplier="116:21" id="fXg-gQ-63B"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Export Recipes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CIO-XA-5BL">
-                                <rect key="frame" x="32" y="188" width="116" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="CIO-XA-5BL" secondAttribute="height" multiplier="116:21" id="4z5-cH-oMR"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C8K-bI-0gL">
-                                <rect key="frame" x="32" y="617" width="91" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="C8K-bI-0gL" secondAttribute="height" multiplier="91:30" id="7Ah-QE-Tyz"/>
-                                </constraints>
-                                <state key="normal" title="Export to File"/>
-                            </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5QG-EY-Oke">
-                                <rect key="frame" x="0.0" y="231" width="375" height="364"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                            </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="olS-Uy-Ss3">
-                                <rect key="frame" x="32" y="107" width="56" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="olS-Uy-Ss3" secondAttribute="height" multiplier="28:15" id="XDF-AJ-1PX"/>
-                                </constraints>
-                                <state key="normal" title="Add File"/>
+                                <rect key="frame" x="24" y="107" width="73" height="30"/>
+                                <state key="normal" title="Export File"/>
+                                <connections>
+                                    <action selector="btnExport:" destination="nJH-gd-Kau" eventType="touchUpInside" id="ibK-J8-L0D"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="suk-9q-fJA">
+                                <rect key="frame" x="24" y="137" width="73" height="30"/>
+                                <state key="normal" title="Import File"/>
+                                <connections>
+                                    <action selector="btnImport:" destination="nJH-gd-Kau" eventType="touchUpInside" id="8p9-lP-p3v"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="CIO-XA-5BL" firstAttribute="top" secondItem="olS-Uy-Ss3" secondAttribute="bottom" constant="51" id="1Qh-oh-PhN"/>
-                            <constraint firstItem="olS-Uy-Ss3" firstAttribute="leading" secondItem="uvD-Cf-zNJ" secondAttribute="leading" constant="32" id="DTN-B4-vEb"/>
-                            <constraint firstItem="uvD-Cf-zNJ" firstAttribute="trailing" secondItem="C8K-bI-0gL" secondAttribute="trailing" constant="252" id="Hgh-Y6-rST"/>
-                            <constraint firstItem="uvD-Cf-zNJ" firstAttribute="trailing" secondItem="Vv3-Xt-ZWX" secondAttribute="trailing" constant="227" id="Ivj-hY-Y0e"/>
-                            <constraint firstItem="uvD-Cf-zNJ" firstAttribute="bottom" secondItem="C8K-bI-0gL" secondAttribute="bottom" constant="20" id="JjU-OE-cBm"/>
-                            <constraint firstItem="CIO-XA-5BL" firstAttribute="leading" secondItem="uvD-Cf-zNJ" secondAttribute="leading" constant="32" id="P2e-c4-o4O"/>
-                            <constraint firstItem="uvD-Cf-zNJ" firstAttribute="trailing" secondItem="olS-Uy-Ss3" secondAttribute="trailing" constant="287" id="PcP-Gc-j4Z"/>
-                            <constraint firstItem="C8K-bI-0gL" firstAttribute="leading" secondItem="uvD-Cf-zNJ" secondAttribute="leading" constant="32" id="UWW-iy-lBg"/>
-                            <constraint firstItem="uvD-Cf-zNJ" firstAttribute="trailing" secondItem="CIO-XA-5BL" secondAttribute="trailing" constant="227" id="W5Z-qd-Nzb"/>
-                            <constraint firstItem="olS-Uy-Ss3" firstAttribute="top" secondItem="Vv3-Xt-ZWX" secondAttribute="bottom" constant="8" id="YEB-V0-Ftl"/>
-                            <constraint firstItem="Vv3-Xt-ZWX" firstAttribute="leading" secondItem="uvD-Cf-zNJ" secondAttribute="leading" constant="32" id="aAx-uH-bvg"/>
-                            <constraint firstItem="Vv3-Xt-ZWX" firstAttribute="top" secondItem="uvD-Cf-zNJ" secondAttribute="top" constant="34" id="ehG-be-iR7"/>
+                            <constraint firstItem="olS-Uy-Ss3" firstAttribute="top" secondItem="uvD-Cf-zNJ" secondAttribute="top" constant="63" id="77S-6h-M0e"/>
+                            <constraint firstItem="olS-Uy-Ss3" firstAttribute="leading" secondItem="uvD-Cf-zNJ" secondAttribute="leading" constant="24" id="Saa-8i-G5R"/>
+                            <constraint firstItem="suk-9q-fJA" firstAttribute="top" secondItem="olS-Uy-Ss3" secondAttribute="bottom" id="Vyc-Gg-g1f"/>
+                            <constraint firstItem="olS-Uy-Ss3" firstAttribute="leading" secondItem="suk-9q-fJA" secondAttribute="leading" id="qsp-Uc-vT5"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="uvD-Cf-zNJ"/>
                     </view>

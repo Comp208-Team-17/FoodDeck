@@ -30,6 +30,8 @@
 		9AFB4830243B59BD0002F7A3 /* PantryManagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AFB482F243B59BD0002F7A3 /* PantryManagerViewController.swift */; };
 		9AFB4834243B77350002F7A3 /* AddToPantryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AFB4833243B77350002F7A3 /* AddToPantryViewController.swift */; };
 		A3199BC024531E630048DC45 /* RecipeDetailIngredientsTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3199BBF24531E630048DC45 /* RecipeDetailIngredientsTable.swift */; };
+		A31D92FA2454E0000045EF77 /* ImportExportManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31D92F92454E0000045EF77 /* ImportExportManager.swift */; };
+		A31D92FC2454E5BD0045EF77 /* ImportExportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31D92FB2454E5BD0045EF77 /* ImportExportViewController.swift */; };
 		A34A3FFA244A709000DC162C /* RecipeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34A3FF9244A709000DC162C /* RecipeManager.swift */; };
 		A34A4005244B0C5F00DC162C /* IngredientManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34A3FFB244B0C5E00DC162C /* IngredientManager.swift */; };
 		A34A4006244B0C5F00DC162C /* Structures.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34A3FFC244B0C5E00DC162C /* Structures.swift */; };
@@ -103,6 +105,8 @@
 		9AFB482F243B59BD0002F7A3 /* PantryManagerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PantryManagerViewController.swift; sourceTree = "<group>"; };
 		9AFB4833243B77350002F7A3 /* AddToPantryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToPantryViewController.swift; sourceTree = "<group>"; };
 		A3199BBF24531E630048DC45 /* RecipeDetailIngredientsTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailIngredientsTable.swift; sourceTree = "<group>"; };
+		A31D92F92454E0000045EF77 /* ImportExportManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportExportManager.swift; sourceTree = "<group>"; };
+		A31D92FB2454E5BD0045EF77 /* ImportExportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportExportViewController.swift; sourceTree = "<group>"; };
 		A34A3FF9244A709000DC162C /* RecipeManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeManager.swift; sourceTree = "<group>"; };
 		A34A3FFB244B0C5E00DC162C /* IngredientManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IngredientManager.swift; sourceTree = "<group>"; };
 		A34A3FFC244B0C5E00DC162C /* Structures.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Structures.swift; sourceTree = "<group>"; };
@@ -292,6 +296,7 @@
 			children = (
 				D63EC8CD24323699004A3936 /* RegistrationQuizViewController.swift */,
 				D6D950AB244622FB00AF32B8 /* SettingsViewController.swift */,
+				A31D92FB2454E5BD0045EF77 /* ImportExportViewController.swift */,
 			);
 			name = Settings;
 			path = FoodDeck/Settings;
@@ -307,6 +312,7 @@
 				9AC532F92448769400DD8C6C /* PantryIngredient.swift */,
 				9AC533042448F7CA00DD8C6C /* ShoppingListIngredient.swift */,
 				D6D950AD24483D4A00AF32B8 /* SuggestionGenerator.swift */,
+				A31D92F92454E0000045EF77 /* ImportExportManager.swift */,
 			);
 			name = Managers;
 			path = FoodDeck/Managers;
@@ -494,9 +500,11 @@
 				A34A4007244B0C5F00DC162C /* RecipeViewController.swift in Sources */,
 				A38455562436BACA004A65F3 /* MealPack.swift in Sources */,
 				A34A4008244B0C5F00DC162C /* RecipeIngredientManager.swift in Sources */,
+				A31D92FA2454E0000045EF77 /* ImportExportManager.swift in Sources */,
 				9AC533072448F8B500DD8C6C /* ShoppingListViewController.swift in Sources */,
 				A3EF14B9243E221200CCA071 /* AddToIngredientsViewController.swift in Sources */,
 				A34A4009244B0C5F00DC162C /* IngredientTable.swift in Sources */,
+				A31D92FC2454E5BD0045EF77 /* ImportExportViewController.swift in Sources */,
 				A384555A2436BB03004A65F3 /* Recipe.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

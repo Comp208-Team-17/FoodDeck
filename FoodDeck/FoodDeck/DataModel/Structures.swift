@@ -76,7 +76,7 @@ public struct IngredientStr{
     }
 }
 
-public struct MealPackStr {
+public struct MealPackStr : Codable {
     var name: String
     var enabled: Bool
     
