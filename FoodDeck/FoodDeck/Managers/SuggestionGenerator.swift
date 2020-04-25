@@ -77,25 +77,38 @@ class SuggestionGenerator {
         var displayRecipe: [RecipeStr] = []
         setPotentialMeals()
         var recipeList = RecipeManager.getRecipe(theName: "", all: true)
+        var generate = true
+        
+        // Filter out all unavailable recipes
+        recipeList = recipeList.filter{$0.available == true}
+        if (recipeList.count == 0) {
+            return []
+        }
         
         // Sort recipe by score - highest score first
         recipeList.sort {$0.score > $1.score}
         
-        // Decide which recipes should be displayed
-        for item in recipeList {
-            let random = Int.random(in: 1...4)
-            if (item.available) {
-                // 25% chance to show an unrated recipe
-                if (random == 1 && item.rating == 0) {
-                    displayRecipe.append(item)
+        // Regenerate recipes if it would return an empty list
+        while (generate){
+            
+            // Decide which recipes should be displayed
+            for item in recipeList {
+                let random = Int.random(in: 1...4)
+                if (item.available) {
+                    // 25% chance to show an unrated recipe
+                    if (random == 1 && item.rating == 0) {
+                        displayRecipe.append(item)
+                        generate = false
+                    }
+                        
+                    // 75% chance to show a rated recipe
+                    else if (random != 1 && item.rating > 0) {
+                        displayRecipe.append(item)
+                        generate = false
+                    }
                 }
-                    
-                // 75% chance to show a rated recipe
-                else if (random != 1 && item.rating > 0) {
-                    displayRecipe.append(item)
-                }
+                suggestedRecipes.append(item)
             }
-            suggestedRecipes.append(item)
         }
         
         return displayRecipe
