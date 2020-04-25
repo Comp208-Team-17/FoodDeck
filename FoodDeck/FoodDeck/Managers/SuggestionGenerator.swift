@@ -75,6 +75,7 @@ class SuggestionGenerator {
     static func gererateSuggestion() -> [RecipeStr] {
         var suggestedRecipes: [RecipeStr] = []
         var displayRecipe: [RecipeStr] = []
+        setPotentialMeals()
         var recipeList = RecipeManager.getRecipe(theName: "", all: true)
         
         // Sort recipe by score - highest score first

@@ -13,7 +13,7 @@ class CardsViewController : UIViewController {
     @IBOutlet weak var mealNameLabel: UILabel!
     @IBOutlet weak var prepTimeLabel: UILabel!
     @IBOutlet weak var cookTimeLabel: UILabel!
-    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UITextView!
     
     @IBOutlet weak var card: UIView!
     var recipes : [RecipeStr] = []
@@ -42,7 +42,7 @@ class CardsViewController : UIViewController {
         
         // Show recipe properties
         image.image = currentRecipe.thumbnail
-        mealNameLabel.text? = currentRecipe.name
+        mealNameLabel.text? = "\(currentRecipe.name)   \(currentRecipe.score)"
         prepTimeLabel.text? = "\(currentRecipe.prepTime) mins"
         cookTimeLabel.text? = "\(currentRecipe.cookTime) mins"
         descriptionLabel.text? = currentRecipe.recipeDescription
@@ -59,6 +59,7 @@ class CardsViewController : UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        currentIndex = 0
         generateNewSuggestions()
         showCurrentRecipe()
     }
@@ -114,6 +115,8 @@ class CardsViewController : UIViewController {
             if (currentIndex + 1 > recipes.count) {
                 generateNewSuggestions()
                 currentIndex = 0
+                print("End of recipes")
+                // = []
             }
             showCurrentRecipe()
             print("Left")
