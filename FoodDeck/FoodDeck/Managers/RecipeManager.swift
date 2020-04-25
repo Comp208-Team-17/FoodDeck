@@ -258,7 +258,7 @@ class RecipeManager: NSManagedObject {
         output.append(charThree == "0" ? false : true)
         return output
     }
-    static func filter(theRecipes : [RecipeStr], theTimeOfDayFilter : String, theVeganFilter : Bool, theVegFilter : Bool, theGlutenFilter: Bool) -> [RecipeStr]{
+    static func filter(theRecipes : [RecipeStr], theTimeOfDayFilter : String, theVeganFilter : Bool, theVegFilter : Bool, theGlutenFilter: Bool, theSearch: String) -> [RecipeStr]{
         var localRecipeFilt : [RecipeStr] = theRecipes
         if theTimeOfDayFilter != "All"{
           localRecipeFilt = localRecipeFilt.filter {$0.timeOfDay == theTimeOfDayFilter}
@@ -271,6 +271,9 @@ class RecipeManager: NSManagedObject {
         }
         if theGlutenFilter == true{
            localRecipeFilt = localRecipeFilt.filter {revertDietaryValue(value: $0.dietaryRequirements)[2] == true}
+        }
+        if theSearch != "" {
+            localRecipeFilt = localRecipeFilt.filter {$0.name.contains(theSearch)}
         }
         return localRecipeFilt
     }

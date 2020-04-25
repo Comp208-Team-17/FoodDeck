@@ -290,4 +290,5 @@
             <point key="canvasLocation" x="-743" y="54"/>
         </scene>
     </scenes>
+    <color key="tintColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

@@ -147,7 +147,7 @@ class AddIngredientToRecipeViewController: UIViewController, UITableViewDelegate
             }
                 // make sure value is correct format
             else if let value = Int16(input), value > 0 {
-                RecipeIngredientManager.addRecipeIngredient(ingredient: theIngredient, recipe: EditRecipeIngredientsViewController.localRecipe!, amount: value, optional: false)
+            RecipeIngredientManager.addRecipeIngredient(ingredient: theIngredient, recipe: EditRecipeIngredientsViewController.localRecipe!, amount: value, optional: false)
                 self.navigationController?.popViewController(animated: true)
             }
                 

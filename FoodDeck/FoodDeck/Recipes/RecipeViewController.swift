@@ -40,12 +40,17 @@ class RecipeViewController: UIViewController {
         tblRecipes.reloadData()
         
     }
+    @IBAction func btnPerformSearch(_ sender: Any) {
+        tblRecipes.reloadData()
+        
+    }
     func updateFilter(){
-        RecipeViewController.recipes = RecipeManager.filter(theRecipes: RecipeManager.getRecipe(theName: "", all: true) , theTimeOfDayFilter: sgTimeOfDayOut.titleForSegment(at: sgTimeOfDayOut.selectedSegmentIndex)!, theVeganFilter: swDietary[0].isOn, theVegFilter: swDietary[1].isOn, theGlutenFilter: swDietary[2].isOn)
+        RecipeViewController.recipes = RecipeManager.filter(theRecipes: RecipeManager.getRecipe(theName: "", all: true) , theTimeOfDayFilter: sgTimeOfDayOut.titleForSegment(at: sgTimeOfDayOut.selectedSegmentIndex)!, theVeganFilter: swDietary[0].isOn, theVegFilter: swDietary[1].isOn, theGlutenFilter: swDietary[2].isOn,theSearch: txtSearch.text ?? "")
     }
     var tempReverse : [RecipeStr] = []
     @IBOutlet var swDietary: [UISwitch]!
     @IBOutlet weak var sgTimeOfDayOut: UISegmentedControl!
+    @IBOutlet weak var txtSearch: UITextField!
     @IBOutlet weak var tblRecipes: UICollectionView!
     var deleteButton : Bool = false
     static var chosenRecipeName : String = ""
