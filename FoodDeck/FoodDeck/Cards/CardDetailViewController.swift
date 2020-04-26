@@ -18,6 +18,9 @@ class CardDetailViewController: UIViewController, UITableViewDataSource, UITable
     @IBOutlet weak var instructionText: UITextView!
     @IBOutlet weak var servingsLabel: UILabel!
     @IBOutlet weak var ingredientsTable: UITableView!
+    @IBOutlet weak var vegan: UIImageView!
+    @IBOutlet weak var gluten: UIImageView!
+    @IBOutlet weak var vegetarian: UIImageView!
     
     @IBAction func cookedButton(_ sender: Any) {
         // Create alert
@@ -55,5 +58,23 @@ class CardDetailViewController: UIViewController, UITableViewDataSource, UITable
         
         // Fetch recipe ingredients
         recipeIngredients = RecipeManager.getRecipeObject(theName: recipe!.name)[0].contains?.array as! [RecipeIngredient]
+        
+        // Hide dietary requirements which are not applicable
+        let requirements = Array(recipe!.dietaryRequirements)
+        
+        // Vegetarain
+        if (requirements[0] == "0") {
+            vegetarian.isHidden = true
+        }
+        
+        // Vegan
+        if (requirements[1] == "0") {
+            vegan.isHidden = true
+        }
+        
+        // Gluten free
+        if (requirements[2] == "0") {
+            gluten.isHidden = true
+        }
     }
 }

@@ -144,7 +144,9 @@ class RecipeDetailViewController: UIViewController {
        for index in Int(numberOfStars)..<5{
             btnStarsOutlet![index].setImage(UIImage(named: "star-green-outline"), for: .normal)
         }
-        SuggestionGenerator.updatePoints(source: .rating, rating: Int(numberOfStars), inpRecipe: RecipeDetailViewController.localRecipe[0])
+        if RecipeDetailViewController.localRecipe[0].rating != Int(numberOfStars){
+            SuggestionGenerator.updatePoints(source: .rating, rating: Int(numberOfStars), inpRecipe: RecipeDetailViewController.localRecipe[0])
+        }
        /* if RecipeManager.updateRecipeRating(theName: RecipeDetailViewController.localRecipe[0].name, theStars: numberOfStars) == false{
             let alertController = UIAlertController(title: "Rating error", message: "Attempted to rate non-existing recipe", preferredStyle: UIAlertController.Style.alert)
             alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
