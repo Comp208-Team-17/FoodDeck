@@ -39,7 +39,7 @@ class MealPackManager: NSManagedObject {
  }
     
  // Update status of all meal paks
-    static func updateMealPack(newMealPacks: [MealPackStr]){
+    static func updateMealPack(newMealPacks: [MealPackStr]) {
      // Set up request
      let appDelegate = UIApplication.shared.delegate as! AppDelegate
      let context = appDelegate.persistentContainer.viewContext
@@ -67,4 +67,30 @@ class MealPackManager: NSManagedObject {
         print("No meal packs found - cannot update")
     }
   }
+    
+    // Fetch all disabled meal packs
+    static func getDisabledMealPacks() -> [MealPackStr] {
+        // Set up request to fetch data
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        let request : NSFetchRequest<MealPack> = MealPack.fetchRequest()
+        request.returnsObjectsAsFaults = false
+        
+        // Run request
+        do {
+            let allMealPacks = try context.fetch(request)
+            
+            // Save results and return
+            for mealPack in allMealPacks {
+                if (mealPack.enabled == false){
+                    tempMealPacksRtn.append(MealPackStr(theName: mealPack.name!, isEnabled: mealPack.enabled))
+                }
+            }
+            return tempMealPacksRtn
+        }
+        catch {
+            print("No meal packs found")
+            return []
+        }
+    }
 }

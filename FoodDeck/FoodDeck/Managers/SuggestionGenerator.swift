@@ -94,18 +94,19 @@ class SuggestionGenerator {
             // Decide which recipes should be displayed
             for item in recipeList {
                 let random = Int.random(in: 1...4)
-                //if (item.available) {
-                    // 25% chance to show an unrated recipe
-                    if (random == 1 && item.rating == 0) {
-                        displayRecipe.append(item)
-                        generate = false
-                    }
-                    // 75% chance to show a rated recipe
-                    else if (random != 1 && item.rating > 0) {
-                        displayRecipe.append(item)
-                        generate = false
-                    }
-                //}
+                
+                // 25% chance to show an unrated recipe
+                if (random == 1 && item.rating == 0) {
+                    displayRecipe.append(item)
+                    generate = false
+                }
+                    
+                // 75% chance to show a rated recipe
+                else if (random != 1 && item.rating > 0) {
+                    displayRecipe.append(item)
+                    generate = false
+                }
+                
                 suggestedRecipes.append(item)
             }
         }
@@ -113,13 +114,13 @@ class SuggestionGenerator {
         return displayRecipe
     }
     
-    // Call at generate suggetion or at cards page?
     static func setPotentialMeals() {
         var acceptedRequirement: Bool
         var recipe: RecipeStr
         let recipeList = RecipeManager.getRecipe(theName: "", all: true)
         let pantryList = PantryIngredient.getAllPanryIngredients()
         let currentTime = findTimeOfDay()
+        let disabledMealPacks = MealPackManager.getDisabledMealPacks()
         
         // User's dietary requirements
         let vegan = UserDefaults.standard.object(forKey: "vegan") as? Bool
@@ -138,46 +139,52 @@ class SuggestionGenerator {
             // Allow recipe to be generated if it matches the user's requirements
             let requirements = Array(recipe.dietaryRequirements)
             
-            if (vegetarian == true && requirements[0] == "0"){
+            if (vegetarian == true && requirements[0] == "0") {
                 acceptedRequirement = false
             }
             
-            if (vegan == true && requirements[1] == "0"){
+            if (vegan == true && requirements[1] == "0") {
                 acceptedRequirement = false
             }
             
-            if (gluten == true && requirements[2] == "0"){
+            if (gluten == true && requirements[2] == "0") {
                 acceptedRequirement = false
             }
             
             // Allow recipe to be generated if all it's ingredients are in the pantry
-    
             for ingredient in recipe.ingredients {
-                if ingredient.4 == false { //if ingredient
-                    if ingredient.2 == false {
+                // Check only if the ingredient is mandatory
+                if (ingredient.4 == false) {
+                    
+                    // If the recipe ingredient is disabled - disable recipe
+                    if (ingredient.2 == false) {
                         acceptedRequirement = false
                     }
+                        
                     else{
+                        // Filter to see if ingredient exists in pantry
                         let tempPantry = pantryList.filter{ $0.name == ingredient.0 }
                         
+                        
+                        // Disable recipe if ingredient does not exist in pantry
                         if (tempPantry.count == 0) {
                             acceptedRequirement = false
                         }
-                        else if (ingredient.1 > tempPantry[0].pantryIngredient!.amount){
+                            
+                        // Disable recipe if there is not enough of the ingredient in the pantry to cook the recipe
+                        else if (ingredient.1 > tempPantry[0].pantryIngredient!.amount) {
                             acceptedRequirement = false
-                    }
-                    // is optional then it can be suggested.
-                    
+                        }
                     }
                 }
             }
             
             // Update recipe if necessary
-            if (recipe.available != acceptedRequirement){
+            if (recipe.available != acceptedRequirement) {
                 recipe.available = acceptedRequirement
                 let saved = RecipeManager.updateRecipeExceptIngredients(originalName: recipe.name, newName: recipe.name, theAllergens: recipe.allergen, isAvailable: recipe.available, theCookTime: recipe.cookTime, theDateCreated: recipe.dateCreated, theDietaryRequirements: recipe.dietaryRequirements, isFavourite: recipe.favourite, theInstructions: recipe.instructions, thePrepTime: recipe.prepTime, theRating: recipe.rating, theRecipeDescription: recipe.recipeDescription, theScore: recipe.score, theServings: recipe.servings, theThumbnail: recipe.thumbnail ?? UIImage(), theTimeOfDay: recipe.timeOfDay)
                 
-                if (!saved){
+                if (!saved) {
                     print("Recipe availabilty not updated")
                 }
             }
