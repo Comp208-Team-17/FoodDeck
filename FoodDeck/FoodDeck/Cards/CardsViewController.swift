@@ -89,6 +89,18 @@ class CardsViewController : UIViewController {
         card.layer.masksToBounds = true
         card.layer.borderColor = UIColor(red: 0.7, green: 0.3, blue: 0.1, alpha: 1.0).cgColor
         card.layer.borderWidth = 1.0
+        let allRecipes = RecipeManager.getRecipe(theName: "", all: true)
+        var over175 : Int = 0
+        for recipe in allRecipes {
+            if recipe.score > 175 {
+                over175 += 1
+            }
+        }
+        if over175 > Int(allRecipes.count / 7){
+            SuggestionGenerator.degradePoints()
+        }
+        
+        
     }
     
     @objc func handleGesture(gesture: UISwipeGestureRecognizer) {

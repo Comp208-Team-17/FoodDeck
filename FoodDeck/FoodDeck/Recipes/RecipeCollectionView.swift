@@ -12,9 +12,9 @@ protocol RecipeCollectionViewDelegate : class {
 }
 class RecipeCollectionView: UICollectionViewCell {
     @IBAction func btnFavourite(_ sender: Any) {
-        favourite = !favourite!
-        if RecipeManager.updateRecipeFavourite(theName: txtRecipeName.text!, isFavourite: favourite!) == false{
-        }
+        /*if RecipeManager.updateRecipeFavourite(theName: txtRecipeName.text!, isFavourite: favourite!) == false{
+        } */
+        SuggestionGenerator.updatePoints(source: favourite == true ? .favouriteOff : .favouriteOn, rating: 0, inpRecipe: RecipeManager.getRecipe(theName: txtRecipeName.text!, all: false)[0])
         if favourite! == true {
             btnFavouriteOut.setImage(UIImage(named:"heart-green"), for: .normal)
         }

@@ -32,21 +32,27 @@ class SuggestionGenerator {
         }
         
         else if (source == .rating) {
-            if (recipe.rating > rating){
-                let difference = recipe.rating - Int16(rating)
-                recipe.score -= difference * 25
+            // Reset ratings
+            if rating == 0 {
+                recipe.score = 100
+            }
+            else{
+                // changing ratings
+                recipe.score = Int16(recipe.score - (recipe.rating == 0 ? 100 : recipe.rating * 25) + Int16((rating * 25)))
             }
             recipe.rating = Int16(rating)
         }
         
         else if (source == .favouriteOn) {
             recipe.favourite = true
-            recipe.score = recipe.score + (recipe.rating * 25) - 150
+            recipe.score = recipe.score - (recipe.rating == 0 ? 100 : recipe.rating * 25) + 150
+            print (recipe.score)
         }
         
         else if (source == .favouriteOff) {
             recipe.favourite = false
-            recipe.score = recipe.score - (recipe.rating * 25) + 150
+            recipe.score = recipe.score + (recipe.rating == 0 ? 100 : recipe.rating * 25) - 150
+            print (recipe.score)
         }
         
         // Adjust recipe score to be withing boundaries
@@ -241,11 +247,11 @@ class SuggestionGenerator {
             return "Breakfast"
         }
         // Afternoon = 12:00 - 16:59
-        else if (hour >= 12 && hour < 15){
+        else if (hour >= 12 && hour < 17){
             return "Lunch"
         }
         // Evening = 17:00 - 03:59
-        else if (hour >= 15 || hour < 4){
+        else if (hour >= 17 || hour < 4){
             return "Dinner"
         }
         return ""

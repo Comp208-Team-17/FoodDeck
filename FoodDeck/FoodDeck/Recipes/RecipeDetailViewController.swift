@@ -117,13 +117,15 @@ class RecipeDetailViewController: UIViewController {
         if favourite == true {
                   favourite = false
                   btnFavouriteOutlet.setImage(UIImage(named: "heart-green-outline"), for: .normal)
-                   RecipeManager.updateRecipeFavourite(theName: RecipeDetailViewController.localRecipe[0].name, isFavourite: false)
+                   //RecipeManager.updateRecipeFavourite(theName: RecipeDetailViewController.localRecipe[0].name, isFavourite: false)
+            SuggestionGenerator.updatePoints(source: .favouriteOff, rating: 0, inpRecipe: RecipeDetailViewController.localRecipe[0])
                   //set as not favourite
               }
               else{
                   favourite = true
                   btnFavouriteOutlet.setImage(UIImage(named:"heart-green"), for: .normal)
-            RecipeManager.updateRecipeFavourite(theName: RecipeDetailViewController.localRecipe[0].name, isFavourite: true)
+             SuggestionGenerator.updatePoints(source: .favouriteOn, rating: 0, inpRecipe: RecipeDetailViewController.localRecipe[0])
+            //RecipeManager.updateRecipeFavourite(theName: RecipeDetailViewController.localRecipe[0].name, isFavourite: true)
                   //set as favourite
               }
     }
@@ -134,11 +136,12 @@ class RecipeDetailViewController: UIViewController {
        for index in Int(numberOfStars)..<5{
             btnStarsOutlet![index].setImage(UIImage(named: "star-green-outline"), for: .normal)
         }
-        if RecipeManager.updateRecipeRating(theName: RecipeDetailViewController.localRecipe[0].name, theStars: numberOfStars) == false{
+        SuggestionGenerator.updatePoints(source: .rating, rating: Int(numberOfStars), inpRecipe: RecipeDetailViewController.localRecipe[0])
+       /* if RecipeManager.updateRecipeRating(theName: RecipeDetailViewController.localRecipe[0].name, theStars: numberOfStars) == false{
             let alertController = UIAlertController(title: "Rating error", message: "Attempted to rate non-existing recipe", preferredStyle: UIAlertController.Style.alert)
             alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
             self.present(alertController, animated: true, completion: nil)
-        }
+        } */
     }
 
     /*
