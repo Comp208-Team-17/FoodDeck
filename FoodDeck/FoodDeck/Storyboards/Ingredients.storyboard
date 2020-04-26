@@ -15,8 +15,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="f3f-ny-cmo">
-                                <rect key="frame" x="0.0" y="44" width="375" height="574"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="f3f-ny-cmo">
+                                <rect key="frame" x="0.0" y="88" width="375" height="530"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="IngredientsTblCell" rowHeight="80" id="Ah2-uL-evB" customClass="IngredientTable" customModule="FoodDeck" customModuleProvider="target">
@@ -113,7 +113,9 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="btnDeleteOutlet" destination="xsR-Py-8wV" id="0Ml-cG-Pax"/>
                                             <outlet property="btnDisableOutlet" destination="s36-WZ-oh5" id="yII-9b-Ht1"/>
+                                            <outlet property="btnEditOutlet" destination="Vaz-8r-Flr" id="hdJ-mq-KjU"/>
                                             <outlet property="txtEnabled" destination="ufm-c7-SuE" id="EZY-vs-pZO"/>
                                             <outlet property="txtIngredientName" destination="K8Q-7f-YeX" id="cNG-hd-0V1"/>
                                             <outlet property="txtUnit" destination="C76-Gt-UGf" id="M0F-T3-2Lw"/>
@@ -125,6 +127,17 @@
                                     <outlet property="delegate" destination="PmA-PE-8xJ" id="25i-DL-MRI"/>
                                 </connections>
                             </tableView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="f1F-9v-PUn">
+                                <rect key="frame" x="16" y="49" width="343" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="Custom"/>
+                                    <segment title="Built-in"/>
+                                </segments>
+                                <connections>
+                                    <action selector="sgIngredientSelect:" destination="PmA-PE-8xJ" eventType="valueChanged" id="rxf-22-QuU"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -154,6 +167,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="sgIngredientSelectOutlet" destination="f1F-9v-PUn" id="BER-Zv-5xZ"/>
                         <outlet property="tblIngredients" destination="f3f-ny-cmo" id="TFL-X9-0TE"/>
                     </connections>
                 </viewController>

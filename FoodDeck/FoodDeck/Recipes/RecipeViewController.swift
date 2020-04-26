@@ -114,8 +114,13 @@ extension RecipeViewController: RecipeCollectionViewDelegate{
     func didTapRecipe(onCell: RecipeCollectionView) {
         RecipeViewController.chosenRecipeName = onCell.txtRecipeName.text!
         if deleteButton == true{
-            RecipeManager.deleteRecipe(theName: RecipeViewController.chosenRecipeName)
-            tblRecipes.reloadData()
+            if RecipeViewController.recipes.contains(where: {$0.name == RecipeViewController.chosenRecipeName && $0.mealPack != ""}){
+                ErrorManager.errorMessageStandard(theTitle: "Meal Pack", theMessage: "This recipe cannot be deleted because it is part of a meal pack. Please disable the meal pack in settings", caller: self)
+            }
+            else{
+                RecipeManager.deleteRecipe(theName: RecipeViewController.chosenRecipeName)
+                tblRecipes.reloadData()
+            }
         }
         else{
             performSegue(withIdentifier: "toRecipeDetail", sender: self)

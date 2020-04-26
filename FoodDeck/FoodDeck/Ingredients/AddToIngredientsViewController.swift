@@ -19,6 +19,10 @@ class AddToIngredientsViewController: UIViewController{
     @IBOutlet weak var unitSelect: UIPickerView!
     @IBOutlet weak var txtIngredient: UITextField!
     @IBOutlet weak var tblIngredients: UITableView!
+    @IBOutlet weak var sgIngredientSelectOutlet: UISegmentedControl!
+    @IBAction func sgIngredientSelect(_ sender: Any) {
+        tblIngredients.reloadData()
+    }
     @IBAction func btnSave(_ sender: Any) {
         //Go back to previous page.
         if AddToIngredientsViewController.selectedEditPage == true {
@@ -62,7 +66,11 @@ class AddToIngredientsViewController: UIViewController{
         }
     }
     
-   
+    func filter(){
+        if sgIngredientSelectOutlet.selectedSegmentIndex == 1 {
+            ingredientsList.filter({$0.name.contains("*")})
+        }
+    }
     /*
     // MARK: - Navigation
 
@@ -94,17 +102,23 @@ extension AddToIngredientsViewController :  UIPickerViewDelegate, UIPickerViewDa
 extension AddToIngredientsViewController : UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
          ingredientsList = IngredientManager.getIngredient(theName: "", enabled: false, all: true)
+        filter()
         return ingredientsList.count
         
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+      
         let cell = tblIngredients.dequeueReusableCell(withIdentifier: "IngredientsTblCell") as! IngredientTable
         cell.txtIngredientName.text = "\(ingredientsList[indexPath.row].name)"
         cell.txtEnabled.text = ingredientsList[indexPath.row].enabled == true ? "Enabled" : "Disabled"
         cell.txtUnit.text = ingredientsList[indexPath.row].unit == "G" ? "Grams" : "#items"
         cell.deleteButtonDelegate = self
         cell.editButtonDelegate = self
+        if sgIngredientSelectOutlet.selectedSegmentIndex == 1 {
+            cell.btnEditOutlet.isEnabled = false
+            cell.btnDeleteOutlet.isEnabled = false
+        }
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

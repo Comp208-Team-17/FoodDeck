@@ -10,6 +10,7 @@ import UIKit
 
 class RecipeDetailViewController: UIViewController {
 
+    @IBOutlet weak var btnEdit: UIButton!
     @IBOutlet weak var lblPrep: UILabel!
     @IBOutlet weak var lblCook: UILabel!
     @IBOutlet weak var lblServings: UILabel!
@@ -101,6 +102,13 @@ class RecipeDetailViewController: UIViewController {
             lblPrep.text = "\(RecipeDetailViewController.localRecipe[0].prepTime)"
             lblCook.text = "\(RecipeDetailViewController.localRecipe[0].cookTime)"
             lblServings.text = "\(RecipeDetailViewController.localRecipe[0].servings)"
+            if RecipeDetailViewController.localRecipe[0].mealPack != "" {
+                btnEdit.isEnabled = false
+            }
+            else{
+                btnEdit.isEnabled = true
+            }
+            
             
         }
         else{

@@ -15,6 +15,8 @@ protocol IngredientTableDelegate : AnyObject {
 class IngredientTable: UITableViewCell {
     var tempIngredient : [IngredientStr] = []
     var enabledButton : Bool = false
+    @IBOutlet weak var btnDeleteOutlet: UIButton!
+    @IBOutlet weak var btnEditOutlet : UIButton!
     @IBOutlet weak var btnDisableOutlet: UIButton!
     @IBAction func btnDisable(_ sender: Any) {
         

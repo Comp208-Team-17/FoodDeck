@@ -617,6 +617,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="btnEdit" destination="g5E-5d-N8q" id="Aqm-up-UZt"/>
                         <outlet property="btnFavouriteOutlet" destination="ltF-Qo-6zs" id="1t3-dv-a5y"/>
                         <outlet property="lblCook" destination="cqx-pb-WFQ" id="Px0-jq-Tci"/>
                         <outlet property="lblPrep" destination="q4d-1c-pLo" id="E4K-Gg-0Ke"/>
