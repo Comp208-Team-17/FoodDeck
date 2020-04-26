@@ -1,14 +1,14 @@
-# FoodDeck - (Friday 24th April 2020)
+# FoodDeck - (Friday 1st May 2020)
 Save time, effort and waste with our decision-making meal app. Stop spending time searching through your cupboards and let our app do that for you. 
 
 ## TODO
 - Front-end
-  - Add constraints on ingredients, cards, recipes and settings storyboards
+  - Check constraints work on iphone 11
 - Back-end
-  - Finish ingredients, pantry and recipe controllers
+  - Meal Packs
   - Populate core data 
-- Test Tables
-- Portfolio
+- Instruction Manual
+- Demo Video 
 
 
 ## Resources
