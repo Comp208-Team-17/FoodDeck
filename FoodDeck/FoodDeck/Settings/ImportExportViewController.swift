@@ -10,6 +10,9 @@ import UIKit
 
 class ImportExportViewController: UIViewController {
 
+    @IBAction func btnMealPacks(_ sender: Any) {
+        ImportExportManager.preloadDBData()
+    }
     @IBAction func btnImport(_ sender: Any) {
         ImportExportManager.restoreFromStore(backupName: "crap")
     }
