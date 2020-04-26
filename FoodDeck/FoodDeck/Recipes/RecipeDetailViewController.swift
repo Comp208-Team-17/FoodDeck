@@ -193,6 +193,5 @@ extension RecipeDetailViewController : UITableViewDataSource, UITableViewDelegat
         return 65
     }
     
-    
 }
 

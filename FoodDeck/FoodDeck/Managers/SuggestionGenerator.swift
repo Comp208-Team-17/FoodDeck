@@ -256,4 +256,5 @@ class SuggestionGenerator {
         }
         return ""
     }
+    
 }
