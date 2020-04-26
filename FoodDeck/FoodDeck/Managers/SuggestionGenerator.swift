@@ -46,13 +46,11 @@ class SuggestionGenerator {
         else if (source == .favouriteOn) {
             recipe.favourite = true
             recipe.score = recipe.score - (recipe.rating == 0 ? 100 : recipe.rating * 25) + 150
-            print (recipe.score)
         }
         
         else if (source == .favouriteOff) {
             recipe.favourite = false
             recipe.score = recipe.score + (recipe.rating == 0 ? 100 : recipe.rating * 25) - 150
-            print (recipe.score)
         }
         
         // Adjust recipe score to be withing boundaries

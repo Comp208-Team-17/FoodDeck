@@ -11,6 +11,8 @@ import CoreData
 
 class MealPackManager: NSManagedObject {
  static var tempMealPacksRtn: [MealPackStr] = []
+ static var mealPackNames : [String] = ["Italian", "British", "American"]
+    static var mealPackRecipes : [(String, String)] = [("Italian", "Spaghetti Carbonara"), ("British", "Corned Beef Hash"), ("American", "CheeseBurger")]
  
  // Fetch all meal packs from core data
  static func getMealPacks() -> [MealPackStr] {
@@ -67,6 +69,20 @@ class MealPackManager: NSManagedObject {
         print("No meal packs found - cannot update")
     }
   }
+    static func addMealPack(theName: String) -> Bool{
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        let newMealPack = MealPack(context : context)
+        newMealPack.enabled = true
+        newMealPack.name = theName
+        do{
+            try context.save()
+            return true
+        }
+        catch{
+            return false
+        }
+    }
     
     // Fetch all disabled meal packs
     static func getDisabledMealPacks() -> [MealPackStr] {
@@ -91,6 +107,14 @@ class MealPackManager: NSManagedObject {
         catch {
             print("No meal packs found")
             return []
+        }
+    }
+    static func makeMealPacks(){
+        for name in mealPackNames{
+            addMealPack(theName: name)
+        }
+        for recipes in mealPackRecipes {
+            
         }
     }
 }
