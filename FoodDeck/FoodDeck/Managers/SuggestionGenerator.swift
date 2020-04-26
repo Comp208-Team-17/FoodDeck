@@ -32,15 +32,21 @@ class SuggestionGenerator {
         }
         
         else if (source == .rating) {
+            if (recipe.rating > rating){
+                let difference = recipe.rating - Int16(rating)
+                recipe.score -= difference * 25
+            }
             recipe.rating = Int16(rating)
         }
         
         else if (source == .favouriteOn) {
             recipe.favourite = true
+            recipe.score = recipe.score + (recipe.rating * 25) - 150
         }
         
         else if (source == .favouriteOff) {
             recipe.favourite = false
+            recipe.score = recipe.score - (recipe.rating * 25) + 150
         }
         
         // Adjust recipe score to be withing boundaries
