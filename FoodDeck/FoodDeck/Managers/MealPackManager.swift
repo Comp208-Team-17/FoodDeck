@@ -12,7 +12,7 @@ import CoreData
 class MealPackManager: NSManagedObject {
  static var tempMealPacksRtn: [MealPackStr] = []
  static var mealPackNames : [String] = ["Italian", "British", "American"]
-    static var mealPackRecipes : [(String, String)] = [("Italian", "Spaghetti Carbonara"), ("British", "Corned Beef Hash"), ("American", "CheeseBurger")]
+static var mealPackRecipes : [(String, String)] = [("Italian", "Spaghetti Carbonara"), ("British", "Corned Beef Hash"), ("American", "CheeseBurger")]
  
  // Fetch all meal packs from core data
  static func getMealPacks() -> [MealPackStr] {
@@ -40,6 +40,31 @@ class MealPackManager: NSManagedObject {
      }
  }
     
+    static func getMealPackObject(theName : String) -> [MealPack]{
+        var mealPackRtn : [MealPack] = []
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        let request : NSFetchRequest<MealPack> = MealPack.fetchRequest()
+        request.returnsObjectsAsFaults = false
+        
+        // Run request
+        do {
+            let allMealPacks = try context.fetch(request)
+            
+            // Save results and return
+            for mealPack in allMealPacks {
+                if mealPack.name! == theName {
+                    mealPackRtn.append(mealPack)
+                    return mealPackRtn
+                }
+            }
+        }
+        catch {
+            print("No meal packs found")
+            
+        }
+        return []
+    }
  // Update status of all meal paks
     static func updateMealPack(newMealPacks: [MealPackStr]) {
      // Set up request
@@ -113,8 +138,9 @@ class MealPackManager: NSManagedObject {
         for name in mealPackNames{
             addMealPack(theName: name)
         }
-        for recipes in mealPackRecipes {
-            
+        for recipe in mealPackRecipes {
+            let theRecipe = RecipeManager.getRecipeObject(theName: recipe.1)[0]
+            theRecipe.belongsTo = getMealPackObject(theName: recipe.0)[0]
         }
     }
 }

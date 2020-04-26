@@ -23,8 +23,9 @@ public struct RecipeStr{
      var servings : Int16
      var thumbnail : UIImage?
      var timeOfDay : String
+    var mealPack : String
     var ingredients : [(String, Int16, Bool, String, Bool)]
-     init(theAllergens : String, isAvailable : Bool, theCookTime : Int16, theDateCreated : String, theDietaryRequirements : String, isFavourite : Bool, theInstructions : String, theName : String, thePrepTime : Int16, theRating : Int16, theRecipeDescription : String, theScore : Int16, theServings :  Int16, theThumbnail : UIImage, theTimeOfDay : String, theIngredients : [(String, Int16, Bool, String, Bool)]){
+    init(theAllergens : String, isAvailable : Bool, theCookTime : Int16, theDateCreated : String, theDietaryRequirements : String, isFavourite : Bool, theInstructions : String, theName : String, thePrepTime : Int16, theRating : Int16, theRecipeDescription : String, theScore : Int16, theServings :  Int16, theThumbnail : UIImage, theTimeOfDay : String, theIngredients : [(String, Int16, Bool, String, Bool)], theMealPack: String){
          allergen = theAllergens //in the following format : "111" Where pos 1 is vegetarian, pos 2 is vegan, pos 3 is gluten free. e.g. "101" means vegetarian and gluten free.
          available = isAvailable
          cookTime = theCookTime
@@ -41,6 +42,7 @@ public struct RecipeStr{
          thumbnail = theThumbnail
          timeOfDay = theTimeOfDay
          ingredients = theIngredients
+        mealPack = theMealPack
      }
      init() {
          allergen = ""
@@ -57,6 +59,7 @@ public struct RecipeStr{
          score = 0
          servings = 0
          timeOfDay = ""
+        mealPack = ""
          ingredients = []
      }
  }
@@ -76,7 +79,7 @@ public struct IngredientStr{
     }
 }
 
-public struct MealPackStr : Codable {
+public struct MealPackStr {
     var name: String
     var enabled: Bool
     

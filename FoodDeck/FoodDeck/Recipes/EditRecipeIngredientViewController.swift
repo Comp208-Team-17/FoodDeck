@@ -61,7 +61,7 @@ class EditRecipeIngredientsViewController: UIViewController {
 
 extension EditRecipeIngredientsViewController : UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-         EditRecipeIngredientsViewController.localRecipe = RecipeManager.getRecipeObject(theName: RecipeViewController.chosenRecipeName)[0]
+        EditRecipeIngredientsViewController.localRecipe = RecipeManager.getRecipeObject(theName: RecipeViewController.chosenRecipeName)[0]
         recipeIngredients = RecipeIngredientManager.getIngredients(recipe: EditRecipeIngredientsViewController.localRecipe!, enabled: false)
         return recipeIngredients.count
     }

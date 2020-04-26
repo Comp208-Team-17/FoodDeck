@@ -56,6 +56,7 @@ class RecipeManager: NSManagedObject {
     }
     
     static func getRecipeObject(theName: String) -> [Recipe] {
+        var recipeTmpRtn : [Recipe] = []
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
         let request : NSFetchRequest<Recipe> = Recipe.fetchRequest()
@@ -64,12 +65,12 @@ class RecipeManager: NSManagedObject {
             let fetchedRecipes = try context.fetch(request)
             for theRecipe in fetchedRecipes{
                 if theRecipe.name! == theName {
-                    return [theRecipe]
+                    recipeTmpRtn.append(theRecipe)
                 }
             }
         }
         catch{}
-        return []
+        return recipeTmpRtn
     }
     static func getRecipe(theName : String, all: Bool) -> [RecipeStr]{
         if all == true {
@@ -81,6 +82,10 @@ class RecipeManager: NSManagedObject {
                 tempRecipeRtn.removeAll()
                 let fetchedRecipes = try context.fetch(request)
                 for theRecipe in fetchedRecipes {
+                    var theMealPackTmp = ""
+                    if let mpack = theRecipe.belongsTo {
+                        theMealPackTmp = mpack.name!
+                    }
                     tempRecipeRtn.append(RecipeStr(theAllergens: theRecipe.allergen!,
                     isAvailable: theRecipe.available,
                     theCookTime: theRecipe.cookTime,
@@ -96,7 +101,8 @@ class RecipeManager: NSManagedObject {
                     theServings: theRecipe.servings,
                     theThumbnail: UIImage(data: theRecipe.thumbnail!)!,
                     theTimeOfDay: theRecipe.timeOfDay!,
-                    theIngredients: RecipeIngredientManager.getIngredients(recipe: theRecipe, enabled: false)))
+                    theIngredients: RecipeIngredientManager.getIngredients(recipe: theRecipe, enabled: false), theMealPack: theMealPackTmp))
+                   
                 }
                 return tempRecipeRtn
             }
@@ -130,6 +136,10 @@ class RecipeManager: NSManagedObject {
                         catch{}
                     }
                     else if get == true {
+                        var theMealPackTmp = ""
+                        if let mpack = theRecipe.belongsTo {
+                            theMealPackTmp = mpack.name!
+                        }
                         tempRecipeRtn.removeAll()
                         tempRecipeRtn.append(RecipeStr(theAllergens: theRecipe.allergen!,
                                                        isAvailable: theRecipe.available,
@@ -146,7 +156,7 @@ class RecipeManager: NSManagedObject {
                                                        theServings: theRecipe.servings,
                                                        theThumbnail: UIImage(data: theRecipe.thumbnail!)!,
                                                        theTimeOfDay: theRecipe.timeOfDay!,
-                                                       theIngredients: RecipeIngredientManager.getIngredients(recipe: theRecipe, enabled: false)))
+                                                       theIngredients: RecipeIngredientManager.getIngredients(recipe: theRecipe, enabled: false), theMealPack: theMealPackTmp))
                         return true
                     }
                     return false
@@ -259,7 +269,13 @@ class RecipeManager: NSManagedObject {
         return output
     }
     static func filter(theRecipes : [RecipeStr], theTimeOfDayFilter : String, theVeganFilter : Bool, theVegFilter : Bool, theGlutenFilter: Bool, theSearch: String) -> [RecipeStr]{
-        var localRecipeFilt : [RecipeStr] = theRecipes
+        var localRecipeFilt : [RecipeStr] = []
+        let mealPacks = MealPackManager.getDisabledMealPacks()
+        for recipe in theRecipes{
+            if recipe.mealPack == "" || !mealPacks.contains(where: {$0.name == recipe.mealPack}) {
+                localRecipeFilt.append(recipe)
+            }
+        }
         if theTimeOfDayFilter != "All"{
           localRecipeFilt = localRecipeFilt.filter {$0.timeOfDay == theTimeOfDayFilter}
         }
