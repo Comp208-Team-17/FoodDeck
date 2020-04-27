@@ -148,6 +148,11 @@ class SuggestionGenerator {
                 acceptedRequirement = false
             }
             
+            // Allow recipes to be generated if it's meal pack is enabled
+            if (recipe.mealPack != "" && disabledMealPacks.contains(where: {$0.name == recipe.mealPack})) {
+                acceptedRequirement = false
+            }
+            
             // Allow recipe to be generated if it matches the user's requirements
             let requirements = Array(recipe.dietaryRequirements)
             
