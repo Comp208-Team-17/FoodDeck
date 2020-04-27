@@ -30,6 +30,7 @@ class CardDetailViewController: UIViewController, UITableViewDataSource, UITable
         // Confirm button - remove ingredients from pantry
         alert.addAction(UIAlertAction(title: "Confirm Cooked", style: UIAlertAction.Style.default, handler: {(_) in
             PantryIngredient.subtractRecipeIngredient(recipeIngredients: self.recipeIngredients, on: self)
+            self.navigationController?.popToRootViewController(animated: true)
         }))
         
         // Cancel button
@@ -40,11 +41,30 @@ class CardDetailViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return recipe!.ingredients.count
+        return recipeIngredients.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cardIngredientCell") as! CardIngredientCell
+        cell.ingredientNameLabel.text = recipeIngredients[indexPath.row].ingredient?.name
+        
+        if (recipeIngredients[indexPath.row].ingredient?.unit == "U") {
+            cell.amountLabel.text = "x\(recipeIngredients[indexPath.row].amount)"
+        }
+        else {
+            cell.amountLabel.text = "\(recipeIngredients[indexPath.row].amount)g"
+        }
+        
+        if (recipeIngredients[indexPath.row].optional == true) {
+            cell.optionalLabel.text = "O"
+        }
+        
+        else {
+            cell.optionalLabel.text = ""
+        }
+        
+        
+        return cell
     }
     
     override func viewDidLoad() {
@@ -77,4 +97,11 @@ class CardDetailViewController: UIViewController, UITableViewDataSource, UITable
             gluten.isHidden = true
         }
     }
+}
+
+class CardIngredientCell: UITableViewCell {
+    @IBOutlet weak var ingredientNameLabel: UILabel!
+    @IBOutlet weak var amountLabel: UILabel!
+    @IBOutlet weak var optionalLabel: UILabel!
+    
 }
