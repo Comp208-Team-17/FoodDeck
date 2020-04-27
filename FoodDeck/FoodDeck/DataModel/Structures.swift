@@ -67,15 +67,18 @@ public struct IngredientStr{
     var name : String
     var unit : String
     var enabled : Bool
-    init(theName : String, theUnit : String, isEnabled : Bool){
+    var inMealPack : Bool
+    init(theName : String, theUnit : String, isEnabled : Bool, isInMealPack : Bool){
         name = theName
         unit = theUnit
         enabled = isEnabled
+        inMealPack = isInMealPack
     }
     init(){
         name = ""
         unit = ""
         enabled = false
+        inMealPack = false
     }
 }
 

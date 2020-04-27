@@ -21,6 +21,7 @@ class IngredientManager: NSManagedObject {
             newIngredient.enabled = isEnabled
             newIngredient.name = theName
             newIngredient.unit = theUnit
+            newIngredient.inMealPack = true
             do{
                 try context.save()
                 return true
@@ -73,21 +74,21 @@ class IngredientManager: NSManagedObject {
             if enabled == true {
                 for theIngredient in allIngredients{
                     if theIngredient.enabled{
-                        tempIngredientRtn.append(IngredientStr(theName : theIngredient.name!, theUnit: theIngredient.unit!, isEnabled : theIngredient.enabled))
+                        tempIngredientRtn.append(IngredientStr(theName : theIngredient.name!, theUnit: theIngredient.unit!, isEnabled : theIngredient.enabled, isInMealPack: theIngredient.inMealPack))
                     }
                 }
                 return tempIngredientRtn
             }
             else if all == true{
                 for theIngredient in allIngredients{
-                    tempIngredientRtn.append(IngredientStr(theName : theIngredient.name!, theUnit: theIngredient.unit!, isEnabled : theIngredient.enabled))
+                    tempIngredientRtn.append(IngredientStr(theName : theIngredient.name!, theUnit: theIngredient.unit!, isEnabled : theIngredient.enabled, isInMealPack: theIngredient.inMealPack))
                 }
                 return tempIngredientRtn
             }
             else if enabled == false && theName == "" {
                 for theIngredient in allIngredients{
                     if theIngredient.enabled == false{
-                        tempIngredientRtn.append(IngredientStr(theName : theIngredient.name!, theUnit: theIngredient.unit!, isEnabled : theIngredient.enabled))
+                        tempIngredientRtn.append(IngredientStr(theName : theIngredient.name!, theUnit: theIngredient.unit!, isEnabled : theIngredient.enabled, isInMealPack: theIngredient.inMealPack))
                     }
                 }
                 return tempIngredientRtn
@@ -129,7 +130,7 @@ class IngredientManager: NSManagedObject {
         do{
             let fetchedIngredients = try context.fetch(request)
             for theIngredient in fetchedIngredients{
-                if theIngredient.name == theName{
+                if theIngredient.name?.lowercased() == theName.lowercased(){
                     if delete == true{
                         context.delete(theIngredient)
                         do{
@@ -139,7 +140,7 @@ class IngredientManager: NSManagedObject {
                         catch{}
                     }
                     else if get == true {
-                        tempIngredientRtn.append(IngredientStr(theName: theIngredient.name!, theUnit: theIngredient.unit!, isEnabled: theIngredient.enabled))
+                        tempIngredientRtn.append(IngredientStr(theName: theIngredient.name!, theUnit: theIngredient.unit!, isEnabled: theIngredient.enabled, isInMealPack: theIngredient.inMealPack))
                         return true
                     }
                     return false

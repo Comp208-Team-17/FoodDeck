@@ -126,7 +126,7 @@ class RecipeManager: NSManagedObject {
         do{
             let fetchedRecipes = try context.fetch(request)
             for theRecipe in fetchedRecipes{
-                if theRecipe.name == theName{
+                if theRecipe.name!.lowercased() == theName.lowercased(){
                     if delete == true{
                         context.delete(theRecipe)
                         do{

@@ -69,7 +69,7 @@ class ImportExportManager: NSManagedObject {
             print("=======================")
         }
     }
-    static func restoreFromStore(backupName: String){
+    static func restoreFromStore1(backupName: String){
         
         let storeFolderUrl = FileManager.default.urls(for: .applicationSupportDirectory, in:.userDomainMask).first!
         let storeUrl = storeFolderUrl.appendingPathComponent("FoodDeck.sqlite")
@@ -93,5 +93,29 @@ class ImportExportManager: NSManagedObject {
         })
 
     }
+    static func restoreFromStore(backupName: String){
+           
+           let storeFolderUrl = FileManager.default.urls(for: .applicationSupportDirectory, in:.userDomainMask).first!
+           let storeUrl = storeFolderUrl.appendingPathComponent("FoodDeck.sqlite")
+           let backupUrl = Bundle.main.url(forResource: "crap2", withExtension: "sqlite")
+
+           let container = NSPersistentContainer(name: "FoodDeck")
+           container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+               let stores = container.persistentStoreCoordinator.persistentStores
+
+               for store in stores {
+                   print(store)
+                   print(container)
+               }
+               do{
+                try container.persistentStoreCoordinator.replacePersistentStore(at: storeUrl,destinationOptions: nil,withPersistentStoreFrom: backupUrl!,sourceOptions: nil,ofType: NSSQLiteStoreType)
+               } catch {
+                   print("Failed to restore")
+               }
+
+           })
+
+       }
 
 }
+ 

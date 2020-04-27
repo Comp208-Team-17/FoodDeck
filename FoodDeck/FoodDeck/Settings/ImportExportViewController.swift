@@ -25,7 +25,10 @@ class ImportExportViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-
+    @IBAction func btnMakeMealPacks(_ sender: Any) {
+        MealPackManager.makeMealPacks()
+    }
+    
     /*
     // MARK: - Navigation
 

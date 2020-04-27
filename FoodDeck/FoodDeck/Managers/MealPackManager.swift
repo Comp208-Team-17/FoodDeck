@@ -25,6 +25,7 @@ static var mealPackRecipes : [(String, String)] = [("Italian", "Spaghetti Carbon
      
      // Run request
      do {
+        tempMealPacksRtn.removeAll()
          let allMealPacks = try context.fetch(request)
          
          // Save results and return
@@ -81,7 +82,9 @@ static var mealPackRecipes : [(String, String)] = [("Italian", "Spaghetti Carbon
             // Compare each unique meal pack name and update enabled status
             for updateMealPack in newMealPacks {
                 if (mealPack.name == updateMealPack.name) {
-                    mealPack.setValue(updateMealPack.enabled, forKey: "enabled")
+                    //mealPack.setValue(updateMealPack.enabled, forKey: "enabled")
+                    mealPack.enabled = updateMealPack.enabled
+                    print(mealPack.enabled)
                 }
             }
         }
@@ -116,7 +119,7 @@ static var mealPackRecipes : [(String, String)] = [("Italian", "Spaghetti Carbon
         let context = appDelegate.persistentContainer.viewContext
         let request : NSFetchRequest<MealPack> = MealPack.fetchRequest()
         request.returnsObjectsAsFaults = false
-        
+        tempMealPacksRtn.removeAll()
         // Run request
         do {
             let allMealPacks = try context.fetch(request)
@@ -135,6 +138,7 @@ static var mealPackRecipes : [(String, String)] = [("Italian", "Spaghetti Carbon
         }
     }
     static func makeMealPacks(){
+        print("made new meal packs")
         for name in mealPackNames{
             addMealPack(theName: name)
         }

@@ -2,6 +2,7 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15702" systemVersion="19D76" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Ingredient" representedClassName=".Ingredient" isAbstract="YES" syncable="YES" codeGenerationType="category">
         <attribute name="enabled" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="inMealPack" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="unit" optional="YES" attributeType="String"/>
         <relationship name="inRecipe" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="RecipeIngredient" inverseName="ingredient" inverseEntity="RecipeIngredient"/>
@@ -47,7 +48,7 @@
         <relationship name="belongsTo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Ingredient" inverseName="shoppingList" inverseEntity="Ingredient"/>
     </entity>
     <elements>
-        <element name="Ingredient" positionX="-54" positionY="-9" width="128" height="133"/>
+        <element name="Ingredient" positionX="-54" positionY="-9" width="128" height="148"/>
         <element name="MealPack" positionX="500" positionY="-124" width="128" height="88"/>
         <element name="PantryIngredient" positionX="-20" positionY="225" width="128" height="73"/>
         <element name="Recipe" positionX="507" positionY="25" width="128" height="298"/>

@@ -24,22 +24,31 @@ class AddToIngredientsViewController: UIViewController{
         tblIngredients.reloadData()
     }
     @IBAction func btnSave(_ sender: Any) {
+        var acceptInput : Bool = true
         //Go back to previous page.
         if AddToIngredientsViewController.selectedEditPage == true {
             AddToIngredientsViewController.selectedEditPage = false
-            if IngredientManager.updateIngredient(originalName: AddToIngredientsViewController.selectedRowTxt, isEnabled: tempIngredient.count == 1 ? tempIngredient[0].enabled : true, theName: txtIngredient.text!, theUnit: selectedUnitType == 0 ? "G" : "U") == true{
+            if let ingredientName = txtIngredient.text {
+                if ingredientName.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
+                    acceptInput = false
+                }
+            }
+            else{
+                acceptInput = false
+            }
+            if acceptInput == true && IngredientManager.updateIngredient(originalName: AddToIngredientsViewController.selectedRowTxt, isEnabled: tempIngredient.count == 1 ? tempIngredient[0].enabled : true, theName: txtIngredient.text!.trimmingCharacters(in: .whitespacesAndNewlines), theUnit: selectedUnitType == 0 ? "G" : "U") == true {
                 navigationController?.popViewController(animated: true)
             }
             else{
-                     let alertController = UIAlertController(title: "Ingredient Error", message: "You cannot change this ingredient to the name of an ingredient that already exists. Please try again", preferredStyle: UIAlertController.Style.alert)
-                       alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
-                       self.present(alertController, animated: true, completion: nil)
+                let alertController = UIAlertController(title: "Ingredient Error", message: "You cannot change this ingredient to the name of an ingredient that already exists. Please try again", preferredStyle: UIAlertController.Style.alert)
+                alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+                self.present(alertController, animated: true, completion: nil)
             }
             
         }
-        else if IngredientManager.addIngredient(isEnabled: true, theName: txtIngredient.text!, theUnit: selectedUnitType == 0 ? "G" :"U"){
-                navigationController?.popViewController(animated: true)
-           
+        else if IngredientManager.addIngredient(isEnabled: true, theName: txtIngredient.text!.trimmingCharacters(in: .whitespacesAndNewlines), theUnit: selectedUnitType == 0 ? "G" :"U"){
+            navigationController?.popViewController(animated: true)
+            
         }
         else{
             let alertController = UIAlertController(title: "Ingredient Error", message: "Ingredient already exists, please try again.", preferredStyle: UIAlertController.Style.alert)
@@ -68,7 +77,10 @@ class AddToIngredientsViewController: UIViewController{
     
     func filter(){
         if sgIngredientSelectOutlet.selectedSegmentIndex == 1 {
-            ingredientsList.filter({$0.name.contains("*")})
+            ingredientsList = ingredientsList.filter({$0.inMealPack == true})
+        }
+        else{
+           ingredientsList = ingredientsList.filter({$0.inMealPack == false})
         }
     }
     /*
@@ -108,7 +120,6 @@ extension AddToIngredientsViewController : UITableViewDataSource, UITableViewDel
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-      
         let cell = tblIngredients.dequeueReusableCell(withIdentifier: "IngredientsTblCell") as! IngredientTable
         cell.txtIngredientName.text = "\(ingredientsList[indexPath.row].name)"
         cell.txtEnabled.text = ingredientsList[indexPath.row].enabled == true ? "Enabled" : "Disabled"
@@ -118,6 +129,10 @@ extension AddToIngredientsViewController : UITableViewDataSource, UITableViewDel
         if sgIngredientSelectOutlet.selectedSegmentIndex == 1 {
             cell.btnEditOutlet.isEnabled = false
             cell.btnDeleteOutlet.isEnabled = false
+        }
+        else{
+            cell.btnEditOutlet.isEnabled = true
+            cell.btnDeleteOutlet.isEnabled = true
         }
         return cell
     }

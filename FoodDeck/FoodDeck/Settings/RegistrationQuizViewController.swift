@@ -39,6 +39,7 @@ class RegistrationQuizViewController: UIViewController, UITableViewDelegate, UIT
     @IBAction func submitButton(_ sender: Any) {
         // Update meal packs and allergies
         MealPackManager.updateMealPack(newMealPacks: mealPacksList)
+        
         updateAllergy()
         
         // Update dietary requirements
@@ -136,6 +137,7 @@ class RegistrationQuizViewController: UIViewController, UITableViewDelegate, UIT
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    
         // Code for meal pack table
         if (tableView == self.mealPackTable) {
             return mealPacksList.count
@@ -204,8 +206,9 @@ class RegistrationQuizViewController: UIViewController, UITableViewDelegate, UIT
     // Load core data then enter data into tables
     override func viewDidLoad() {
         super.viewDidLoad()
-        mealPacksList = MealPackManager.getMealPacks()
+        
         ingredientList = IngredientManager.getIngredient(theName: "", enabled: false, all: true)
+        mealPacksList = MealPackManager.getMealPacks()
         
         // Fetch allergies and dietary requirements if in the user preferences page
         if (self.restorationIdentifier == "UserPref"){
@@ -222,6 +225,7 @@ class RegistrationQuizViewController: UIViewController, UITableViewDelegate, UIT
     
     // Skip straight to main app
     override func viewDidAppear(_ animated: Bool) {
+        
         let skipQuiz = UserDefaults.standard.object(forKey: "skipQuiz") as? Bool
         if (skipQuiz == true && self.restorationIdentifier == "Quiz"){
             performSegue(withIdentifier: "toMainView", sender: nil)
