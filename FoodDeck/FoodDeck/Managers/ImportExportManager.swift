@@ -97,7 +97,7 @@ class ImportExportManager: NSManagedObject {
            
            let storeFolderUrl = FileManager.default.urls(for: .applicationSupportDirectory, in:.userDomainMask).first!
            let storeUrl = storeFolderUrl.appendingPathComponent("FoodDeck.sqlite")
-           let backupUrl = Bundle.main.url(forResource: "mealPack", withExtension: "sqlite")
+           let backupUrl = Bundle.main.url(forResource: "crap2", withExtension: "sqlite")
 
            let container = NSPersistentContainer(name: "FoodDeck")
            container.loadPersistentStores(completionHandler: { (storeDescription, error) in

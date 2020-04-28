@@ -48,10 +48,10 @@
 		A38455562436BACA004A65F3 /* MealPack.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38455552436BACA004A65F3 /* MealPack.swift */; };
 		A384555A2436BB03004A65F3 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38455592436BB03004A65F3 /* Recipe.swift */; };
 		A384555C2436BB20004A65F3 /* RecipeIngredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A384555B2436BB20004A65F3 /* RecipeIngredient.swift */; };
-		A3D43A3A24563EA2008EF3AF /* crap2.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = A3D43A3724563CBF008EF3AF /* crap2.sqlite */; };
-		A3D43A3B24563EA4008EF3AF /* crap2.sqlite-shm in Resources */ = {isa = PBXBuildFile; fileRef = A3D43A3824563CBF008EF3AF /* crap2.sqlite-shm */; };
-		A3D43A3C24563EA7008EF3AF /* crap2.sqlite-wal in Resources */ = {isa = PBXBuildFile; fileRef = A3D43A3924563CBF008EF3AF /* crap2.sqlite-wal */; };
 		A3EF14B9243E221200CCA071 /* AddToIngredientsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EF14B8243E221200CCA071 /* AddToIngredientsViewController.swift */; };
+		A3EFAA8A2458A41A00C83835 /* crap2.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = A3EFAA872458A3D200C83835 /* crap2.sqlite */; };
+		A3EFAA8B2458A41E00C83835 /* crap2.sqlite-shm in Resources */ = {isa = PBXBuildFile; fileRef = A3EFAA892458A3D200C83835 /* crap2.sqlite-shm */; };
+		A3EFAA8C2458A59C00C83835 /* crap2.sqlite-wal in Resources */ = {isa = PBXBuildFile; fileRef = A3EFAA882458A3D200C83835 /* crap2.sqlite-wal */; };
 		D61152672451EF180063B691 /* CardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61152662451EF180063B691 /* CardsViewController.swift */; };
 		D6115269245314D90063B691 /* CardDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6115268245314D90063B691 /* CardDetailViewController.swift */; };
 		D62F803F2439042900894040 /* MealPackManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D62F803E2439042900894040 /* MealPackManager.swift */; };
@@ -126,10 +126,10 @@
 		A38455552436BACA004A65F3 /* MealPack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealPack.swift; sourceTree = "<group>"; };
 		A38455592436BB03004A65F3 /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
 		A384555B2436BB20004A65F3 /* RecipeIngredient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeIngredient.swift; sourceTree = "<group>"; };
-		A3D43A3724563CBF008EF3AF /* crap2.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; name = crap2.sqlite; path = FoodDeck/DataModel/crap2.sqlite; sourceTree = SOURCE_ROOT; };
-		A3D43A3824563CBF008EF3AF /* crap2.sqlite-shm */ = {isa = PBXFileReference; lastKnownFileType = file; name = "crap2.sqlite-shm"; path = "FoodDeck/DataModel/crap2.sqlite-shm"; sourceTree = SOURCE_ROOT; };
-		A3D43A3924563CBF008EF3AF /* crap2.sqlite-wal */ = {isa = PBXFileReference; lastKnownFileType = file; name = "crap2.sqlite-wal"; path = "FoodDeck/DataModel/crap2.sqlite-wal"; sourceTree = SOURCE_ROOT; };
 		A3EF14B8243E221200CCA071 /* AddToIngredientsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToIngredientsViewController.swift; sourceTree = "<group>"; };
+		A3EFAA872458A3D200C83835 /* crap2.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; name = crap2.sqlite; path = FoodDeck/DataModel/crap2.sqlite; sourceTree = SOURCE_ROOT; };
+		A3EFAA882458A3D200C83835 /* crap2.sqlite-wal */ = {isa = PBXFileReference; lastKnownFileType = file; name = "crap2.sqlite-wal"; path = "FoodDeck/DataModel/crap2.sqlite-wal"; sourceTree = SOURCE_ROOT; };
+		A3EFAA892458A3D200C83835 /* crap2.sqlite-shm */ = {isa = PBXFileReference; lastKnownFileType = file; name = "crap2.sqlite-shm"; path = "FoodDeck/DataModel/crap2.sqlite-shm"; sourceTree = SOURCE_ROOT; };
 		D61152662451EF180063B691 /* CardsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsViewController.swift; sourceTree = "<group>"; };
 		D6115268245314D90063B691 /* CardDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailViewController.swift; sourceTree = "<group>"; };
 		D62F803E2439042900894040 /* MealPackManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealPackManager.swift; sourceTree = "<group>"; };
@@ -327,9 +327,9 @@
 		A34A401C244CB16400DC162C /* DataModel */ = {
 			isa = PBXGroup;
 			children = (
-				A3D43A3824563CBF008EF3AF /* crap2.sqlite-shm */,
-				A3D43A3724563CBF008EF3AF /* crap2.sqlite */,
-				A3D43A3924563CBF008EF3AF /* crap2.sqlite-wal */,
+				A3EFAA872458A3D200C83835 /* crap2.sqlite */,
+				A3EFAA892458A3D200C83835 /* crap2.sqlite-shm */,
+				A3EFAA882458A3D200C83835 /* crap2.sqlite-wal */,
 				9AC0B16E240D2F8000234251 /* FoodDeck.xcdatamodeld */,
 				A38455452436B49C004A65F3 /* Ingredient.swift */,
 				A38455592436BB03004A65F3 /* Recipe.swift */,
@@ -446,15 +446,15 @@
 			files = (
 				9A509193242256A2001BE676 /* Recipes.storyboard in Resources */,
 				9AC0B175240D2F8100234251 /* LaunchScreen.storyboard in Resources */,
-				A3D43A3B24563EA4008EF3AF /* crap2.sqlite-shm in Resources */,
+				A3EFAA8B2458A41E00C83835 /* crap2.sqlite-shm in Resources */,
 				9AD9FF77242263CF0065970A /* ShoppingList.storyboard in Resources */,
 				9A539A8024536F7800C3D23B /* AppIcon.appiconset in Resources */,
 				9AD9FF7B242264AC0065970A /* Pantry.storyboard in Resources */,
 				9AD9FF79242263E80065970A /* Cards.storyboard in Resources */,
 				9AC0B172240D2F8100234251 /* Assets.xcassets in Resources */,
 				9AC0B16D240D2F8000234251 /* Main.storyboard in Resources */,
-				A3D43A3C24563EA7008EF3AF /* crap2.sqlite-wal in Resources */,
-				A3D43A3A24563EA2008EF3AF /* crap2.sqlite in Resources */,
+				A3EFAA8C2458A59C00C83835 /* crap2.sqlite-wal in Resources */,
+				A3EFAA8A2458A41A00C83835 /* crap2.sqlite in Resources */,
 				A354480924508F2400FD0148 /* Recipes3.storyboard in Resources */,
 				9AD9FF6F242260710065970A /* Ingredients.storyboard in Resources */,
 				D63A7EA92423CC9100E65E65 /* Settings.storyboard in Resources */,
