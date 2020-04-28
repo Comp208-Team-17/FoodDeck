@@ -7,7 +7,8 @@
 //
 
 import UIKit
-public struct RecipeStr{
+public struct RecipeStr: Equatable{
+    
      var allergen : String
      var available : Bool
      var cookTime : Int16
@@ -62,6 +63,11 @@ public struct RecipeStr{
         mealPack = ""
          ingredients = []
      }
+    
+    public static func == (lhs: RecipeStr, rhs: RecipeStr) -> Bool {
+        let areEqual = lhs.name == rhs.name
+        return areEqual
+    }
  }
 public struct IngredientStr{
     var name : String

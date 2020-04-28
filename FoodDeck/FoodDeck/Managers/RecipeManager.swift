@@ -270,6 +270,8 @@ class RecipeManager: NSManagedObject {
     }
     static func filter(theRecipes : [RecipeStr], theTimeOfDayFilter : String, theVeganFilter : Bool, theVegFilter : Bool, theGlutenFilter: Bool, theSearch: String) -> [RecipeStr]{
         var localRecipeFilt : [RecipeStr] = []
+        var filtNameDescription : [RecipeStr] = []
+        var filtIngredients: [RecipeStr] = []
         let mealPacks = MealPackManager.getDisabledMealPacks()
         for recipe in theRecipes{
             if recipe.mealPack == "" || !mealPacks.contains(where: {$0.name == recipe.mealPack}) {
@@ -288,8 +290,12 @@ class RecipeManager: NSManagedObject {
         if theGlutenFilter == true{
            localRecipeFilt = localRecipeFilt.filter {revertDietaryValue(value: $0.dietaryRequirements)[2] == true}
         }
+        // search can filter by recipe name, decription and ingredients
         if theSearch != "" {
-            localRecipeFilt = localRecipeFilt.filter {$0.name.contains(theSearch)}
+            localRecipeFilt = localRecipeFilt.filter {$0.name.lowercased().contains(theSearch.lowercased().trimmingCharacters(in: .whitespaces))
+                || $0.recipeDescription.contains(theSearch.lowercased().trimmingCharacters(in: .whitespaces))
+                || ($0.ingredients.filter{$0.0.lowercased().contains(theSearch.lowercased().trimmingCharacters(in: .whitespaces))}).count > 0
+            }
         }
         return localRecipeFilt
     }

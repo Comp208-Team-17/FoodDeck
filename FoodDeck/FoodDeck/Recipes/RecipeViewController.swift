@@ -69,7 +69,7 @@ class RecipeViewController: UIViewController {
         RecipeViewController.addButton = false
     }
    
-    // if user taps return on keyboard
+    // if return pressed on keyboard
     @IBAction func searchPrimaryActionTriggered(_ sender: AnyObject) {
         txtSearch.resignFirstResponder()
         tblRecipes.reloadData()
