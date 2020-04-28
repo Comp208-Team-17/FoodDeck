@@ -199,6 +199,9 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="searchPrimaryActionTriggered:" destination="P5T-bE-tsu" eventType="primaryActionTriggered" id="U3x-oy-phA"/>
+                                </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tww-il-h0G">
                                 <rect key="frame" x="326" y="132" width="36" height="33"/>
@@ -1142,7 +1145,7 @@
         <image name="vegetarian-green" width="48" height="48"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="WtW-FI-clk"/>
+        <segue reference="sEY-6g-wLa"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>
