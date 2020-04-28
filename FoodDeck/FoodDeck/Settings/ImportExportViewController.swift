@@ -14,10 +14,10 @@ class ImportExportViewController: UIViewController {
         ImportExportManager.preloadDBData()
     }
     @IBAction func btnImport(_ sender: Any) {
-        ImportExportManager.restoreFromStore(backupName: "crap")
+        ImportExportManager.restoreFromStore(backupName: "customBackup")
     }
     @IBAction func btnExport(_ sender: Any) {
-        ImportExportManager.backup(backupName: "crap2")
+        ImportExportManager.backup(backupName: "mealPack")
     }
     override func viewDidLoad() {
         super.viewDidLoad()
