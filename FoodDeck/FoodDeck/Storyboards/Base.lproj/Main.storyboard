@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="eqt-wg-NGM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="eqt-wg-NGM">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -29,10 +29,10 @@
             </objects>
             <point key="canvasLocation" x="35" y="54"/>
         </scene>
-        <!--Recipes3-->
+        <!--Recipes-->
         <scene sceneID="y2B-a1-liZ">
             <objects>
-                <viewControllerPlaceholder storyboardName="Recipes3" id="diJ-jx-r5T" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="Recipes" id="diJ-jx-r5T" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="N5M-LU-ZLQ"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yxG-kg-vAN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -99,7 +99,7 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="HWl-eP-u9g">
                                 <rect key="frame" x="16" y="64" width="343" height="563"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <mutableString key="text">By accepting the below terms and conditions, you are stating that you have read and understood this entire disclaimer. For the avoidance of doubt, this disclaimer covers your use of the app indefinitely from the point time you select the "Accept" option. It also covers other users of the app to which access your device - that is, by a third patry using your device, or if such third patry purchases or obtains ownership/control over your device - you are accepting this disclaimer on their behalf. It is reccommended you delete this app before you sell your device.                                       "our"/"we" is defined as the involvement in the app by the developers, whom are listed at the end of this disclaimer.    "app" is defined as the entire Food Deck application, including all included material and imported and/or exported files.     
+                                <string key="text">By accepting the below terms and conditions, you are stating that you have read and understood this entire disclaimer. For the avoidance of doubt, this disclaimer covers your use of the app indefinitely from the point time you select the "Accept" option. It also covers other users of the app to which access your device - that is, by a third patry using your device, or if such third patry purchases or obtains ownership/control over your device - you are accepting this disclaimer on their behalf. It is reccommended you delete this app before you sell your device.                                       "our"/"we" is defined as the involvement in the app by the developers, whom are listed at the end of this disclaimer.    "app" is defined as the entire Food Deck application, including all included material and imported and/or exported files.     
 The data that this app intends to store cannot identify a person. The information is only stored on the device that this app is installed. The developers accept no liability for the failure of the user to comply with relevant laws and regulations in the country or region in which this app is used.
 
 You accept that:
@@ -123,7 +123,7 @@ Warranty:
 
 1. This app comes with absolutely no warranty. It is provided free of charge and any issues arising as a result of your use of the app, and damages caused, are not our responsibility. You are accepting that no such warranty exists. We may however, decide to update the app and fix bugs if you report them to us.
  Developer Contact/Attributions:  - Luke Wood - Sara Elkehya  - Gabrielle Magruder - Neelix Grey - Charlotte Braham - Sam McParland
-                          </mutableString>
+                          </string>
                                 <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -322,7 +322,7 @@ Warranty:
                                 </segments>
                             </segmentedControl>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fsv-Df-j2h">
-                                <rect key="frame" x="256" y="537" width="109" height="30"/>
+                                <rect key="frame" x="256.5" y="537" width="108.5" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="K5f-u0-z6W"/>
                                 </constraints>
