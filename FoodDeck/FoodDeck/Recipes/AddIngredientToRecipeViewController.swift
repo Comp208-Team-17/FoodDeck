@@ -116,7 +116,7 @@ class AddIngredientToRecipeViewController: UIViewController, UITableViewDelegate
     
     func createAlert(theIngredient: Ingredient) {
         // create the alert
-        let alert = UIAlertController(title: theIngredient.name, message: "Quantity in \( theIngredient.unit! )", preferredStyle: UIAlertController.Style.alert)
+        let alert = UIAlertController(title: theIngredient.name, message: theIngredient.unit!  == "G" ? "Enter quantity in grams:" : "Enter number of items:", preferredStyle: UIAlertController.Style.alert)
         
         // Create alert properites
         // Error label - replaces normal message

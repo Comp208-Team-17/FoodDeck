@@ -37,8 +37,6 @@ class CardsViewController : UIViewController {
         }
         else {
             currentRecipe = recipes[currentIndex]
-            // animation
-            //UIView.transition(with: card, duration: 0.75, animations: {self.card.frame.origin.x = -400}, completion: nil)
         }
         
         // Show recipe properties
@@ -85,10 +83,7 @@ class CardsViewController : UIViewController {
         swipeDown.direction = .down
         self.view.addGestureRecognizer(swipeDown)
         
-        // optional border colour
-        card.layer.masksToBounds = true
-        card.layer.borderColor = UIColor(red: 0.7, green: 0.3, blue: 0.1, alpha: 1.0).cgColor
-        card.layer.borderWidth = 1.0
+        
         let allRecipes = RecipeManager.getRecipe(theName: "", all: true)
         var over175 : Int = 0
         for recipe in allRecipes {

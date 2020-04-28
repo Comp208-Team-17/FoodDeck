@@ -73,7 +73,7 @@ class PantryManagerViewController: UIViewController, UITableViewDelegate, UITabl
         let pantryIngredient = inPantry[indexPath.row]
         
         // create the alert
-        let alert = UIAlertController(title: theIngredient.name, message: "Quantity in \(theIngredient.unit!)", preferredStyle: UIAlertController.Style.alert)
+        let alert = UIAlertController(title: theIngredient.name, message: theIngredient.unit!  == "G" ? "Enter quantity in grams:" : "Enter number of items:", preferredStyle: UIAlertController.Style.alert)
         
         // Create alert properites
         // Error label - replaces normal message
