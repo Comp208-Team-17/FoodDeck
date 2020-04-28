@@ -103,7 +103,9 @@ extension RecipeViewController: UICollectionViewDataSource, UICollectionViewDele
             cell.btnFavouriteOut.setImage(UIImage(named: "heart-green-outline"), for: .normal)
             cell.favourite = false
         }
-        cell.txtTime.text = "\(RecipeViewController.recipes[indexPath.item].cookTime + RecipeViewController.recipes[indexPath.item].prepTime)"
+        
+        let totalTime = Int(RecipeViewController.recipes[indexPath.item].cookTime) + Int(RecipeViewController.recipes[indexPath.item].prepTime)
+        cell.txtTime!.text = totalTime <= Int16.max ?  "\(totalTime)" : "\(RecipeViewController.recipes[indexPath.item].cookTime)"
         return cell
         
         
