@@ -126,15 +126,41 @@ class EditRecipeViewController: UIViewController {
         }
     }
     
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
+    // dismiss keyboard when user taps outside it
+    @objc func dismissKeyboard (_ sender: UITapGestureRecognizer) {
+        txtServings.resignFirstResponder()
+        txtCookTime.resignFirstResponder()
+        txtPrepTime.resignFirstResponder()
+        txtName.resignFirstResponder()
+        txtDescription.resignFirstResponder()
+        txtInstructions.resignFirstResponder()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // notify methods that textfield selected
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+        // notify method that the text field is no longer selected
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        // recognise when text field loses focus
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard (_:)))
+        self.view.addGestureRecognizer(tapGesture)
+    }
+    // return frame to its original position
+    @objc func keyboardWillHide() {
+        self.view.frame.origin.y = 0
+    }
+    
+    // move frame upwards to accomodate keyboard
+    @objc func keyboardWillChange(notification: NSNotification) {
+
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            if txtServings.isFirstResponder || txtPrepTime.isFirstResponder || txtCookTime.isFirstResponder {
+                self.view.frame.origin.y = -keyboardSize.height
+            }
+        }
+    }
     
 }
 extension EditRecipeViewController : UIPickerViewDataSource, UIPickerViewDelegate {
