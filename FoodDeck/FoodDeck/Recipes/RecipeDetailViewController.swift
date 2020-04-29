@@ -108,7 +108,7 @@ class RecipeDetailViewController: UIViewController {
             else{
                 btnEdit.isEnabled = true
             } 
-            
+             allRecipeIngredients = RecipeManager.getRecipeObject(theName: RecipeViewController.chosenRecipeName)[0].contains?.array as! [RecipeIngredient]
             
         }
         else{
@@ -119,7 +119,7 @@ class RecipeDetailViewController: UIViewController {
             //Error message,
             //Return to previous view controller
         }
-         allRecipeIngredients = RecipeManager.getRecipeObject(theName: RecipeViewController.chosenRecipeName)[0].contains?.array as! [RecipeIngredient]
+        
     }
     func setFavourite(){
         if favourite == true {
