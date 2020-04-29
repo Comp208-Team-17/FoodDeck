@@ -8,7 +8,6 @@
 
 import UIKit
 import CoreData
-
 class IngredientManager: NSManagedObject {
     static var tempIngredientRtn : [IngredientStr] = [] // Stores the ingredient that will be returned if a calling function requests an ingredient
     
@@ -19,7 +18,7 @@ class IngredientManager: NSManagedObject {
             let context = appDelegate.persistentContainer.viewContext
             let newIngredient = Ingredient(context : context)
             newIngredient.enabled = isEnabled
-            newIngredient.name = theName
+            newIngredient.name = theName.capitalizingFirstLetter()
             newIngredient.unit = theUnit
             newIngredient.inMealPack = true
             do{
@@ -46,7 +45,7 @@ class IngredientManager: NSManagedObject {
             for theIngredient in fetchedIngredients{
                 if theIngredient.name == originalName && (originalName == theName ? true : checkExists(theName : theName, delete: false, get: false)){
                     theIngredient.enabled = isEnabled
-                    theIngredient.name = theName
+                    theIngredient.name = theName.capitalizingFirstLetter()
                     theIngredient.unit = theUnit
                     do{
                         try context.save()
@@ -153,3 +152,16 @@ class IngredientManager: NSManagedObject {
         return true
     }
 }
+
+// the following method is now applicable to all strings
+extension String {
+    func capitalizingFirstLetter() -> String {
+        return prefix(1).capitalized + dropFirst()
+    }
+
+    mutating func capitalizeFirstLetter() {
+        self = self.capitalizingFirstLetter()
+    }
+}
+
+

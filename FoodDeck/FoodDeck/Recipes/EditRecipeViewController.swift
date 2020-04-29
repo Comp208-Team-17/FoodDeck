@@ -162,6 +162,20 @@ class EditRecipeViewController: UIViewController {
         }
     }
     
+    
+    @IBAction func namePrimaryAction(_ sender: Any) {
+        txtName.resignFirstResponder()
+    }
+    @IBAction func servingsPrimaryAction(_ sender: Any) {
+        txtServings.resignFirstResponder()
+    }
+    @IBAction func prepTimePrimaryAction(_ sender: Any) {
+        txtPrepTime.resignFirstResponder()
+    }
+    @IBAction func cookTimePrimaryAction(_ sender: Any) {
+        txtCookTime.resignFirstResponder()
+    }
+    
 }
 extension EditRecipeViewController : UIPickerViewDataSource, UIPickerViewDelegate {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {

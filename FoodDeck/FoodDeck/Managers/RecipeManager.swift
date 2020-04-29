@@ -30,7 +30,7 @@ class RecipeManager: NSManagedObject {
             newRecipe.dietaryRequirements = theDietaryRequirements
             newRecipe.favourite = isFavourite
             newRecipe.instructions = theInstructions
-            newRecipe.name = theName
+            newRecipe.name = theName.capitalizingFirstLetter()
             newRecipe.prepTime = thePrepTime
             newRecipe.rating = theRating
             newRecipe.recipeDescription = theRecipeDescription
@@ -185,7 +185,7 @@ class RecipeManager: NSManagedObject {
             }
                  updatedRecipe.favourite = isFavourite
                  updatedRecipe.instructions = theInstructions
-                 updatedRecipe.name = newName
+            updatedRecipe.name = newName.capitalizingFirstLetter()
                  updatedRecipe.prepTime = thePrepTime
                  updatedRecipe.rating = theRating
                  updatedRecipe.recipeDescription = theRecipeDescription
