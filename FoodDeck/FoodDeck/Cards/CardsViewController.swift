@@ -41,9 +41,9 @@ class CardsViewController : UIViewController {
         
         // Show recipe properties
         image.image = currentRecipe.thumbnail
-        mealNameLabel.text? = "\(currentRecipe.name)   \(currentRecipe.score)"
-        prepTimeLabel.text? = "\(currentRecipe.prepTime) mins"
-        cookTimeLabel.text? = "\(currentRecipe.cookTime) mins"
+        mealNameLabel.text? = "\(currentRecipe.name)"
+        prepTimeLabel.text? = "\(currentRecipe.prepTime)"
+        cookTimeLabel.text? = "\(currentRecipe.cookTime)"
         descriptionLabel.text? = currentRecipe.recipeDescription
         txtServings.text = "\(currentRecipe.servings)"
         

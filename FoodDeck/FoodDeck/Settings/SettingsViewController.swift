@@ -9,7 +9,7 @@
 import UIKit
 
 class SettingsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    var optionsList = ["User Preferences", "Import/Export"]
+    var optionsList = ["User Preferences", "Import", "Export"]
     
     @IBOutlet weak var table: UITableView!
     
@@ -33,7 +33,24 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
             performSegue(withIdentifier: "toUserPref", sender: nil)
         }
         else if (currentCell == 1){
-            performSegue(withIdentifier: "toImportExport", sender: nil)
+            let alert = UIAlertController(title: "Import Backup", message: "This action will completely replace all of your data including recipes and ingredients", preferredStyle: UIAlertController.Style.actionSheet)
+            alert.addAction(UIAlertAction(title: "Confirm Import", style: UIAlertAction.Style.default, handler: {(_) in
+                ImportExportManager.restoreCustomBackup(backupName: "backup")
+            }))
+            alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: nil))
+            
+            // show the alert
+            self.present(alert, animated: true, completion: nil)
+        }
+        else if (currentCell == 2) {
+            let alert = UIAlertController(title: "Create Backup", message: "This action will backup all your data", preferredStyle: UIAlertController.Style.actionSheet)
+            alert.addAction(UIAlertAction(title: "Confirm Backup", style: UIAlertAction.Style.default, handler: {(_) in
+                ImportExportManager.backup(backupName: "backup")
+            }))
+            alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: nil))
+            
+            // show the alert
+            self.present(alert, animated: true, completion: nil)
         }
     }
 }

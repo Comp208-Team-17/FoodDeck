@@ -31,6 +31,9 @@
 		A3199BC024531E630048DC45 /* RecipeDetailIngredientsTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3199BBF24531E630048DC45 /* RecipeDetailIngredientsTable.swift */; };
 		A31D92FA2454E0000045EF77 /* ImportExportManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31D92F92454E0000045EF77 /* ImportExportManager.swift */; };
 		A31D92FC2454E5BD0045EF77 /* ImportExportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31D92FB2454E5BD0045EF77 /* ImportExportViewController.swift */; };
+		A32238A82459E3D100ECAFF6 /* backup.sqlite-shm in Resources */ = {isa = PBXBuildFile; fileRef = A32238A52459E3D100ECAFF6 /* backup.sqlite-shm */; };
+		A32238A92459E3D100ECAFF6 /* backup.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = A32238A62459E3D100ECAFF6 /* backup.sqlite */; };
+		A32238AA2459E3D100ECAFF6 /* backup.sqlite-wal in Resources */ = {isa = PBXBuildFile; fileRef = A32238A72459E3D100ECAFF6 /* backup.sqlite-wal */; };
 		A34A3FFA244A709000DC162C /* RecipeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34A3FF9244A709000DC162C /* RecipeManager.swift */; };
 		A34A4005244B0C5F00DC162C /* IngredientManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34A3FFB244B0C5E00DC162C /* IngredientManager.swift */; };
 		A34A4006244B0C5F00DC162C /* Structures.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34A3FFC244B0C5E00DC162C /* Structures.swift */; };
@@ -48,9 +51,6 @@
 		A384555A2436BB03004A65F3 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38455592436BB03004A65F3 /* Recipe.swift */; };
 		A384555C2436BB20004A65F3 /* RecipeIngredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A384555B2436BB20004A65F3 /* RecipeIngredient.swift */; };
 		A3EF14B9243E221200CCA071 /* AddToIngredientsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EF14B8243E221200CCA071 /* AddToIngredientsViewController.swift */; };
-		A3EFAA8A2458A41A00C83835 /* crap2.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = A3EFAA872458A3D200C83835 /* crap2.sqlite */; };
-		A3EFAA8B2458A41E00C83835 /* crap2.sqlite-shm in Resources */ = {isa = PBXBuildFile; fileRef = A3EFAA892458A3D200C83835 /* crap2.sqlite-shm */; };
-		A3EFAA8C2458A59C00C83835 /* crap2.sqlite-wal in Resources */ = {isa = PBXBuildFile; fileRef = A3EFAA882458A3D200C83835 /* crap2.sqlite-wal */; };
 		D61152672451EF180063B691 /* CardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61152662451EF180063B691 /* CardsViewController.swift */; };
 		D6115269245314D90063B691 /* CardDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6115268245314D90063B691 /* CardDetailViewController.swift */; };
 		D62F803F2439042900894040 /* MealPackManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D62F803E2439042900894040 /* MealPackManager.swift */; };
@@ -108,6 +108,9 @@
 		A3199BBF24531E630048DC45 /* RecipeDetailIngredientsTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailIngredientsTable.swift; sourceTree = "<group>"; };
 		A31D92F92454E0000045EF77 /* ImportExportManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportExportManager.swift; sourceTree = "<group>"; };
 		A31D92FB2454E5BD0045EF77 /* ImportExportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportExportViewController.swift; sourceTree = "<group>"; };
+		A32238A52459E3D100ECAFF6 /* backup.sqlite-shm */ = {isa = PBXFileReference; lastKnownFileType = file; name = "backup.sqlite-shm"; path = "FoodDeck/DataModel/backup.sqlite-shm"; sourceTree = SOURCE_ROOT; };
+		A32238A62459E3D100ECAFF6 /* backup.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; name = backup.sqlite; path = FoodDeck/DataModel/backup.sqlite; sourceTree = SOURCE_ROOT; };
+		A32238A72459E3D100ECAFF6 /* backup.sqlite-wal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "backup.sqlite-wal"; path = "FoodDeck/DataModel/backup.sqlite-wal"; sourceTree = SOURCE_ROOT; };
 		A34A3FF9244A709000DC162C /* RecipeManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeManager.swift; sourceTree = "<group>"; };
 		A34A3FFB244B0C5E00DC162C /* IngredientManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IngredientManager.swift; sourceTree = "<group>"; };
 		A34A3FFC244B0C5E00DC162C /* Structures.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Structures.swift; sourceTree = "<group>"; };
@@ -125,9 +128,6 @@
 		A38455592436BB03004A65F3 /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
 		A384555B2436BB20004A65F3 /* RecipeIngredient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeIngredient.swift; sourceTree = "<group>"; };
 		A3EF14B8243E221200CCA071 /* AddToIngredientsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToIngredientsViewController.swift; sourceTree = "<group>"; };
-		A3EFAA872458A3D200C83835 /* crap2.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; name = crap2.sqlite; path = FoodDeck/DataModel/crap2.sqlite; sourceTree = SOURCE_ROOT; };
-		A3EFAA882458A3D200C83835 /* crap2.sqlite-wal */ = {isa = PBXFileReference; lastKnownFileType = file; name = "crap2.sqlite-wal"; path = "FoodDeck/DataModel/crap2.sqlite-wal"; sourceTree = SOURCE_ROOT; };
-		A3EFAA892458A3D200C83835 /* crap2.sqlite-shm */ = {isa = PBXFileReference; lastKnownFileType = file; name = "crap2.sqlite-shm"; path = "FoodDeck/DataModel/crap2.sqlite-shm"; sourceTree = SOURCE_ROOT; };
 		D61152662451EF180063B691 /* CardsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsViewController.swift; sourceTree = "<group>"; };
 		D6115268245314D90063B691 /* CardDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailViewController.swift; sourceTree = "<group>"; };
 		D62F803E2439042900894040 /* MealPackManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealPackManager.swift; sourceTree = "<group>"; };
@@ -324,9 +324,9 @@
 		A34A401C244CB16400DC162C /* DataModel */ = {
 			isa = PBXGroup;
 			children = (
-				A3EFAA872458A3D200C83835 /* crap2.sqlite */,
-				A3EFAA892458A3D200C83835 /* crap2.sqlite-shm */,
-				A3EFAA882458A3D200C83835 /* crap2.sqlite-wal */,
+				A32238A62459E3D100ECAFF6 /* backup.sqlite */,
+				A32238A52459E3D100ECAFF6 /* backup.sqlite-shm */,
+				A32238A72459E3D100ECAFF6 /* backup.sqlite-wal */,
 				9AC0B16E240D2F8000234251 /* FoodDeck.xcdatamodeld */,
 				A38455452436B49C004A65F3 /* Ingredient.swift */,
 				A38455592436BB03004A65F3 /* Recipe.swift */,
@@ -442,15 +442,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				9AC0B175240D2F8100234251 /* LaunchScreen.storyboard in Resources */,
-				A3EFAA8B2458A41E00C83835 /* crap2.sqlite-shm in Resources */,
 				9AD9FF77242263CF0065970A /* ShoppingList.storyboard in Resources */,
 				9A539A8024536F7800C3D23B /* AppIcon.appiconset in Resources */,
 				9AD9FF7B242264AC0065970A /* Pantry.storyboard in Resources */,
 				9AD9FF79242263E80065970A /* Cards.storyboard in Resources */,
+				A32238A82459E3D100ECAFF6 /* backup.sqlite-shm in Resources */,
 				9AC0B172240D2F8100234251 /* Assets.xcassets in Resources */,
+				A32238AA2459E3D100ECAFF6 /* backup.sqlite-wal in Resources */,
+				A32238A92459E3D100ECAFF6 /* backup.sqlite in Resources */,
 				9AC0B16D240D2F8000234251 /* Main.storyboard in Resources */,
-				A3EFAA8C2458A59C00C83835 /* crap2.sqlite-wal in Resources */,
-				A3EFAA8A2458A41A00C83835 /* crap2.sqlite in Resources */,
 				A354480924508F2400FD0148 /* Recipes.storyboard in Resources */,
 				9AD9FF6F242260710065970A /* Ingredients.storyboard in Resources */,
 				D63A7EA92423CC9100E65E65 /* Settings.storyboard in Resources */,

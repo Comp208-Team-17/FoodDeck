@@ -102,12 +102,12 @@ class RecipeDetailViewController: UIViewController {
             lblPrep.text = "\(RecipeDetailViewController.localRecipe[0].prepTime)"
             lblCook.text = "\(RecipeDetailViewController.localRecipe[0].cookTime)"
             lblServings.text = "\(RecipeDetailViewController.localRecipe[0].servings)"
-           /* if RecipeDetailViewController.localRecipe[0].mealPack != "" {
+           if RecipeDetailViewController.localRecipe[0].mealPack != "" {
                 btnEdit.isEnabled = false
             }
             else{
                 btnEdit.isEnabled = true
-            } */
+            } 
             
             
         }

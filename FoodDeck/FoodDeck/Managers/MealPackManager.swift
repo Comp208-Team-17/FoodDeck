@@ -12,7 +12,7 @@ import CoreData
 class MealPackManager: NSManagedObject {
  static var tempMealPacksRtn: [MealPackStr] = []
  static var mealPackNames : [String] = ["Italian", "British", "American"]
-static var mealPackRecipes : [(String, String)] = [("Italian", "Chocolate semifreddo"), ("British", "Treacle sponge cake"), ("American", "Smores dip"),("Italian", "Italian butter beans"),("Italian", "Italian Vegetable soup"), ("Italian", "Rustic bread"), ("Italian", "Panna cotta") , ("American", "Hot gumbo dip"), ("American", "Creamed corn"),  ("American", "Pancakes"), ("American", "Cheese Steak Hot Dogs"),  ("British", "Lemon Syllabulb"), ("British", "Sausage with apple mash and gravy"), ("British", "clotted cream rice pudding"), ("British", "pear and blackberry crumble") ]
+static var mealPackRecipes : [(String, String)] = [("Italian", "Chocolate semifreddo"), ("British", "Treacle sponge cake"), ("American", "Smores dip"),("Italian", "Italian butter beans"),("Italian", "Italian Vegetable soup"), ("Italian", "Rustic bread"), ("Italian", "Panna cotta") , ("American", "Hot gumbo dip"), ("American", "Creamed corn"),  ("American", "Pancakes"), ("American", "Cheese Steak Hot Dogs"),  ("British", "Lemon Syllabub"), ("British", "Sausage with apple mash and gravy"), ("British", "Clotted cream rice pudding"), ("British", "Pear and blackberry crumble") ]
  
  // Fetch all meal packs from core data
  static func getMealPacks() -> [MealPackStr] {

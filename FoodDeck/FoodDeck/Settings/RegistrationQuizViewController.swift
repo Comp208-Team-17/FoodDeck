@@ -215,7 +215,10 @@ class RegistrationQuizViewController: UIViewController, UITableViewDelegate, UIT
     // Load core data then enter data into tables
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        if self.restorationIdentifier == "Quiz" {
+            ImportExportManager.loadMealPacks()
+            MealPackManager.makeMealPacks()
+        }
         ingredientList = IngredientManager.getIngredient(theName: "", enabled: false, all: true)
         mealPacksList = MealPackManager.getMealPacks()
         

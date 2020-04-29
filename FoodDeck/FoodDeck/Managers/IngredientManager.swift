@@ -20,7 +20,7 @@ class IngredientManager: NSManagedObject {
             newIngredient.enabled = isEnabled
             newIngredient.name = theName.capitalizingFirstLetter()
             newIngredient.unit = theUnit
-            newIngredient.inMealPack = true
+            newIngredient.inMealPack = false
             do{
                 try context.save()
                 return true
@@ -43,7 +43,7 @@ class IngredientManager: NSManagedObject {
         do{
             let fetchedIngredients = try context.fetch(request)
             for theIngredient in fetchedIngredients{
-                if theIngredient.name == originalName && (originalName == theName ? true : checkExists(theName : theName, delete: false, get: false)){
+                if theIngredient.name == originalName && (originalName == theName ? true : checkExists(theName : theName.capitalizingFirstLetter(), delete: false, get: false)){
                     theIngredient.enabled = isEnabled
                     theIngredient.name = theName.capitalizingFirstLetter()
                     theIngredient.unit = theUnit

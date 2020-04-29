@@ -36,19 +36,19 @@ class EditRecipeViewController: UIViewController {
         var cookTimeTmp : Int16?
         var prepTimeTmp : Int16?
         var servingsTmp : Int16?
-        if let cookTime = Int16(txtCookTime.text!), cookTime > 0 {
+        if let cookTime = Int16(txtCookTime.text!), cookTime >= 0 {
             cookTimeTmp = cookTime
         }
         else{
             saveComplete = false
         }
-        if let prepTime = Int16(txtPrepTime.text!), prepTime > 0 {
+        if let prepTime = Int16(txtPrepTime.text!), prepTime >= 0 {
             prepTimeTmp = prepTime
         }
         else{
             saveComplete = false
         }
-        if let servings = Int16(txtServings.text!), servings > 0{
+        if let servings = Int16(txtServings.text!), servings >= 0{
             servingsTmp = servings
         }
         else {
