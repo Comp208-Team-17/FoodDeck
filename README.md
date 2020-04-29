@@ -6,7 +6,6 @@ Save time, effort and waste with our decision-making meal app. Stop spending tim
   - Check constraints work on iphone 11
 - Back-end
   - Import/Export
-  - Populate core data 
 - Instruction Manual
 - Demo Video 
 
