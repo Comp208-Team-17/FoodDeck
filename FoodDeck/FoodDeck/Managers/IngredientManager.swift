@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 class IngredientManager: NSManagedObject {
     static var tempIngredientRtn : [IngredientStr] = [] // Stores the ingredient that will be returned if a calling function requests an ingredient
-    
+  
     
     static func addIngredient(isEnabled : Bool, theName : String, theUnit : String) -> Bool {
         if checkExists(theName : theName, delete: false, get: false){
@@ -67,9 +67,11 @@ class IngredientManager: NSManagedObject {
         let context = appDelegate.persistentContainer.viewContext
         let request : NSFetchRequest<Ingredient> = Ingredient.fetchRequest()
         request.returnsObjectsAsFaults = false
+        request.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
         do {
             tempIngredientRtn.removeAll()
             let allIngredients = try context.fetch(request)
+            
             if enabled == true {
                 for theIngredient in allIngredients{
                     if theIngredient.enabled{

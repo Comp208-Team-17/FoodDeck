@@ -18,9 +18,10 @@ class ShoppingListIngredient: NSManagedObject {
         var inShoppingList : [ShoppingListIngredient] = []
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let managedContext = appDelegate.persistentContainer.viewContext
-        let fetchPantry: NSFetchRequest<ShoppingListIngredient>  = ShoppingListIngredient.fetchRequest()
+        let fetchShoppingList: NSFetchRequest<ShoppingListIngredient>  = ShoppingListIngredient.fetchRequest()
+        fetchShoppingList.sortDescriptors = [NSSortDescriptor(key: "belongsTo.name", ascending: true)]
         do {
-            inShoppingList = try managedContext.fetch(fetchPantry)
+            inShoppingList = try managedContext.fetch(fetchShoppingList)
         } catch {
             print("could not retrieve ingredients")
         }
@@ -33,9 +34,9 @@ class ShoppingListIngredient: NSManagedObject {
         var shoppingListIngredients : [Ingredient] = []
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let managedContext = appDelegate.persistentContainer.viewContext
-        let fetchPantry: NSFetchRequest<ShoppingListIngredient>  = ShoppingListIngredient.fetchRequest()
+        let fetchShoppingList: NSFetchRequest<ShoppingListIngredient>  = ShoppingListIngredient.fetchRequest()
         do {
-            inShoppingList = try managedContext.fetch(fetchPantry)
+            inShoppingList = try managedContext.fetch(fetchShoppingList)
         } catch {
             print("could not retrieve ingredients")
         }

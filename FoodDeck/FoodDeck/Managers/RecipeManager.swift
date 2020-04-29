@@ -61,6 +61,7 @@ class RecipeManager: NSManagedObject {
         let context = appDelegate.persistentContainer.viewContext
         let request : NSFetchRequest<Recipe> = Recipe.fetchRequest()
         request.returnsObjectsAsFaults = false
+        request.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
         do{
             let fetchedRecipes = try context.fetch(request)
             for theRecipe in fetchedRecipes{
@@ -78,6 +79,7 @@ class RecipeManager: NSManagedObject {
             let context = appDelegate.persistentContainer.viewContext
             let request : NSFetchRequest<Recipe> = Recipe.fetchRequest()
             request.returnsObjectsAsFaults = false
+            request.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
             do{
                 tempRecipeRtn.removeAll()
                 let fetchedRecipes = try context.fetch(request)
