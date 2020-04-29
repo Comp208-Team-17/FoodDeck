@@ -290,12 +290,18 @@ class RecipeManager: NSManagedObject {
         if theGlutenFilter == true{
            localRecipeFilt = localRecipeFilt.filter {revertDietaryValue(value: $0.dietaryRequirements)[2] == true}
         }
-        // search can filter by recipe name, decription and ingredients
+        // search can filter by recipe name, decription, servings and ingredients
         if theSearch != "" {
-            localRecipeFilt = localRecipeFilt.filter {$0.name.lowercased().contains(theSearch.lowercased().trimmingCharacters(in: .whitespaces))
-                || $0.recipeDescription.contains(theSearch.lowercased().trimmingCharacters(in: .whitespaces))
-                || ($0.ingredients.filter{$0.0.lowercased().contains(theSearch.lowercased().trimmingCharacters(in: .whitespaces))}).count > 0
+            if let value = Int16(theSearch.trimmingCharacters(in: .whitespaces)) {
+                localRecipeFilt = localRecipeFilt.filter{$0.servings == value}
             }
+            else {
+                localRecipeFilt = localRecipeFilt.filter {$0.name.lowercased().contains(theSearch.lowercased().trimmingCharacters(in: .whitespaces))
+                    || $0.recipeDescription.contains(theSearch.lowercased().trimmingCharacters(in: .whitespaces))
+                    || ($0.ingredients.filter{$0.0.lowercased().contains(theSearch.lowercased().trimmingCharacters(in: .whitespaces))}).count > 0
+                }
+            }
+            
         }
         return localRecipeFilt
     }
