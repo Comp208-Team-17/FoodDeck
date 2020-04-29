@@ -21,6 +21,7 @@ class PantryIngredient: NSManagedObject {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let managedContext = appDelegate.persistentContainer.viewContext
         let fetchPantry: NSFetchRequest<PantryIngredient>  = PantryIngredient.fetchRequest()
+        fetchPantry.sortDescriptors = [NSSortDescriptor(key: "belongsTo.name", ascending: true)]
         do {
             inPantry = try managedContext.fetch(fetchPantry)
         } catch {
