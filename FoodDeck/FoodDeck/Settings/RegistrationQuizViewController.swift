@@ -19,9 +19,10 @@ class RegistrationQuizViewController: UIViewController, UITableViewDelegate, UIT
     @IBOutlet weak var veganSwitch: UISwitch!
     @IBOutlet weak var vegetarianSwitch: UISwitch!
     @IBOutlet weak var glutenSwitch: UISwitch!
+    @IBOutlet weak var disclaimerAccepted: UISegmentedControl!
     
     
-    // User skips quiz, continues to main app
+    // User skips quiz, continues to main app - no longer used
     @IBAction func skipButton(_ sender: Any) {
         // Set all dietary requirements to false
         // Update dietary requirements
@@ -37,6 +38,14 @@ class RegistrationQuizViewController: UIViewController, UITableViewDelegate, UIT
     
     // User submits quiz, save results, continues to main app
     @IBAction func submitButton(_ sender: Any) {
+        // Check if the user has accepted the terms and conditions
+        // If not accepted - show error message and return
+        if (self.restorationIdentifier == "Quiz" && disclaimerAccepted.selectedSegmentIndex == 0){
+            ErrorManager.errorMessageStandard(theTitle: "Error", theMessage: "Please accept the terms and conditons.", caller: self)
+            return
+        }
+        
+        // Otherwise update user preferences
         // Update meal packs and allergies
         MealPackManager.updateMealPack(newMealPacks: mealPacksList)
         
