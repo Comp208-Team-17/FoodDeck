@@ -36,11 +36,13 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
             let alert = UIAlertController(title: "Import Backup", message: "This action will completely replace all of your data including recipes and ingredients", preferredStyle: UIAlertController.Style.actionSheet)
             alert.addAction(UIAlertAction(title: "Confirm Import", style: UIAlertAction.Style.default, handler: {(_) in
                 ImportExportManager.restoreCustomBackup(backupName: "backup")
+                ErrorManager.errorMessageStandard(theTitle: "Restore Complete", theMessage: "You may have to restart the app to access the backup", caller: self)
             }))
             alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: nil))
             
             // show the alert
             self.present(alert, animated: true, completion: nil)
+           
         }
         else if (currentCell == 2) {
             let alert = UIAlertController(title: "Create Backup", message: "This action will backup all your data", preferredStyle: UIAlertController.Style.actionSheet)
