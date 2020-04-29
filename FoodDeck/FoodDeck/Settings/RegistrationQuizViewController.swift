@@ -251,8 +251,6 @@ class RegistrationQuizViewController: UIViewController, UITableViewDelegate, UIT
 
 }
 
-
-
 // Commit comment
 // Custom cell classes for quiz
 class MealPackCell: UITableViewCell {
