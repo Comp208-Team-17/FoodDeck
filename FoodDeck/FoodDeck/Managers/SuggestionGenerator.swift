@@ -156,11 +156,11 @@ class SuggestionGenerator {
             // Allow recipe to be generated if it matches the user's requirements
             let requirements = Array(recipe.dietaryRequirements)
             
-            if (vegetarian == true && requirements[0] == "0") {
+            if (vegetarian == true && requirements[1] == "0") {
                 acceptedRequirement = false
             }
             
-            if (vegan == true && requirements[1] == "0") {
+            if (vegan == true && requirements[0] == "0") {
                 acceptedRequirement = false
             }
             

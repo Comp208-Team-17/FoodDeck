@@ -27,7 +27,7 @@ public struct RecipeStr: Equatable{
     var mealPack : String
     var ingredients : [(String, Int16, Bool, String, Bool)]
     init(theAllergens : String, isAvailable : Bool, theCookTime : Int16, theDateCreated : String, theDietaryRequirements : String, isFavourite : Bool, theInstructions : String, theName : String, thePrepTime : Int16, theRating : Int16, theRecipeDescription : String, theScore : Int16, theServings :  Int16, theThumbnail : UIImage, theTimeOfDay : String, theIngredients : [(String, Int16, Bool, String, Bool)], theMealPack: String){
-         allergen = theAllergens //in the following format : "111" Where pos 1 is vegetarian, pos 2 is vegan, pos 3 is gluten free. e.g. "101" means vegetarian and gluten free.
+         allergen = theAllergens //in the following format : "111" Where pos 1 is vegan, pos 2 is vegetarian, pos 3 is gluten free. e.g. "101" means vegetarian and gluten free.
          available = isAvailable
          cookTime = theCookTime
          dateCreated = theDateCreated
