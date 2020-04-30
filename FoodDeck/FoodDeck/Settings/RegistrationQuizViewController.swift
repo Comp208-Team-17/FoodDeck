@@ -94,7 +94,7 @@ class RegistrationQuizViewController: UIViewController, UITableViewDelegate, UIT
             guard let input = alert.textFields?[0].text else { return }
             
             // Check if allergy exists in ingredients list
-            let ingredients = self.ingredientList.filter{$0.name == input}
+            let ingredients = self.ingredientList.filter{$0.name.lowercased() == input.lowercased()}
             
             if (!ingredients.isEmpty){
                 let allergy = ingredients[0] // Should only be 1 value returned
@@ -119,9 +119,9 @@ class RegistrationQuizViewController: UIViewController, UITableViewDelegate, UIT
             else {
                 alert.message = " "
                 errorLabel.isHidden = false
-                errorLabel.text = "Allergy does not exist"
+                errorLabel.text = "Ingredient does not exist"
                 self.present(alert, animated: true, completion: nil)
-                print("Error: Ingredient does not exist")
+                print("Error: Please refer to instruction manual for built-in ingredients")
             }
         }
         
