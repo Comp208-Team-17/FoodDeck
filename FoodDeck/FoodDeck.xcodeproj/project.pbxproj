@@ -28,12 +28,12 @@
 		9AD9FF7B242264AC0065970A /* Pantry.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9AD9FF7A242264AC0065970A /* Pantry.storyboard */; };
 		9AFB4830243B59BD0002F7A3 /* PantryManagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AFB482F243B59BD0002F7A3 /* PantryManagerViewController.swift */; };
 		9AFB4834243B77350002F7A3 /* AddToPantryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AFB4833243B77350002F7A3 /* AddToPantryViewController.swift */; };
+		A3085A18245B6A9000D26393 /* mealPack.sqlite-wal in Resources */ = {isa = PBXBuildFile; fileRef = A3085A15245B6A8F00D26393 /* mealPack.sqlite-wal */; };
+		A3085A19245B6A9000D26393 /* mealPack.sqlite-shm in Resources */ = {isa = PBXBuildFile; fileRef = A3085A16245B6A8F00D26393 /* mealPack.sqlite-shm */; };
+		A3085A1A245B6A9000D26393 /* mealPack.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = A3085A17245B6A9000D26393 /* mealPack.sqlite */; };
 		A3199BC024531E630048DC45 /* RecipeDetailIngredientsTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3199BBF24531E630048DC45 /* RecipeDetailIngredientsTable.swift */; };
 		A31D92FA2454E0000045EF77 /* ImportExportManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31D92F92454E0000045EF77 /* ImportExportManager.swift */; };
 		A31D92FC2454E5BD0045EF77 /* ImportExportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31D92FB2454E5BD0045EF77 /* ImportExportViewController.swift */; };
-		A31EE7BD245A2F5F008FF34C /* mealPack.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = A31EE7BA245A2F5F008FF34C /* mealPack.sqlite */; };
-		A31EE7BE245A2F5F008FF34C /* mealPack.sqlite-wal in Resources */ = {isa = PBXBuildFile; fileRef = A31EE7BB245A2F5F008FF34C /* mealPack.sqlite-wal */; };
-		A31EE7BF245A2F5F008FF34C /* mealPack.sqlite-shm in Resources */ = {isa = PBXBuildFile; fileRef = A31EE7BC245A2F5F008FF34C /* mealPack.sqlite-shm */; };
 		A34A3FFA244A709000DC162C /* RecipeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34A3FF9244A709000DC162C /* RecipeManager.swift */; };
 		A34A4005244B0C5F00DC162C /* IngredientManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34A3FFB244B0C5E00DC162C /* IngredientManager.swift */; };
 		A34A4006244B0C5F00DC162C /* Structures.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34A3FFC244B0C5E00DC162C /* Structures.swift */; };
@@ -105,12 +105,12 @@
 		9AD9FF7A242264AC0065970A /* Pantry.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Pantry.storyboard; sourceTree = "<group>"; };
 		9AFB482F243B59BD0002F7A3 /* PantryManagerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PantryManagerViewController.swift; sourceTree = "<group>"; };
 		9AFB4833243B77350002F7A3 /* AddToPantryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToPantryViewController.swift; sourceTree = "<group>"; };
+		A3085A15245B6A8F00D26393 /* mealPack.sqlite-wal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "mealPack.sqlite-wal"; path = "FoodDeck/DataModel/mealPack.sqlite-wal"; sourceTree = SOURCE_ROOT; };
+		A3085A16245B6A8F00D26393 /* mealPack.sqlite-shm */ = {isa = PBXFileReference; lastKnownFileType = file; name = "mealPack.sqlite-shm"; path = "FoodDeck/DataModel/mealPack.sqlite-shm"; sourceTree = SOURCE_ROOT; };
+		A3085A17245B6A9000D26393 /* mealPack.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; name = mealPack.sqlite; path = FoodDeck/DataModel/mealPack.sqlite; sourceTree = SOURCE_ROOT; };
 		A3199BBF24531E630048DC45 /* RecipeDetailIngredientsTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailIngredientsTable.swift; sourceTree = "<group>"; };
 		A31D92F92454E0000045EF77 /* ImportExportManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportExportManager.swift; sourceTree = "<group>"; };
 		A31D92FB2454E5BD0045EF77 /* ImportExportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportExportViewController.swift; sourceTree = "<group>"; };
-		A31EE7BA245A2F5F008FF34C /* mealPack.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; name = mealPack.sqlite; path = FoodDeck/DataModel/mealPack.sqlite; sourceTree = SOURCE_ROOT; };
-		A31EE7BB245A2F5F008FF34C /* mealPack.sqlite-wal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "mealPack.sqlite-wal"; path = "FoodDeck/DataModel/mealPack.sqlite-wal"; sourceTree = SOURCE_ROOT; };
-		A31EE7BC245A2F5F008FF34C /* mealPack.sqlite-shm */ = {isa = PBXFileReference; lastKnownFileType = file; name = "mealPack.sqlite-shm"; path = "FoodDeck/DataModel/mealPack.sqlite-shm"; sourceTree = SOURCE_ROOT; };
 		A34A3FF9244A709000DC162C /* RecipeManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeManager.swift; sourceTree = "<group>"; };
 		A34A3FFB244B0C5E00DC162C /* IngredientManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IngredientManager.swift; sourceTree = "<group>"; };
 		A34A3FFC244B0C5E00DC162C /* Structures.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Structures.swift; sourceTree = "<group>"; };
@@ -324,9 +324,9 @@
 		A34A401C244CB16400DC162C /* DataModel */ = {
 			isa = PBXGroup;
 			children = (
-				A31EE7BA245A2F5F008FF34C /* mealPack.sqlite */,
-				A31EE7BC245A2F5F008FF34C /* mealPack.sqlite-shm */,
-				A31EE7BB245A2F5F008FF34C /* mealPack.sqlite-wal */,
+				A3085A17245B6A9000D26393 /* mealPack.sqlite */,
+				A3085A16245B6A8F00D26393 /* mealPack.sqlite-shm */,
+				A3085A15245B6A8F00D26393 /* mealPack.sqlite-wal */,
 				9AC0B16E240D2F8000234251 /* FoodDeck.xcdatamodeld */,
 				A38455452436B49C004A65F3 /* Ingredient.swift */,
 				A38455592436BB03004A65F3 /* Recipe.swift */,
@@ -441,18 +441,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A3085A18245B6A9000D26393 /* mealPack.sqlite-wal in Resources */,
 				9AC0B175240D2F8100234251 /* LaunchScreen.storyboard in Resources */,
 				9AD9FF77242263CF0065970A /* ShoppingList.storyboard in Resources */,
+				A3085A1A245B6A9000D26393 /* mealPack.sqlite in Resources */,
 				9A539A8024536F7800C3D23B /* AppIcon.appiconset in Resources */,
 				9AD9FF7B242264AC0065970A /* Pantry.storyboard in Resources */,
 				9AD9FF79242263E80065970A /* Cards.storyboard in Resources */,
 				9AC0B172240D2F8100234251 /* Assets.xcassets in Resources */,
 				9AC0B16D240D2F8000234251 /* Main.storyboard in Resources */,
-				A31EE7BD245A2F5F008FF34C /* mealPack.sqlite in Resources */,
 				A354480924508F2400FD0148 /* Recipes.storyboard in Resources */,
-				A31EE7BF245A2F5F008FF34C /* mealPack.sqlite-shm in Resources */,
 				9AD9FF6F242260710065970A /* Ingredients.storyboard in Resources */,
-				A31EE7BE245A2F5F008FF34C /* mealPack.sqlite-wal in Resources */,
+				A3085A19245B6A9000D26393 /* mealPack.sqlite-shm in Resources */,
 				D63A7EA92423CC9100E65E65 /* Settings.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

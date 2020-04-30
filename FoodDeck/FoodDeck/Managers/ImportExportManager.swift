@@ -46,6 +46,7 @@ class ImportExportManager: NSManagedObject {
         let store:NSPersistentStore
         store = container.persistentStoreCoordinator.persistentStores.last!
         do {
+            print(backupUrl)
             try container.persistentStoreCoordinator.migratePersistentStore(store,to: backupUrl,options: nil,withType: NSSQLiteStoreType)
         } catch {
             print("Failed to migrate")
