@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="qmG-pC-LPx">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="qmG-pC-LPx">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -264,13 +264,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Oy3-Hj-J6V"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Add/Edit Ingredient" id="cVr-cM-bde">
-                        <barButtonItem key="rightBarButtonItem" title="Settings" id="IcB-Go-Dds">
-                            <connections>
-                                <segue destination="ZNE-Dc-Cx8" kind="show" id="96P-Tq-olW"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Add/Edit Ingredient" id="cVr-cM-bde"/>
                     <connections>
                         <outlet property="txtIngredient" destination="F0h-YX-pG4" id="FN1-HL-1WE"/>
                         <outlet property="unitSelect" destination="pD8-Ae-TJf" id="p2c-n3-6d0"/>
@@ -303,14 +297,11 @@
             <point key="canvasLocation" x="1320" y="-900"/>
         </scene>
     </scenes>
+    <color key="tintColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
     <resources>
         <image name="cog-filled" width="28" height="28"/>
-        <image name="delete.right.fill" catalog="system" width="64" height="52"/>
+        <image name="delete.right.fill" catalog="system" width="128" height="104"/>
         <image name="ingredients" width="28" height="28"/>
-        <image name="tray.and.arrow.down.fill" catalog="system" width="64" height="56"/>
+        <image name="tray.and.arrow.down.fill" catalog="system" width="128" height="114"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="8rq-CS-QL3"/>
-    </inferredMetricsTieBreakers>
-    <color key="tintColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>
