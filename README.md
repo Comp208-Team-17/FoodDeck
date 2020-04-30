@@ -2,10 +2,6 @@
 Save time, effort and waste with our decision-making meal app. Stop spending time searching through your cupboards and let our app do that for you. 
 
 ## TODO
-- Front-end
-  - Check constraints work on iphone 11
-- Back-end
-  - Import/Export
 - Instruction Manual
 - Demo Video 
 
