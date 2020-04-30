@@ -16,6 +16,8 @@ class CardsViewController : UIViewController {
     @IBOutlet weak var descriptionLabel: UITextView!
     @IBOutlet weak var txtServings: UILabel!
     
+    @IBOutlet weak var btnFavourite: UIButton!
+    @IBOutlet weak var lblStars: UILabel!
     @IBOutlet weak var card: UIView!
     var recipes : [RecipeStr] = []
     var currentIndex = 0
@@ -46,6 +48,13 @@ class CardsViewController : UIViewController {
         cookTimeLabel.text? = "\(currentRecipe.cookTime)"
         descriptionLabel.text? = currentRecipe.recipeDescription
         txtServings.text = "\(currentRecipe.servings)"
+        lblStars.text = "\(currentRecipe.rating)"
+        if currentRecipe.favourite == true {
+            btnFavourite.setImage(UIImage(named: "heart-green"), for: .normal)
+        }
+        else{
+            btnFavourite.setImage(UIImage(named: "heart-green-outline"), for: .normal)
+        }
         
     }
     
