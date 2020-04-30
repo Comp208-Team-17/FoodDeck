@@ -104,7 +104,7 @@ class EditRecipeViewController: UIViewController {
             }
             txtCookTime.text = "\(RecipeDetailViewController.localRecipe[0].cookTime)"
             txtPrepTime.text = "\(RecipeDetailViewController.localRecipe[0].prepTime)"
-            txtServings.text = "\(RecipeDetailViewController.localRecipe[0].prepTime)"
+            txtServings.text = "\(RecipeDetailViewController.localRecipe[0].servings)"
             switch(RecipeDetailViewController.localRecipe[0].timeOfDay){
             case "Breakfast":
                 selector.selectRow(0, inComponent: 0, animated: true)
