@@ -46,67 +46,12 @@
                     <navigationItem key="navigationItem" title="Settings" id="IBa-ZC-A8h"/>
                     <connections>
                         <outlet property="table" destination="ynM-0H-PRw" id="wfu-2z-qQb"/>
-                        <segue destination="nJH-gd-Kau" kind="show" identifier="toImportExport" id="MeT-Zy-rZq"/>
                         <segue destination="Zcq-m4-mhJ" kind="show" identifier="toUserPref" id="BUq-3V-y1o"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lLd-6V-VaZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="957.60000000000002" y="-15.742128935532236"/>
-        </scene>
-        <!--Import/Export-->
-        <scene sceneID="eiE-pj-Mje">
-            <objects>
-                <viewController title="Import/Export" id="nJH-gd-Kau" customClass="ImportExportViewController" customModule="FoodDeck" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="1V2-sk-uVS">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="olS-Uy-Ss3">
-                                <rect key="frame" x="24" y="107" width="73" height="30"/>
-                                <state key="normal" title="Export File"/>
-                                <connections>
-                                    <action selector="btnExport:" destination="nJH-gd-Kau" eventType="touchUpInside" id="ibK-J8-L0D"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="suk-9q-fJA">
-                                <rect key="frame" x="24" y="137" width="73" height="30"/>
-                                <state key="normal" title="Import File"/>
-                                <connections>
-                                    <action selector="btnImport:" destination="nJH-gd-Kau" eventType="touchUpInside" id="8p9-lP-p3v"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rlK-yI-eFu">
-                                <rect key="frame" x="23" y="175" width="74" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="MealPacks"/>
-                                <connections>
-                                    <action selector="btnMealPacks:" destination="nJH-gd-Kau" eventType="touchUpInside" id="Rg6-pG-KYQ"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f0N-O6-bmb">
-                                <rect key="frame" x="197" y="137" width="126" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Make those things"/>
-                                <connections>
-                                    <action selector="btnMakeMealPacks:" destination="nJH-gd-Kau" eventType="touchUpInside" id="fwp-De-j7m"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="olS-Uy-Ss3" firstAttribute="top" secondItem="uvD-Cf-zNJ" secondAttribute="top" constant="63" id="77S-6h-M0e"/>
-                            <constraint firstItem="olS-Uy-Ss3" firstAttribute="leading" secondItem="uvD-Cf-zNJ" secondAttribute="leading" constant="24" id="Saa-8i-G5R"/>
-                            <constraint firstItem="suk-9q-fJA" firstAttribute="top" secondItem="olS-Uy-Ss3" secondAttribute="bottom" id="Vyc-Gg-g1f"/>
-                            <constraint firstItem="olS-Uy-Ss3" firstAttribute="leading" secondItem="suk-9q-fJA" secondAttribute="leading" id="qsp-Uc-vT5"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="uvD-Cf-zNJ"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Import/Export" id="P8w-9U-ffv"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="LvL-bg-iQu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1853.5999999999999" y="375.56221889055473"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="DHz-td-aK8">

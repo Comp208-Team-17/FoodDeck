@@ -67,7 +67,10 @@ class PantryIngredient: NSManagedObject {
                     else if value > 0 {
                         theIngredient?.pantryIngredient!.setValue(value, forKey: "amount")
                     }
-                    else {
+                    else if recipeIngredients[index].optional == true {
+                        continue
+                    }
+                    else{
                         error = true
                         break
                     }

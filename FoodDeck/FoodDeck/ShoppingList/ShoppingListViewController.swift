@@ -93,6 +93,7 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
         
         inShoppingList = ShoppingListIngredient.getShoppingList()
         table.reloadData()
+        
     }
     
     
@@ -109,7 +110,8 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
         cell.subtitleLabel?.textColor = .systemGreen
         cell.subtitleLabel?.text = "\(ingredient.amount) \(ingredient.belongsTo?.unit! ?? "")"
         // switch properties
-        cell.checkSwitch.setOn(false, animated: true)
+        boughtIngredients.contains(ingredient) ?  cell.checkSwitch.setOn(true, animated: true) : cell.checkSwitch.setOn(false, animated: true)
+       
         cell.checkSwitch.tag = indexPath.row
         // when switch state is changed, run switchChanged() method
         cell.checkSwitch.addTarget(self, action: #selector(self.switchChanged(_:)), for: .valueChanged)
