@@ -190,7 +190,7 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
                 errorLabel.text = "Quantity field is empty"
                 self.present(alert, animated: true, completion: nil)
             }
-            else if let value = Int16(input) {
+            else if let value = Int16(input), value > 0 {
                 // add igredient to shopping list
                 ShoppingListIngredient.setValue(value, forKey: "amount")
                 do {
