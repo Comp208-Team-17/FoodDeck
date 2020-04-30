@@ -83,7 +83,7 @@ class CardsViewController : UIViewController {
         swipeDown.direction = .down
         self.view.addGestureRecognizer(swipeDown)
         
-        
+        // Work out if the points need to be decreased
         let allRecipes = RecipeManager.getRecipe(theName: "", all: true)
         var over175 : Int = 0
         for recipe in allRecipes {
@@ -91,6 +91,8 @@ class CardsViewController : UIViewController {
                 over175 += 1
             }
         }
+        
+        // Decrease points if 1/7 of recipes is over 175
         if over175 > Int(allRecipes.count / 7){
             SuggestionGenerator.degradePoints()
         }
