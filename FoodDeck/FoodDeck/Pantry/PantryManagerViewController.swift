@@ -102,7 +102,7 @@ class PantryManagerViewController: UIViewController, UITableViewDelegate, UITabl
                 self.present(alert, animated: true, completion: nil)
                 
             }
-            else if let value = Int16(input) {
+            else if let value = Int16(input), value > 0{
                 // add igredient to pantry list
                 pantryIngredient.setValue(value, forKey: "amount")
                 
