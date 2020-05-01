@@ -11,7 +11,15 @@ import CoreData
 class IngredientManager: NSManagedObject {
     static var tempIngredientRtn : [IngredientStr] = [] // Stores the ingredient that will be returned if a calling function requests an ingredient
   
-    
+    /*
+     Adds a new ingredient
+     Params:
+     enabled - true/false
+     name of new recipe
+     unit - "U" for units, "G" for grams/ml
+     
+     Returns true/false depending on success
+     */
     static func addIngredient(isEnabled : Bool, theName : String, theUnit : String) -> Bool {
         if checkExists(theName : theName, delete: false, get: false){
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -32,9 +40,22 @@ class IngredientManager: NSManagedObject {
         return false
         
     }
+    /*
+     Deletes an ingredient
+     Params: name of ingredient to delete
+     Returns true/false depending on success
+     */
     static func deleteIngredient(theName : String) -> Bool{
         return checkExists(theName: theName, delete : true, get: false)
     }
+    /*
+     Updates an ingredient
+     Params:
+     originalName - the name originally set for the recipe
+     Other paramaters are what are being changes
+     
+     Returns true/false depending on success
+     */
     static func updateIngredient(originalName : String, isEnabled: Bool, theName : String, theUnit : String) -> Bool{
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
@@ -62,6 +83,15 @@ class IngredientManager: NSManagedObject {
         }
         return false
     }
+    /*
+      Gets either one, or all ingredients.
+      Params: The name of the recipe to be retrieved or "" if all ingredients being searched
+     An all boolean which is TRUE if retrieving all ingredients. FALSE if just retrieving one
+      
+      Returns an empty array if no ingredient has been found
+      Returns an array of one item if searching for an ingredient and there is a match
+      Returns all ingredients in the array if the all bool has been set to true on the params
+     */
     static func getIngredient(theName : String, enabled : Bool, all : Bool) -> [IngredientStr] {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
@@ -107,6 +137,12 @@ class IngredientManager: NSManagedObject {
         }
         
     }
+    /*
+       Gets an ingredient object
+       Params: The name of the ingredient
+       Returns: An array of objects of type Ingredient. Either has 1 or 0 elements
+       Has 0 elements returned if there is no such ingredient matching that name.
+       */
     static func getIngredientObject(theName : String) -> [Ingredient]{
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
@@ -123,6 +159,15 @@ class IngredientManager: NSManagedObject {
         catch{}
         return []
     }
+    /*
+        Local helper function to check if an ingredient exists and then either retrieve or delete it.
+        Params:
+        theName: the name of the ingredient
+        delete: if said ingredient should be deleted if found
+        get: if said ingredient should be retrieved
+        
+        Returns true if the action was successful, false if not.
+        */
    private static func checkExists(theName : String, delete : Bool, get: Bool) -> Bool{
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
@@ -155,7 +200,10 @@ class IngredientManager: NSManagedObject {
     }
 }
 
-// the following method is now applicable to all strings
+// the following method is now applicable to all strings/
+/*
+ Auto capitalises the ingredients.
+ */
 extension String {
     func capitalizingFirstLetter() -> String {
         return prefix(1).capitalized + dropFirst()

@@ -18,6 +18,13 @@ enum pointSource {
 
 class SuggestionGenerator {
     
+    /*
+     Updates the poins of a recipe depending on the source as defined by the enum
+     Params:
+     source- source of the points, see pointSource enum
+     Rating - 0 to 5 inclusive
+     inpRecipe - Recipe structure being updated
+     */
     static func updatePoints(source: pointSource, rating: Int, inpRecipe: RecipeStr) {
         var lowerBound: Int
         var recipe = inpRecipe
@@ -73,7 +80,11 @@ class SuggestionGenerator {
         }
  
     }
-    
+    /*
+     Finds the lower bound depending on the recipe rating and favoruite
+     Params: The recipe of which the lower bound is to be calculated
+     Returns the lower bound as an integer
+     */
     static func findLowerBound(inpRecipe: RecipeStr) -> Int {
         if (inpRecipe.favourite == false){
             return Int(inpRecipe.rating == 0 ? 1: inpRecipe.rating * 25)
@@ -83,7 +94,10 @@ class SuggestionGenerator {
             return 150
         }
     }
-    
+    /*
+     generates a stack of cards for suggestion
+     Returns an array of recipe structures which are to be suggested in ascending order
+     */
     static func gererateSuggestion() -> [RecipeStr] {
         var suggestedRecipes: [RecipeStr] = []
         var displayRecipe: [RecipeStr] = []
@@ -125,7 +139,9 @@ class SuggestionGenerator {
         
         return displayRecipe
     }
-    
+    /*
+     Sets which meals can be potentially suggested, a helper function to the generateSuggestions
+     */
     static func setPotentialMeals() {
         var acceptedRequirement: Bool
         var recipe: RecipeStr
@@ -207,7 +223,11 @@ class SuggestionGenerator {
             }
         }
     }
-    
+    /*
+     Degrades the points. Called every time the cards page is loaded,
+     Recipes with a high score will have score reduced,
+     Recipes with low score will have score increased.
+     */
     static func degradePoints() {
         let recipeList = RecipeManager.getRecipe(theName: "", all: true)
         var recipe: RecipeStr
@@ -239,7 +259,10 @@ class SuggestionGenerator {
             }
         }
     }
-    
+    /*
+     Finds the current time of day and returns the appropriate category,
+     "Breakfast", "Lunch" or "Dinner"
+     */
     static func findTimeOfDay() -> String {
         // Find current time
         let date = Date()

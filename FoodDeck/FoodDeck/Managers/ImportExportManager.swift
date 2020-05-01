@@ -12,7 +12,9 @@ import CoreData
 
 class ImportExportManager: NSManagedObject {
 
-    
+    /*
+     Restores the backup that the user has made
+     */
     static func restoreCustomBackup(backupName: String){
         let storeFolderUrl = FileManager.default.urls(for: .applicationSupportDirectory, in:.userDomainMask).first!
         let storeUrl = storeFolderUrl.appendingPathComponent("FoodDeck.sqlite")
@@ -36,6 +38,9 @@ class ImportExportManager: NSManagedObject {
         })
 
     }
+    /*
+     Exports the coreData when the export button is pressed
+     */
    static func backup(backupName: String){
     deleteExistingBackup()
         let backUpFolderUrl = FileManager.default.urls(for: .documentDirectory, in:.userDomainMask).first!
@@ -52,6 +57,9 @@ class ImportExportManager: NSManagedObject {
             print("Failed to migrate")
         }
     }
+    /*
+     Imports the mealPack.sqlite files into the app
+     */
     static func loadMealPacks(){
            let storeFolderUrl = FileManager.default.urls(for: .applicationSupportDirectory, in:.userDomainMask).first!
            let storeUrl = storeFolderUrl.appendingPathComponent("FoodDeck.sqlite")
@@ -74,6 +82,9 @@ class ImportExportManager: NSManagedObject {
            })
 
        }
+    /*
+     Deletes the existing back-up when exporting, if such a backup exists
+     */
    static func deleteExistingBackup(){
      let backUpFolderUrl = FileManager.default.urls(for: .documentDirectory, in:.userDomainMask).first!
     let backupUrl = backUpFolderUrl.appendingPathComponent("backup.sqlite")

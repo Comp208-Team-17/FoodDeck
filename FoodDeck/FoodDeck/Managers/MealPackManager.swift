@@ -12,9 +12,12 @@ import CoreData
 class MealPackManager: NSManagedObject {
  static var tempMealPacksRtn: [MealPackStr] = []
  static var mealPackNames : [String] = ["Italian", "British", "American"]
-static var mealPackRecipes : [(String, String)] = [("Italian", "Chocolate semifreddo"), ("British", "Treacle sponge cake"), ("American", "Smores dip"),("Italian", "Italian butter beans"),("Italian", "Italian Vegetable soup"), ("Italian", "Rustic bread"), ("Italian", "Panna cotta") , ("American", "Hot gumbo dip"), ("American", "Creamed corn"),  ("American", "Pancakes"), ("American", "Cheese Steak Hot Dogs"),  ("British", "Lemon Syllabub"), ("British", "Sausage with apple mash and gravy"), ("British", "Clotted cream rice pudding"), ("British", "Pear and blackberry crumble") ]
+static var mealPackRecipes : [(String, String)] = [("Italian", "Chocolate semifreddo"), ("British", "Treacle sponge cake"), ("American", "Smores dip"),("Italian", "Italian butter beans"),("Italian", "Italian Vegetable soup"), ("Italian", "Rustic bread"), ("Italian", "Panna cotta") , ("American", "Hot gumbo dip"), ("American", "Creamed corn"),  ("American", "Pancakes"), ("American", "Cheese Steak Hot Dogs"),  ("British", "Lemon Syllabub"), ("British", "Sausage with apple mash and gravy"), ("British", "Clotted cream rice pudding"), ("British", "Pear and blackberry crumble") ] //pre-defined meal pack names
  
- // Fetch all meal packs from core data
+ /*
+    Fetches all meal packs from core data,
+    Returns an array if type MealPackStr, the standard structure for meal packs.
+*/
  static func getMealPacks() -> [MealPackStr] {
      
      // Set up request to fetch data
@@ -36,11 +39,16 @@ static var mealPackRecipes : [(String, String)] = [("Italian", "Chocolate semifr
          return tempMealPacksRtn
      }
      catch {
-         print("No meal packs found")
+         //print("No meal packs found")
          return []
      }
  }
     
+    /*
+     Returns a meal pack object reference from core data
+     Params: the name of the meal pack being retrieved
+     Returns an array of either one meal pack object, or an empty array if no meal pack has been found
+     */
     static func getMealPackObject(theName : String) -> [MealPack]{
         var mealPackRtn : [MealPack] = []
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -61,13 +69,16 @@ static var mealPackRecipes : [(String, String)] = [("Italian", "Chocolate semifr
             }
         }
         catch {
-            print("No meal packs found")
+            //print("No meal packs found")
             
         }
         return []
     }
- // Update status of all meal paks
-    static func updateMealPack(newMealPacks: [MealPackStr]) {
+/*
+     Updates the meal packs in the database
+     Params: An array of meal pack structures
+     */
+ static func updateMealPack(newMealPacks: [MealPackStr]) {
      // Set up request
      let appDelegate = UIApplication.shared.delegate as! AppDelegate
      let context = appDelegate.persistentContainer.viewContext
@@ -97,6 +108,11 @@ static var mealPackRecipes : [(String, String)] = [("Italian", "Chocolate semifr
         print("No meal packs found - cannot update")
     }
   }
+    /*
+     Creates a new meal pack
+     Params: The name of the new meal pack
+     Returns TRUE if created successfully, FALSE if not
+     */
     static func addMealPack(theName: String) -> Bool{
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
@@ -112,8 +128,11 @@ static var mealPackRecipes : [(String, String)] = [("Italian", "Chocolate semifr
         }
     }
     
-    // Fetch all disabled meal packs
-    static func getDisabledMealPacks() -> [MealPackStr] {
+    /*
+     Retrieves all disabled meal packs so they can be excluded from the suggestions that are generated in SuggestionsGenerator
+     Returns: Array of meal pack structures where the meal packs are disabled
+     */
+ static func getDisabledMealPacks() -> [MealPackStr] {
         // Set up request to fetch data
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
@@ -137,13 +156,15 @@ static var mealPackRecipes : [(String, String)] = [("Italian", "Chocolate semifr
             return []
         }
     }
+    /*
+     Creates the meal packs based on our definitions of pre-defined meal packs on line 15
+     Called when the app is first installed
+     */
     static func makeMealPacks(){
-        print("made new meal packs")
         for name in mealPackNames{
             addMealPack(theName: name)
         }
         for recipe in mealPackRecipes {
-            print(recipe.1)
             let theRecipe = RecipeManager.getRecipeObject(theName: recipe.1)[0]
             theRecipe.belongsTo = getMealPackObject(theName: recipe.0)[0]
         }

@@ -15,8 +15,6 @@ class RecipeManager: NSManagedObject {
      Adds a new recipe to the database
      Params:
      theAllergens in format "111" where pos 1 is Vegetarian, pos 2 is Vegan, pos 2 is Gluten. 1 is true, 0 is false
-     
-     
      */
     static func addRecipe(theAllergens : String, isAvailable : Bool, theCookTime : Int16, theDateCreated : String, theDietaryRequirements : String, isFavourite : Bool, theInstructions : String, theName : String, thePrepTime : Int16, theRating : Int16, theRecipeDescription : String, theScore : Int16, theServings :  Int16, theThumbnail : UIImage, theTimeOfDay : String, theIngredients : [(String, Int16, Bool)]) -> Bool{
         if checkExists(theName: theName, delete: false, get : false){
@@ -54,7 +52,12 @@ class RecipeManager: NSManagedObject {
         }
         return false
     }
-    
+    /*
+     Gets a recipe object
+     Params: The name of the recipe
+     Returns: An array of objects of type Recipe. Either has 1 or 0 elements
+     Has 0 elements returned if there is no such recipe matching that name.
+     */
     static func getRecipeObject(theName: String) -> [Recipe] {
         var recipeTmpRtn : [Recipe] = []
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -73,6 +76,15 @@ class RecipeManager: NSManagedObject {
         catch{}
         return recipeTmpRtn
     }
+    /*
+     Gets either one, or all recipes.
+     Params: The name of the recipe to be retrieved or "" if all recipe being searched
+    An all boolean which is TRUE if retrieving all recipes. FALSE if just retrieving one
+     
+     Returns an empty array if no recipe has been found
+     Returns an array of one item if searching for a recipe and there is a match
+     Returns all recipes in the array if the all bool has been set to true on the params
+     */
     static func getRecipe(theName : String, all: Bool) -> [RecipeStr]{
         if all == true {
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -119,7 +131,15 @@ class RecipeManager: NSManagedObject {
             return []
         }
     }
-    
+    /*
+     Local helper function to check if a recipe exists and then either retrieve or delete it.
+     Params:
+     theName: the name of the recipe
+     delete: if said recipe should be deleted if found
+     get: if said recipe should be retrieved
+     
+     Returns true if the action was successful, false if not.
+     */
     private static func checkExists(theName : String, delete : Bool, get: Bool) -> Bool{
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
@@ -170,9 +190,20 @@ class RecipeManager: NSManagedObject {
         }
         return true
     }
+    /*
+     Deletes a recipe
+     params: the recipe name
+     Returns true if deletion successuful, false if not.
+     */
     static func deleteRecipe(theName : String) -> Bool {
         return checkExists(theName: theName, delete: true, get: false)
     }
+    /*
+     Updates the recipe
+     Params: all the paramteters as defined in the ingredients structure, except for the ingredients tuple.
+     
+     Returns true if successful, false if not.
+     */
     static func updateRecipeExceptIngredients(originalName: String, newName: String, theAllergens : String, isAvailable : Bool, theCookTime : Int16, theDateCreated : String, theDietaryRequirements : String, isFavourite : Bool, theInstructions : String,  thePrepTime : Int16, theRating : Int16, theRecipeDescription : String, theScore : Int16, theServings :  Int16, theThumbnail : UIImage, theTimeOfDay : String) -> Bool {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
@@ -204,6 +235,13 @@ class RecipeManager: NSManagedObject {
        
         return false
     }
+    /*
+     Updates the dietary requirements of a recipe
+     Params:
+     theName: name of the recipe
+     theDietaryRequirements: String relating to dietary requirements as defined in the structures
+     Returns true if update was successful, false if not.
+     */
     static func updateRecipeDietary(theName : String, theDietaryRequirements : String)-> Bool {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
              let context = appDelegate.persistentContainer.viewContext
@@ -231,6 +269,11 @@ class RecipeManager: NSManagedObject {
         }
         return false
     }
+    /*
+     Sets a recipe as a favourite / not a favourite
+     Params: The name of the recipe and if it should be favourited
+     Returns true/false depending on success
+     */
     static func updateRecipeFavourite(theName: String, isFavourite : Bool) -> Bool {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
@@ -257,6 +300,12 @@ class RecipeManager: NSManagedObject {
         let glutenTmp : Character = (gluten == true ? "1" : "0")
         return "\(veganTmp)\(vegTmp)\(glutenTmp)"
     }
+    /*
+     Does the same as the converDietaryValue but in reverse.
+     Params: The dietaray string. where String is made up for 3 chars, 0 for off, 1 for on.
+     char one represents vegan, two for vegetarian, three for gluten free
+     Returns array of booleans
+     */
     static func revertDietaryValue(value : String) -> [Bool] {
         var output : [Bool] = []
         let charOneIndex = value.index(value.startIndex, offsetBy: 1)
@@ -270,6 +319,17 @@ class RecipeManager: NSManagedObject {
         output.append(charThree == "0" ? false : true)
         return output
     }
+    /*
+     Filters the recipes by constraints, and returns the filtered results
+     
+     Params: The recipes to be filtered
+    The time of day filter - string as Breakfast Lunch or Dinner
+     Vegan filter - true/false
+     Gluten filter true/false
+     Search - string of search item
+     
+     Returns filter results in an array of recipe structs
+     */
     static func filter(theRecipes : [RecipeStr], theTimeOfDayFilter : String, theVeganFilter : Bool, theVegFilter : Bool, theGlutenFilter: Bool, theSearch: String) -> [RecipeStr]{
         var localRecipeFilt : [RecipeStr] = []
         var filtNameDescription : [RecipeStr] = []
