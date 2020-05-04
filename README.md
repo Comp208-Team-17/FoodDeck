@@ -1,10 +1,8 @@
-# FoodDeck - (Friday 1st May 2020)
+# FoodDeck 
 Save time, effort and waste with our decision-making meal app. Stop spending time searching through your cupboards and let our app do that for you. 
 
 ## TODO
-- Instruction Manual
-- Demo Video 
-
+- Portfolio
 
 ## Resources
 Quick Access Links
